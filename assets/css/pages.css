@@ -1300,3 +1300,87 @@
     font-size: 8rem;
   }
 }
+
+
+/* ── Mega Package & Advanced Pricing Styles ── */
+.mega-package-card {
+  background: linear-gradient(135deg, rgba(13, 31, 60, 0.95), rgba(10, 22, 40, 0.98));
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.5rem, 4vw, 3rem);
+  box-shadow: var(--shadow-gold);
+}
+.mega-grid {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  border: 1px solid rgba(201, 168, 76, 0.15);
+}
+.mega-pubs-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.75rem 1rem;
+}
+.mega-pub-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.88);
+}
+.mega-pub-item span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.package-filter-nav {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.tag-gold {
+  background: rgba(201, 168, 76, 0.15) !important;
+  color: var(--color-gold) !important;
+  border-color: var(--color-gold) !important;
+  font-weight: 600;
+}
+.pricing-pub-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.pricing-pub-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+.pricing-pub-list li span {
+  flex: 1;
+}
+.traffic-pill {
+  display: inline-block;
+}
+.pricing-price-box {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+.pricing-currency {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-gold);
+}
+.pricing-amount {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-navy);
+}
+.pricing-card.popular .pricing-amount {
+  color: var(--color-gold);
+}
