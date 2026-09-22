@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NexcoinPR — Crypto, Forex & Financial News Feed</title>
+    <link>https://nexcoinpr.com</link>
+    <description>Latest news, regulatory analysis, and market explainers from NexcoinPR's financial media desk.</description>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 22 Sep 2026 08:00:00 GMT</lastBuildDate>
+    <atom:link href="https://nexcoinpr.com/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title><![CDATA[Zero-Knowledge Prover Latency Drops 40% Across Major Testnets]]></title>
+      <link>https://nexcoinpr.com/news/blockchain.html</link>
+      <guid isPermaLink="true">https://nexcoinpr.com/news/blockchain.html</guid>
+      <pubDate>Tue, 22 Sep 2026 08:00:00 GMT</pubDate>
+      <description><![CDATA[Benchmark data indicates hardware acceleration optimizations are significantly compressing verification costs for modular rollups.]]></description>
+      <category>Blockchain</category>
+    </item>
+    <item>
+      <title><![CDATA[Central Banks Evaluate Real-Time FX Liquidity Buffers]]></title>
+      <link>https://nexcoinpr.com/news/forex.html</link>
+      <guid isPermaLink="true">https://nexcoinpr.com/news/forex.html</guid>
+      <pubDate>Mon, 21 Sep 2026 14:00:00 GMT</pubDate>
+      <description><![CDATA[Monetary authorities analyze intraday currency volatility and interbank settlement buffers.]]></description>
+      <category>Forex</category>
+    </item>
+    <item>
+      <title><![CDATA[What Is Crypto PR? Complete Guide to Cryptocurrency Public Relations]]></title>
+      <link>https://nexcoinpr.com/news/guides/what-is-crypto-pr.html</link>
+      <guid isPermaLink="true">https://nexcoinpr.com/news/guides/what-is-crypto-pr.html</guid>
+      <pubDate>Sun, 20 Sep 2026 09:30:00 GMT</pubDate>
+      <description><![CDATA[An educational guide examining earned media, media relations, and reputation management for digital asset protocols.]]></description>
+      <category>Guides</category>
+    </item>
+  </channel>
+</rss>

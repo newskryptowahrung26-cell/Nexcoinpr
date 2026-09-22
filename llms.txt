@@ -1,0 +1,40 @@
+# NexcoinPR
+
+> NexcoinPR is a professional international public relations and press release distribution agency specializing in cryptocurrency, blockchain, Web3, DeFi, foreign exchange (forex), and financial technology (fintech) communications.
+
+## Brand Identity & Operating Model
+- **Agency Name:** NexcoinPR
+- **Website:** https://nexcoinpr.com
+- **Official Contact:** hello@nexcoinpr.com
+- **Business Focus:** PR campaigns, wire syndication, media outreach, and financial news publication for digital asset protocols, forex brokers, and fintech innovators.
+- **Content Architecture:** The platform features ONE unified content hub: `/news/` (covering Breaking News, Crypto, Forex, Blockchain, Web3, Fintech, Financial Markets, PR Insights, and Guides). There is NO separate /blog/.
+- **Commercial Content Transparency:** All paid press releases and sponsored materials are explicitly labeled as "Press Release" or "Client Content" to separate client communications from independent editorial reporting.
+
+## Core PR Services
+- [Crypto PR](https://nexcoinpr.com/crypto-pr.html): Strategic media relations for cryptocurrency projects, token foundations, and crypto exchanges.
+- [Forex PR](https://nexcoinpr.com/forex-pr.html): Communications and regulatory milestone announcements for foreign exchange brokers and trading venues.
+- [Blockchain PR](https://nexcoinpr.com/blockchain-pr.html): Technical messaging for Layer 1/2 networks, cryptography research, and enterprise ledgers.
+- [Web3 PR](https://nexcoinpr.com/web3-pr.html): Launch campaigns and governance communications for dApps, DAOs, and DeFi protocols.
+- [Fintech PR](https://nexcoinpr.com/fintech-pr.html): Public relations for payment gateways, neobanks, regtech, and wealthtech startups.
+- [Financial PR](https://nexcoinpr.com/financial-pr.html): Corporate communications for asset managers, hedge funds, and capital markets platforms.
+- [Press Release Distribution](https://nexcoinpr.com/press-release-distribution.html): Multi-channel wire transmission across crypto and financial media endpoints.
+
+## Content & Educational Resources
+- [News Hub](https://nexcoinpr.com/news.html): Daily reporting on crypto, forex, and fintech market trends.
+- [Crypto News](https://nexcoinpr.com/news/crypto.html): Coverage of digital assets, tokenomics, and decentralized networks.
+- [Forex News](https://nexcoinpr.com/news/forex.html): Macroeconomic analysis, central bank decisions, and currency benchmarks.
+- [Blockchain News](https://nexcoinpr.com/news/blockchain.html): In-depth reporting on consensus mechanics, scaling, and privacy proofs.
+- [PR Guides & Explainers](https://nexcoinpr.com/news/guides.html): Comprehensive educational guides.
+  - [What Is Crypto PR?](https://nexcoinpr.com/news/guides/what-is-crypto-pr.html)
+  - [How to Write a Crypto Press Release](https://nexcoinpr.com/news/guides/how-to-write-a-crypto-press-release.html)
+  - [What Is Forex PR?](https://nexcoinpr.com/news/guides/what-is-forex-pr.html)
+  - [How Press Release Distribution Works](https://nexcoinpr.com/news/guides/how-press-release-distribution-works.html)
+- [Glossary](https://nexcoinpr.com/glossary.html): Factual definitions for 20+ financial and blockchain terms.
+- [Press Releases](https://nexcoinpr.com/press-releases.html): Permanent repository of client announcements and commercial disclosures.
+
+## Trust & Governance
+- [Editorial Policy](https://nexcoinpr.com/editorial-policy.html): Complete standards on independence, labeling, and source attribution.
+- [Corrections Policy](https://nexcoinpr.com/corrections-policy.html): Procedures for submitting and handling factual amendments.
+- [Financial Disclaimer](https://nexcoinpr.com/disclaimer.html): Explicit statement that content does not constitute financial, investment, or legal advice.
+- [About NexcoinPR](https://nexcoinpr.com/about.html): Agency mission, core team, and operational standards.
+- [Contact](https://nexcoinpr.com/contact.html): Official inquiry forms and departmental email channels.

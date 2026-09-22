@@ -1,0 +1,97 @@
+# NexcoinPR — Full Organizational & Structural Reference Document
+
+## 1. Executive Summary & Brand Positioning
+NexcoinPR is a premier international public relations agency, press release distribution platform, and digital financial media publication. Operating at the confluence of digital asset innovation, currency markets, and institutional fintech, NexcoinPR delivers strategic media relations, targeted wire distribution, and independent industry journalism.
+
+- **Official Brand Name:** NexcoinPR
+- **Canonical Website:** https://nexcoinpr.com
+- **Core Email Contacts:**
+  - Client & General Enquiries: hello@nexcoinpr.com
+  - Media & Press Desk: media@nexcoinpr.com
+  - Editorial Corrections: editorial@nexcoinpr.com
+  - Privacy Officer: privacy@nexcoinpr.com
+
+## 2. Core Operational Pillars
+1. **Strategic PR & Earned Media:** Delivering targeted media outreach, executive thought leadership, and narrative positioning for high-technology firms without resorting to unverified claims or fake statistics.
+2. **Press Release Syndication:** Managing structured distribution across specialized cryptocurrency newsrooms, forex trading feeds, market research portals, and search engines with verifiable reporting.
+3. **Financial Media Journalism:** Operating an independent, unbiased editorial newsroom under `/news/` covering breaking developments across crypto, forex, blockchain, Web3, and fintech.
+4. **Absolute Architectural Separation:** NexcoinPR does NOT operate a separate "blog" section. All educational and evergreen knowledge lives exclusively within `/news/guides/`.
+
+## 3. Detailed Service Breakdown
+### 3.1 Crypto PR (`/crypto-pr.html`)
+Targeted at cryptocurrency exchanges, token foundations, and mining operations. Focuses on technological differentiation, community credibility, developer engagement, and responsible regulatory communications.
+
+### 3.2 Forex PR (`/forex-pr.html`)
+Designed for retail foreign exchange brokers, liquidity providers, institutional ECN venues, and charting platforms. Specializes in multi-jurisdictional licensing disclosures, risk-disclosure positioning, and macroeconomic commentary.
+
+### 3.3 Blockchain PR (`/blockchain-pr.html`)
+Focused on Layer 1 and Layer 2 protocols, modular data availability layers, zero-knowledge research foundations, and enterprise consortiums. Translates advanced cryptographic proofs into accessible, credible stories for technology journalists.
+
+### 3.4 Web3 PR (`/web3-pr.html`)
+Tailored for decentralized finance (DeFi) platforms, dApps, DAO governance committees, decentralized identity providers, and digital ownership networks.
+
+### 3.5 Fintech PR (`/fintech-pr.html`)
+Serving payment gateways, digital banking neobanks, cross-border remittance platforms, and regtech compliance suites. Coordinates funding round announcements (Seed to Series C), banking partnerships, and API debuts.
+
+### 3.6 Financial PR (`/financial-pr.html`)
+Corporate communications for asset managers, hedge funds, venture capital investors, and capital markets infrastructure providers.
+
+### 3.7 Press Release Distribution (`/press-release-distribution.html`)
+The central syndication platform providing 24-48 hour editorial review, NewsArticle schema structuring, transmission across specialized news feeds, and delivery of verifiable syndication reports.
+
+## 4. Editorial Integrity & Anti-Deception Standards
+NexcoinPR adheres to strict global communications ethics:
+- **No Fabricated Data:** We do not publish false client statistics, unverified awards, or fake testimonials.
+- **No Deceptive Guarantees:** We explicitly reject claims guaranteeing specific media coverage, search rankings, or token value appreciation.
+- **Distinct Commercial Labeling:** Commercial releases hosted in `/press-releases/` are prominently marked with "Press Release" or "Client Content" banners to prevent confusion with independent journalism.
+- **Statutory Financial Disclaimer:** Digital assets and leveraged currency trading carry substantial market risk. No content distributed through NexcoinPR represents financial, legal, or investment advice.
+
+## 5. Information Architecture & Canonical Endpoints
+- Homepage: https://nexcoinpr.com/
+- Services Directory: https://nexcoinpr.com/services.html
+  - Crypto PR: https://nexcoinpr.com/crypto-pr.html
+  - Forex PR: https://nexcoinpr.com/forex-pr.html
+  - Blockchain PR: https://nexcoinpr.com/blockchain-pr.html
+  - Web3 PR: https://nexcoinpr.com/web3-pr.html
+  - Fintech PR: https://nexcoinpr.com/fintech-pr.html
+  - Financial PR: https://nexcoinpr.com/financial-pr.html
+  - Press Release Distribution: https://nexcoinpr.com/press-release-distribution.html
+- Commercial Newsroom: https://nexcoinpr.com/press-releases.html
+  - Sample Press Release: https://nexcoinpr.com/press-releases/sample-press-release.html
+- News & Content Hub: https://nexcoinpr.com/news.html
+  - Crypto News: https://nexcoinpr.com/news/crypto.html
+  - Forex News: https://nexcoinpr.com/news/forex.html
+  - Blockchain News: https://nexcoinpr.com/news/blockchain.html
+  - Guides Index: https://nexcoinpr.com/news/guides.html
+  - Guide - What Is Crypto PR: https://nexcoinpr.com/news/guides/what-is-crypto-pr.html
+  - Guide - How to Write a Press Release: https://nexcoinpr.com/news/guides/how-to-write-a-crypto-press-release.html
+  - Guide - What Is Forex PR: https://nexcoinpr.com/news/guides/what-is-forex-pr.html
+  - Guide - Distribution Mechanics: https://nexcoinpr.com/news/guides/how-press-release-distribution-works.html
+- Supporting Pages:
+  - Pricing & Packages: https://nexcoinpr.com/pricing.html
+  - Media & Distribution Channels: https://nexcoinpr.com/media.html
+  - Case Studies: https://nexcoinpr.com/case-studies.html
+  - About NexcoinPR: https://nexcoinpr.com/about.html
+  - FAQ: https://nexcoinpr.com/faq.html
+  - Authors Directory: https://nexcoinpr.com/authors.html
+  - Editorial Team Profile: https://nexcoinpr.com/authors/editorial-team.html
+  - Companies Directory: https://nexcoinpr.com/companies.html
+  - Industry Glossary: https://nexcoinpr.com/glossary.html
+  - Contact Us: https://nexcoinpr.com/contact.html
+- Governance & Legal:
+  - Editorial Policy: https://nexcoinpr.com/editorial-policy.html
+  - Corrections Policy: https://nexcoinpr.com/corrections-policy.html
+  - Financial Disclaimer: https://nexcoinpr.com/disclaimer.html
+  - Privacy Policy: https://nexcoinpr.com/privacy-policy.html
+  - Terms & Conditions: https://nexcoinpr.com/terms.html
+  - Cookie Policy: https://nexcoinpr.com/cookie-policy.html
+- Feeds & Sitemaps:
+  - Sitemap Index: https://nexcoinpr.com/sitemap.xml
+  - Pages Sitemap: https://nexcoinpr.com/sitemap-pages.xml
+  - Google News Sitemap: https://nexcoinpr.com/sitemap-news.xml
+  - Press Releases Sitemap: https://nexcoinpr.com/sitemap-press-releases.xml
+  - All News RSS: https://nexcoinpr.com/feed.xml
+  - Crypto RSS: https://nexcoinpr.com/feed-crypto.xml
+  - Forex RSS: https://nexcoinpr.com/feed-forex.xml
+  - Press Releases RSS: https://nexcoinpr.com/feed-press-releases.xml
+  - LLM Manifest: https://nexcoinpr.com/llms.txt

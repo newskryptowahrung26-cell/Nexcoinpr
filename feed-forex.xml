@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NexcoinPR — Forex & Currency News Feed</title>
+    <link>https://nexcoinpr.com</link>
+    <description>Foreign exchange markets, currency trading technology, and macroeconomic policy.</description>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 22 Sep 2026 08:00:00 GMT</lastBuildDate>
+    <atom:link href="https://nexcoinpr.com/feed-forex.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title><![CDATA[Central Banks Evaluate Real-Time FX Liquidity Buffers]]></title>
+      <link>https://nexcoinpr.com/news/forex.html</link>
+      <guid isPermaLink="true">https://nexcoinpr.com/news/forex.html</guid>
+      <pubDate>Mon, 21 Sep 2026 14:00:00 GMT</pubDate>
+      <description><![CDATA[Macro analysis of central bank interest rate projections and cross-border currency settlement channels.]]></description>
+      <category>Forex</category>
+    </item>
+    <item>
+      <title><![CDATA[Retail Brokers Expand Algorithmic Risk Management Integrations]]></title>
+      <link>https://nexcoinpr.com/news/forex.html</link>
+      <guid isPermaLink="true">https://nexcoinpr.com/news/forex.html</guid>
+      <pubDate>Fri, 18 Sep 2026 10:00:00 GMT</pubDate>
+      <description><![CDATA[Multi-asset currency platforms deploy real-time slippage monitoring tools for retail traders.]]></description>
+      <category>Forex</category>
+    </item>
+  </channel>
+</rss>
