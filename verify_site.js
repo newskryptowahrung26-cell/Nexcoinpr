@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const BASE_DIR = path.resolve('d:/Agency Site');
+const BASE_DIR = path.resolve(__dirname || process.cwd());
 
 function getFiles(dir, ext = '.html') {
   let results = [];
