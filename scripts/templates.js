@@ -17,6 +17,7 @@ function getHeader(activePage = '') {
     <div class="container">
       <nav class="nav-bar" aria-label="Main navigation">
         <a href="/" class="nav-logo" aria-label="NexcoinPR home">
+          <img src="/favicon.svg" alt="NexcoinPR" width="28" height="28" style="margin-right: 9px; vertical-align: middle;">
           <span class="logo-text">Nexcoin<span class="logo-accent">PR</span></span>
         </a>
         <ul class="nav-menu" id="nav-menu" role="list">
@@ -142,6 +143,9 @@ function pageTemplate({ title, description, canonical, activePage, jsonLd, bodyC
   <meta name="description" content="${description}">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="${canonical}">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/jpeg" href="/assets/images/nexcoinpr-favicon.jpg" sizes="32x32">
+  <link rel="apple-touch-icon" href="/assets/images/nexcoinpr-favicon.jpg">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">

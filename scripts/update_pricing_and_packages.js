@@ -175,333 +175,9 @@ const package60 = {
   desc: "Massive 60-publication syndication network flooding digital newsrooms and search indexes with permanent backlinks, brand mentions, and organic trust signals."
 };
 
-// 27 Single Publication Direct Placements (A La Carte)
-const singlePublications = [
-  {
-    name: "Entrepreneur.com",
-    domain: "entrepreneur.com",
-    priceNum: 8500,
-    price: "$8,500",
-    category: "mainstream",
-    categoryLabel: "Mainstream Tier-1",
-    traffic: "18M+ Monthly",
-    turnaround: "48-72h",
-    focus: "Global Business, Tech & Leadership",
-    badge: "Pinnacle Authority"
-  },
-  {
-    name: "Forbes",
-    domain: "forbes.com",
-    priceNum: 7500,
-    price: "$7,500",
-    category: "mainstream",
-    categoryLabel: "Mainstream Tier-1",
-    traffic: "80M+ Monthly",
-    turnaround: "48-72h",
-    focus: "World Business, C-Suite & Investing",
-    badge: "Global Benchmark"
-  },
-  {
-    name: "Decrypt.co",
-    domain: "decrypt.co",
-    priceNum: 2000,
-    price: "$2,000",
-    category: "crypto",
-    categoryLabel: "Crypto & Web3",
-    traffic: "5M+ Monthly",
-    turnaround: "24-48h",
-    focus: "Web3, Decentralized Tech & AI News",
-    badge: "Tier-1 Crypto"
-  },
-  {
-    name: "Bitcoin.com",
-    domain: "bitcoin.com",
-    priceNum: 2000,
-    price: "$2,000",
-    category: "crypto",
-    categoryLabel: "Crypto & Web3",
-    traffic: "6M+ Monthly",
-    turnaround: "24-48h",
-    focus: "Bitcoin, Blockchain & Crypto Economy",
-    badge: "Legacy Crypto Giant"
-  },
-  {
-    name: "BeInCrypto.com",
-    domain: "beincrypto.com",
-    priceNum: 1500,
-    price: "$1,500",
-    category: "crypto",
-    categoryLabel: "Crypto & Web3",
-    traffic: "10M+ Monthly",
-    turnaround: "24-48h",
-    focus: "Global Crypto News (Multi-Language)",
-    badge: "Top Global Portal"
-  },
-  {
-    name: "Bitcoinist.com",
-    domain: "bitcoinist.com",
-    priceNum: 1200,
-    price: "$1,200",
-    category: "crypto",
-    categoryLabel: "Crypto & Web3",
-    traffic: "4M+ Monthly",
-    turnaround: "24-48h",
-    focus: "Crypto Market Technical Analysis",
-    badge: "Established 2013"
-  },
-  {
-    name: "FXStreet.com",
-    domain: "fxstreet.com",
-    priceNum: 1000,
-    price: "$1,000",
-    category: "forex",
-    categoryLabel: "Forex & Trading",
-    traffic: "6M+ Monthly",
-    turnaround: "24-48h",
-    focus: "Foreign Exchange & Macro Trading",
-    badge: "Top Forex Portal"
-  },
-  {
-    name: "Forexlive.com",
-    domain: "forexlive.com",
-    priceNum: 700,
-    price: "$700",
-    category: "forex",
-    categoryLabel: "Forex & Trading",
-    traffic: "3M+ Monthly",
-    turnaround: "24-48h",
-    focus: "Real-Time FX Trading & Central Banks",
-    badge: "Active Trading Desk"
-  },
-  {
-    name: "WalletInvestor.com",
-    domain: "walletinvestor.com",
-    priceNum: 430,
-    price: "$430",
-    category: "forex",
-    categoryLabel: "Forex & Trading",
-    traffic: "2.5M+ Monthly",
-    turnaround: "24-48h",
-    focus: "AI Price Forecasts & Market Models",
-    badge: "Algorithmic Desk"
-  },
-  {
-    name: "AnalyticsInsight.net",
-    domain: "analyticsinsight.net",
-    priceNum: 400,
-    price: "$400",
-    category: "tech",
-    categoryLabel: "Tech & Syndication",
-    traffic: "3M+ Monthly",
-    turnaround: "24-48h",
-    focus: "AI, Big Data, Blockchain & Analytics",
-    badge: "Deep Tech"
-  },
-  {
-    name: "Yahoo Finance",
-    domain: "finance.yahoo.com",
-    priceNum: 300,
-    price: "$300",
-    category: "mainstream",
-    categoryLabel: "Mainstream Tier-1",
-    traffic: "150M+ Monthly",
-    turnaround: "24-48h",
-    focus: "World Financial News & Stock Tickers",
-    badge: "Global Financial Portal"
-  },
-  {
-    name: "MSN",
-    domain: "msn.com",
-    priceNum: 300,
-    price: "$300",
-    category: "mainstream",
-    categoryLabel: "Mainstream Tier-1",
-    traffic: "200M+ Monthly",
-    turnaround: "24-48h",
-    focus: "Microsoft Global News Network",
-    badge: "Massive Reach"
-  },
-  {
-    name: "ABPLive.com",
-    domain: "abplive.com",
-    priceNum: 300,
-    price: "$300",
-    category: "mainstream",
-    categoryLabel: "Mainstream Tier-1",
-    traffic: "40M+ Monthly",
-    turnaround: "24-48h",
-    focus: "Global News & International Broadcast",
-    badge: "High-Traffic News"
-  },
-  {
-    name: "CoinEdition",
-    domain: "coinedition.com",
-    priceNum: 300,
-    price: "$300",
-    category: "crypto",
-    categoryLabel: "Crypto & Web3",
-    traffic: "1.5M+ Monthly",
-    turnaround: "24-48h",
-    focus: "Crypto Market Intelligence & Altcoins",
-    badge: "Fast Indexing"
-  },
-  {
-    name: "TheCryptoUpdates with CMC",
-    domain: "thecryptoupdates.com",
-    priceNum: 300,
-    price: "$300",
-    category: "crypto",
-    categoryLabel: "Crypto & Web3",
-    traffic: "800K+ Monthly",
-    turnaround: "24-48h",
-    focus: "Crypto News + CoinMarketCap Feed",
-    badge: "CMC Community Feed"
-  },
-  {
-    name: "Mirror Review",
-    domain: "mirrorreview.com",
-    priceNum: 300,
-    price: "$300",
-    category: "tech",
-    categoryLabel: "Tech & Syndication",
-    traffic: "500K+ Monthly",
-    turnaround: "24-48h",
-    focus: "Business Leadership & Enterprise Tech",
-    badge: "Executive Spotlight"
-  },
-  {
-    name: "NY Wire",
-    domain: "nywire.com",
-    priceNum: 300,
-    price: "$300",
-    category: "tech",
-    categoryLabel: "Tech & Syndication",
-    traffic: "400K+ Monthly",
-    turnaround: "24-48h",
-    focus: "New York Business & Wall Street PR",
-    badge: "Regional Wire"
-  },
-  {
-    name: "Markets.BusinessInsider",
-    domain: "markets.businessinsider.com",
-    priceNum: 250,
-    price: "$250",
-    category: "mainstream",
-    categoryLabel: "Mainstream Tier-1",
-    traffic: "30M+ Monthly",
-    turnaround: "24-48h",
-    focus: "Institutional Markets & Financial Data",
-    badge: "Institutional Desk"
-  },
-  {
-    name: "The Globe and Mail",
-    domain: "theglobeandmail.com",
-    priceNum: 150,
-    price: "$150",
-    category: "mainstream",
-    categoryLabel: "Mainstream Tier-1",
-    traffic: "12M+ Monthly",
-    turnaround: "24-48h",
-    focus: "National Financial News of Record",
-    badge: "Prestigious Press"
-  },
-  {
-    name: "Benzinga",
-    domain: "benzinga.com",
-    priceNum: 150,
-    price: "$150",
-    category: "tech",
-    categoryLabel: "Tech & Syndication",
-    traffic: "14M+ Monthly",
-    turnaround: "24-48h",
-    focus: "Actionable Financial Media & Stocks",
-    badge: "Trading Terminal"
-  },
-  {
-    name: "Tekedia",
-    domain: "tekedia.com",
-    priceNum: 150,
-    price: "$150",
-    category: "tech",
-    categoryLabel: "Tech & Syndication",
-    traffic: "600K+ Monthly",
-    turnaround: "24-48h",
-    focus: "Technology, Innovation & Economy",
-    badge: "Emerging Markets"
-  },
-  {
-    name: "AP News (Associated Press)",
-    domain: "apnews.com",
-    priceNum: 100,
-    price: "$100",
-    category: "mainstream",
-    categoryLabel: "Mainstream Tier-1",
-    traffic: "60M+ Monthly",
-    turnaround: "24-48h",
-    focus: "Global Newswire & Public Record",
-    badge: "Official Wire"
-  },
-  {
-    name: "Barchart.com",
-    domain: "barchart.com",
-    priceNum: 100,
-    price: "$100",
-    category: "forex",
-    categoryLabel: "Forex & Trading",
-    traffic: "5M+ Monthly",
-    turnaround: "24-48h",
-    focus: "Commodities, FX & Market Analytics",
-    badge: "Trading Terminal"
-  },
-  {
-    name: "StreetInsider.com",
-    domain: "streetinsider.com",
-    priceNum: 100,
-    price: "$100",
-    category: "forex",
-    categoryLabel: "Forex & Trading",
-    traffic: "1.2M+ Monthly",
-    turnaround: "24-48h",
-    focus: "Wall Street Intelligence & Market Wire",
-    badge: "Wall Street Desk"
-  },
-  {
-    name: "TechBullion",
-    domain: "techbullion.com",
-    priceNum: 100,
-    price: "$100",
-    category: "tech",
-    categoryLabel: "Tech & Syndication",
-    traffic: "1M+ Monthly",
-    turnaround: "24-48h",
-    focus: "London Fintech & Tech News",
-    badge: "Fintech Focus"
-  },
-  {
-    name: "Digital Journal",
-    domain: "digitaljournal.com",
-    priceNum: 100,
-    price: "$100",
-    category: "tech",
-    categoryLabel: "Tech & Syndication",
-    traffic: "2M+ Monthly",
-    turnaround: "24-48h",
-    focus: "Global News Portal & Syndication",
-    badge: "Google News Feed"
-  },
-  {
-    name: "Big News Network",
-    domain: "bignewsnetwork.com",
-    priceNum: 100,
-    price: "$100",
-    category: "tech",
-    categoryLabel: "Tech & Syndication",
-    traffic: "1.5M+ Monthly",
-    turnaround: "24-48h",
-    focus: "Global Syndicated News Network",
-    badge: "Global Wire"
-  }
-];
+// Master Single Publication Direct Placements (A La Carte 140+ Outlets)
+const singlePublications = require('./master_single_publications.json');
+
 
 // Helper to render package card
 function renderCard(pkg) {
@@ -531,7 +207,14 @@ function renderCard(pkg) {
   `;
 }
 
-// Build JSON-LD itemListElement for 13 packages + 27 single publications (40 total)
+// Calculate dynamic counts
+const countAll = singlePublications.length;
+const countMainstream = singlePublications.filter(p => p.category === 'mainstream').length;
+const countCrypto = singlePublications.filter(p => p.category === 'crypto').length;
+const countForex = singlePublications.filter(p => p.category === 'forex').length;
+const countTech = singlePublications.filter(p => p.category === 'tech').length;
+
+// Build JSON-LD itemListElement for 13 packages + single publications
 const schemaOffers = [
   // 13 Packages
   { "@type": "Offer", "name": "ELITE: A (5 Crypto Media)", "price": "20000", "priceCurrency": "USD" },
@@ -547,7 +230,7 @@ const schemaOffers = [
   { "@type": "Offer", "name": "STARTER (10 Crypto Media)", "price": "2350", "priceCurrency": "USD" },
   { "@type": "Offer", "name": "BASIC: A (5 Crypto Media)", "price": "1100", "priceCurrency": "USD" },
   { "@type": "Offer", "name": "BASIC: B (5 Crypto Media)", "price": "800", "priceCurrency": "USD" },
-  // 27 Single Publications
+  // Single Publications
   ...singlePublications.map(pub => ({
     "@type": "Offer",
     "name": `${pub.name} Direct Placement`,
@@ -560,7 +243,7 @@ const schemaOffers = [
 // Generate complete pricing.html
 const pricingHtml = pageTemplate({
   title: "Crypto & Forex Media Packages & Single Media Pricing | NexcoinPR",
-  description: "Official media distribution packages and direct single publication placements. Guaranteed publication on Forbes, Entrepreneur, Decrypt, Bitcoin.com, CoinTelegraph, and 60+ top media outlets.",
+  description: `Official media distribution packages and direct single publication placements across ${countAll}+ top media outlets including Forbes, Entrepreneur, Decrypt, Bitcoin.com, CoinDesk, CoinTelegraph, and more.`,
   canonical: "https://nexcoinpr.com/pricing.html",
   activePage: "pricing",
   jsonLd: {
@@ -596,7 +279,7 @@ const pricingHtml = pageTemplate({
         <p class="hero-intro">Guaranteed distribution across tier-1 publications, crypto newswires, and specialized financial trading networks. Choose comprehensive syndication bundles or individual single-outlet direct placements.</p>
         
         <div class="package-filter-nav mt-4">
-          <a href="#section-single-media" class="tag tag-gold" style="font-weight: 700;">Single Media (A La Carte 27 Outlets)</a>
+          <a href="#section-single-media" class="tag tag-gold" style="font-weight: 700;">Single Media (A La Carte ${countAll}+ Outlets)</a>
           <a href="#section-60-media" class="tag tag-gold">60 Media Mega Package ($7k)</a>
           <a href="#section-5-media" class="tag">5 Media Packages</a>
           <a href="#section-10-media" class="tag">10 Media Packages</a>
@@ -606,7 +289,7 @@ const pricingHtml = pageTemplate({
     </div>
   </section>
 
-  <!-- 27 SINGLE PUBLICATION PLACEMENTS (A LA CARTE) -->
+  <!-- SINGLE PUBLICATION PLACEMENTS (A LA CARTE) -->
   <section class="section section-white" id="section-single-media" style="border-bottom: 2px solid var(--color-gold);">
     <div class="container">
       <div class="section-header text-center mb-4">
@@ -618,7 +301,7 @@ const pricingHtml = pageTemplate({
       <!-- Quick Trust Indicators -->
       <div class="grid-4 mb-5 text-center">
         <div class="card card-light" style="padding: 1.25rem;">
-          <h3 class="text-gold" style="font-size: 1.75rem; margin-bottom: 0.25rem;">27</h3>
+          <h3 class="text-gold" style="font-size: 1.75rem; margin-bottom: 0.25rem;">${countAll}+</h3>
           <p class="text-muted small mb-0"><strong>Verified Media Desks</strong><br>Direct editorial submission</p>
         </div>
         <div class="card card-light" style="padding: 1.25rem;">
@@ -638,14 +321,14 @@ const pricingHtml = pageTemplate({
       <!-- Interactive Toolbar -->
       <div class="single-media-toolbar mb-4">
         <div class="search-box-wrapper">
-          <input type="text" id="single-media-search" class="form-input" placeholder="Search publication, domain, or vertical (e.g. Forbes, Decrypt, Forex, Yahoo)..." aria-label="Search media outlets">
+          <input type="text" id="single-media-search" class="form-input" placeholder="Search publication, domain, or vertical (e.g. Forbes, CoinDesk, Decrypt, Forex, Yahoo)..." aria-label="Search media outlets">
         </div>
         <div class="filter-pills-wrapper">
-          <button type="button" class="btn-filter-pill active" data-filter="all">All Outlets (27)</button>
-          <button type="button" class="btn-filter-pill" data-filter="mainstream">Mainstream Tier-1 (8)</button>
-          <button type="button" class="btn-filter-pill" data-filter="crypto">Crypto &amp; Web3 (6)</button>
-          <button type="button" class="btn-filter-pill" data-filter="forex">Forex &amp; Trading (5)</button>
-          <button type="button" class="btn-filter-pill" data-filter="tech">Tech &amp; Syndication (8)</button>
+          <button type="button" class="btn-filter-pill active" data-filter="all">All Outlets (${countAll})</button>
+          <button type="button" class="btn-filter-pill" data-filter="crypto">Crypto &amp; Web3 (${countCrypto})</button>
+          <button type="button" class="btn-filter-pill" data-filter="mainstream">Mainstream Tier-1 (${countMainstream})</button>
+          <button type="button" class="btn-filter-pill" data-filter="forex">Forex &amp; Trading (${countForex})</button>
+          <button type="button" class="btn-filter-pill" data-filter="tech">Tech &amp; Syndication (${countTech})</button>
         </div>
       </div>
 
@@ -701,7 +384,7 @@ const pricingHtml = pageTemplate({
 
       <div class="card card-featured mt-4 text-center" style="max-width: 900px; margin-inline: auto;">
         <h4 class="text-gold">Need Multi-Outlet Syndication or Custom Bundle?</h4>
-        <p class="text-muted small mt-1">Combine any of the above 27 outlets into a tailored press package or explore our pre-negotiated volume bundles below with massive savings.</p>
+        <p class="text-muted small mt-1">Combine any of the above ${countAll} outlets into a tailored press package or explore our pre-negotiated volume bundles below with massive savings.</p>
         <div class="mt-3">
           <a href="#section-60-media" class="btn-secondary btn-sm mr-2">View 60 Media Package ($7,000)</a>
           <a href="/contact.html" class="btn-primary btn-sm">Request Custom Bundle Quote</a>
@@ -921,7 +604,7 @@ const pricingHtml = pageTemplate({
 });
 
 fs.writeFileSync(path.join(BASE_DIR, 'pricing.html'), pricingHtml);
-console.log('Successfully regenerated pricing.html with all 13 packages AND 27 single publication direct placements!');
+console.log(`Successfully regenerated pricing.html with all 13 packages AND ${countAll} single publication direct placements!`);
 
 // Add CSS styling for new single media table and toolbar elements if needed
 const extraPricingCss = `
