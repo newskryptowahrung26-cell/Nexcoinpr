@@ -1341,7 +1341,7 @@
 }
 .tag-gold {
   background: rgba(201, 168, 76, 0.15) !important;
-  color: var(--color-gold) !important;
+  color: var(--color-gold-text) !important;
   border-color: var(--color-gold) !important;
   font-weight: 600;
 }
@@ -1374,7 +1374,7 @@
 .pricing-currency {
   font-size: 0.9rem;
   font-weight: 700;
-  color: var(--color-gold);
+  color: var(--color-gold-text);
 }
 .pricing-amount {
   font-size: 2rem;
@@ -1382,7 +1382,7 @@
   color: var(--color-navy);
 }
 .pricing-card.popular .pricing-amount {
-  color: var(--color-gold);
+  color: var(--color-gold-text);
 }
 
 
@@ -1422,7 +1422,7 @@
 .btn-filter-pill:hover,
 .btn-filter-pill.active {
   background: var(--color-navy);
-  color: var(--color-gold);
+  color: var(--color-gold-bright);
   border-color: var(--color-gold);
 }
 .media-row-title {
@@ -1441,5 +1441,5 @@
 .single-price-tag {
   font-size: 1.15rem;
   font-weight: 800;
-  color: var(--color-gold);
+  color: var(--color-gold-text);
 }

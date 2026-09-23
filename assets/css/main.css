@@ -8,33 +8,47 @@
    ============================================================================= */
 
 :root {
-  /* Brand Colors */
+  /* Brand Navy Palette — deep, prestigious fintech foundation */
   --color-navy:        #0A1628;
-  --color-navy-mid:    #0D1F3C;
-  --color-navy-light:  #112248;
-  --color-gold:        #C9A84C;
-  --color-gold-light:  #D9BC72;
-  --color-gold-dark:   #A88730;
-  --color-white:       #FFFFFF;
-  --color-gray-100:    #F8F9FA;
-  --color-gray-200:    #E9ECEF;
-  --color-gray-300:    #DEE2E6;
-  --color-gray-400:    #CED4DA;
-  --color-gray-500:    #ADB5BD;
-  --color-gray-600:    #6C757D;
-  --color-gray-700:    #495057;
-  --color-gray-800:    #343A40;
-  --color-gray-900:    #212529;
+  --color-navy-mid:    #0E1E38;
+  --color-navy-card:   #132746;
+  --color-navy-light:  #1A335C;
 
-  /* Semantic Colors */
-  --color-text-primary:   #0A1628;
-  --color-text-secondary: #495057;
-  --color-text-muted:     #6C757D;
+  /* Brand Gold Palette — WCAG AA/AAA compliant calibrated levels */
+  --color-gold:        #C9A84C;  /* Primary brand gold for logos, buttons, borders */
+  --color-gold-text:   #8A6518;  /* Accessible deep bronze-gold for text on LIGHT backgrounds (5.2:1 contrast) */
+  --color-gold-bright: #F3D785;  /* Radiant warm gold for text and icons on DARK backgrounds (12.5:1 contrast) */
+  --color-gold-light:  #E8C86A;
+  --color-gold-dark:   #8A6518;
+
+  /* Neutrals & Surfaces (Tailwind Slate Scale for optimal readability) */
+  --color-white:       #FFFFFF;
+  --color-gray-50:     #F8FAFC;
+  --color-gray-100:    #F1F5F9;
+  --color-gray-200:    #E2E8F0;
+  --color-gray-300:    #CBD5E1;
+  --color-gray-400:    #94A3B8;
+  --color-gray-500:    #64748B;
+  --color-gray-600:    #475569;
+  --color-gray-700:    #334155;
+  --color-gray-800:    #1E293B;
+  --color-gray-900:    #0F172A;
+
+  /* Semantic Typography Colors (Light Backgrounds) */
+  --color-text-primary:   #0F172A;  /* Slate 900 — crisp, executive, 16.5:1 contrast */
+  --color-text-secondary: #334155;  /* Slate 700 — clean, effortless reading, 8.5:1 contrast */
+  --color-text-muted:     #475569;  /* Slate 600 — accessible metadata/captions, 6.1:1 contrast */
   --color-text-inverse:   #FFFFFF;
   --color-bg-primary:     #FFFFFF;
-  --color-bg-secondary:   #F8F9FA;
-  --color-border:         #DEE2E6;
-  --color-border-light:   #E9ECEF;
+  --color-bg-secondary:   #F8FAFC;
+  --color-border:         #E2E8F0;
+  --color-border-light:   #F1F5F9;
+
+  /* Semantic Typography Colors (Dark Backgrounds) */
+  --color-text-dark-primary:   #FFFFFF;  /* Maximum clarity */
+  --color-text-dark-secondary: #CBD5E1;  /* Slate 300, 9.2:1 contrast */
+  --color-text-dark-muted:     #94A3B8;  /* Slate 400, 6.4:1 contrast */
+  --color-text-dark-accent:    #F3D785;  /* Radiant gold, 12.5:1 contrast */
 
   /* Badge Colors */
   --color-crypto:      #1A6CF6;
@@ -379,7 +393,7 @@ hr {
 
 .section-dark {
   background-color: var(--color-navy);
-  color: var(--color-white);
+  color: var(--color-text-dark-primary);
   padding-block: var(--section-padding);
 }
 
@@ -389,15 +403,28 @@ hr {
 .section-dark h4,
 .section-dark h5,
 .section-dark h6 {
-  color: var(--color-white);
+  color: #FFFFFF;
 }
 
 .section-dark p {
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--color-text-dark-secondary);
+}
+
+.section-dark .section-lead {
+  color: var(--color-text-dark-secondary) !important;
+  opacity: 1 !important;
+}
+
+.section-dark .text-muted {
+  color: var(--color-text-dark-muted) !important;
+}
+
+.section-dark .text-gold {
+  color: var(--color-gold-bright) !important;
 }
 
 .section-light {
-  background-color: var(--color-gray-100);
+  background-color: var(--color-bg-secondary);
   padding-block: var(--section-padding);
 }
 
@@ -408,8 +435,34 @@ hr {
 
 .section-mid {
   background-color: var(--color-navy-mid);
-  color: var(--color-white);
+  color: var(--color-text-dark-primary);
   padding-block: var(--section-padding);
+}
+
+.section-mid h1,
+.section-mid h2,
+.section-mid h3,
+.section-mid h4,
+.section-mid h5,
+.section-mid h6 {
+  color: #FFFFFF;
+}
+
+.section-mid p {
+  color: var(--color-text-dark-secondary);
+}
+
+.section-mid .section-lead {
+  color: var(--color-text-dark-secondary) !important;
+  opacity: 1 !important;
+}
+
+.section-mid .text-muted {
+  color: var(--color-text-dark-muted) !important;
+}
+
+.section-mid .text-gold {
+  color: var(--color-gold-bright) !important;
 }
 
 /* Text Alignment */
@@ -1037,38 +1090,45 @@ hr {
    14. FAQ ACCORDION
    ============================================================================= */
 
-.faq-list {
+.faq-list,
+.faq-accordion {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
+  max-width: 860px;
+  margin-inline: auto;
 }
 
+/* Light Section FAQ (Default) */
 .faq-item {
   background: var(--color-white);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: box-shadow var(--transition-base);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  transition: all var(--transition-base);
 }
 
 .faq-item:hover {
-  box-shadow: var(--shadow-md);
+  border-color: var(--color-gray-300);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+  transform: translateY(-1px);
 }
 
 .faq-item.open {
-  border-color: var(--color-gold);
-  box-shadow: var(--shadow-gold);
+  border-color: var(--color-gold-text);
+  box-shadow: 0 4px 20px rgba(138, 101, 24, 0.12);
 }
 
 .faq-question {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--space-5) var(--space-6);
+  padding: 1.25rem 1.5rem;
   cursor: pointer;
-  font-size: var(--font-size-base);
+  font-size: 1.05rem;
   font-weight: var(--font-weight-semibold);
-  color: var(--color-navy);
+  color: var(--color-text-primary);
   gap: var(--space-4);
   background: none;
   border: none;
@@ -1077,20 +1137,19 @@ hr {
   transition: color var(--transition-fast);
 }
 
-.faq-question:hover {
-  color: var(--color-gold-dark);
-}
-
+.faq-question:hover,
 .faq-item.open .faq-question {
-  color: var(--color-gold-dark);
+  color: var(--color-gold-text);
 }
 
-.faq-icon {
+.faq-icon,
+.faq-chevron {
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   border-radius: var(--radius-full);
-  background: var(--color-gray-100);
+  background: var(--color-gray-50);
+  border: 1.5px solid var(--color-border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1100,9 +1159,11 @@ hr {
   transition: all var(--transition-base);
 }
 
-.faq-item.open .faq-icon {
-  background: var(--color-gold);
-  color: var(--color-navy);
+.faq-item.open .faq-icon,
+.faq-item.open .faq-chevron {
+  background: var(--color-gold-text);
+  border-color: var(--color-gold-text);
+  color: var(--color-white);
   transform: rotate(45deg);
 }
 
@@ -1112,29 +1173,119 @@ hr {
   transition: max-height var(--transition-slow), padding var(--transition-slow);
 }
 
-.faq-answer.open {
-  max-height: 600px;
+.faq-answer.open,
+.faq-item.open .faq-answer {
+  max-height: 800px;
 }
 
-.faq-answer-inner {
-  padding: 0 var(--space-6) var(--space-5);
-  font-size: var(--font-size-base);
+.faq-answer-inner,
+.faq-answer p {
+  padding: 0 1.5rem 1.25rem;
+  font-size: 0.975rem;
   color: var(--color-text-secondary);
   line-height: var(--line-height-relaxed);
+  margin: 0;
 }
 
-/* Dark FAQ variant */
+.faq-answer a {
+  color: var(--color-gold-text);
+  font-weight: var(--font-weight-medium);
+  text-decoration: underline;
+}
+
+/* =============================================================================
+   DARK FAQ VARIANT (.section-dark, .section-mid, .faq-dark)
+   Completely prevents blinding white cards on dark backgrounds
+   ============================================================================= */
+
+.section-dark .faq-item,
+.section-mid .faq-item,
 .faq-dark .faq-item {
-  background: var(--color-navy-mid);
-  border-color: rgba(255, 255, 255, 0.1);
+  background: var(--color-navy-mid) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+  margin-bottom: 12px !important;
 }
 
+.section-dark .faq-item:hover,
+.section-mid .faq-item:hover,
+.faq-dark .faq-item:hover {
+  background: var(--color-navy-card) !important;
+  border-color: rgba(243, 215, 133, 0.45) !important;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35) !important;
+  transform: translateY(-1px);
+}
+
+.section-dark .faq-item.open,
+.section-mid .faq-item.open,
+.faq-dark .faq-item.open {
+  border-color: var(--color-gold) !important;
+  background: var(--color-navy-mid) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45) !important;
+}
+
+.section-dark .faq-question,
+.section-mid .faq-question,
 .faq-dark .faq-question {
-  color: var(--color-white);
+  color: #FFFFFF !important;
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  padding: 1.25rem 1.5rem !important;
 }
 
-.faq-dark .faq-answer-inner {
-  color: rgba(255, 255, 255, 0.7);
+.section-dark .faq-question:hover,
+.section-dark .faq-item.open .faq-question,
+.section-mid .faq-question:hover,
+.section-mid .faq-item.open .faq-question,
+.faq-dark .faq-question:hover,
+.faq-dark .faq-item.open .faq-question {
+  color: var(--color-gold-bright) !important;
+}
+
+.section-dark .faq-icon,
+.section-mid .faq-icon,
+.faq-dark .faq-icon,
+.section-dark .faq-chevron,
+.section-mid .faq-chevron,
+.faq-dark .faq-chevron {
+  background: rgba(243, 215, 133, 0.15) !important;
+  border: 1.5px solid rgba(243, 215, 133, 0.4) !important;
+  color: var(--color-gold-bright) !important;
+}
+
+.section-dark .faq-item.open .faq-icon,
+.section-mid .faq-item.open .faq-icon,
+.faq-dark .faq-item.open .faq-icon,
+.section-dark .faq-item.open .faq-chevron,
+.section-mid .faq-item.open .faq-chevron,
+.faq-dark .faq-item.open .faq-chevron {
+  background: var(--color-gold) !important;
+  border-color: var(--color-gold) !important;
+  color: var(--color-navy) !important;
+  transform: rotate(180deg) !important;
+}
+
+.section-dark .faq-answer-inner,
+.section-dark .faq-answer,
+.section-dark .faq-answer p,
+.section-mid .faq-answer-inner,
+.section-mid .faq-answer,
+.section-mid .faq-answer p,
+.faq-dark .faq-answer-inner,
+.faq-dark .faq-answer,
+.faq-dark .faq-answer p {
+  color: var(--color-text-dark-secondary) !important;
+  font-size: 0.975rem !important;
+  line-height: 1.75 !important;
+  padding: 0 1.5rem 1.25rem !important;
+}
+
+.section-dark .faq-answer a,
+.section-mid .faq-answer a,
+.faq-dark .faq-answer a {
+  color: var(--color-gold-bright) !important;
+  text-decoration: underline !important;
 }
 
 /* =============================================================================
@@ -1571,7 +1722,7 @@ hr {
    22. UTILITY CLASSES
    ============================================================================= */
 
-.text-gold    { color: var(--color-gold); }
+.text-gold    { color: var(--color-gold-text); }
 .text-gold-dark { color: var(--color-gold-dark); }
 .text-navy    { color: var(--color-navy); }
 .text-white   { color: var(--color-white); }
