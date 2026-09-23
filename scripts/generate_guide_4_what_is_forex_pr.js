@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+const fs = require('fs');
+const path = require('path');
+const { rootDir, getHeader, getFooter, getSidebar } = require('./build_guides_shared');
+
+const targetPath = path.join(rootDir, 'news', 'guides', 'what-is-forex-pr.html');
+
+const content = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -107,51 +113,7 @@
   <meta name="theme-color" content="#0A1628">
 </head>
 <body>
-  <!-- ══ HEADER ══════════════════════════════════════════════ -->
-  <header class="site-header" id="site-header">
-    <div class="container">
-      <nav class="nav-bar" aria-label="Main navigation">
-        <a href="/" class="nav-logo" aria-label="NexcoinPR home">
-          <img src="/favicon.svg" alt="NexcoinPR" width="32" height="32" class="nav-logo-icon">
-          <span class="logo-text">Nexcoin<span class="logo-accent">PR</span></span>
-        </a>
-        <ul class="nav-menu" id="nav-menu" role="list">
-          <li><a href="/" class="nav-link">Home</a></li>
-          <li class="nav-item-dropdown">
-            <button class="nav-link nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">Services <span class="dropdown-arrow">▾</span></button>
-            <ul class="dropdown-menu" role="list">
-              <li><a href="/crypto-pr.html" class="dropdown-link">Crypto PR</a></li>
-              <li><a href="/forex-pr.html" class="dropdown-link">Forex PR</a></li>
-              <li><a href="/blockchain-pr.html" class="dropdown-link">Blockchain PR</a></li>
-              <li><a href="/web3-pr.html" class="dropdown-link">Web3 PR</a></li>
-              <li><a href="/fintech-pr.html" class="dropdown-link">Fintech PR</a></li>
-              <li><a href="/financial-pr.html" class="dropdown-link">Financial PR</a></li>
-              <li><a href="/press-release-distribution.html" class="dropdown-link">Press Release Distribution</a></li>
-            </ul>
-          </li>
-          <li><a href="/press-releases.html" class="nav-link">Press Releases</a></li>
-          <li class="nav-item-dropdown">
-            <button class="nav-link nav-dropdown-btn active" aria-expanded="false" aria-haspopup="true">News <span class="dropdown-arrow">▾</span></button>
-            <ul class="dropdown-menu" role="list">
-              <li><a href="/news.html" class="dropdown-link">All News</a></li>
-              <li><a href="/news/crypto.html" class="dropdown-link">Crypto</a></li>
-              <li><a href="/news/forex.html" class="dropdown-link">Forex</a></li>
-              <li><a href="/news/blockchain.html" class="dropdown-link">Blockchain</a></li>
-              <li><a href="/news/guides.html" class="dropdown-link active">Guides</a></li>
-            </ul>
-          </li>
-          <li><a href="/pricing.html" class="nav-link">Pricing</a></li>
-          <li><a href="/media.html" class="nav-link">Media</a></li>
-          <li><a href="/about.html" class="nav-link">About</a></li>
-          <li><a href="/contact.html" class="nav-link">Contact</a></li>
-        </ul>
-        <a href="/press-release-distribution.html" class="btn-primary nav-cta">Submit Press Release</a>
-        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </nav>
-    </div>
-  </header>
+${getHeader('guides')}
 
 <main id="main-content">
   <article class="article-container">
@@ -297,36 +259,7 @@
             <p>During extreme macroeconomic volatility—such as unexpected central bank rate decisions or flash crashes—trading infrastructure can experience latency spikes, slippage, or temporary outages. In these critical moments, an unmanaged narrative can destroy a brokerage's reputation overnight on Reddit and trader forums.</p>
             <p><strong>The NexcoinPR Crisis Response:</strong> Our crisis PR team deploys within 120 minutes to publish holding statements, factual post-mortems, and customer compensation announcements across verified news feeds, restoring community trust and neutralizing malicious smear campaigns.</p>
 
-            <h3>Multi-Market Agency Dilemma: Why Crypto PR Firms Often Fail at Forex</h3>
-<p>In recent years, many generalist Web3 agencies (such as FINPR or MarketAcross) have attempted to pitch forex brokers alongside DeFi tokens. However, the financial media landscape for foreign exchange is fundamentally distinct from cryptocurrency:</p>
-<ul>
-  <li><strong>Different Journalist Desks:</strong> Editorial teams at Finance Magnates, FXStreet, and LeapRate do not accept anonymous sources or meme token rhetoric. They demand strict corporate entity verification, LEI numbers, and verified brokerage licensing credentials (FCA, CySEC, ASIC).</li>
-  <li><strong>Institutional Due Diligence:</strong> Currency traders evaluate liquidity depth, average execution latency (measured in milliseconds), and prime brokerage clearing relationships. Copy that reads like a Web3 hype thread causes immediate credibility destruction.</li>
-  <li><strong>NexcoinPR's Dual Specialization:</strong> NexcoinPR operates dedicated, specialized desks for both Forex and Crypto. We understand the precise balance required when brokers launch hybrid multi-asset platforms combining traditional FX pairs with crypto CFDs.</li>
-</ul>
-
-<h3>The Proprietary Trading Firm (Prop Firm) PR Playbook &amp; Template</h3>
-<p>Proprietary trading firms represent the fastest-growing sector within retail finance. Securing trader signups requires transparent public communication addressing the three biggest trader concerns: payout proof, slippage on news events, and simulated evaluation rules.</p>
-<div class="card" style="background: #0A1628; color: #E2E8F0; padding: 1.25rem; border-radius: var(--radius-sm); margin: 1.5rem 0;">
-  <div style="color: var(--color-gold); font-weight: 600; margin-bottom: 0.5rem;">Sample Press Release Blueprint: Prop Firm Scaling Milestone</div>
-  <pre style="color: #E2E8F0; font-size: 0.85rem; line-height: 1.6; white-space: pre-wrap; margin: 0;">
-FOR IMMEDIATE RELEASE
-
-[Prop Firm Name] Surpasses $10M in Verified Trader Payouts, Introduces Instant Simulated Funding and 90% Profit Split
-
-[CITY, COUNTRY] &mdash; [Date] &mdash; [Prop Firm Name], a global proprietary trading evaluation firm, today announced it has processed over $10 million in verified cumulative trader profit splits since inception. Alongside this milestone, the firm has unveiled its upgraded evaluation framework featuring 1-step challenge models, zero-time-limit challenges, and up to 90% profit allocations for verified funded accounts.
-
-"Our core mission has always been to provide retail traders with institutional capital backed by lightning-fast payouts," stated [CEO Name], Chief Executive Officer at [Prop Firm Name]. "Surpassing $10 million in verified distributions proves our commitment to transparency in a rapidly evolving prop trading sector."
-
-Key Updates in the [Prop Firm Name] Infrastructure:
-- Integration with TradingView charting and cTrader direct execution.
-- Automated payout processing within 8 hours via crypto (USDT/USDC) and bank wire.
-- Tier-1 institutional liquidity bridge eliminating slippage on major macro events.
-
-To view audited payout certificates or begin an evaluation challenge, visit https://[propfirmdomain].com.
-  </pre>
-</div>
-<h2 id="agency-comparison">7. Agency Models Compared: NexcoinPR vs Retainer Firms vs Legacy Wires</h2>
+            <h2 id="agency-comparison">7. Agency Models Compared: NexcoinPR vs Retainer Firms vs Legacy Wires</h2>
             <p>How does NexcoinPR compare to legacy corporate PR agencies and automated wires for financial brokerages?</p>
 
             <div class="table-responsive mt-3">
@@ -420,44 +353,7 @@ To view audited payout certificates or begin an evaluation challenge, visit http
 
           </div>
 
-          <aside class="sidebar-col">
-            <div class="card card-dark" style="position: sticky; top: 96px; text-align: center;">
-              <span class="badge badge-gold" style="margin-bottom: 0.5rem; display: inline-block;">Guaranteed Distribution</span>
-              <h3 class="text-white" style="margin-top: 0.25rem;">Deploy Your Crypto PR Campaign</h3>
-              <p class="text-white" style="opacity: 0.85; font-size: 0.95rem; line-height: 1.6; text-align: center;">Broadcast your announcement across Cointelegraph, The Block, Decrypt, and 140+ verified crypto newsrooms with 100% guaranteed publishing.</p>
-              
-              <div style="background: rgba(255,255,255,0.06); border-radius: var(--radius-sm); padding: 1rem; margin: 1.25rem 0; text-align: left;">
-                <div style="font-size: 0.85rem; color: var(--color-gold); font-weight: 600; margin-bottom: 0.5rem;">Why NexcoinPR vs Retainers:</div>
-                <ul style="font-size: 0.85rem; color: #E2E8F0; padding-left: 1.2rem; margin: 0; line-height: 1.6;">
-                  <li>100% Guaranteed media deliverables</li>
-                  <li>No $15k/mo retainer lock-ins</li>
-                  <li>Permanent dofollow SEO backlinks</li>
-                  <li>Fast 24–48h publishing turnaround</li>
-                  <li>MiCA &amp; SEC compliance vetting</li>
-                </ul>
-              </div>
-
-              <div class="sidebar-pricing-callout" style="margin-bottom: 1.25rem; text-align: center;">
-                <span style="font-size: 0.85rem; color: #94A3B8;">Packages starting from</span>
-                <div style="font-size: 2rem; font-weight: 800; color: #FFFFFF;">$800 <span style="font-size: 0.9rem; font-weight: 400; color: #94A3B8;">/ flat</span></div>
-              </div>
-
-              <a href="/press-release-distribution.html" class="btn-primary" style="width: 100%; text-align: center; justify-content: center; display: inline-flex;">Submit Press Release</a>
-              <a href="/pricing.html" class="btn-secondary" style="width: 100%; text-align: center; justify-content: center; display: inline-flex; margin-top: 0.75rem; border-color: rgba(255,255,255,0.2); color: #FFFFFF;">View All 144+ Outlets &amp; Rates</a>
-
-              <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.12); margin: 1.5rem 0;">
-
-              <div style="text-align: left;">
-                <h4 class="text-white" style="font-size: 0.95rem; margin-bottom: 0.75rem;">Related PR Guides</h4>
-                <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; line-height: 1.8;">
-                  <li><a href="/news/guides/what-is-crypto-pr.html" class="text-gold" style="text-decoration: none;">&rarr; What Is Crypto PR? Master Guide</a></li>
-                  <li><a href="/news/guides/how-to-write-a-crypto-press-release.html" class="text-gold" style="text-decoration: none;">&rarr; How to Write a Crypto PR (Templates)</a></li>
-                  <li><a href="/news/guides/how-press-release-distribution-works.html" class="text-gold" style="text-decoration: none;">&rarr; How PR Distribution Works</a></li>
-                  <li><a href="/news/guides/what-is-forex-pr.html" class="text-gold" style="text-decoration: none;">&rarr; What Is Forex PR? Broker Playbook</a></li>
-                </ul>
-              </div>
-            </div>
-          </aside>
+${getSidebar()}
 
         </div>
       </div>
@@ -465,78 +361,9 @@ To view audited payout certificates or begin an evaluation challenge, visit http
   </article>
 </main>
 
-  <!-- ══ FOOTER ══════════════════════════════════════════════ -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="/" class="footer-logo" aria-label="NexcoinPR home"><img src="/favicon.svg" alt="NexcoinPR" width="28" height="28" style="margin-right: 9px; vertical-align: middle;">Nexcoin<span class="logo-accent">PR</span></a>
-          <p class="footer-tagline">Premium Crypto, Forex &amp; Financial PR and press release distribution for blockchain, Web3, fintech, and digital asset leaders.</p>
-          <p class="footer-disclaimer-mini">NexcoinPR is an international public relations and media syndication agency. Press releases and editorial content published on this site do not constitute investment, financial, or trading advice.</p>
-        </div>
-        <div class="footer-col">
-          <h3 class="footer-heading">Company</h3>
-          <ul class="footer-links">
-            <li><a href="/about.html">About NexcoinPR</a></li>
-            <li><a href="/contact.html">Contact Us</a></li>
-            <li><a href="/case-studies.html">Case Studies</a></li>
-            <li><a href="/media.html">Media Network</a></li>
-            <li><a href="/authors.html">Authors &amp; Contributors</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h3 class="footer-heading">Services</h3>
-          <ul class="footer-links">
-            <li><a href="/crypto-pr.html">Crypto PR Agency</a></li>
-            <li><a href="/forex-pr.html">Forex PR Services</a></li>
-            <li><a href="/blockchain-pr.html">Blockchain PR</a></li>
-            <li><a href="/web3-pr.html">Web3 Public Relations</a></li>
-            <li><a href="/fintech-pr.html">Fintech PR</a></li>
-            <li><a href="/financial-pr.html">Financial PR</a></li>
-            <li><a href="/press-release-distribution.html">PR Distribution</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h3 class="footer-heading">Content Hub</h3>
-          <ul class="footer-links">
-            <li><a href="/news.html">All News</a></li>
-            <li><a href="/press-releases.html">Press Releases</a></li>
-            <li><a href="/news/guides.html">Educational Guides</a></li>
-            <li><a href="/news/crypto.html">Crypto News</a></li>
-            <li><a href="/news/forex.html">Forex News</a></li>
-            <li><a href="/glossary.html">Web3 Glossary</a></li>
-            <li><a href="/companies.html">Company Directory</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h3 class="footer-heading">Trust &amp; Legal</h3>
-          <ul class="footer-links">
-            <li><a href="/editorial-policy.html">Editorial Policy</a></li>
-            <li><a href="/corrections-policy.html">Corrections Policy</a></li>
-            <li><a href="/disclaimer.html">Disclaimer</a></li>
-            <li><a href="/privacy-policy.html">Privacy Policy</a></li>
-            <li><a href="/terms.html">Terms &amp; Conditions</a></li>
-            <li><a href="/cookie-policy.html">Cookie Policy</a></li>
-            <li><a href="/faq.html">FAQ</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p class="footer-copy">&copy; <span id="footer-year">2026</span> NexcoinPR. All rights reserved.</p>
-        <p class="footer-legal">NexcoinPR provides professional PR and media distribution services. We do not provide financial, investment or trading advice. Content published on this site does not constitute financial, investment or trading advice.</p>
-      </div>
-    </div>
-  </footer>
-
-  <div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Cookie consent" hidden>
-    <div class="cookie-content">
-      <p>We use cookies to improve your experience. See our <a href="/cookie-policy.html">Cookie Policy</a>.</p>
-      <div class="cookie-actions">
-        <button class="btn-primary cookie-accept" id="cookie-accept">Accept</button>
-        <button class="btn-ghost cookie-reject" id="cookie-reject">Reject</button>
-      </div>
-    </div>
-  </div>
-  <script src="/assets/js/main.js" defer></script>
+${getFooter()}
 </body>
-</html>
+</html>`;
+
+fs.writeFileSync(targetPath, content, 'utf8');
+console.log('Successfully generated what-is-forex-pr.html with broker playbook & competitor comparisons!');
