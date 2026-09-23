@@ -762,6 +762,7 @@
   gap: var(--space-5);
   position: relative;
   transition: transform var(--transition-base), box-shadow var(--transition-base);
+  text-align: center;
 }
 
 .pricing-card:hover {
@@ -804,12 +805,15 @@
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wider);
   color: var(--color-text-muted);
+  text-align: center;
 }
 
 .pricing-price {
   display: flex;
   align-items: baseline;
+  justify-content: center;
   gap: var(--space-1);
+  text-align: center;
 }
 
 .pricing-price-amount {
@@ -835,9 +839,10 @@
 
 .pricing-desc {
   font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
   line-height: var(--line-height-base);
   margin-bottom: 0;
+  text-align: center;
 }
 
 .pricing-feature-list {
@@ -846,20 +851,26 @@
   flex-direction: column;
   gap: var(--space-3);
   flex: 1;
+  text-align: left;
+  padding: 0;
+  margin: 0;
 }
 
 .pricing-feature-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-3);
+  position: relative;
+  padding-left: 28px;
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
-  line-height: var(--line-height-base);
+  line-height: 1.5;
+  text-align: left;
+  display: block;
 }
 
 .pricing-feature-list li::before {
   content: '✓';
-  flex-shrink: 0;
+  position: absolute;
+  left: 0;
+  top: 1px;
   width: 20px;
   height: 20px;
   background: rgba(15, 123, 76, 0.1);

@@ -1444,11 +1444,13 @@
   flex: 1;
 }
 .traffic-pill {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
 }
 .pricing-price-box {
   display: flex;
   align-items: baseline;
+  justify-content: center;
   gap: 4px;
 }
 .pricing-currency {
@@ -1472,12 +1474,14 @@
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
   line-height: 1.3;
+  text-align: center;
 }
 
 .pricing-desc {
   font-size: 0.9rem;
   line-height: 1.55;
   color: var(--color-text-secondary);
+  text-align: center;
 }
 
 .pricing-divider {
