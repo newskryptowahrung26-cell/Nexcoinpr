@@ -161,11 +161,13 @@
     /* --- Hero --- */
     .hero {
       position: relative;
-      min-height: 100vh;
+      min-height: auto;
       display: flex;
       align-items: center;
       overflow: hidden;
       background: #0A1628;
+      padding-top: 2rem;
+      padding-bottom: 3.5rem;
     }
 
     .hero-gradient {
@@ -255,6 +257,7 @@
       position: relative;
       z-index: 2;
       max-width: 680px;
+      padding: 0;
     }
 
     .hero-visual {
@@ -394,7 +397,8 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: #C9A84C;
-      margin-bottom: 24px;
+      margin-top: 0;
+      margin-bottom: 20px;
     }
 
     .hero-eyebrow-dot {
@@ -1618,6 +1622,7 @@
     }
 
     @media (max-width: 768px) {
+      .hero { padding-top: 1.5rem; padding-bottom: 2.5rem; }
       .nav-menu { display: none; }
       .nav-cta   { display: none; }
       .mobile-menu-btn { display: flex; }
