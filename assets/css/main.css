@@ -1010,11 +1010,12 @@ hr {
 }
 
 /* =============================================================================
-   9. PAGE HERO STYLES
+   9. PAGE HERO STYLES — High Contrast Accessible Dark Hero
    ============================================================================= */
 
 .page-hero {
   background-color: var(--color-navy);
+  color: var(--color-text-dark-primary, #FFFFFF);
   padding: calc(var(--header-height) + 3rem) 0 4rem;
   position: relative;
   overflow: hidden;
@@ -1025,8 +1026,8 @@ hr {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 70% 80% at 10% 50%, rgba(201, 168, 76, 0.06) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 50% at 90% 20%, rgba(26, 108, 246, 0.05) 0%, transparent 60%);
+    radial-gradient(ellipse 70% 80% at 10% 50%, rgba(201, 168, 76, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 90% 20%, rgba(26, 108, 246, 0.06) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -1035,19 +1036,53 @@ hr {
   z-index: 1;
 }
 
-.page-hero-title {
+.page-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 840px;
+}
+
+/* All headings inside .page-hero must be bright white with high contrast */
+.page-hero h1,
+.page-hero h2,
+.page-hero h3,
+.page-hero-title,
+.page-hero .page-hero-title {
+  color: #FFFFFF !important;
   font-size: clamp(var(--font-size-2xl), 4vw, var(--font-size-4xl));
   font-weight: var(--font-weight-extrabold);
-  color: var(--color-white);
   letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-tight);
+  margin-top: 0;
   margin-bottom: var(--space-4);
 }
 
-.page-hero-subtitle {
+.page-hero h1 span,
+.page-hero .page-hero-title span,
+.page-hero .text-gold {
+  color: var(--color-gold-bright, #F3D785) !important;
+}
+
+/* All descriptions inside .page-hero must be high-contrast light slate */
+.page-hero p,
+.page-hero .page-hero-subtitle,
+.page-hero .page-hero-sub,
+.page-hero .hero-intro {
+  color: #CBD5E1 !important; /* Slate 300, 9.2:1 contrast against navy */
   font-size: var(--font-size-md);
-  color: rgba(255, 255, 255, 0.7);
   line-height: var(--line-height-relaxed);
-  max-width: 640px;
+  max-width: 720px;
+  margin-bottom: 0;
+}
+
+.page-hero strong,
+.page-hero b {
+  color: #FFFFFF !important;
+}
+
+.page-hero time,
+.page-hero .author-meta {
+  color: #94A3B8 !important; /* Slate 400 */
 }
 
 /* =============================================================================
@@ -1061,54 +1096,134 @@ hr {
   gap: var(--space-1);
   font-size: var(--font-size-sm);
   margin-bottom: var(--space-4);
+  line-height: 1.5;
+}
+
+.breadcrumb ol {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.breadcrumb li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.breadcrumb li:not(:last-child)::after {
+  content: '›';
+  margin-left: var(--space-1);
+  margin-right: var(--space-1);
+  color: #64748B;
+  opacity: 0.8;
+}
+
+/* Default / Dark Theme Breadcrumb (used in page-hero, dark sections, etc.) */
+.page-hero .breadcrumb,
+.section-dark .breadcrumb,
+.breadcrumb-dark,
+.breadcrumb {
+  color: #94A3B8;
+}
+
+.page-hero .breadcrumb a,
+.section-dark .breadcrumb a,
+.breadcrumb-dark a,
+.breadcrumb .breadcrumb-item a,
+.breadcrumb a {
+  color: #CBD5E1 !important;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.page-hero .breadcrumb a:hover,
+.section-dark .breadcrumb a:hover,
+.breadcrumb-dark a:hover,
+.breadcrumb .breadcrumb-item a:hover,
+.breadcrumb a:hover {
+  color: var(--color-gold-bright, #F3D785) !important;
+}
+
+.page-hero .breadcrumb .breadcrumb-sep,
+.page-hero .breadcrumb .breadcrumb-separator,
+.section-dark .breadcrumb .breadcrumb-sep,
+.section-dark .breadcrumb .breadcrumb-separator,
+.breadcrumb-dark .breadcrumb-sep,
+.breadcrumb .breadcrumb-sep,
+.breadcrumb .breadcrumb-separator {
+  color: #64748B !important;
+  margin: 0 var(--space-1);
+  display: inline-block;
+  user-select: none;
+}
+
+.page-hero .breadcrumb .breadcrumb-current,
+.page-hero .breadcrumb [aria-current="page"],
+.page-hero .breadcrumb .breadcrumb-item.active,
+.section-dark .breadcrumb .breadcrumb-current,
+.section-dark .breadcrumb [aria-current="page"],
+.section-dark .breadcrumb .breadcrumb-item.active,
+.breadcrumb-dark .breadcrumb-current,
+.breadcrumb [aria-current="page"],
+.breadcrumb .breadcrumb-current,
+.breadcrumb-item.active {
+  color: var(--color-gold-bright, #F3D785) !important;
+  font-weight: var(--font-weight-medium);
 }
 
 .breadcrumb-item {
   display: flex;
   align-items: center;
   gap: var(--space-1);
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.breadcrumb-item a {
-  color: rgba(255, 255, 255, 0.6);
-  text-decoration: none;
-  transition: color var(--transition-fast);
-}
-
-.breadcrumb-item a:hover {
-  color: var(--color-gold);
-}
-
-.breadcrumb-item.active {
-  color: rgba(255, 255, 255, 0.85);
+  color: #94A3B8;
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
   content: '/';
-  color: rgba(255, 255, 255, 0.3);
+  color: #64748B;
   margin-right: var(--space-1);
 }
 
 /* Light breadcrumb variant */
-.breadcrumb-light .breadcrumb-item {
+.breadcrumb-light,
+.section-white .breadcrumb,
+.section-light .breadcrumb {
   color: var(--color-text-muted);
 }
 
-.breadcrumb-light .breadcrumb-item a {
-  color: var(--color-text-secondary);
+.breadcrumb-light a,
+.section-white .breadcrumb a,
+.section-light .breadcrumb a {
+  color: var(--color-text-secondary) !important;
 }
 
-.breadcrumb-light .breadcrumb-item a:hover {
-  color: var(--color-gold-dark);
+.breadcrumb-light a:hover,
+.section-white .breadcrumb a:hover,
+.section-light .breadcrumb a:hover {
+  color: var(--color-gold-dark) !important;
 }
 
-.breadcrumb-light .breadcrumb-item.active {
-  color: var(--color-text-primary);
+.breadcrumb-light .breadcrumb-sep,
+.breadcrumb-light .breadcrumb-separator,
+.section-white .breadcrumb .breadcrumb-sep,
+.section-white .breadcrumb .breadcrumb-separator,
+.section-light .breadcrumb .breadcrumb-sep,
+.section-light .breadcrumb .breadcrumb-separator {
+  color: var(--color-gray-400) !important;
 }
 
-.breadcrumb-light .breadcrumb-item + .breadcrumb-item::before {
-  color: var(--color-gray-400);
+.breadcrumb-light .breadcrumb-current,
+.breadcrumb-light [aria-current="page"],
+.section-white .breadcrumb .breadcrumb-current,
+.section-white .breadcrumb [aria-current="page"],
+.section-light .breadcrumb .breadcrumb-current,
+.section-light .breadcrumb [aria-current="page"] {
+  color: var(--color-gold-text) !important;
 }
 
 /* =============================================================================
