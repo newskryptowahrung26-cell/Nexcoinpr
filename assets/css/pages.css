@@ -1565,3 +1565,166 @@
   font-weight: 800;
   color: var(--color-gold-text);
 }
+
+/* =============================================================================
+   12. CORNERSTONE SERVICE PAGES & DIRECTORY STYLES
+   ============================================================================= */
+
+.pillar-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  position: relative;
+}
+
+.pillar-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(201, 168, 76, 0.4);
+}
+
+.pillar-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-gold-text);
+  background: rgba(201, 168, 76, 0.1);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  align-self: flex-start;
+}
+
+.pillar-playbook {
+  background: var(--color-gray-100);
+  border-left: 3px solid var(--color-gold);
+  padding: var(--space-4) var(--space-5);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-navy);
+  margin-top: auto;
+}
+
+.directory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+}
+
+@media (max-width: 1024px) {
+  .directory-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .directory-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.directory-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-xs);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition: all var(--transition-fast);
+}
+
+.directory-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-gold);
+  transform: translateY(-2px);
+}
+
+.directory-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.directory-card-name {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-base);
+  color: var(--color-navy);
+  margin: 0;
+}
+
+.directory-card-da {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  background: #EBF3FE;
+  color: #1A56DB;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+}
+
+.directory-card-traffic {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.directory-card-desc {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-base);
+  margin: 0;
+}
+
+.comparison-table th {
+  padding: var(--space-4) var(--space-5);
+  font-size: var(--font-size-sm);
+  text-transform: none;
+}
+
+.comparison-table td {
+  padding: var(--space-4) var(--space-5);
+  font-size: var(--font-size-sm);
+  vertical-align: middle;
+}
+
+.cell-highlight {
+  background: rgba(201, 168, 76, 0.05);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-navy) !important;
+}
+
+.badge-tag-positive {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #065F46;
+  background: #ECFDF5;
+  border: 1px solid #A7F3D0;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-tag-negative {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #991B1B;
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
