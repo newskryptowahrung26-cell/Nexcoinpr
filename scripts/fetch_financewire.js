@@ -7,12 +7,17 @@ const TRACKING_FILE = path.join(ROOT_DIR, 'data', 'imported_press_releases.json'
 const PR_HTML_FILE = path.join(ROOT_DIR, 'press-releases.html');
 const SITEMAP_FILE = path.join(ROOT_DIR, 'sitemap-press-releases.xml');
 const PR_DIR = path.join(ROOT_DIR, 'press-releases');
+const NEWSROOM_URL = 'https://financewire.com/newsroom/';
 
 function fetchUrl(url) {
   return new Promise((resolve, reject) => {
     https.get(url, (res) => {
       if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
-        return fetchUrl(res.headers.location).then(resolve).catch(reject);
+        let redirectUrl = res.headers.location;
+        if (redirectUrl.startsWith('/')) {
+          redirectUrl = 'https://financewire.com' + redirectUrl;
+        }
+        return fetchUrl(redirectUrl).then(resolve).catch(reject);
       }
       if (res.statusCode !== 200) {
         return reject(new Error(`Failed to fetch ${url}, status: ${res.statusCode}`));
@@ -33,6 +38,7 @@ function cleanDashesAndAi(text) {
   str = str.replace(/\s+-\s+/g, ', ');
   str = str.replace(/,\s*,/g, ',');
   str = str.replace(/:\s*,/g, ':');
+  str = str.replace(/,\s*:/g, ':');
   // Clean basic AI buzzwords
   str = str.replace(/\bgame-changer\b/gi, 'major shift');
   str = str.replace(/\bcutting-edge\b/gi, 'advanced');
@@ -41,6 +47,9 @@ function cleanDashesAndAi(text) {
   str = str.replace(/\brobust\b/gi, 'durable and strong');
   str = str.replace(/\bstreamline\b/gi, 'simplify');
   str = str.replace(/\bempower\b/gi, 'help');
+  str = str.replace(/\bcomprehensive\b/gi, 'full-scale');
+  str = str.replace(/\bgroundbreaking\b/gi, 'pioneering');
+  str = str.replace(/\blandscape\b/gi, 'market');
   return str.trim();
 }
 
@@ -63,9 +72,9 @@ function formatDate(dateObj) {
   return `${day} ${month} ${year}`;
 }
 
-function determineCategory(categories, title, body) {
-  const combined = (categories.join(' ') + ' ' + title + ' ' + body.substring(0, 1000)).toLowerCase();
-  if (combined.includes('crypto') || combined.includes('bitcoin') || combined.includes('ethereum') || combined.includes('token') || combined.includes('cex') || combined.includes('dex')) {
+function determineCategory(title, body) {
+  const combined = (title + ' ' + body.substring(0, 1500)).toLowerCase();
+  if (combined.includes('crypto') || combined.includes('bitcoin') || combined.includes('ethereum') || combined.includes('token') || combined.includes('cex') || combined.includes('dex') || combined.includes('digital asset exchange')) {
     return 'crypto';
   }
   if (combined.includes('blockchain') || combined.includes('layer 1') || combined.includes('layer 2') || combined.includes('consensus') || combined.includes('smart contract')) {
@@ -77,32 +86,35 @@ function determineCategory(categories, title, body) {
   if (combined.includes('forex') || combined.includes('fx ') || combined.includes('currency trading') || combined.includes('prop firm')) {
     return 'forex';
   }
-  if (combined.includes('fintech') || combined.includes('payment') || combined.includes('banking') || combined.includes('ai ') || combined.includes('security')) {
+  if (combined.includes('fintech') || combined.includes('payment') || combined.includes('banking') || combined.includes('ai security') || combined.includes('cyber')) {
     return 'fintech';
   }
   return 'financial';
 }
 
 function extractCompany(title, body) {
-  // Check for (NASDAQ: XXX) or (NYSE: XXX)
   const tickerMatch = title.match(/([A-Z0-9\s]+)\s*\((?:NASDAQ|NYSE|TSX|LSE):\s*([A-Z]+)\)/i);
   if (tickerMatch) {
     const raw = tickerMatch[1].trim();
-    // Get last 2 words of company name before ticker
     const words = raw.split(/\s+/);
     return words.slice(-2).join(' ') || tickerMatch[2];
   }
-  // Check for common announcement pattern: "Company Acquires...", "Company Launches..."
-  const verbMatch = title.match(/^([A-Z][A-Za-z0-9\s&]+?)\s+(?:Acquires|Brings|Launches|Announces|Reports|Secures|Expands|Unveils|Receives|Closes|Partners)/);
+  const verbMatch = title.match(/^([A-Z][A-Za-z0-9\s&]+?)\s+(?:Acquires|Brings|Launches|Announces|Reports|Secures|Expands|Unveils|Receives|Closes|Partners|Introduces)/);
   if (verbMatch && verbMatch[1].length < 35) {
     return verbMatch[1].trim();
+  }
+  // Check first paragraph for company before comma
+  const firstP = body.replace(/<[^>]+>/g, ' ').substring(0, 250);
+  const m = firstP.match(/(?:FinanceWire\s+)?([A-Z][A-Za-z0-9\s&]+?),\s+(?:a\s+|an\s+|the\s+)/i);
+  if (m && m[1].length < 30) {
+    return m[1].trim();
   }
   return 'FinanceWire Syndicate';
 }
 
 async function run() {
-  console.log('Fetching FinanceWire RSS feed...');
-  const xml = await fetchUrl('https://financewire.com/feed/');
+  console.log(`Fetching FinanceWire Newsroom from: ${NEWSROOM_URL}`);
+  const newsroomHtml = await fetchUrl(NEWSROOM_URL);
 
   // Ensure data directory exists
   if (!fs.existsSync(path.dirname(TRACKING_FILE))) {
@@ -118,50 +130,70 @@ async function run() {
     }
   }
 
-  const itemsRaw = xml.split('<item>').slice(1);
-  if (itemsRaw.length === 0) {
-    console.log('No items found in feed.');
-    return;
+  // Parse article links from newsroom page
+  const regex = /<a\s+[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi;
+  let m;
+  let newsroomArticles = [];
+  while ((m = regex.exec(newsroomHtml)) !== null) {
+    const link = m[1];
+    const text = m[2].replace(/<[^>]+>/g, '').trim();
+    if (link.includes('financewire.com/') && /\/\d{4}\/\d{2}\/\d{2}\//.test(link)) {
+      if (text && text.length > 15 && !newsroomArticles.some(a => a.link === link)) {
+        newsroomArticles.push({ link, text });
+      }
+    }
   }
 
-  let candidateItem = null;
+  console.log(`Found ${newsroomArticles.length} articles on FinanceWire Newsroom.`);
 
-  for (let it of itemsRaw) {
-    const itemXml = it.split('</item>')[0];
-    const linkMatch = itemXml.match(/<link>(.*?)<\/link>/);
-    const link = linkMatch ? linkMatch[1].trim() : '';
-
-    if (link && !imported.includes(link)) {
-      candidateItem = itemXml;
+  let candidate = null;
+  for (let art of newsroomArticles) {
+    if (!imported.includes(art.link)) {
+      candidate = art;
       break;
     }
   }
 
-  if (!candidateItem) {
-    console.log('All articles from FinanceWire are already imported. No new release to fetch.');
+  if (!candidate) {
+    console.log('All articles currently listed on FinanceWire Newsroom have already been imported.');
     return;
   }
 
-  // Parse candidate
-  const titleMatch = candidateItem.match(/<title><!\[CDATA\[([\s\S]*?)\]\]><\/title>/) || candidateItem.match(/<title>([\s\S]*?)<\/title>/);
-  const linkMatch = candidateItem.match(/<link>(.*?)<\/link>/);
-  const pubDateMatch = candidateItem.match(/<pubDate>(.*?)<\/pubDate>/);
-  const contentMatch = candidateItem.match(/<content:encoded><!\[CDATA\[([\s\S]*?)\]\]><\/content:encoded>/) || candidateItem.match(/<description><!\[CDATA\[([\s\S]*?)\]\]><\/description>/);
-  const rawCategories = (candidateItem.match(/<category><!\[CDATA\[([\s\S]*?)\]\]><\/category>/g) || []).map(c => c.replace(/<\/?category>|<!\[CDATA\[|\]\]>/g, '').trim());
+  console.log(`Selected article from newsroom: ${candidate.text} (${candidate.link})`);
+  console.log('Fetching full article content...');
+  const articleHtmlRaw = await fetchUrl(candidate.link);
 
-  const originalTitle = titleMatch ? titleMatch[1].trim() : 'Financial Market Announcement';
-  const cleanTitle = cleanDashesAndAi(originalTitle);
-  const sourceLink = linkMatch ? linkMatch[1].trim() : '';
-  const dateObj = pubDateMatch ? new Date(pubDateMatch[1].trim()) : new Date();
-  const formattedDate = formatDate(dateObj);
-  const isoDate = dateObj.toISOString();
+  // Extract Title
+  const titleMatch = articleHtmlRaw.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+  const rawTitle = titleMatch ? titleMatch[1].replace(/<[^>]+>/g, '').trim() : candidate.text;
+  const cleanTitle = cleanDashesAndAi(rawTitle);
 
-  let bodyContent = contentMatch ? contentMatch[1].trim() : '';
+  // Extract Content
+  let bodyContent = '';
+  const contentMatch = articleHtmlRaw.match(/<div class="entry-content[^"]*"[^>]*>([\s\S]*?)<\/div>/i) ||
+                       articleHtmlRaw.match(/<article[^>]*>([\s\S]*?)<\/article>/i);
+  if (contentMatch) {
+    bodyContent = contentMatch[1];
+  } else {
+    // Fallback: extract paragraphs
+    const pMatches = articleHtmlRaw.match(/<p>[\s\S]*?<\/p>/gi) || [];
+    bodyContent = pMatches.join('\n');
+  }
+
   // Clean body text
   bodyContent = cleanDashesAndAi(bodyContent);
-  // Remove WordPress classes and inline styling scripts
   bodyContent = bodyContent.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
   bodyContent = bodyContent.replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '');
+  bodyContent = bodyContent.replace(/<!--[\s\S]*?-->/g, '');
+
+  // Extract date from URL or page
+  let dateObj = new Date();
+  const dateFromUrl = candidate.link.match(/\/(\d{4})\/(\d{2})\/(\d{2})\//);
+  if (dateFromUrl) {
+    dateObj = new Date(`${dateFromUrl[1]}-${dateFromUrl[2]}-${dateFromUrl[3]}T12:00:00Z`);
+  }
+  const formattedDate = formatDate(dateObj);
+  const isoDate = dateObj.toISOString();
 
   const slug = `${slugify(cleanTitle)}.html`;
   const articleUrl = `/press-releases/${slug}`;
@@ -171,16 +203,16 @@ async function run() {
   const plainText = bodyContent.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
   const excerpt = cleanDashesAndAi(plainText.slice(0, 240) + '...');
 
-  const category = determineCategory(rawCategories, cleanTitle, bodyContent);
+  const category = determineCategory(cleanTitle, bodyContent);
   const categoryLabel = category.charAt(0).toUpperCase() + category.slice(1);
   const company = extractCompany(cleanTitle, bodyContent);
 
-  console.log('Selected article:');
+  console.log('Article details:');
   console.log(' - Title:', cleanTitle);
   console.log(' - Company:', company);
   console.log(' - Category:', categoryLabel);
-  console.log(' - Date:', formattedDate);
-  console.log(' - Slug:', slug);
+  console.log(' - Published:', formattedDate);
+  console.log(' - Saved Slug:', slug);
 
   // 1. Generate standalone article HTML
   const articleHtml = `<!DOCTYPE html>
@@ -313,7 +345,7 @@ async function run() {
           <p class="hero-intro">${excerpt}</p>
           <div class="author-meta text-white">
             <span>Issuer: <strong>${company}</strong></span> &bull; 
-            <span>Syndication: <strong>FinanceWire</strong></span> &bull; 
+            <span>Syndication: <strong>FinanceWire Newsroom</strong></span> &bull; 
             <span>Published: ${formattedDate}</span>
           </div>
         </div>
@@ -325,7 +357,7 @@ async function run() {
         <div class="two-col-layout">
           <div class="main-content-col article-body">
             <div class="notice-financial mb-4">
-              <p><strong>Commercial Content Disclosure:</strong> The following announcement is an official press release syndicated in partnership with FinanceWire on behalf of ${company}. NexcoinPR provides media distribution and editorial hosting. This content does not represent independent editorial reporting or investment advice.</p>
+              <p><strong>Commercial Content Disclosure:</strong> The following announcement is an official press release syndicated from FinanceWire Newsroom on behalf of ${company}. NexcoinPR provides media distribution and editorial hosting. This content does not represent independent editorial reporting or investment advice.</p>
             </div>
 
             ${bodyContent}
@@ -463,8 +495,6 @@ async function run() {
     prHtml = prHtml.replace(gridAnchor, `${gridAnchor}${cardHtml}`);
     fs.writeFileSync(PR_HTML_FILE, prHtml, 'utf8');
     console.log('Injected new card at top of press-releases.html');
-  } else {
-    console.warn('Could not find .pr-grid in press-releases.html');
   }
 
   // 3. Update sitemap-press-releases.xml
@@ -485,14 +515,14 @@ async function run() {
   }
 
   // 4. Update tracking JSON
-  imported.push(sourceLink);
+  imported.push(candidate.link);
   fs.writeFileSync(TRACKING_FILE, JSON.stringify(imported, null, 2), 'utf8');
   console.log('Recorded imported URL in tracking manifest.');
 
-  console.log('SUCCESS: Imported 1 daily press release from FinanceWire.');
+  console.log('SUCCESS: Imported 1 daily press release from FinanceWire Newsroom.');
 }
 
 run().catch(err => {
-  console.error('Error running FinanceWire fetcher:', err);
+  console.error('Error running FinanceWire Newsroom fetcher:', err);
   process.exit(1);
 });
