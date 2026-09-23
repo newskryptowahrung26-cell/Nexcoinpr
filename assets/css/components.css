@@ -1534,3 +1534,143 @@
   color: var(--color-white);
   border-color: var(--color-navy);
 }
+
+/* =============================================================================
+   GUIDE CARDS (News Hub & Resource Previews)
+   ============================================================================= */
+
+.section-header-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--color-navy);
+}
+
+.news-main .section-header,
+.section-header:has(.see-all-link) {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  text-align: left;
+  margin-bottom: var(--space-6);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.see-all-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-gold-text);
+  text-decoration: none;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: gap var(--transition-fast), color var(--transition-fast);
+}
+
+.see-all-link:hover {
+  color: var(--color-gold);
+  gap: 8px;
+}
+
+.guide-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 10px rgba(10, 22, 40, 0.04);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
+  text-decoration: none !important;
+  color: inherit !important;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.guide-card:hover {
+  border-color: var(--color-gold);
+  box-shadow: 0 12px 30px rgba(10, 22, 40, 0.10);
+  transform: translateY(-4px);
+}
+
+.guide-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-gold), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.guide-card:hover::before {
+  opacity: 1;
+}
+
+.guide-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(201, 168, 76, 0.12);
+  color: var(--color-gold-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  transition: all var(--transition-base);
+  flex-shrink: 0;
+}
+
+.guide-card:hover .guide-card-icon {
+  background: var(--color-gold);
+  color: var(--color-navy);
+  transform: scale(1.06);
+}
+
+.guide-card-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.guide-card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: 0.65rem;
+  line-height: 1.35;
+  transition: color var(--transition-fast);
+}
+
+.guide-card:hover .guide-card-title {
+  color: var(--color-gold-text);
+}
+
+.guide-card-desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+.guide-card-link {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-gold-text);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+  margin-top: auto;
+}
+
+.guide-card:hover .guide-card-link {
+  color: var(--color-gold);
+  gap: 10px;
+}
