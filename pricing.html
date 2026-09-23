@@ -28,9 +28,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="stylesheet" href="/assets/css/components.css">
-  <link rel="stylesheet" href="/assets/css/pages.css">
+  <link rel="stylesheet" href="/assets/css/main.css?v=4.0">
+  <link rel="stylesheet" href="/assets/css/components.css?v=4.0">
+  <link rel="stylesheet" href="/assets/css/pages.css?v=4.0">
+
+  <style>
+    /* Absolute Centering Enforcement for Pricing Packages */
+    .pricing-card { text-align: center !important; display: flex !important; flex-direction: column !important; align-items: center !important; }
+    .pricing-title, .pricing-name { text-align: center !important; width: 100% !important; margin-inline: auto !important; }
+    .pricing-price-box, .pricing-price { display: flex !important; align-items: baseline !important; justify-content: center !important; text-align: center !important; width: 100% !important; margin-inline: auto !important; }
+    .pricing-desc { text-align: center !important; width: 100% !important; margin-inline: auto !important; }
+    .traffic-pill { display: flex !important; justify-content: center !important; text-align: center !important; width: 100% !important; margin-inline: auto !important; }
+    .pricing-badge, .pricing-popular-badge { left: 50% !important; transform: translateX(-50%) !important; text-align: center !important; }
+    .pricing-pub-list { text-align: left !important; width: 100% !important; }
+  </style>
 
   <!-- JSON-LD -->
   <script type="application/ld+json">

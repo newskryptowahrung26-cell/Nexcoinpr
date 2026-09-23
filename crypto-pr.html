@@ -24,9 +24,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="stylesheet" href="/assets/css/components.css">
-  <link rel="stylesheet" href="/assets/css/pages.css">
+  <link rel="stylesheet" href="/assets/css/main.css?v=4.0">
+  <link rel="stylesheet" href="/assets/css/components.css?v=4.0">
+  <link rel="stylesheet" href="/assets/css/pages.css?v=4.0">
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -176,6 +176,21 @@
   <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="#0A1628">
   <meta property="og:image" content="https://nexcoinpr.com/assets/images/nexcoinpr-logo-dark.jpg">
+  <style>
+    /* Absolute Centering Enforcement for Pricing Packages */
+    .pricing-card { text-align: center !important; display: flex !important; flex-direction: column !important; align-items: center !important; }
+    .pricing-name, .pricing-title { text-align: center !important; width: 100% !important; margin-inline: auto !important; }
+    .pricing-price, .pricing-price-box { display: flex !important; align-items: baseline !important; justify-content: center !important; text-align: center !important; width: 100% !important; margin-inline: auto !important; }
+    .pricing-desc { text-align: center !important; width: 100% !important; margin-inline: auto !important; }
+    .traffic-pill { display: flex !important; justify-content: center !important; text-align: center !important; width: 100% !important; margin-inline: auto !important; }
+    .pricing-feature-list { width: 100% !important; text-align: left !important; list-style: none !important; padding: 0 !important; margin: 0 !important; }
+    .pricing-feature-list li { display: block !important; position: relative !important; padding-left: 28px !important; text-align: left !important; line-height: 1.5 !important; }
+    .pricing-feature-list li::before { content: '✓' !important; position: absolute !important; left: 0 !important; top: 1px !important; width: 20px !important; height: 20px !important; background: rgba(15, 123, 76, 0.1) !important; color: var(--color-blockchain) !important; border-radius: var(--radius-full) !important; display: flex !important; align-items: center !important; justify-content: center !important; font-size: 0.7rem !important; font-weight: var(--font-weight-bold) !important; line-height: 20px !important; text-align: center !important; }
+    .pricing-card .btn-ghost, .pricing-card .btn-secondary { width: 100% !important; text-align: center !important; justify-content: center !important; display: inline-flex !important; color: var(--color-gold) !important; border: 2px solid var(--color-gold) !important; background-color: transparent !important; }
+    .pricing-card .btn-ghost:hover, .pricing-card .btn-secondary:hover { background-color: var(--color-gold) !important; color: var(--color-navy) !important; }
+    .pricing-card .btn-primary { width: 100% !important; text-align: center !important; justify-content: center !important; display: inline-flex !important; }
+    .disclaimer-box { text-align: center !important; margin-inline: auto !important; }
+  </style>
 </head>
 <body>
 
@@ -611,13 +626,13 @@
         <div class="grid-4" style="margin-top: var(--space-10);">
           <!-- Package 1 -->
           <div class="pricing-card">
-            <div class="pricing-name">Starter Wire</div>
-            <div class="pricing-price">
+            <div class="pricing-name" style="text-align: center; width: 100%;">Starter Wire</div>
+            <div class="pricing-price" style="display: flex; align-items: baseline; justify-content: center; text-align: center; width: 100%;">
               <span class="pricing-price-currency">$</span>
               <span class="pricing-price-amount">800</span>
               <span class="pricing-price-period">/ campaign</span>
             </div>
-            <p class="pricing-desc">Perfect for protocol updates, partnership announcements, testnet milestones, and initial SEO foundation.</p>
+            <p class="pricing-desc" style="text-align: center; width: 100%;">Perfect for protocol updates, partnership announcements, testnet milestones, and initial SEO foundation.</p>
             <ul class="pricing-feature-list">
               <li><strong>15+ Guaranteed</strong> Crypto &amp; Tech Outlets</li>
               <li>Includes CoinGape, Coinwire &amp; CryptoNewsZ</li>
@@ -627,19 +642,19 @@
               <li>24–48h Standard Turnaround</li>
               <li>Full PDF Syndication Dossier</li>
             </ul>
-            <a href="/contact.html?plan=starter" class="btn-ghost" style="width: 100%; text-align: center;">Order Starter Wire</a>
+            <a href="/contact.html?plan=starter" class="btn-secondary" style="width: 100%; text-align: center;">Order Starter Wire</a>
           </div>
 
           <!-- Package 2 (Popular) -->
           <div class="pricing-card popular">
             <div class="pricing-badge">Most Popular</div>
-            <div class="pricing-name">Growth Web3 Blitz</div>
-            <div class="pricing-price">
+            <div class="pricing-name" style="text-align: center; width: 100%;">Growth Web3 Blitz</div>
+            <div class="pricing-price" style="display: flex; align-items: baseline; justify-content: center; text-align: center; width: 100%;">
               <span class="pricing-price-currency">$</span>
               <span class="pricing-price-amount">2,500</span>
               <span class="pricing-price-period">/ campaign</span>
             </div>
-            <p class="pricing-desc">Ideal for mainnet launches, strategic funding rounds, CEX listings, and high-visibility community expansion.</p>
+            <p class="pricing-desc" style="text-align: center; width: 100%;">Ideal for mainnet launches, strategic funding rounds, CEX listings, and high-visibility community expansion.</p>
             <ul class="pricing-feature-list">
               <li><strong>35+ Guaranteed</strong> Premium Publications</li>
               <li><strong>Feature placement on BeInCrypto OR Watcher Guru</strong></li>
@@ -655,13 +670,13 @@
 
           <!-- Package 3 -->
           <div class="pricing-card">
-            <div class="pricing-name">Institutional Authority</div>
-            <div class="pricing-price">
+            <div class="pricing-name" style="text-align: center; width: 100%;">Institutional Authority</div>
+            <div class="pricing-price" style="display: flex; align-items: baseline; justify-content: center; text-align: center; width: 100%;">
               <span class="pricing-price-currency">$</span>
               <span class="pricing-price-amount">4,800</span>
               <span class="pricing-price-period">/ campaign</span>
             </div>
-            <p class="pricing-desc">Designed for major Token Generation Events (TGE), Series A/B funding, and Layer-1/2 institutional adoption.</p>
+            <p class="pricing-desc" style="text-align: center; width: 100%;">Designed for major Token Generation Events (TGE), Series A/B funding, and Layer-1/2 institutional adoption.</p>
             <ul class="pricing-feature-list">
               <li><strong>65+ Guaranteed</strong> Global Newsrooms</li>
               <li><strong>Direct Feature on Decrypt, Bitcoin.com &amp; AMBCrypto</strong></li>
@@ -672,18 +687,18 @@
               <li>CoinMarketCap &amp; CoinGecko Verification Formatting</li>
               <li>Comprehensive Investor Relations Clipping Dossier</li>
             </ul>
-            <a href="/contact.html?plan=institutional" class="btn-ghost" style="width: 100%; text-align: center;">Select Institutional</a>
+            <a href="/contact.html?plan=institutional" class="btn-secondary" style="width: 100%; text-align: center;">Select Institutional</a>
           </div>
 
           <!-- Package 4 -->
           <div class="pricing-card">
-            <div class="pricing-name">Sovereign Tier-1 Dominance</div>
-            <div class="pricing-price">
+            <div class="pricing-name" style="text-align: center; width: 100%;">Sovereign Tier-1 Dominance</div>
+            <div class="pricing-price" style="display: flex; align-items: baseline; justify-content: center; text-align: center; width: 100%;">
               <span class="pricing-price-currency">$</span>
               <span class="pricing-price-amount">8,300</span>
               <span class="pricing-price-period">/ campaign</span>
             </div>
-            <p class="pricing-desc">The premier industry-defining package. Guaranteed Cointelegraph, The Block, and total media dominance.</p>
+            <p class="pricing-desc" style="text-align: center; width: 100%;">The premier industry-defining package. Guaranteed Cointelegraph, The Block, and total media dominance.</p>
             <ul class="pricing-feature-list">
               <li><strong>100+ Guaranteed</strong> High-DA Global Publications</li>
               <li><strong>Guaranteed Cointelegraph Direct Placement</strong></li>
@@ -694,7 +709,7 @@
               <li>Executive Podcast &amp; Panel Pitching Support</li>
               <li>Full Crisis Communications Insurance Included</li>
             </ul>
-            <a href="/contact.html?plan=tier1" class="btn-ghost" style="width: 100%; text-align: center;">Deploy Tier-1 Dominance</a>
+            <a href="/contact.html?plan=tier1" class="btn-secondary" style="width: 100%; text-align: center;">Deploy Tier-1 Dominance</a>
           </div>
         </div>
 

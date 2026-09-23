@@ -757,12 +757,13 @@
   padding: var(--space-8);
   box-shadow: var(--shadow-sm);
   border: 2px solid var(--color-border);
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
   gap: var(--space-5);
   position: relative;
   transition: transform var(--transition-base), box-shadow var(--transition-base);
-  text-align: center;
+  text-align: center !important;
 }
 
 .pricing-card:hover {
@@ -784,8 +785,8 @@
 .pricing-popular-badge {
   position: absolute;
   top: -14px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 50% !important;
+  transform: translateX(-50%) !important;
   background: var(--color-gold);
   color: var(--color-navy);
   font-size: var(--font-size-xs);
@@ -797,6 +798,7 @@
   white-space: nowrap;
   box-shadow: 0 4px 14px rgba(201, 168, 76, 0.35);
   z-index: 2;
+  text-align: center !important;
 }
 
 .pricing-name {
@@ -805,15 +807,19 @@
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wider);
   color: var(--color-text-muted);
-  text-align: center;
+  text-align: center !important;
+  width: 100% !important;
+  margin-inline: auto !important;
 }
 
 .pricing-price {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
+  display: flex !important;
+  align-items: baseline !important;
+  justify-content: center !important;
   gap: var(--space-1);
-  text-align: center;
+  text-align: center !important;
+  width: 100% !important;
+  margin-inline: auto !important;
 }
 
 .pricing-price-amount {
@@ -842,7 +848,33 @@
   color: var(--color-text-secondary);
   line-height: var(--line-height-base);
   margin-bottom: 0;
-  text-align: center;
+  text-align: center !important;
+  width: 100% !important;
+  margin-inline: auto !important;
+}
+
+.pricing-card .btn-ghost,
+.pricing-card .btn-secondary {
+  width: 100% !important;
+  text-align: center !important;
+  justify-content: center !important;
+  display: inline-flex !important;
+  color: var(--color-gold) !important;
+  border: 2px solid var(--color-gold) !important;
+  background-color: transparent !important;
+}
+
+.pricing-card .btn-ghost:hover,
+.pricing-card .btn-secondary:hover {
+  background-color: var(--color-gold) !important;
+  color: var(--color-navy) !important;
+}
+
+.pricing-card .btn-primary {
+  width: 100% !important;
+  text-align: center !important;
+  justify-content: center !important;
+  display: inline-flex !important;
 }
 
 .pricing-feature-list {
