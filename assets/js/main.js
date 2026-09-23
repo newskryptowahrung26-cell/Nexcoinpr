@@ -722,6 +722,138 @@
   }
 
   /* ===========================================================================
+     18. PRESS RELEASE CATEGORY FILTER & ROUTING
+     Handles .filter-bar buttons and links for /press-releases.html.
+     Filters .pr-card elements by data-category, manages active state,
+     shows helpful empty-state feedback with directory links, and synchronizes
+     with browser URL query params (?category=...).
+     =========================================================================== */
+
+  function initPressReleaseFilter() {
+    const filterContainer = document.querySelector('[data-filter-container]');
+    const filterButtons   = document.querySelectorAll('.filter-bar .filter-btn');
+    if (!filterContainer || filterButtons.length === 0) return;
+
+    const cards = Array.from(filterContainer.querySelectorAll('.pr-card'));
+
+    // Create empty-state element inside filter container
+    let emptyState = document.getElementById('pr-empty-state');
+    if (!emptyState) {
+      emptyState = document.createElement('div');
+      emptyState.id = 'pr-empty-state';
+      emptyState.className = 'pr-empty-state';
+      emptyState.style.display = 'none';
+      emptyState.style.width = '100%';
+      emptyState.style.gridColumn = '1 / -1';
+      filterContainer.appendChild(emptyState);
+    }
+
+    const categoryMap = {
+      crypto:    { name: 'Crypto',            news: '/news/crypto.html',            service: '/crypto-pr.html' },
+      forex:     { name: 'Forex',             news: '/news/forex.html',             service: '/forex-pr.html' },
+      blockchain:{ name: 'Blockchain',        news: '/news/blockchain.html',        service: '/blockchain-pr.html' },
+      web3:      { name: 'Web3',              news: '/news/web3.html',              service: '/web3-pr.html' },
+      fintech:   { name: 'Fintech',           news: '/news/fintech.html',           service: '/fintech-pr.html' },
+      financial: { name: 'Financial Markets', news: '/news/financial-markets.html', service: '/financial-pr.html' }
+    };
+
+    function applyFilter(category, updateUrl) {
+      if (typeof updateUrl === 'undefined') updateUrl = true;
+      const activeCat = (category || 'all').toLowerCase().trim();
+      let visibleCount = 0;
+
+      // Update button / link active classes and accessibility states
+      filterButtons.forEach(function (btn) {
+        const btnCat = (btn.getAttribute('data-filter') || '').toLowerCase().trim();
+        const isActive = (btnCat === activeCat);
+        if (isActive) {
+          btn.classList.add('active');
+          btn.setAttribute('aria-pressed', 'true');
+        } else {
+          btn.classList.remove('active');
+          btn.setAttribute('aria-pressed', 'false');
+        }
+      });
+
+      // Filter cards
+      cards.forEach(function (card) {
+        const rawCat = (card.getAttribute('data-category') || '').toLowerCase();
+        const cardCats = rawCat.split(/\s+/).filter(Boolean);
+        const matches = (activeCat === 'all' || cardCats.includes(activeCat));
+
+        if (matches) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Display empty state if 0 cards match
+      if (visibleCount === 0) {
+        const meta = categoryMap[activeCat] || {
+          name: activeCat.charAt(0).toUpperCase() + activeCat.slice(1),
+          news: '/news.html',
+          service: '/press-release-distribution.html'
+        };
+
+        emptyState.innerHTML = '<div style="text-align:center;padding:48px 28px;background:var(--color-gray-100);border-radius:var(--radius-md);border:1px dashed var(--color-border);margin:16px 0;width:100%;">' +
+          '<div style="font-size:2.4rem;margin-bottom:12px;">📰</div>' +
+          '<h3 style="font-size:var(--font-size-xl);margin-bottom:8px;color:var(--color-navy);font-weight:700;">No ' + meta.name + ' Press Releases Published Today</h3>' +
+          '<p style="font-size:var(--font-size-sm);color:var(--color-text-muted);max-width:540px;margin-inline:auto;margin-bottom:20px;line-height:1.6;">' +
+            'We syndicate and publish verified announcements daily from leading wire services. You can also explore our <a href="' + meta.news + '" class="inline-link" style="color:var(--color-gold);font-weight:600;">' + meta.name + ' News Hub →</a> or <a href="' + meta.service + '" class="inline-link" style="color:var(--color-gold);font-weight:600;">' + meta.name + ' PR Services →</a>.' +
+          '</p>' +
+          '<button type="button" class="btn-primary btn-sm" id="reset-pr-empty-btn">View All Press Releases</button>' +
+        '</div>';
+        emptyState.style.display = 'block';
+
+        const resetBtn = emptyState.querySelector('#reset-pr-empty-btn');
+        if (resetBtn) {
+          resetBtn.addEventListener('click', function () {
+            applyFilter('all', true);
+          });
+        }
+      } else {
+        emptyState.style.display = 'none';
+      }
+
+      // Update URL query parameter without full page reload
+      if (updateUrl && window.history && window.history.pushState) {
+        const url = new URL(window.location.href);
+        if (activeCat === 'all') {
+          url.searchParams.delete('category');
+        } else {
+          url.searchParams.set('category', activeCat);
+        }
+        window.history.pushState({ category: activeCat }, '', url.toString());
+      }
+    }
+
+    // Attach click listeners to all filter buttons
+    filterButtons.forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        const cat = btn.getAttribute('data-filter') || 'all';
+        applyFilter(cat, true);
+      });
+    });
+
+    // Handle browser back/forward navigation
+    window.addEventListener('popstate', function () {
+      const params = new URLSearchParams(window.location.search);
+      const cat = params.get('category') || 'all';
+      applyFilter(cat, false);
+    });
+
+    // Initial filter from URL on load (?category=...)
+    const initialParams = new URLSearchParams(window.location.search);
+    const initialCat = initialParams.get('category') || (window.location.hash ? window.location.hash.replace('#', '') : null);
+    if (initialCat) {
+      applyFilter(initialCat, false);
+    }
+  }
+
+  /* ===========================================================================
      INIT — DOM READY
      =========================================================================== */
 
@@ -743,6 +875,7 @@
     initReadTime();
     initNewsletterForms();
     initContactForm();
+    initPressReleaseFilter();
   }
 
   if (document.readyState === 'loading') {

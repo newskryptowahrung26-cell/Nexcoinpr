@@ -74,22 +74,27 @@ function formatDate(dateObj) {
 
 function determineCategory(title, body) {
   const combined = (title + ' ' + body.substring(0, 1500)).toLowerCase();
+  const cats = [];
   if (combined.includes('crypto') || combined.includes('bitcoin') || combined.includes('ethereum') || combined.includes('token') || combined.includes('cex') || combined.includes('dex') || combined.includes('digital asset exchange')) {
-    return 'crypto';
+    cats.push('crypto');
   }
   if (combined.includes('blockchain') || combined.includes('layer 1') || combined.includes('layer 2') || combined.includes('consensus') || combined.includes('smart contract')) {
-    return 'blockchain';
+    cats.push('blockchain');
   }
   if (combined.includes('web3') || combined.includes('dao') || combined.includes('dapp') || combined.includes('defi')) {
-    return 'web3';
+    cats.push('web3');
   }
   if (combined.includes('forex') || combined.includes('fx ') || combined.includes('currency trading') || combined.includes('prop firm')) {
-    return 'forex';
+    cats.push('forex');
   }
-  if (combined.includes('fintech') || combined.includes('payment') || combined.includes('banking') || combined.includes('ai security') || combined.includes('cyber')) {
-    return 'fintech';
+  if (combined.includes('fintech') || combined.includes('payment') || combined.includes('banking') || combined.includes('ai security') || combined.includes('cyber') || combined.includes('agent') || combined.includes('enterprise')) {
+    cats.push('fintech');
   }
-  return 'financial';
+  if (cats.length === 0 || combined.includes('financial') || combined.includes('market') || combined.includes('capital') || combined.includes('fund')) {
+    cats.push('financial');
+  }
+  const primary = cats[0] || 'financial';
+  return { primary, all: cats.join(' ') };
 }
 
 function extractCompany(title, body) {
@@ -203,7 +208,9 @@ async function run() {
   const plainText = bodyContent.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
   const excerpt = cleanDashesAndAi(plainText.slice(0, 240) + '...');
 
-  const category = determineCategory(cleanTitle, bodyContent);
+  const catObj = determineCategory(cleanTitle, bodyContent);
+  const category = catObj.primary;
+  const categoryAttr = catObj.all;
   const categoryLabel = category.charAt(0).toUpperCase() + category.slice(1);
   const company = extractCompany(cleanTitle, bodyContent);
 
@@ -470,7 +477,7 @@ async function run() {
   // 2. Inject new card into press-releases.html
   let prHtml = fs.readFileSync(PR_HTML_FILE, 'utf8');
   const cardHtml = `
-            <article class="pr-card" data-category="${category}">
+            <article class="pr-card" data-category="${categoryAttr}">
               <div class="pr-card-header">
                 <span class="content-label">Press Release</span>
                 <span class="badge badge-${category}">${categoryLabel}</span>
