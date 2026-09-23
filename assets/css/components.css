@@ -270,8 +270,32 @@
   padding: 0 1rem var(--space-2);
 }
 
-.mobile-nav-sub {
+.mobile-nav-sub,
+.mobile-sub-links {
+  display: flex;
+  flex-direction: column;
   padding-left: var(--space-4);
+  gap: var(--space-1);
+}
+
+.mobile-sub-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.mobile-sub-link:hover {
+  background: rgba(201, 168, 76, 0.1);
+  color: var(--color-gold);
+}
+
+.mobile-menu {
+  display: none !important;
 }
 
 .mobile-nav-overlay {
