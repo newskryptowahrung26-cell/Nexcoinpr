@@ -936,27 +936,27 @@ const contactPage = pageTemplate({
         </div>
 
         <aside class="sidebar-col">
-          <div class="card card-dark">
-            <h3 class="text-gold">Official Communications</h3>
-            <p class="text-muted mt-2">Reach dedicated departments directly:</p>
+          <div class="card card-dark" style="background: #0A1628 !important; border: 1px solid rgba(201, 168, 76, 0.25) !important; padding: 24px; border-radius: 12px;">
+            <h3 style="color: #F3D785 !important; margin-top: 0; margin-bottom: 8px; font-size: 1.25rem; font-weight: 700;">Official Communications</h3>
+            <p style="color: #94A3B8 !important; margin-bottom: 20px; font-size: 0.9rem;">Reach dedicated departments directly:</p>
             
-            <div class="contact-info-block contact-info-block-dark mt-3">
-              <p class="small text-muted mb-0">General &amp; Client Inquiries</p>
-              <p><strong><a href="mailto:nexcoinpr@gmail.com" class="text-white">nexcoinpr@gmail.com</a></strong></p>
+            <div class="contact-info-block contact-info-block-dark" style="background: #112240 !important; border: 1px solid rgba(201, 168, 76, 0.35) !important; border-radius: 8px; padding: 14px 16px; margin-bottom: 14px;">
+              <span style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #F3D785 !important; font-weight: 600; margin-bottom: 6px;">General &amp; Client Inquiries</span>
+              <a href="mailto:nexcoinpr@gmail.com" style="color: #FFFFFF !important; font-size: 1.05rem; font-weight: 700; text-decoration: none; word-break: break-all; display: inline-block;">nexcoinpr@gmail.com</a>
             </div>
 
-            <div class="contact-info-block contact-info-block-dark mt-3">
-              <p class="small text-muted mb-0">Press &amp; Media Desk</p>
-              <p><strong><a href="mailto:nexcoinpr@gmail.com" class="text-white">nexcoinpr@gmail.com</a></strong></p>
+            <div class="contact-info-block contact-info-block-dark" style="background: #112240 !important; border: 1px solid rgba(201, 168, 76, 0.35) !important; border-radius: 8px; padding: 14px 16px; margin-bottom: 14px;">
+              <span style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #F3D785 !important; font-weight: 600; margin-bottom: 6px;">Press &amp; Media Desk</span>
+              <a href="mailto:nexcoinpr@gmail.com" style="color: #FFFFFF !important; font-size: 1.05rem; font-weight: 700; text-decoration: none; word-break: break-all; display: inline-block;">nexcoinpr@gmail.com</a>
             </div>
 
-            <div class="contact-info-block contact-info-block-dark mt-3">
-              <p class="small text-muted mb-0">Editorial Corrections &amp; Compliance</p>
-              <p><strong><a href="mailto:nexcoinpr@gmail.com" class="text-white">nexcoinpr@gmail.com</a></strong></p>
+            <div class="contact-info-block contact-info-block-dark" style="background: #112240 !important; border: 1px solid rgba(201, 168, 76, 0.35) !important; border-radius: 8px; padding: 14px 16px; margin-bottom: 14px;">
+              <span style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #F3D785 !important; font-weight: 600; margin-bottom: 6px;">Editorial Corrections &amp; Compliance</span>
+              <a href="mailto:nexcoinpr@gmail.com" style="color: #FFFFFF !important; font-size: 1.05rem; font-weight: 700; text-decoration: none; word-break: break-all; display: inline-block;">nexcoinpr@gmail.com</a>
             </div>
 
-            <div class="mt-4 pt-3 border-top">
-              <p class="small text-muted">Response Time: 24&ndash;48 business hours.</p>
+            <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.12);">
+              <p style="color: #94A3B8 !important; font-size: 0.85rem; margin: 0;">Response Time: 24&ndash;48 business hours.</p>
             </div>
           </div>
         </aside>
