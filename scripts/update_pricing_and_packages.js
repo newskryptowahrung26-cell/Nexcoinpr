@@ -426,12 +426,12 @@ const pricingHtml = pageTemplate({
         <p class="section-subtitle">Curated 5-outlet tiers engineered for targeted visibility from tier-1 giants to cost-effective starter channels.</p>
       </div>
 
-      <h3 class="mb-3 text-gold">Series A: Premium Reach</h3>
-      <div class="grid-3 mb-5">
+      <h3 class="package-group-title text-gold">Series A: Premium Reach</h3>
+      <div class="grid-3 mb-6">
         ${packages5A.map(renderCard).join('\n')}
       </div>
 
-      <h3 class="mb-3 text-gold">Series B: Broad Audience Distribution</h3>
+      <h3 class="package-group-title text-gold mt-8">Series B: Broad Audience Distribution</h3>
       <div class="grid-3">
         ${packages5B.map(renderCard).join('\n')}
       </div>

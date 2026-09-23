@@ -636,6 +636,86 @@
   gap: var(--space-4);
 }
 
+.glossary-quicknav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  margin-bottom: 2.25rem;
+}
+
+.glossary-quicknav span {
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--color-navy);
+  margin-right: 0.5rem;
+}
+
+.glossary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.glossary-item {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2rem;
+  box-shadow: 0 2px 8px rgba(10, 22, 40, 0.04);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.glossary-item:hover {
+  border-color: rgba(201, 168, 76, 0.45);
+  box-shadow: 0 6px 20px rgba(10, 22, 40, 0.08);
+  transform: translateY(-2px);
+}
+
+.glossary-item h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.glossary-item p {
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.glossary-item span.text-muted,
+.glossary-item .small {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.glossary-item span.text-muted a {
+  color: var(--color-gold-text);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition-fast);
+}
+
+.glossary-item span.text-muted a:hover {
+  color: var(--color-gold);
+}
+
 /* =============================================================================
    6. PRICING PAGE
    ============================================================================= */
@@ -1383,6 +1463,48 @@
 }
 .pricing-card.popular .pricing-amount {
   color: var(--color-gold-text);
+}
+
+.pricing-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  line-height: 1.3;
+}
+
+.pricing-desc {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+}
+
+.pricing-divider {
+  height: 1px;
+  background: var(--color-border);
+  margin: 1.25rem 0 1rem;
+}
+
+.package-group-title,
+.pricing-group-title,
+#section-5-media h3.text-gold,
+#section-10-media h3.text-gold,
+#section-niche h3.text-gold {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-gold-text) !important;
+  margin-top: var(--space-10);
+  margin-bottom: var(--space-6);
+  display: block;
+}
+
+#section-5-media h3.text-gold:first-of-type {
+  margin-top: var(--space-4);
+}
+
+.pricing-card {
+  margin-top: 14px;
 }
 
 
