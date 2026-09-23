@@ -197,9 +197,9 @@ const mediaPage = pageTemplate({
           <h2 class="mt-5">Press &amp; Media Inquiries</h2>
           <p>Journalists, podcast producers, and conference curators seeking expert commentary or access to verified company leadership may contact our media desk directly:</p>
           <div class="card card-light mt-3">
-            <p><strong>Media Relations Desk:</strong> <a href="mailto:media@nexcoinpr.com">media@nexcoinpr.com</a></p>
-            <p><strong>Editorial Corrections:</strong> <a href="mailto:editorial@nexcoinpr.com">editorial@nexcoinpr.com</a></p>
-            <p><strong>General Inquiries:</strong> <a href="mailto:hello@nexcoinpr.com">hello@nexcoinpr.com</a></p>
+            <p><strong>Media Relations Desk:</strong> <a href="mailto:nexcoinpr@gmail.com">nexcoinpr@gmail.com</a></p>
+            <p><strong>Editorial Corrections:</strong> <a href="mailto:nexcoinpr@gmail.com">nexcoinpr@gmail.com</a></p>
+            <p><strong>General Inquiries:</strong> <a href="mailto:nexcoinpr@gmail.com">nexcoinpr@gmail.com</a></p>
           </div>
         </div>
 
@@ -597,7 +597,7 @@ const authorDetail = pageTemplate({
           <div class="card card-dark">
             <h3 class="text-gold">Editorial Contact</h3>
             <p class="text-muted">Pitch an editorial story or report a factual error directly to our team.</p>
-            <p class="mt-3"><strong>Email:</strong> <a href="mailto:editorial@nexcoinpr.com" class="text-gold">editorial@nexcoinpr.com</a></p>
+            <p class="mt-3"><strong>Email:</strong> <a href="mailto:nexcoinpr@gmail.com" class="text-gold">nexcoinpr@gmail.com</a></p>
             <a href="/editorial-policy.html" class="btn-secondary btn-block mt-3">Read Editorial Policy</a>
           </div>
         </aside>
@@ -942,17 +942,17 @@ const contactPage = pageTemplate({
             
             <div class="contact-info-block mt-3">
               <p class="small text-muted mb-0">General &amp; Client Inquiries</p>
-              <p><strong><a href="mailto:hello@nexcoinpr.com" class="text-white">hello@nexcoinpr.com</a></strong></p>
+              <p><strong><a href="mailto:nexcoinpr@gmail.com" class="text-white">nexcoinpr@gmail.com</a></strong></p>
             </div>
 
             <div class="contact-info-block mt-3">
               <p class="small text-muted mb-0">Press &amp; Media Desk</p>
-              <p><strong><a href="mailto:media@nexcoinpr.com" class="text-white">media@nexcoinpr.com</a></strong></p>
+              <p><strong><a href="mailto:nexcoinpr@gmail.com" class="text-white">nexcoinpr@gmail.com</a></strong></p>
             </div>
 
             <div class="contact-info-block mt-3">
               <p class="small text-muted mb-0">Editorial Corrections &amp; Compliance</p>
-              <p><strong><a href="mailto:editorial@nexcoinpr.com" class="text-white">editorial@nexcoinpr.com</a></strong></p>
+              <p><strong><a href="mailto:nexcoinpr@gmail.com" class="text-white">nexcoinpr@gmail.com</a></strong></p>
             </div>
 
             <div class="mt-4 pt-3 border-top">

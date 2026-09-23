@@ -5,7 +5,7 @@
 ## Brand Identity & Operating Model
 - **Agency Name:** NexcoinPR
 - **Website:** https://nexcoinpr.com
-- **Official Contact:** hello@nexcoinpr.com
+- **Official Contact:** nexcoinpr@gmail.com
 - **Business Focus:** PR campaigns, wire syndication, media outreach, and financial news publication for digital asset protocols, forex brokers, and fintech innovators.
 - **Content Architecture:** The platform features ONE unified content hub: `/news/` (covering Breaking News, Crypto, Forex, Blockchain, Web3, Fintech, Financial Markets, PR Insights, and Guides). There is NO separate /blog/.
 - **Commercial Content Transparency:** All paid press releases and sponsored materials are explicitly labeled as "Press Release" or "Client Content" to separate client communications from independent editorial reporting.

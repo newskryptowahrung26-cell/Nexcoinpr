@@ -489,7 +489,7 @@ const pricingHtml = pageTemplate({
             <h3>Need a Custom Media Bundle?</h3>
             <p class="text-muted mt-2">Want to combine specific publications or require an enterprise multi-month campaign retainer? Contact our media desk for a custom quotation.</p>
             <a href="/contact.html" class="btn-primary btn-block mt-3">Request Custom Quote</a>
-            <a href="mailto:hello@nexcoinpr.com" class="btn-secondary btn-block mt-2">Email Media Desk</a>
+            <a href="mailto:nexcoinpr@gmail.com" class="btn-secondary btn-block mt-2">Email Media Desk</a>
           </div>
         </aside>
       </div>

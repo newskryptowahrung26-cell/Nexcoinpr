@@ -251,7 +251,7 @@ const llmsTxt = `# NexcoinPR
 ## Brand Identity & Operating Model
 - **Agency Name:** NexcoinPR
 - **Website:** https://nexcoinpr.com
-- **Official Contact:** hello@nexcoinpr.com
+- **Official Contact:** nexcoinpr@gmail.com
 - **Business Focus:** PR campaigns, wire syndication, media outreach, and financial news publication for digital asset protocols, forex brokers, and fintech innovators.
 - **Content Architecture:** The platform features ONE unified content hub: \`/news/\` (covering Breaking News, Crypto, Forex, Blockchain, Web3, Fintech, Financial Markets, PR Insights, and Guides). There is NO separate /blog/.
 - **Commercial Content Transparency:** All paid press releases and sponsored materials are explicitly labeled as "Press Release" or "Client Content" to separate client communications from independent editorial reporting.
@@ -297,10 +297,10 @@ NexcoinPR is a premier international public relations agency, press release dist
 - **Official Brand Name:** NexcoinPR
 - **Canonical Website:** https://nexcoinpr.com
 - **Core Email Contacts:**
-  - Client & General Enquiries: hello@nexcoinpr.com
-  - Media & Press Desk: media@nexcoinpr.com
-  - Editorial Corrections: editorial@nexcoinpr.com
-  - Privacy Officer: privacy@nexcoinpr.com
+  - Client & General Enquiries: nexcoinpr@gmail.com
+  - Media & Press Desk: nexcoinpr@gmail.com
+  - Editorial Corrections: nexcoinpr@gmail.com
+  - Privacy Officer: nexcoinpr@gmail.com
 
 ## 2. Core Operational Pillars
 1. **Strategic PR & Earned Media:** Delivering targeted media outreach, executive thought leadership, and narrative positioning for high-technology firms without resorting to unverified claims or fake statistics.

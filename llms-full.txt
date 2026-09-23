@@ -6,10 +6,10 @@ NexcoinPR is a premier international public relations agency, press release dist
 - **Official Brand Name:** NexcoinPR
 - **Canonical Website:** https://nexcoinpr.com
 - **Core Email Contacts:**
-  - Client & General Enquiries: hello@nexcoinpr.com
-  - Media & Press Desk: media@nexcoinpr.com
-  - Editorial Corrections: editorial@nexcoinpr.com
-  - Privacy Officer: privacy@nexcoinpr.com
+  - Client & General Enquiries: nexcoinpr@gmail.com
+  - Media & Press Desk: nexcoinpr@gmail.com
+  - Editorial Corrections: nexcoinpr@gmail.com
+  - Privacy Officer: nexcoinpr@gmail.com
 
 ## 2. Core Operational Pillars
 1. **Strategic PR & Earned Media:** Delivering targeted media outreach, executive thought leadership, and narrative positioning for high-technology firms without resorting to unverified claims or fake statistics.
