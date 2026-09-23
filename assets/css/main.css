@@ -1343,6 +1343,86 @@ hr {
   color: var(--color-text-secondary);
 }
 
+.contact-info-block a {
+  color: var(--color-navy);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(201, 168, 76, 0.4);
+  text-underline-offset: 3px;
+  transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
+}
+
+.contact-info-block a:hover {
+  color: var(--color-gold-dark);
+  text-decoration-color: var(--color-gold);
+}
+
+/* Dark Contact Info Block (inside .card-dark, .section-dark, or with .contact-info-block-dark) */
+.card-dark .contact-info-block,
+.section-dark .contact-info-block,
+.contact-info-block-dark {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  margin: var(--space-3) 0;
+  transition: all var(--transition-fast);
+}
+
+.card-dark .contact-info-block:hover,
+.section-dark .contact-info-block:hover,
+.contact-info-block-dark:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(201, 168, 76, 0.4) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.card-dark .contact-info-block p,
+.section-dark .contact-info-block p,
+.contact-info-block-dark p {
+  margin: 0;
+}
+
+.card-dark .contact-info-block p.small,
+.card-dark .contact-info-block .text-muted,
+.section-dark .contact-info-block p.small,
+.section-dark .contact-info-block .text-muted,
+.contact-info-block-dark p.small,
+.contact-info-block-dark .text-muted,
+.contact-info-label {
+  color: #94A3B8 !important; /* Slate 400 — clean, crisp, legible on dark */
+  font-size: var(--font-size-xs) !important;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.04em;
+}
+
+.card-dark .contact-info-block a,
+.card-dark .contact-info-block a.text-white,
+.section-dark .contact-info-block a,
+.contact-info-block-dark a,
+.contact-info-email {
+  color: #FFFFFF !important; /* Brilliant crisp white */
+  font-size: var(--font-size-base) !important;
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none !important;
+  display: inline-block;
+  margin-top: var(--space-1);
+  transition: color var(--transition-fast);
+}
+
+.card-dark .contact-info-block a:hover,
+.card-dark .contact-info-block a.text-white:hover,
+.section-dark .contact-info-block a:hover,
+.contact-info-block-dark a:hover,
+.contact-info-email:hover {
+  color: var(--color-gold-bright, #F3D785) !important;
+}
+
+.card-dark .border-top {
+  border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
 .steps-horizontal {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

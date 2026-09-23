@@ -940,17 +940,17 @@ const contactPage = pageTemplate({
             <h3 class="text-gold">Official Communications</h3>
             <p class="text-muted mt-2">Reach dedicated departments directly:</p>
             
-            <div class="contact-info-block mt-3">
+            <div class="contact-info-block contact-info-block-dark mt-3">
               <p class="small text-muted mb-0">General &amp; Client Inquiries</p>
               <p><strong><a href="mailto:nexcoinpr@gmail.com" class="text-white">nexcoinpr@gmail.com</a></strong></p>
             </div>
 
-            <div class="contact-info-block mt-3">
+            <div class="contact-info-block contact-info-block-dark mt-3">
               <p class="small text-muted mb-0">Press &amp; Media Desk</p>
               <p><strong><a href="mailto:nexcoinpr@gmail.com" class="text-white">nexcoinpr@gmail.com</a></strong></p>
             </div>
 
-            <div class="contact-info-block mt-3">
+            <div class="contact-info-block contact-info-block-dark mt-3">
               <p class="small text-muted mb-0">Editorial Corrections &amp; Compliance</p>
               <p><strong><a href="mailto:nexcoinpr@gmail.com" class="text-white">nexcoinpr@gmail.com</a></strong></p>
             </div>
