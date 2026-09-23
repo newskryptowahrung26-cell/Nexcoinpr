@@ -48,8 +48,11 @@
 }
   </script>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="icon" type="image/jpeg" href="/assets/images/nexcoinpr-favicon.jpg" sizes="32x32">
-  <link rel="apple-touch-icon" href="/assets/images/nexcoinpr-favicon.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0A1628">
   <meta property="og:image" content="https://nexcoinpr.com/assets/images/nexcoinpr-logo-dark.jpg">
 </head>
 <body>
@@ -58,8 +61,9 @@
     <div class="container">
       <nav class="nav-bar" aria-label="Main navigation">
         <a href="/" class="nav-logo" aria-label="NexcoinPR home">
-          <span class="logo-text">Nexcoin<span class="logo-accent">PR</span></span>
-        </a>
+        <img src="/favicon.svg" alt="NexcoinPR" width="32" height="32" class="nav-logo-icon">
+        <span class="logo-text">Nexcoin<span class="logo-accent">PR</span></span>
+      </a>
         <ul class="nav-menu" id="nav-menu" role="list">
           <li><a href="/" class="nav-link ">Home</a></li>
           <li class="nav-item-dropdown">
@@ -200,7 +204,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="/" class="footer-logo">Nexcoin<span class="logo-accent">PR</span></a>
+          <a href="/" class="footer-logo" aria-label="NexcoinPR home"><img src="/favicon.svg" alt="NexcoinPR" width="28" height="28" class="footer-logo-icon"><span>Nexcoin<span class="logo-accent">PR</span></span></a>
           <p class="footer-tagline">Premium Crypto, Forex &amp; Financial PR and press release distribution for blockchain, Web3, fintech and financial brands.</p>
           <p class="footer-disclaimer-mini">NexcoinPR is an international PR and media services agency. Content published on this site does not constitute financial, investment or trading advice.</p>
         </div>

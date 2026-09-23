@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 48" width="280" height="48">
+  <defs>
+    <!-- Background Gradient -->
+    <radialGradient id="logoBgGrad" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#0F223D"/>
+      <stop offset="70%" stop-color="#0A1628"/>
+      <stop offset="100%" stop-color="#050B14"/>
+    </radialGradient>
+
+    <!-- Outer Bezel Metal Gradient -->
+    <linearGradient id="logoBezelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3A608F"/>
+      <stop offset="35%" stop-color="#1E3A5F"/>
+      <stop offset="70%" stop-color="#0F2038"/>
+      <stop offset="100%" stop-color="#2A4A73"/>
+    </linearGradient>
+
+    <!-- Luxury Gold Crescent Gradient -->
+    <linearGradient id="logoGoldCrescent" x1="0%" y1="100%" x2="50%" y2="0%">
+      <stop offset="0%" stop-color="#8A6518"/>
+      <stop offset="25%" stop-color="#C9A84C"/>
+      <stop offset="50%" stop-color="#FBE285"/>
+      <stop offset="75%" stop-color="#E5B842"/>
+      <stop offset="100%" stop-color="#8A6518"/>
+    </linearGradient>
+
+    <!-- Cyber Cyan-Blue Globe Gradient -->
+    <linearGradient id="logoGlobeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7DD3FC"/>
+      <stop offset="40%" stop-color="#38BDF8"/>
+      <stop offset="80%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#0369A1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- EMBLEM ICON (Center at 24, 24, radius 22) -->
+  <g id="logo-emblem">
+    <!-- Base Outer Circle -->
+    <circle cx="24" cy="24" r="22" fill="url(#logoBgGrad)" stroke="#1E3A5F" stroke-width="1.2"/>
+
+    <!-- Outer Bezel Ring -->
+    <circle cx="24" cy="24" r="19" fill="none" stroke="url(#logoBezelGrad)" stroke-width="2"/>
+
+    <!-- Glowing Gold Crescent on Left Rim -->
+    <path d="M 24,6 A 18,18 0 0,0 8,32 A 18,18 0 0,1 14,12 A 18,18 0 0,1 24,6 Z" 
+          fill="url(#logoGoldCrescent)"/>
+
+    <!-- Inner Globe Recess -->
+    <circle cx="24" cy="24" r="13" fill="#071322"/>
+
+    <!-- Wireframe Globe Sphere -->
+    <circle cx="24" cy="24" r="12.5" fill="none" stroke="url(#logoGlobeGrad)" stroke-width="1.5"/>
+
+    <!-- Equator and Central Meridian -->
+    <line x1="11.5" y1="24" x2="36.5" y2="24" stroke="url(#logoGlobeGrad)" stroke-width="1.2"/>
+    <line x1="24" y1="11.5" x2="24" y2="36.5" stroke="url(#logoGlobeGrad)" stroke-width="1.2"/>
+
+    <!-- Longitude Curves -->
+    <ellipse cx="24" cy="24" rx="5" ry="12.5" fill="none" stroke="url(#logoGlobeGrad)" stroke-width="1"/>
+    <ellipse cx="24" cy="24" rx="9" ry="12.5" fill="none" stroke="url(#logoGlobeGrad)" stroke-width="1"/>
+
+    <!-- Latitude Curves -->
+    <path d="M 14,19 Q 24,21 34,19" fill="none" stroke="url(#logoGlobeGrad)" stroke-width="0.8"/>
+    <path d="M 14,29 Q 24,27 34,29" fill="none" stroke="url(#logoGlobeGrad)" stroke-width="0.8"/>
+
+    <!-- Intersection Core Node -->
+    <circle cx="24" cy="24" r="1.5" fill="#FFFFFF"/>
+  </g>
+
+  <!-- WORDMARK TYPOGRAPHY -->
+  <text x="56" y="31" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="21" font-weight="800" letter-spacing="-0.02em">
+    <tspan fill="#FFFFFF">NEXCOIN</tspan><tspan fill="#C9A84C">PR</tspan>
+  </text>
+</svg>
