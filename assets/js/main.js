@@ -654,6 +654,24 @@
     const form = document.getElementById('contact-form');
     if (!form) return;
 
+    // Auto-populate message if user clicked from pricing page (?package= or ?placement=)
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const placementParam = urlParams.get('placement');
+      const packageParam = urlParams.get('package');
+      const messageField = document.getElementById('contact-message');
+
+      if (messageField && !messageField.value.trim()) {
+        if (placementParam) {
+          messageField.value = `Hello NexcoinPR Team,\n\nI would like to order a direct single publication placement on "${placementParam}".\n\nPlease send me the editorial guidelines, compliance requirements, and invoice/payment options for this placement.\n\nProject / Company Name:\nTarget Date:\n`;
+        } else if (packageParam) {
+          messageField.value = `Hello NexcoinPR Team,\n\nI would like to order the "${packageParam}" media distribution package.\n\nPlease provide onboarding instructions, asset submission guidelines, and payment options.\n\nProject / Company Name:\nTarget Date:\n`;
+        }
+      }
+    } catch (err) {
+      // Ignore URL parsing errors
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       let valid = true;
