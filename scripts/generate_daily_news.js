@@ -312,8 +312,10 @@ function generateArticleHtml(article) {
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/assets/css/main.css?v=6.0">
+  <link rel="stylesheet" href="/assets/css/components.css?v=6.0">
+  <link rel="stylesheet" href="/assets/css/pages.css?v=6.0">
 
   <!-- Schema.org NewsArticle -->
   <script type="application/ld+json">
@@ -569,6 +571,16 @@ async function main() {
         <p>Global financial liquidity continues to react with heightened sensitivity toward interest rate projections, central bank communications, and cross-border capital rotations. Market participants observing the latest developments reported by ${cand.source} note that macro data points are driving rapid repositioning across institutional portfolios.</p>
         <p>As sovereign bond yields adjust and inflation readings prompt revised forward guidance, asset managers are evaluating duration risk and collateral quality with renewed discipline. The interplay between traditional fixed income securities and digital or foreign exchange assets remains a primary focus for institutional risk committees.</p>
 
+        <div class="article-metrics-box">
+          <h3>Key Market Levels and Primary Indicators</h3>
+          <ul>
+            <li><strong>Primary Asset Focus:</strong> Macro volatility drivers reported by ${cand.source} establishing directional price structure.</li>
+            <li><strong>Yield and Liquidity Differential:</strong> Benchmark sovereign yields and interest rate expectations steering institutional capital flow.</li>
+            <li><strong>Derivatives Positioning:</strong> Options skew and basis spreads reflecting measured risk mitigation across desks.</li>
+            <li><strong>Institutional Flow Profile:</strong> Balanced OTC settlement volumes and prime brokerage allocations maintaining steady liquidity depth.</li>
+          </ul>
+        </div>
+
         <h2>Technical Price Structure and Market Depth</h2>
         <p>Order book analysis reveals consolidated liquidity bands around key psychological barriers. Spot volumes indicate that trading desks are defending established support ranges while testing higher resistance blocks. High-frequency execution algorithms continue to dictate short-term order flow, capitalizing on structural spread variations between tier-one exchanges and OTC liquidity pools.</p>
         <p>Momentum indicators show balanced positioning, though implied volatility skew suggests traders are actively securing downside hedging protection. Market depth across major trading pairs highlights disciplined participation from institutional market makers.</p>
@@ -576,9 +588,9 @@ async function main() {
         <h2>Institutional Sentiment and Flow Dynamics</h2>
         <p>Custodial metrics and on-chain or interbank settlement volumes underscore steady capital retention. Rather than aggressive directional speculation, prime brokers report elevated client demand for basis trading, structured yield harvesting, and delta-neutral arbitrage. This maturity reflects a transitioning market regime where institutional infrastructure plays a central role.</p>
 
-        <h2>Strategic Communications and Public Relations Advisory</h2>
+        <h2>Corporate Communications and Public Relations Advisory</h2>
         <p>In periods of intense volatility and regulatory observation, proactive corporate communications become essential for market participants. Protocols, digital asset custodians, and forex brokerages must communicate transparent operational updates, balance sheet health, and governance standards to maintain client confidence.</p>
-        <p>NexcoinPR assists leadership teams in executing institutional public relations campaigns, securing targeted coverage across global financial networks, and articulating strategic market updates to accredited investors and institutional partners.</p>
+        <p>NexcoinPR assists leadership teams in executing institutional public relations campaigns, securing targeted coverage across global financial networks, and articulating verified market updates to accredited investors and institutional partners.</p>
       `
     };
 

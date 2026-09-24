@@ -2296,3 +2296,68 @@ html, body {
   text-align: center !important;
   margin-inline: auto !important;
 }
+
+/* =============================================================================
+   Article Key Metrics & Indicators Callout Box (Standard)
+   ============================================================================= */
+.article-metrics-box,
+.article-callout-dark {
+  margin: 32px 0 !important;
+  padding: 22px 26px !important;
+  background-color: var(--color-navy, #0A1628) !important;
+  border-left: 4px solid var(--color-gold, #D4AF37) !important;
+  border-radius: var(--radius-md, 8px) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 20px rgba(10, 22, 40, 0.12) !important;
+}
+
+.article-metrics-box h3,
+.article-callout-dark h3 {
+  color: var(--color-gold, #D4AF37) !important;
+  margin-top: 0 !important;
+  margin-bottom: 14px !important;
+  font-size: 1.15rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+}
+
+.article-metrics-box ul,
+.article-callout-dark ul {
+  margin: 0 !important;
+  padding-left: 22px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+.article-body .article-metrics-box li,
+.article-body .article-callout-dark li,
+.main-content-col .article-metrics-box li,
+.main-content-col .article-callout-dark li,
+.article-metrics-box li,
+.article-callout-dark li {
+  color: #f0f4f8 !important;
+  font-size: 0.95rem !important;
+  line-height: 1.65 !important;
+  padding-left: 4px !important;
+}
+
+.article-body .article-metrics-box li::marker,
+.article-body .article-callout-dark li::marker,
+.main-content-col .article-metrics-box li::marker,
+.main-content-col .article-callout-dark li::marker,
+.article-metrics-box li::marker,
+.article-callout-dark li::marker {
+  color: var(--color-gold, #D4AF37) !important;
+}
+
+.article-body .article-metrics-box li strong,
+.article-body .article-callout-dark li strong,
+.main-content-col .article-metrics-box li strong,
+.main-content-col .article-callout-dark li strong,
+.article-metrics-box li strong,
+.article-callout-dark li strong {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
