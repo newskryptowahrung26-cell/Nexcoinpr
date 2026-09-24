@@ -35,5 +35,6 @@ jobs:
             echo "No new daily news articles generated today."
           else
             git commit -m "Auto-generate daily news from CoinDesk and Forex.com [skip ci]"
+            git pull --rebase origin main
             git push origin main
           fi

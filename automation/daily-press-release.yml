@@ -38,5 +38,6 @@ jobs:
             echo "No new press release found today."
           else
             git commit -m "Auto-fetch daily press releases from FinanceWire and Decrypt [skip ci]"
+            git pull --rebase origin main
             git push origin main
           fi
