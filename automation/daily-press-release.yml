@@ -23,6 +23,9 @@ jobs:
       - name: Fetch daily press release from FinanceWire
         run: node scripts/fetch_financewire.js
 
+      - name: Fetch daily press release from Decrypt
+        run: node scripts/fetch_decrypt.js
+
       - name: Verify site integrity
         run: node verify_site.js
 
@@ -34,6 +37,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "No new press release found today."
           else
-            git commit -m "Auto-fetch daily press release from FinanceWire [skip ci]"
+            git commit -m "Auto-fetch daily press releases from FinanceWire and Decrypt [skip ci]"
             git push origin main
           fi
