@@ -53,6 +53,28 @@ function cleanDashesAndAi(text) {
   return str.trim();
 }
 
+function createSummary(text, maxLength = 140) {
+  if (!text) return '';
+  let str = text.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  // Strip leading wire datelines if present (e.g. "CITY, Date, Wire")
+  str = str.replace(/^[A-Za-z\s,.-]+,\s+(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d+(?:st|nd|rd|th)?,\s+\d{4},\s+(?:Chainwire|FinanceWire|Newswire|PR Newswire|Business Wire|GlobeNewswire)\s*/i, '');
+  str = cleanDashesAndAi(str);
+  str = str.replace(/\s+/g, ' ').trim();
+  
+  if (str.length <= maxLength) return str;
+
+  // Truncate at word boundary to fit strictly within maxLength (accounting for '...')
+  const target = maxLength - 3;
+  let truncated = str.slice(0, target);
+  const lastSpace = truncated.lastIndexOf(' ');
+  if (lastSpace > target * 0.65) {
+    truncated = truncated.slice(0, lastSpace);
+  }
+  truncated = truncated.replace(/[,;:. -]+$/, '');
+  const result = truncated + '...';
+  return result.length > maxLength ? result.slice(0, maxLength) : result;
+}
+
 function slugify(text) {
   return text
     .toLowerCase()
@@ -204,9 +226,8 @@ async function run() {
   const articleUrl = `/press-releases/${slug}`;
   const fullArticleUrl = `https://nexcoinpr.com/press-releases/${slug}`;
 
-  // Plain text excerpt (first 240 chars)
-  const plainText = bodyContent.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-  const excerpt = cleanDashesAndAi(plainText.slice(0, 240) + '...');
+  // SEO Summary (strictly locked to max 140 characters)
+  const excerpt = createSummary(bodyContent, 140);
 
   const catObj = determineCategory(cleanTitle, bodyContent);
   const category = catObj.primary;
