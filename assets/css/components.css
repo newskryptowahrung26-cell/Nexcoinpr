@@ -528,6 +528,97 @@
   -webkit-line-clamp: 3;
 }
 
+/* News Hero Card (Featured on News Index) */
+.news-hero-card {
+  display: flex;
+  flex-direction: row;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.news-hero-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.news-hero-card-visual {
+  width: 45%;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  background: var(--color-navy-mid);
+}
+
+.news-hero-card-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.news-hero-card:hover .news-hero-card-visual img {
+  transform: scale(1.04);
+}
+
+.news-hero-card-body {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  flex: 1;
+}
+
+.news-hero-card-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+.news-hero-card-excerpt {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Article Featured Image */
+.article-featured-image {
+  margin: 0 0 var(--space-6) 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  background: var(--color-navy-mid);
+}
+
+.article-featured-image img {
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  object-fit: cover;
+  display: block;
+}
+
+.article-featured-image figcaption {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-gray-50);
+  border-top: 1px solid var(--color-border);
+}
+
+@media (max-width: 768px) {
+  .news-hero-card {
+    flex-direction: column;
+  }
+  .news-hero-card-visual {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+}
+
 /* PR Card */
 .pr-card {
   background: var(--color-white);

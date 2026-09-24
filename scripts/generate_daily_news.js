@@ -11,6 +11,10 @@ const FOREX_HTML_FILE = path.join(ROOT_DIR, 'news', 'forex.html');
 const SITEMAP_NEWS_FILE = path.join(ROOT_DIR, 'sitemap-news.xml');
 const SITEMAP_INDEX_FILE = path.join(ROOT_DIR, 'sitemap.xml');
 const NEWS_DIR = path.join(ROOT_DIR, 'news');
+const NEWS_IMAGES_DIR = path.join(ROOT_DIR, 'assets', 'images', 'news');
+if (!fs.existsSync(NEWS_IMAGES_DIR)) {
+  fs.mkdirSync(NEWS_IMAGES_DIR, { recursive: true });
+}
 
 // Banned AI words list
 const BANNED_WORDS = [
@@ -118,9 +122,17 @@ function fetchUrl(url, timeoutMs = 12000) {
     const client = isHttps ? https : http;
     const req = client.get(url, {
       headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
         'Accept-Language': 'en-US,en;q=0.9',
+        'Sec-Ch-Ua': '"Chromium";v="130", "Google Chrome";v="130", "Not?A_Brand";v="99"',
+        'Sec-Ch-Ua-Mobile': '?0',
+        'Sec-Ch-Ua-Platform': '"Windows"',
+        'Sec-Fetch-Dest': 'document',
+        'Sec-Fetch-Mode': 'navigate',
+        'Sec-Fetch-Site': 'none',
+        'Sec-Fetch-User': '?1',
+        'Upgrade-Insecure-Requests': '1'
       },
       timeout: timeoutMs
     }, (res) => {
@@ -147,9 +159,103 @@ function fetchUrl(url, timeoutMs = 12000) {
   });
 }
 
+function downloadImage(url, destPath) {
+  return new Promise((resolve, reject) => {
+    const isHttps = url.startsWith('https://');
+    const client = isHttps ? https : http;
+    const req = client.get(url, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36',
+        'Accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8'
+      },
+      timeout: 12000
+    }, (res) => {
+      if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
+        let redirectUrl = res.headers.location;
+        if (redirectUrl.startsWith('/')) {
+          const parsed = new URL(url);
+          redirectUrl = `${parsed.protocol}//${parsed.host}${redirectUrl}`;
+        }
+        return downloadImage(redirectUrl, destPath).then(resolve).catch(reject);
+      }
+      if (res.statusCode !== 200) {
+        return reject(new Error(`Failed to download image, status: ${res.statusCode}`));
+      }
+      const fileStream = fs.createWriteStream(destPath);
+      res.pipe(fileStream);
+      fileStream.on('finish', () => {
+        fileStream.close(() => resolve(destPath));
+      });
+      fileStream.on('error', (err) => {
+        fs.unlink(destPath, () => {});
+        reject(err);
+      });
+    });
+    req.on('timeout', () => {
+      req.destroy();
+      reject(new Error(`Image download timeout for ${url}`));
+    });
+    req.on('error', reject);
+  });
+}
+
+function decodeHtmlEntities(str) {
+  if (!str) return '';
+  return str
+    .replace(/&#x27;|&#39;|&apos;|&#8217;/gi, "'")
+    .replace(/&quot;|&#8220;|&#8221;/gi, '"')
+    .replace(/&amp;/gi, '&')
+    .replace(/&lt;/gi, '<')
+    .replace(/&gt;/gi, '>')
+    .replace(/&nbsp;/gi, ' ');
+}
+
+async function fetchArticleMetadataAndImage(articleUrl, defaultCategory, slug) {
+  let title = '';
+  let imageUrl = defaultCategory === 'Crypto'
+    ? '/assets/images/news/default-crypto.png'
+    : '/assets/images/news/default-forex.jpg';
+
+  try {
+    const pageHtml = await fetchUrl(articleUrl, 10000);
+
+    // Extract real title if available
+    const ogTitleMatch = pageHtml.match(/<meta\s+(?:property|name)=["']og:title["']\s+content=["']([^"']+)["']/i);
+    const h1Match = pageHtml.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+    if (ogTitleMatch && ogTitleMatch[1].trim()) {
+      title = decodeHtmlEntities(ogTitleMatch[1].trim());
+    } else if (h1Match && h1Match[1].trim()) {
+      title = decodeHtmlEntities(h1Match[1].replace(/<[^>]+>/g, '').trim());
+    }
+
+    // Extract og:image or twitter:image
+    const imgMatch = pageHtml.match(/<meta\s+(?:property|name)=["'](?:og:image|twitter:image)["']\s+content=["']([^"']+)["']/i);
+    if (imgMatch && imgMatch[1]) {
+      const remoteImgUrl = imgMatch[1];
+      const extMatch = remoteImgUrl.match(/\.(png|jpg|jpeg|webp)/i);
+      const ext = extMatch ? extMatch[1].toLowerCase() : 'png';
+      const localFileName = `${slug}.${ext}`;
+      const localFilePath = path.join(NEWS_IMAGES_DIR, localFileName);
+
+      try {
+        console.log(`Downloading article image from ${remoteImgUrl}...`);
+        await downloadImage(remoteImgUrl, localFilePath);
+        imageUrl = `/assets/images/news/${localFileName}`;
+        console.log(`Successfully saved featured image to ${imageUrl}`);
+      } catch (dlErr) {
+        console.warn(`Failed to download remote image (${remoteImgUrl}):`, dlErr.message);
+      }
+    }
+  } catch (err) {
+    console.warn(`Could not fetch article metadata from ${articleUrl}:`, err.message);
+  }
+
+  return { title, imageUrl };
+}
+
 function cleanDashesAndAi(text) {
   if (!text) return '';
-  let str = text;
+  let str = decodeHtmlEntities(text);
 
   // 1. Remove and replace dashes
   str = str.replace(/—|&mdash;/g, ', ');
@@ -181,7 +287,7 @@ function cleanDashesAndAi(text) {
 }
 
 function makeSlug(text) {
-  return text
+  return decodeHtmlEntities(text)
     .toLowerCase()
     .replace(/[^\w\s-]/g, '')
     .trim()
@@ -233,14 +339,19 @@ async function fetchCoinDeskCandidate(importedUrls) {
       const fullUrl = 'https://www.coindesk.com' + match[1];
       const slug = match[2];
       if (!importedUrls.includes(fullUrl) && slug.length > 10) {
-        // Humanize title from slug
+        // Humanize title from slug as fallback
         const words = slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1));
         const estimatedTitle = words.join(' ');
+
+        // Fetch real metadata and image
+        const meta = await fetchArticleMetadataAndImage(fullUrl, 'Crypto', slug);
+
         return {
           source: 'CoinDesk',
           url: fullUrl,
           slug: slug,
-          title: estimatedTitle,
+          title: meta.title || estimatedTitle,
+          imageUrl: meta.imageUrl,
           category: 'Crypto',
           badgeClass: 'badge-crypto'
         };
@@ -265,11 +376,16 @@ async function fetchForexCandidate(importedUrls) {
       if (!importedUrls.includes(fullUrl) && slug.length > 10 && !slug.includes('market-insights-')) {
         const words = slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1));
         const estimatedTitle = words.join(' ');
+
+        // Fetch real metadata and image
+        const meta = await fetchArticleMetadataAndImage(fullUrl, 'Forex', slug);
+
         return {
           source: 'FOREX.com',
           url: fullUrl,
           slug: slug,
-          title: estimatedTitle,
+          title: meta.title || estimatedTitle,
+          imageUrl: meta.imageUrl,
           category: 'Forex',
           badgeClass: 'badge-forex'
         };
@@ -302,11 +418,13 @@ function generateArticleHtml(article) {
   <meta property="og:url" content="${canonicalUrl}">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="NexcoinPR">
+  <meta property="og:image" content="${article.absoluteImageUrl}">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${article.seoTitle}">
   <meta name="twitter:description" content="${article.metaDescription}">
+  <meta name="twitter:image" content="${article.absoluteImageUrl}">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -324,6 +442,7 @@ function generateArticleHtml(article) {
     "@type": "NewsArticle",
     "headline": "${article.headlineJson}",
     "description": "${article.metaDescription}",
+    "image": "${article.absoluteImageUrl}",
     "url": "${canonicalUrl}",
     "datePublished": "${isoDate}",
     "dateModified": "${isoDate}",
@@ -393,6 +512,14 @@ function generateArticleHtml(article) {
         </div>
       </header>
 
+      <!-- Featured Article Visual -->
+      <figure class="article-featured-image" style="margin-bottom: 28px;">
+        <img src="${article.imageUrl}" alt="${article.title}" style="width:100%;height:auto;max-height:480px;object-fit:cover;display:block;" loading="eager">
+        <figcaption style="font-size:0.85rem;color:#718096;padding:8px 14px;background:#f8fafc;border-top:1px solid #e2e8f0;">
+          ${article.title}. Visual market coverage and data intelligence. Source: ${article.sourceName} / NexcoinPR.
+        </figcaption>
+      </figure>
+
       <div class="article-content" style="font-size: 1.05rem; line-height: 1.75; color: #2d3748;">
         ${article.bodyHtml}
 
@@ -439,7 +566,7 @@ function updateNewsHub(article) {
   const cardHtml = `              <!-- Daily Article: ${article.slug} -->
               <article class="news-card">
                 <div class="news-card-image">
-                  <div class="news-card-image-placeholder">${article.category === 'Crypto' ? '₿' : '💱'}</div>
+                  <img src="${article.imageUrl}" alt="${article.title}" loading="lazy">
                 </div>
                 <div class="news-card-body">
                   <div class="news-card-meta">
@@ -470,7 +597,7 @@ function updateCategoryHub(article) {
   let content = fs.readFileSync(targetFile, 'utf8');
 
   const cardHtml = `              <article class="news-card">
-                <div class="news-card-image"><div class="news-card-image-placeholder">${article.category === 'Crypto' ? '₿' : '💱'}</div></div>
+                <div class="news-card-image"><img src="${article.imageUrl}" alt="${article.title}" loading="lazy"></div>
                 <div class="news-card-body">
                   <div class="news-card-meta">
                     <span class="badge ${article.badgeClass}">${article.category}</span>
@@ -647,6 +774,14 @@ function generateForexBody(cand) {
       ? generateCryptoBody(cand)
       : generateForexBody(cand);
 
+    const defaultImage = cand.category === 'Crypto'
+      ? '/assets/images/news/default-crypto.png'
+      : '/assets/images/news/default-forex.jpg';
+    const finalImageUrl = cand.imageUrl || defaultImage;
+    const absImageUrl = finalImageUrl.startsWith('http')
+      ? finalImageUrl
+      : `https://nexcoinpr.com${finalImageUrl}`;
+
     const articleData = {
       sourceName: cand.source,
       sourceUrl: cand.url,
@@ -659,6 +794,8 @@ function generateForexBody(cand) {
       metaDescription: metaDesc,
       introLead: cleanDashesAndAi(`Institutional positioning and macro factors dictate market direction as ${cand.source} reports fresh volatility and structural shifts across global trading desks.`),
       featuredSnippet: cleanDashesAndAi(snippetText),
+      imageUrl: finalImageUrl,
+      absoluteImageUrl: absImageUrl,
       ymdDate: ymdDate,
       isoDate: isoDate,
       dateString: dateString,
