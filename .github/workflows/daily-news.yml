@@ -26,6 +26,13 @@ jobs:
       - name: Verify site integrity
         run: node verify_site.js
 
+      - name: Auto-post to LinkedIn
+        continue-on-error: true
+        env:
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          LINKEDIN_ORG_ID: ${{ secrets.LINKEDIN_ORG_ID || '106105732' }}
+        run: node scripts/post_to_linkedin.js
+
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"
