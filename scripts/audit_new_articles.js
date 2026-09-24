@@ -3,7 +3,8 @@ const path = require('path');
 
 const files = [
   path.join(__dirname, '..', 'news', 'bitcoin-slips-under-84k-us-treasury-yields-surge.html'),
-  path.join(__dirname, '..', 'news', 'usd-jpy-outlook-fed-recalibration-pressures-yen.html')
+  path.join(__dirname, '..', 'news', 'usd-jpy-outlook-fed-recalibration-pressures-yen.html'),
+  path.join(__dirname, '..', 'news', 'trump-administration-weighs-a-global-stablecoin-plan-to-cement-dollar-s-dom.html')
 ];
 
 const bannedWords = [
