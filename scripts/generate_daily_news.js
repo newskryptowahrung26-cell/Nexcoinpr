@@ -448,8 +448,8 @@ function updateNewsHub(article) {
                 </div>
               </article>`;
 
-  // Insert at top of grid-3
-  const gridMatch = content.match(/<div class="grid-3"[^>]*>/);
+  // Insert at top of grid
+  const gridMatch = content.match(/<div class="(?:grid-3|grid-2)"[^>]*>/);
   if (gridMatch) {
     const insertPos = gridMatch.index + gridMatch[0].length;
     content = content.slice(0, insertPos) + '\n' + cardHtml + content.slice(insertPos);
