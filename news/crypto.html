@@ -130,19 +130,19 @@
 
             <!-- Sub-category nav -->
             <nav class="subcat-nav" aria-label="Crypto sub-categories">
-              <a href="/news/crypto.html" class="cat-pill cat-pill-active">All Crypto</a>
-              <a href="/news/crypto.html" class="cat-pill">Bitcoin</a>
-              <a href="/news/crypto.html" class="cat-pill">Ethereum</a>
-              <a href="/news/crypto.html" class="cat-pill">Altcoins</a>
-              <a href="/news/web3.html" class="cat-pill">DeFi</a>
-              <a href="/news/web3.html" class="cat-pill">NFT</a>
-              <a href="/news/financial-markets.html" class="cat-pill">Crypto Regulation</a>
+              <a href="/news/crypto.html" class="cat-pill cat-pill-active" data-filter="all">All Crypto</a>
+              <a href="/news/crypto.html?category=bitcoin" class="cat-pill" data-filter="bitcoin">Bitcoin</a>
+              <a href="/news/crypto.html?category=ethereum" class="cat-pill" data-filter="ethereum">Ethereum</a>
+              <a href="/news/crypto.html?category=altcoins" class="cat-pill" data-filter="altcoins">Altcoins</a>
+              <a href="/news/web3.html?category=defi" class="cat-pill" data-filter="defi">DeFi</a>
+              <a href="/news/web3.html?category=nft" class="cat-pill" data-filter="nft">NFT</a>
+              <a href="/news/financial-markets.html" class="cat-pill" data-filter="regulation">Crypto Regulation</a>
               <a href="/crypto-pr.html" class="cat-pill">Crypto PR</a>
             </nav>
 
             <!-- 9 News Cards -->
-            <div class="grid-3">
-              <article class="news-card">
+            <div class="grid-3" data-news-container>
+              <article class="news-card" data-category="crypto regulation stablecoin">
                 <div class="news-card-image"><img src="/assets/images/news/trump-stablecoin-dollar-dominance.jpg" alt="Trump Administration Weighs Global Stablecoin Framework for US Dollar Dominance" loading="lazy"></div>
                 <div class="news-card-body">
                   <div class="news-card-meta">
@@ -155,7 +155,7 @@
                   <a href="/news/trump-administration-weighs-a-global-stablecoin-plan-to-cement-dollar-s-dom.html" class="news-card-link">Read more &rarr;</a>
                 </div>
               </article>
-              <article class="news-card">
+              <article class="news-card" data-category="crypto bitcoin altcoins">
                 <div class="news-card-image"><img src="/assets/images/news/bitcoin-dogecoin-selloff.png" alt="Dogecoin Slides 8%, Bitcoin Drops Under $84,000 as Treasury Yields Hit 2007 Highs" loading="lazy"></div>
                 <div class="news-card-body">
                   <div class="news-card-meta">
@@ -169,7 +169,7 @@
                 </div>
               </article>
 
-              <article class="news-card">
+              <article class="news-card" data-category="crypto regulation">
                 <div class="news-card-image"><div class="news-card-image-placeholder">🏛️</div></div>
                 <div class="news-card-body">
                   <div class="news-card-meta"><span class="badge badge-crypto">Crypto</span><span class="news-card-date">22 Sep 2026</span></div>
@@ -179,7 +179,7 @@
                 </div>
               </article>
 
-              <article class="news-card">
+              <article class="news-card" data-category="crypto bitcoin">
                 <div class="news-card-image"><div class="news-card-image-placeholder">₿</div></div>
                 <div class="news-card-body">
                   <div class="news-card-meta"><span class="badge badge-crypto">Bitcoin</span><span class="news-card-date">21 Sep 2026</span></div>
@@ -189,7 +189,7 @@
                 </div>
               </article>
 
-              <article class="news-card">
+              <article class="news-card" data-category="crypto regulation">
                 <div class="news-card-image"><div class="news-card-image-placeholder">🔐</div></div>
                 <div class="news-card-body">
                   <div class="news-card-meta"><span class="badge badge-crypto">Crypto</span><span class="news-card-date">21 Sep 2026</span></div>
@@ -199,17 +199,17 @@
                 </div>
               </article>
 
-              <article class="news-card">
+              <article class="news-card" data-category="crypto defi">
                 <div class="news-card-image"><div class="news-card-image-placeholder">📊</div></div>
                 <div class="news-card-body">
                   <div class="news-card-meta"><span class="badge badge-crypto">DeFi</span><span class="news-card-date">20 Sep 2026</span></div>
-                  <h2 class="news-card-title"><a href="#">DeFi Liquidity Protocols Evolve Governance Structures Amid Market Maturation</a></h2>
+                  <h2 class="news-card-title"><a href="/news/web3.html">DeFi Liquidity Protocols Evolve Governance Structures Amid Market Maturation</a></h2>
                   <p class="news-card-excerpt">Leading decentralised finance protocols are revisiting on-chain governance models to address voter participation challenges and improve treasury management speed and output.</p>
-                  <a href="#" class="news-card-link">Read more →</a>
+                  <a href="/news/web3.html" class="news-card-link">Read more →</a>
                 </div>
               </article>
 
-              <article class="news-card">
+              <article class="news-card" data-category="crypto ethereum">
                 <div class="news-card-image"><div class="news-card-image-placeholder">💎</div></div>
                 <div class="news-card-body">
                   <div class="news-card-meta"><span class="badge badge-crypto">Ethereum</span><span class="news-card-date">20 Sep 2026</span></div>
@@ -219,17 +219,17 @@
                 </div>
               </article>
 
-              <article class="news-card">
+              <article class="news-card" data-category="crypto nft">
                 <div class="news-card-image"><div class="news-card-image-placeholder">🖼️</div></div>
                 <div class="news-card-body">
                   <div class="news-card-meta"><span class="badge badge-crypto">NFT</span><span class="news-card-date">19 Sep 2026</span></div>
-                  <h2 class="news-card-title"><a href="#">NFT Utility Models Shift as Creators View Subscription and Membership Structures</a></h2>
+                  <h2 class="news-card-title"><a href="/news/web3.html">NFT Utility Models Shift as Creators View Subscription and Membership Structures</a></h2>
                   <p class="news-card-excerpt">NFT projects are moving away from speculative asset positioning toward utility-driven models, with creators experimenting with subscription-based access and community membership tiers.</p>
-                  <a href="#" class="news-card-link">Read more →</a>
+                  <a href="/news/web3.html" class="news-card-link">Read more →</a>
                 </div>
               </article>
 
-              <article class="news-card">
+              <article class="news-card" data-category="crypto regulation">
                 <div class="news-card-image"><div class="news-card-image-placeholder">📜</div></div>
                 <div class="news-card-body">
                   <div class="news-card-meta"><span class="badge badge-crypto">Regulation</span><span class="news-card-date">18 Sep 2026</span></div>
@@ -239,7 +239,7 @@
                 </div>
               </article>
 
-              <article class="news-card">
+              <article class="news-card" data-category="crypto altcoins">
                 <div class="news-card-image"><div class="news-card-image-placeholder">🪙</div></div>
                 <div class="news-card-body">
                   <div class="news-card-meta"><span class="badge badge-crypto">Altcoins</span><span class="news-card-date">17 Sep 2026</span></div>

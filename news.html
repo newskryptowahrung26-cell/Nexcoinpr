@@ -174,18 +174,18 @@
     <div class="section-white section-sm" style="padding-block: 24px;">
       <div class="container">
         <nav class="cat-nav" aria-label="News categories">
-          <a href="/news.html" class="cat-pill cat-pill-active">All</a>
-          <a href="/news/crypto.html" class="cat-pill">Crypto</a>
-          <a href="/news/crypto.html" class="cat-pill">Bitcoin</a>
-          <a href="/news/crypto.html" class="cat-pill">Ethereum</a>
-          <a href="/news/blockchain.html" class="cat-pill">Blockchain</a>
-          <a href="/news/web3.html" class="cat-pill">DeFi</a>
-          <a href="/news/web3.html" class="cat-pill">Web3</a>
-          <a href="/news/forex.html" class="cat-pill">Forex</a>
-          <a href="/news/forex.html" class="cat-pill">Currencies</a>
-          <a href="/news/fintech.html" class="cat-pill">Fintech</a>
-          <a href="/news/financial-markets.html" class="cat-pill">Financial Markets</a>
-          <a href="/news/crypto.html" class="cat-pill">AI &amp; Crypto</a>
+          <a href="/news.html" class="cat-pill cat-pill-active" data-filter="all">All</a>
+          <a href="/news/crypto.html" class="cat-pill" data-filter="crypto">Crypto</a>
+          <a href="/news/crypto.html?category=bitcoin" class="cat-pill" data-filter="bitcoin">Bitcoin</a>
+          <a href="/news/crypto.html?category=ethereum" class="cat-pill" data-filter="ethereum">Ethereum</a>
+          <a href="/news/blockchain.html" class="cat-pill" data-filter="blockchain">Blockchain</a>
+          <a href="/news/web3.html?category=defi" class="cat-pill" data-filter="defi">DeFi</a>
+          <a href="/news/web3.html" class="cat-pill" data-filter="web3">Web3</a>
+          <a href="/news/forex.html" class="cat-pill" data-filter="forex">Forex</a>
+          <a href="/news/forex.html?category=currencies" class="cat-pill" data-filter="currencies">Currencies</a>
+          <a href="/news/fintech.html" class="cat-pill" data-filter="fintech">Fintech</a>
+          <a href="/news/financial-markets.html" class="cat-pill" data-filter="financial">Financial Markets</a>
+          <a href="/news/crypto.html?category=ai" class="cat-pill" data-filter="ai">AI &amp; Crypto</a>
           <a href="/press-release-distribution.html" class="cat-pill">PR &amp; Media</a>
           <a href="/news/guides.html" class="cat-pill">Guides</a>
         </nav>
@@ -201,7 +201,7 @@
             <!-- Featured News Card -->
             <div style="margin-bottom: 2.5rem;">
               <div class="section-label">Featured Story</div>
-              <article class="news-hero-card" aria-label="Featured article">
+              <article class="news-hero-card" aria-label="Featured article" data-category="crypto bitcoin financial yields markets">
                 <div class="news-hero-card-visual">
                   <img src="/assets/images/news/bitcoin-dogecoin-selloff.png" alt="Dogecoin Slides 8%, Bitcoin Drops Under $84,000 as Treasury Yields Hit 2007 Highs in Crypto Market Selloff" loading="eager">
                 </div>
@@ -229,9 +229,9 @@
               <a href="/news.html" class="see-all-link">View all news →</a>
             </div>
 
-            <div class="grid-2" style="margin-bottom: 3rem;">
-              <!-- Daily Article: trump-administration-weighs-a-global-stablecoin-plan-to-cement-dollar-s-dom -->
-              <article class="news-card">
+            <div class="grid-2" style="margin-bottom: 3rem;" data-news-container>
+              <!-- Card: Trump Stablecoin Plan -->
+              <article class="news-card" data-category="crypto web3 fintech financial currencies us-dollar">
                 <div class="news-card-image">
                   <img src="/assets/images/news/trump-stablecoin-dollar-dominance.jpg" alt="Trump Administration Weighs Global Stablecoin Framework for US Dollar Dominance" loading="lazy">
                 </div>
@@ -246,8 +246,9 @@
                   <a href="/news/trump-administration-weighs-a-global-stablecoin-plan-to-cement-dollar-s-dom.html" class="news-card-link">Read more &rarr;</a>
                 </div>
               </article>
-              <!-- Card 1 (Forex USD/JPY) -->
-              <article class="news-card">
+
+              <!-- Card: Forex USD/JPY -->
+              <article class="news-card" data-category="forex currencies financial central-banks rates">
                 <div class="news-card-image">
                   <img src="/assets/images/news/usdjpy-forex-outlook.jpg" alt="USD/JPY Outlook: Hawkish Federal Reserve Recalibration Mounts Pressure on the Japanese Yen" loading="lazy">
                 </div>
@@ -263,8 +264,8 @@
                 </div>
               </article>
 
-              <!-- Card 2 (Bitcoin Treasury Yields) -->
-              <article class="news-card">
+              <!-- Card: Bitcoin Selloff -->
+              <article class="news-card" data-category="crypto bitcoin financial yields markets">
                 <div class="news-card-image">
                   <img src="/assets/images/news/bitcoin-dogecoin-selloff.png" alt="Dogecoin Slides 8%, Bitcoin Drops Under $84,000 as Treasury Yields Hit 2007 Highs" loading="lazy">
                 </div>
@@ -277,6 +278,86 @@
                   <h3 class="news-card-title"><a href="/news/bitcoin-slips-under-84k-us-treasury-yields-surge.html">Dogecoin Slides 8%, Bitcoin Drops Under $84,000 as Treasury Yields Hit 2007 Highs</a></h3>
                   <p class="news-card-excerpt">Dogecoin fell 8% and Bitcoin slid under $84,000 as surging US Treasury yields and $104 crude oil ignited a broad crypto market selloff.</p>
                   <a href="/news/bitcoin-slips-under-84k-us-treasury-yields-surge.html" class="news-card-link">Read more &rarr;</a>
+                </div>
+              </article>
+
+              <!-- Card: Ethereum Rollup Interoperability -->
+              <article class="news-card" data-category="crypto ethereum blockchain web3">
+                <div class="news-card-image">
+                  <div class="news-card-image-placeholder">💎</div>
+                </div>
+                <div class="news-card-body">
+                  <div class="news-card-meta">
+                    <span class="badge badge-crypto">Ethereum</span>
+                    <span class="news-card-date">22 Sep 2026</span>
+                  </div>
+                  <h3 class="news-card-title"><a href="/news/crypto.html">Ethereum Rollup Ecosystem Expands as Interoperability Standards Develop</a></h3>
+                  <p class="news-card-excerpt">The Ethereum rollup market is diversifying, with new interoperability protocols emerging to connect layer-2 settlement liquidity.</p>
+                  <a href="/news/crypto.html" class="news-card-link">Read more &rarr;</a>
+                </div>
+              </article>
+
+              <!-- Card: Blockchain Zero-Knowledge Provers -->
+              <article class="news-card" data-category="blockchain web3">
+                <div class="news-card-image">
+                  <div class="news-card-image-placeholder">⚡</div>
+                </div>
+                <div class="news-card-body">
+                  <div class="news-card-meta">
+                    <span class="badge badge-blockchain">Blockchain</span>
+                    <span class="news-card-date">22 Sep 2026</span>
+                  </div>
+                  <h3 class="news-card-title"><a href="/news/blockchain.html">Zero-Knowledge Prover Verification Costs Drop Across Major Testnets</a></h3>
+                  <p class="news-card-excerpt">Hardware acceleration optimizations compress verification latency and gas requirements for modular rollup architectures.</p>
+                  <a href="/news/blockchain.html" class="news-card-link">Read more &rarr;</a>
+                </div>
+              </article>
+
+              <!-- Card: DeFi Liquidity Governance -->
+              <article class="news-card" data-category="web3 defi crypto">
+                <div class="news-card-image">
+                  <div class="news-card-image-placeholder">📊</div>
+                </div>
+                <div class="news-card-body">
+                  <div class="news-card-meta">
+                    <span class="badge badge-crypto">DeFi</span>
+                    <span class="news-card-date">20 Sep 2026</span>
+                  </div>
+                  <h3 class="news-card-title"><a href="/news/web3.html">DeFi Liquidity Protocols Evolve Governance Structures Amid Maturation</a></h3>
+                  <p class="news-card-excerpt">Leading decentralized finance protocols adjust on-chain governance mechanisms to improve treasury execution and protocol safety.</p>
+                  <a href="/news/web3.html" class="news-card-link">Read more &rarr;</a>
+                </div>
+              </article>
+
+              <!-- Card: Fintech Instant Cross-Border Rails -->
+              <article class="news-card" data-category="fintech forex payments currencies">
+                <div class="news-card-image">
+                  <div class="news-card-image-placeholder">💳</div>
+                </div>
+                <div class="news-card-body">
+                  <div class="news-card-meta">
+                    <span class="badge badge-fintech">Fintech</span>
+                    <span class="news-card-date">23 Sep 2026</span>
+                  </div>
+                  <h3 class="news-card-title"><a href="/news/fintech.html">Cross-Border Payment Rails Accelerate Instant Settlement Infrastructure</a></h3>
+                  <p class="news-card-excerpt">Commercial payment operators deploy automated routing networks to lower corporate cross-border fees and remove correspondent delays.</p>
+                  <a href="/news/fintech.html" class="news-card-link">Read more &rarr;</a>
+                </div>
+              </article>
+
+              <!-- Card: AI & Crypto Agentic Networks -->
+              <article class="news-card" data-category="crypto ai web3 fintech">
+                <div class="news-card-image">
+                  <div class="news-card-image-placeholder">🤖</div>
+                </div>
+                <div class="news-card-body">
+                  <div class="news-card-meta">
+                    <span class="badge badge-crypto">AI &amp; Crypto</span>
+                    <span class="news-card-date">21 Sep 2026</span>
+                  </div>
+                  <h3 class="news-card-title"><a href="/news/crypto.html">Autonomous AI Agents Adopt Micropayment Protocols on High-Speed Ledgers</a></h3>
+                  <p class="news-card-excerpt">Developers deploy specialized cryptographic wallets for autonomous AI software agents to transact compute and data resources directly.</p>
+                  <a href="/news/crypto.html" class="news-card-link">Read more &rarr;</a>
                 </div>
               </article>
             </div>

@@ -854,6 +854,154 @@
   }
 
   /* ===========================================================================
+     NEWS CATEGORY FILTERING
+     =========================================================================== */
+
+  function initNewsFilter() {
+    const filterButtons = document.querySelectorAll('.cat-nav .cat-pill, .subcat-nav .cat-pill, .news-cat-nav .cat-pill');
+    const container = document.querySelector('[data-news-container]');
+    if (!filterButtons.length || !container) return;
+
+    const cards = Array.from(container.querySelectorAll('.news-card'));
+    const heroCard = document.querySelector('.news-hero-card');
+
+    let emptyState = document.getElementById('news-empty-state');
+    if (!emptyState) {
+      emptyState = document.createElement('div');
+      emptyState.id = 'news-empty-state';
+      emptyState.className = 'news-empty-state';
+      emptyState.style.display = 'none';
+      emptyState.style.width = '100%';
+      emptyState.style.gridColumn = '1 / -1';
+      container.appendChild(emptyState);
+    }
+
+    const hubRoutes = {
+      crypto: '/news/crypto.html',
+      bitcoin: '/news/crypto.html',
+      ethereum: '/news/crypto.html',
+      blockchain: '/news/blockchain.html',
+      web3: '/news/web3.html',
+      defi: '/news/web3.html',
+      forex: '/news/forex.html',
+      currencies: '/news/forex.html',
+      fintech: '/news/fintech.html',
+      financial: '/news/financial-markets.html',
+      ai: '/news/crypto.html'
+    };
+
+    function applyNewsFilter(cat, updateUrl) {
+      if (typeof updateUrl === 'undefined') updateUrl = true;
+      const activeCat = (cat || 'all').toLowerCase().trim();
+      let visibleCount = 0;
+
+      // Update active styling on filter pills
+      filterButtons.forEach(function (btn) {
+        const btnCat = (btn.getAttribute('data-filter') || '').toLowerCase().trim();
+        if (btnCat === activeCat) {
+          btn.classList.add('cat-pill-active', 'active');
+          btn.setAttribute('aria-pressed', 'true');
+        } else {
+          btn.classList.remove('cat-pill-active', 'active');
+          btn.setAttribute('aria-pressed', 'false');
+        }
+      });
+
+      // Filter grid cards
+      cards.forEach(function (card) {
+        const rawCat = (card.getAttribute('data-category') || '').toLowerCase();
+        const cardCats = rawCat.split(/\s+/).filter(Boolean);
+        const matches = (activeCat === 'all' || cardCats.includes(activeCat));
+
+        if (matches) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Filter hero card if present on page
+      if (heroCard) {
+        const heroParent = heroCard.closest('div');
+        const rawCat = (heroCard.getAttribute('data-category') || 'crypto bitcoin markets').toLowerCase();
+        const heroCats = rawCat.split(/\s+/).filter(Boolean);
+        const heroMatches = (activeCat === 'all' || heroCats.includes(activeCat));
+        if (heroParent && heroParent.previousElementSibling && heroParent.previousElementSibling.classList.contains('section-label')) {
+          // If in standalone featured block
+          heroParent.style.display = heroMatches ? '' : 'none';
+        } else {
+          heroCard.style.display = heroMatches ? '' : 'none';
+        }
+        if (heroMatches) visibleCount++;
+      }
+
+      // Handle empty state
+      if (visibleCount === 0) {
+        const destHub = hubRoutes[activeCat] || '/news.html';
+        const displayLabel = activeCat.charAt(0).toUpperCase() + activeCat.slice(1);
+        emptyState.innerHTML = '<div style="text-align:center;padding:44px 24px;background:var(--color-gray-100);border-radius:var(--radius-md);border:1px dashed var(--color-border);margin:16px 0;width:100%;">' +
+          '<div style="font-size:2.2rem;margin-bottom:12px;">📰</div>' +
+          '<h3 style="font-size:var(--font-size-xl);margin-bottom:8px;color:var(--color-navy);font-weight:700;">No Stories Filed Under ' + displayLabel + ' Today</h3>' +
+          '<p style="font-size:var(--font-size-sm);color:var(--color-text-muted);max-width:540px;margin-inline:auto;margin-bottom:20px;line-height:1.6;">' +
+            'New editorial briefings and market updates are published every morning. Explore our dedicated <a href="' + destHub + '" style="color:var(--color-gold);font-weight:600;text-decoration:underline;">' + displayLabel + ' News Hub &rarr;</a> or return to all recent news.' +
+          '</p>' +
+          '<button type="button" class="btn-primary btn-sm" id="reset-news-empty-btn">View All News</button>' +
+        '</div>';
+        emptyState.style.display = 'block';
+
+        const resetBtn = emptyState.querySelector('#reset-news-empty-btn');
+        if (resetBtn) {
+          resetBtn.addEventListener('click', function () {
+            applyNewsFilter('all', true);
+          });
+        }
+      } else {
+        emptyState.style.display = 'none';
+      }
+
+      // Update URL query parameter
+      if (updateUrl && window.history && window.history.pushState) {
+        const url = new URL(window.location.href);
+        if (activeCat === 'all') {
+          url.searchParams.delete('category');
+        } else {
+          url.searchParams.set('category', activeCat);
+        }
+        window.history.pushState({ category: activeCat }, '', url.toString());
+      }
+    }
+
+    // Attach click listeners to filter buttons
+    filterButtons.forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        // Allow ctrl+click or meta+click to open href in new tab
+        if (e.ctrlKey || e.metaKey || e.button === 1) return;
+
+        const cat = btn.getAttribute('data-filter');
+        if (!cat) return; // allow normal link navigation if no data-filter
+
+        e.preventDefault();
+        applyNewsFilter(cat, true);
+      });
+    });
+
+    // Browser back/forward support
+    window.addEventListener('popstate', function () {
+      const params = new URLSearchParams(window.location.search);
+      const cat = params.get('category') || 'all';
+      applyNewsFilter(cat, false);
+    });
+
+    // Initial filter on page load if query param present
+    const initialParams = new URLSearchParams(window.location.search);
+    const initialCat = initialParams.get('category') || (window.location.hash ? window.location.hash.replace('#', '') : null);
+    if (initialCat) {
+      applyNewsFilter(initialCat, false);
+    }
+  }
+
+  /* ===========================================================================
      INIT — DOM READY
      =========================================================================== */
 
@@ -876,6 +1024,7 @@
     initNewsletterForms();
     initContactForm();
     initPressReleaseFilter();
+    initNewsFilter();
   }
 
   if (document.readyState === 'loading') {
