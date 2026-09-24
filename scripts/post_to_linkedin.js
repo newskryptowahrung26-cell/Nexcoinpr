@@ -62,55 +62,156 @@ if (history.includes(link)) {
 
 console.log(`[LinkedIn Auto-Post] Preparing post for: "${title}"`);
 
-// Build LinkedIn Post Payload (LinkedIn Version 202401+ /rest/posts API)
-const postData = JSON.stringify({
-  author: `urn:li:organization:${ORG_ID}`,
-  commentary: `${title}\n\n${desc}\n\nRead the full release on NexcoinPR: ${link}\n\n#crypto #web3 #blockchain #forex #fintech #pressrelease #nexcoinpr`,
-  visibility: 'PUBLIC',
-  distribution: {
-    feedDistribution: 'MAIN_FEED',
-    targetEntities: [],
-    thirdPartyDistributionChannels: []
-  },
-  content: {
-    article: {
-      source: link,
-      title: title,
-      description: desc
-    }
-  },
-  lifecycleState: 'PUBLISHED',
-  isReshareDisabledByAuthor: false
-});
+// Helper to send HTTP request
+function makeRequest(options, data) {
+  return new Promise((resolve, reject) => {
+    const req = https.request(options, (res) => {
+      let body = '';
+      res.on('data', chunk => body += chunk);
+      res.on('end', () => resolve({ statusCode: res.statusCode, body }));
+    });
+    req.on('error', reject);
+    if (data) req.write(data);
+    req.end();
+  });
+}
 
-const req = https.request({
-  hostname: 'api.linkedin.com',
-  path: '/rest/posts',
-  method: 'POST',
-  headers: {
-    'Authorization': `Bearer ${ACCESS_TOKEN}`,
-    'Content-Type': 'application/json',
-    'X-Restli-Protocol-Version': '2.0.0',
-    'LinkedIn-Version': '202401',
-    'Content-Length': Buffer.byteLength(postData)
-  }
-}, (res) => {
-  let responseBody = '';
-  res.on('data', chunk => responseBody += chunk);
-  res.on('end', () => {
-    if (res.statusCode === 201 || res.statusCode === 200) {
-      console.log('[LinkedIn Auto-Post] SUCCESS! Published to NexcoinPR Agency page.');
+async function run() {
+  // First attempt: Try posting as Organization (w_organization_social)
+  const commentary = `${title}\n\n${desc}\n\nRead the full release on NexcoinPR: ${link}\n\n#crypto #web3 #blockchain #forex #fintech #pressrelease #nexcoinpr`;
+  
+  const orgPayload = JSON.stringify({
+    author: `urn:li:organization:${ORG_ID}`,
+    commentary,
+    visibility: 'PUBLIC',
+    distribution: {
+      feedDistribution: 'MAIN_FEED',
+      targetEntities: [],
+      thirdPartyDistributionChannels: []
+    },
+    content: {
+      article: {
+        source: link,
+        title,
+        description: desc
+      }
+    },
+    lifecycleState: 'PUBLISHED',
+    isReshareDisabledByAuthor: false
+  });
+
+  const orgOptions = {
+    hostname: 'api.linkedin.com',
+    path: '/rest/posts',
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${ACCESS_TOKEN}`,
+      'Content-Type': 'application/json',
+      'X-Restli-Protocol-Version': '2.0.0',
+      'LinkedIn-Version': '202401',
+      'Content-Length': Buffer.byteLength(orgPayload)
+    }
+  };
+
+  try {
+    const orgRes = await makeRequest(orgOptions, orgPayload);
+    if (orgRes.statusCode === 201 || orgRes.statusCode === 200) {
+      console.log('[LinkedIn Auto-Post] SUCCESS! Published to NexcoinPR Agency Company Page.');
       history.push(link);
       fs.writeFileSync(HISTORY_FILE, JSON.stringify(history, null, 2), 'utf8');
-    } else {
-      console.error(`[LinkedIn Auto-Post] Failed with HTTP ${res.statusCode}:`, responseBody);
+      return;
     }
-  });
-});
 
-req.on('error', (err) => {
-  console.error('[LinkedIn Auto-Post] Request error:', err.message);
-});
+    console.log(`[LinkedIn Auto-Post] Organization post returned HTTP ${orgRes.statusCode}. Checking for Personal Profile access (w_member_social)...`);
 
-req.write(postData);
-req.end();
+    // Fallback attempt: If token has w_member_social, find the member ID and post to personal profile
+    const userinfoOptions = {
+      hostname: 'api.linkedin.com',
+      path: '/v2/userinfo',
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${ACCESS_TOKEN}`
+      }
+    };
+
+    const userinfoRes = await makeRequest(userinfoOptions);
+    let memberSub = null;
+    if (userinfoRes.statusCode === 200) {
+      try {
+        const parsed = JSON.parse(userinfoRes.body);
+        memberSub = parsed.sub;
+      } catch (e) {}
+    }
+
+    if (!memberSub) {
+      // Try /v2/me
+      const meOptions = {
+        hostname: 'api.linkedin.com',
+        path: '/v2/me',
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${ACCESS_TOKEN}`
+        }
+      };
+      const meRes = await makeRequest(meOptions);
+      if (meRes.statusCode === 200) {
+        try {
+          const parsed = JSON.parse(meRes.body);
+          memberSub = parsed.id;
+        } catch (e) {}
+      }
+    }
+
+    if (memberSub) {
+      console.log(`[LinkedIn Auto-Post] Found Member ID (${memberSub}). Posting via w_member_social...`);
+      const memberPayload = JSON.stringify({
+        author: `urn:li:person:${memberSub}`,
+        commentary,
+        visibility: 'PUBLIC',
+        distribution: {
+          feedDistribution: 'MAIN_FEED',
+          targetEntities: [],
+          thirdPartyDistributionChannels: []
+        },
+        content: {
+          article: {
+            source: link,
+            title,
+            description: desc
+          }
+        },
+        lifecycleState: 'PUBLISHED',
+        isReshareDisabledByAuthor: false
+      });
+
+      const memberOptions = {
+        hostname: 'api.linkedin.com',
+        path: '/rest/posts',
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${ACCESS_TOKEN}`,
+          'Content-Type': 'application/json',
+          'X-Restli-Protocol-Version': '2.0.0',
+          'LinkedIn-Version': '202401',
+          'Content-Length': Buffer.byteLength(memberPayload)
+        }
+      };
+
+      const memberRes = await makeRequest(memberOptions, memberPayload);
+      if (memberRes.statusCode === 201 || memberRes.statusCode === 200) {
+        console.log('[LinkedIn Auto-Post] SUCCESS! Published to your personal LinkedIn profile.');
+        history.push(link);
+        fs.writeFileSync(HISTORY_FILE, JSON.stringify(history, null, 2), 'utf8');
+        return;
+      } else {
+        console.error(`[LinkedIn Auto-Post] Member post failed with HTTP ${memberRes.statusCode}:`, memberRes.body);
+      }
+    } else {
+      console.error('[LinkedIn Auto-Post] Could not determine author URN. Details:', orgRes.body);
+    }
+  } catch (err) {
+    console.error('[LinkedIn Auto-Post] Error:', err.message);
+  }
+}
+
+run();
