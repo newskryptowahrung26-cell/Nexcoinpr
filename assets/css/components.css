@@ -422,6 +422,61 @@
   background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-mid) 100%);
 }
 
+/* Category & Subcategory Pill Navigation */
+.cat-nav,
+.subcat-nav,
+.news-cat-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  margin-bottom: 1.25rem;
+}
+
+.cat-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.45rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-border, #cbd5e1);
+  background: var(--color-white, #ffffff);
+  color: var(--color-navy, #0a1628);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  user-select: none;
+  line-height: 1.2;
+}
+
+.cat-pill:hover {
+  border-color: var(--color-gold, #c8a050);
+  color: var(--color-gold, #c8a050);
+  background: rgba(200, 160, 80, 0.08);
+  text-decoration: none;
+}
+
+.cat-pill.cat-pill-active,
+.cat-pill.active {
+  background: var(--color-navy, #0a1628);
+  color: var(--color-white, #ffffff) !important;
+  border-color: var(--color-navy, #0a1628);
+  box-shadow: 0 2px 6px rgba(10, 22, 40, 0.18);
+}
+
+.cat-pill.cat-pill-active:hover,
+.cat-pill.active:hover {
+  background: #112240;
+  border-color: #112240;
+  color: var(--color-gold, #c8a050) !important;
+}
+
 .news-card-body {
   padding: var(--space-5);
   display: flex;

@@ -978,6 +978,18 @@
         // Allow ctrl+click or meta+click to open href in new tab
         if (e.ctrlKey || e.metaKey || e.button === 1) return;
 
+        const targetHref = btn.getAttribute('href');
+        if (targetHref && !targetHref.startsWith('#')) {
+          try {
+            const currentPath = window.location.pathname.replace(/\/index(\.html)?$/, '').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+            const targetPath = targetUrl.pathname.replace(/\/index(\.html)?$/, '').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+            // If the link points to a DIFFERENT page, allow normal browser navigation!
+            if (currentPath !== targetPath) {
+              return;
+            }
+          } catch (err) {}
+        }
+
         const cat = btn.getAttribute('data-filter');
         if (!cat) return; // allow normal link navigation if no data-filter
 
