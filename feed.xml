@@ -1,35 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>NexcoinPR — Crypto, Forex & Financial News Feed</title>
+    <title>NexcoinPR Crypto, Forex &amp; Financial News Feed</title>
     <link>https://nexcoinpr.com</link>
-    <description>Latest news, regulatory analysis, and market explainers from NexcoinPR's financial media desk.</description>
+    <description>Latest news, press releases, and market explainers from NexcoinPR's financial media desk.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 Sep 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 24 Sep 2026 14:00:00 GMT</lastBuildDate>
     <atom:link href="https://nexcoinpr.com/feed.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title><![CDATA[Zero-Knowledge Prover Latency Drops 40% Across Major Testnets]]></title>
-      <link>https://nexcoinpr.com/news/blockchain.html</link>
-      <guid isPermaLink="true">https://nexcoinpr.com/news/blockchain.html</guid>
-      <pubDate>Tue, 22 Sep 2026 08:00:00 GMT</pubDate>
-      <description><![CDATA[Benchmark data indicates hardware acceleration optimizations are significantly compressing verification costs for modular rollups.]]></description>
-      <category>Blockchain</category>
+      <title><![CDATA[[Press Release] Cregis Marks Two Years of Middle East Growth as Traditional Financial Firms Drive Adoption]]></title>
+      <link>https://nexcoinpr.com/press-releases/cregis-marks-two-years-of-middle-east-growth-as-traditional-financial-firms.html</link>
+      <guid isPermaLink="true">https://nexcoinpr.com/press-releases/cregis-marks-two-years-of-middle-east-growth-as-traditional-financial-firms.html</guid>
+      <pubDate>Thu, 24 Sep 2026 10:00:00 GMT</pubDate>
+      <description><![CDATA[Enterprise digital asset infrastructure platform Cregis marks two years of growth across the UAE and Middle East serving institutional trading and financial firms.]]></description>
+      <category>Press Release</category>
     </item>
     <item>
-      <title><![CDATA[Central Banks Evaluate Real-Time FX Liquidity Buffers]]></title>
-      <link>https://nexcoinpr.com/news/forex.html</link>
-      <guid isPermaLink="true">https://nexcoinpr.com/news/forex.html</guid>
-      <pubDate>Mon, 21 Sep 2026 14:00:00 GMT</pubDate>
-      <description><![CDATA[Monetary authorities analyze intraday currency volatility and interbank settlement buffers.]]></description>
-      <category>Forex</category>
+      <title><![CDATA[Dogecoin Slides 8%, Bitcoin Drops Under $84,000 as Treasury Yields Hit 2007 Highs]]></title>
+      <link>https://nexcoinpr.com/news/bitcoin-slips-under-84k-us-treasury-yields-surge.html</link>
+      <guid isPermaLink="true">https://nexcoinpr.com/news/bitcoin-slips-under-84k-us-treasury-yields-surge.html</guid>
+      <pubDate>Thu, 24 Sep 2026 09:30:00 GMT</pubDate>
+      <description><![CDATA[Dogecoin fell 8% and Bitcoin slid under $84,000 as surging US Treasury yields and $104 crude oil ignited a broad crypto market selloff.]]></description>
+      <enclosure url="https://nexcoinpr.com/assets/images/news/bitcoin-dogecoin-selloff.png" type="image/png" length="139735" />
+      <category>Crypto Markets</category>
     </item>
     <item>
-      <title><![CDATA[What Is Crypto PR? Complete Guide to Cryptocurrency Public Relations]]></title>
-      <link>https://nexcoinpr.com/news/guides/what-is-crypto-pr.html</link>
-      <guid isPermaLink="true">https://nexcoinpr.com/news/guides/what-is-crypto-pr.html</guid>
-      <pubDate>Sun, 20 Sep 2026 09:30:00 GMT</pubDate>
-      <description><![CDATA[An educational guide examining earned media, media relations, and reputation management for digital asset protocols.]]></description>
-      <category>Guides</category>
+      <title><![CDATA[USD/JPY Outlook: Hawkish Federal Reserve Recalibration Mounts Pressure on the Japanese Yen]]></title>
+      <link>https://nexcoinpr.com/news/usd-jpy-outlook-fed-recalibration-pressures-yen.html</link>
+      <guid isPermaLink="true">https://nexcoinpr.com/news/usd-jpy-outlook-fed-recalibration-pressures-yen.html</guid>
+      <pubDate>Thu, 24 Sep 2026 09:15:00 GMT</pubDate>
+      <description><![CDATA[USD/JPY pushed higher toward key resistance zones as resilient US growth data and surging Treasury yields widened the US-Japan interest rate divergence.]]></description>
+      <enclosure url="https://nexcoinpr.com/assets/images/news/usdjpy-forex-outlook.jpg" type="image/jpeg" length="757297" />
+      <category>Forex Markets</category>
+    </item>
+    <item>
+      <title><![CDATA[Trump Administration Weighs Global Stablecoin Framework to Cement US Dollar Dominance]]></title>
+      <link>https://nexcoinpr.com/news/trump-administration-weighs-a-global-stablecoin-plan-to-cement-dollar-s-dom.html</link>
+      <guid isPermaLink="true">https://nexcoinpr.com/news/trump-administration-weighs-a-global-stablecoin-plan-to-cement-dollar-s-dom.html</guid>
+      <pubDate>Thu, 24 Sep 2026 08:00:00 GMT</pubDate>
+      <description><![CDATA[High-level discussions examine integrating dollar-pegged digital assets into foreign economic policy to expand treasury absorption and counter rival currency blocs.]]></description>
+      <enclosure url="https://nexcoinpr.com/assets/images/news/trump-stablecoin-dollar-dominance.jpg" type="image/jpeg" length="63848" />
+      <category>Crypto Policy</category>
+    </item>
+    <item>
+      <title><![CDATA[[Press Release] LBank Ranks No. 1 for Mainstream Crypto ($52.16M) and Stock Depth (4.4x) in BeInCrypto Report]]></title>
+      <link>https://nexcoinpr.com/press-releases/lbank-ranks-no-1-for-mainstream-crypto-5216m-and-stock-depth-44x-in-beincry.html</link>
+      <guid isPermaLink="true">https://nexcoinpr.com/press-releases/lbank-ranks-no-1-for-mainstream-crypto-5216m-and-stock-depth-44x-in-beincry.html</guid>
+      <pubDate>Wed, 23 Sep 2026 14:30:00 GMT</pubDate>
+      <description><![CDATA[A comprehensive market depth study published by BeInCrypto evaluates order-book liquidity, ranking LBank first among top tier cryptocurrency exchanges.]]></description>
+      <category>Press Release</category>
+    </item>
+    <item>
+      <title><![CDATA[[Press Release] BC.GAME’s BC Engine Rewards Surpass $8.6 Million as Ecosystem Growth Accelerates]]></title>
+      <link>https://nexcoinpr.com/press-releases/bcgames-bc-engine-rewards-surpass-86-million-as-ecosystem-growth-accelerate.html</link>
+      <guid isPermaLink="true">https://nexcoinpr.com/press-releases/bcgames-bc-engine-rewards-surpass-86-million-as-ecosystem-growth-accelerate.html</guid>
+      <pubDate>Wed, 23 Sep 2026 11:15:00 GMT</pubDate>
+      <description><![CDATA[Cumulative rewards distributed through the BC Engine protocol surge past $8.6 million as user participation and network utility expand fourfold.]]></description>
+      <category>Press Release</category>
     </item>
   </channel>
 </rss>
