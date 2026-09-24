@@ -8,8 +8,30 @@
         <news:name>NexcoinPR</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-22</news:publication_date>
+      <news:publication_date>2026-09-24</news:publication_date>
       <news:title>Crypto, Forex & Financial Markets News Hub</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nexcoinpr.com/news/bitcoin-slips-under-84k-us-treasury-yields-surge.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-24</news:publication_date>
+      <news:title>Bitcoin Slips Under $84,000 as US Treasury Yields Surge to 2007 Highs</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://nexcoinpr.com/news/usd-jpy-outlook-fed-recalibration-pressures-yen.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-24</news:publication_date>
+      <news:title>USD/JPY Outlook: Hawkish Federal Reserve Recalibration Mounts Pressure on the Japanese Yen</news:title>
     </news:news>
   </url>
   <url>
