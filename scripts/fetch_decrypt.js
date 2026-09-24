@@ -65,6 +65,21 @@ function cleanDashesAndAi(text) {
   str = str.replace(/\btapestry\b/gi, 'framework');
   str = str.replace(/\brevolutionize\b/gi, 'transform');
   str = str.replace(/\bspearhead\b/gi, 'lead');
+  return stripWireWords(str.trim());
+}
+
+function stripWireWords(text) {
+  if (!text) return '';
+  let str = text;
+  // Dateline at end: e.g. ', Chainwire' or ', FinanceWire'
+  str = str.replace(/[,–—-]\s*(?:FinanceWire|Chainwire)\b/gi, '');
+  // Dateline at start: e.g. 'Chainwire, ' or 'FinanceWire, '
+  str = str.replace(/\b(?:FinanceWire|Chainwire)\s*[,–—-]\s*/gi, '');
+  // Standalone word in text:
+  str = str.replace(/\b(?:FinanceWire|Chainwire)\b/gi, '');
+  // Cleanup punctuation artifacts
+  str = str.replace(/,\s*,/g, ',');
+  str = str.replace(/,\s*<\/strong>/gi, '</strong>');
   return str.trim();
 }
 
@@ -151,7 +166,7 @@ function extractCompany(title, body, sponsor) {
   if (m && m[1].length < 30) {
     return m[1].trim();
   }
-  return 'Decrypt Syndicate';
+  return 'Crypto News Issuer';
 }
 
 async function run() {
@@ -392,7 +407,7 @@ async function run() {
           <p class="hero-intro">${excerpt}</p>
           <div class="author-meta text-white">
             <span>Issuer: <strong>${company}</strong></span> &bull; 
-            <span>Syndication: <strong>Decrypt Newsroom</strong></span> &bull; 
+            <span>Source: <a href="${candidateUrl}" target="_blank" rel="noopener nofollow" style="color:var(--color-gold);text-decoration:underline;">Decrypt &rarr;</a></span> &bull; 
             <span>Published: ${formattedDate}</span>
           </div>
         </div>
@@ -404,10 +419,14 @@ async function run() {
         <div class="two-col-layout">
           <div class="main-content-col article-body">
             <div class="notice-financial mb-4">
-              <p><strong>Commercial Content Disclosure:</strong> The following announcement is an official press release syndicated from Decrypt on behalf of ${company}. NexcoinPR provides media distribution and editorial hosting. This content does not represent independent editorial reporting or investment advice.</p>
+              <p><strong>Commercial Content Disclosure:</strong> The following announcement is an official press release syndicated from <a href="${candidateUrl}" target="_blank" rel="noopener nofollow" style="text-decoration:underline;">Decrypt</a> on behalf of ${company}. NexcoinPR provides media distribution and editorial hosting. This content does not represent independent editorial reporting or investment advice.</p>
             </div>
 
             ${bodyContent}
+
+            <div style="margin-top:24px;padding:12px 16px;background:var(--color-gray-100);border-left:4px solid var(--color-gold);font-size:0.9rem;">
+              <strong>Source Link:</strong> <a href="${candidateUrl}" target="_blank" rel="noopener nofollow" style="color:var(--color-gold);text-decoration:underline;">${candidateUrl}</a>
+            </div>
 
             <div class="notice-financial mt-4">
               <h4>NexcoinPR Disclaimer</h4>
@@ -529,9 +548,9 @@ async function run() {
               </h2>
               <p class="pr-card-excerpt">${excerpt}</p>
               <div class="pr-card-footer">
-                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
                   <span class="tag">${categoryLabel}</span>
-                  <span class="tag">Decrypt</span>
+                  <a href="${candidateUrl}" target="_blank" rel="noopener nofollow" class="tag" style="text-decoration:none;">Decrypt Source &#8599;</a>
                 </div>
                 <a href="${articleUrl}" class="pr-card-read">Read full release &rarr;</a>
               </div>

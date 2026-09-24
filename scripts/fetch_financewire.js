@@ -50,6 +50,23 @@ function cleanDashesAndAi(text) {
   str = str.replace(/\bcomprehensive\b/gi, 'full-scale');
   str = str.replace(/\bgroundbreaking\b/gi, 'pioneering');
   str = str.replace(/\blandscape\b/gi, 'market');
+  return stripWireWords(str.trim());
+}
+
+function stripWireWords(text) {
+  if (!text) return '';
+  let str = text;
+  // Remove trailing syndication blurb if present
+  str = str.replace(/<p>The post\s+<a[^>]*>[\s\S]*?<\/a>\s+appeared first on\s+<a[^>]*>[\s\S]*?<\/a>\.?<\/p>/gi, '');
+  // Dateline at end: e.g. ', Chainwire' or ', FinanceWire'
+  str = str.replace(/[,–—-]\s*(?:FinanceWire|Chainwire)\b/gi, '');
+  // Dateline at start: e.g. 'Chainwire, ' or 'FinanceWire, '
+  str = str.replace(/\b(?:FinanceWire|Chainwire)\s*[,–—-]\s*/gi, '');
+  // Standalone word in text:
+  str = str.replace(/\b(?:FinanceWire|Chainwire)\b/gi, '');
+  // Cleanup punctuation artifacts
+  str = str.replace(/,\s*,/g, ',');
+  str = str.replace(/,\s*<\/strong>/gi, '</strong>');
   return str.trim();
 }
 
@@ -136,7 +153,7 @@ function extractCompany(title, body) {
   if (m && m[1].length < 30) {
     return m[1].trim();
   }
-  return 'FinanceWire Syndicate';
+  return 'Financial News Issuer';
 }
 
 async function run() {
@@ -373,7 +390,7 @@ async function run() {
           <p class="hero-intro">${excerpt}</p>
           <div class="author-meta text-white">
             <span>Issuer: <strong>${company}</strong></span> &bull; 
-            <span>Syndication: <strong>FinanceWire Newsroom</strong></span> &bull; 
+            <span>Source: <a href="${candidate.link}" target="_blank" rel="noopener nofollow" style="color:var(--color-gold);text-decoration:underline;">Original Publication &rarr;</a></span> &bull; 
             <span>Published: ${formattedDate}</span>
           </div>
         </div>
@@ -385,10 +402,14 @@ async function run() {
         <div class="two-col-layout">
           <div class="main-content-col article-body">
             <div class="notice-financial mb-4">
-              <p><strong>Commercial Content Disclosure:</strong> The following announcement is an official press release syndicated from FinanceWire Newsroom on behalf of ${company}. NexcoinPR provides media distribution and editorial hosting. This content does not represent independent editorial reporting or investment advice.</p>
+              <p><strong>Commercial Content Disclosure:</strong> The following announcement is an official press release syndicated on behalf of ${company} (<a href="${candidate.link}" target="_blank" rel="noopener nofollow" style="text-decoration:underline;">view source publication</a>). NexcoinPR provides media distribution and editorial hosting. This content does not represent independent editorial reporting or investment advice.</p>
             </div>
 
             ${bodyContent}
+
+            <div style="margin-top:24px;padding:12px 16px;background:var(--color-gray-100);border-left:4px solid var(--color-gold);font-size:0.9rem;">
+              <strong>Source Publication:</strong> <a href="${candidate.link}" target="_blank" rel="noopener nofollow" style="color:var(--color-gold);text-decoration:underline;">${candidate.link}</a>
+            </div>
 
             <div class="notice-financial mt-4">
               <h4>NexcoinPR Disclaimer</h4>
@@ -510,11 +531,11 @@ async function run() {
               </h2>
               <p class="pr-card-excerpt">${excerpt}</p>
               <div class="pr-card-footer">
-                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
                   <span class="tag">${categoryLabel}</span>
-                  <span class="tag">FinanceWire</span>
+                  <a href="${candidate.link}" target="_blank" rel="noopener nofollow" class="tag" style="text-decoration:none;">Source Link &#8599;</a>
                 </div>
-                <a href="${articleUrl}" class="pr-card-read">Read full release →</a>
+                <a href="${articleUrl}" class="pr-card-read">Read full release &rarr;</a>
               </div>
             </article>`;
 
