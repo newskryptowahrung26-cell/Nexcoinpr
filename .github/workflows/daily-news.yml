@@ -1,0 +1,39 @@
+name: Daily News Generator
+
+on:
+  schedule:
+    - cron: '30 6 * * *' # Runs daily at 06:30 AM UTC
+  workflow_dispatch:      # Allows manual trigger anytime from GitHub Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  generate-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run daily news generator
+        run: node scripts/generate_daily_news.js
+
+      - name: Verify site integrity
+        run: node verify_site.js
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No new daily news articles generated today."
+          else
+            git commit -m "Auto-generate daily news from CoinDesk and Forex.com [skip ci]"
+            git push origin main
+          fi
