@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexcoinPR • Social Media Teaser Video Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #070D18;
+      --card-bg: rgba(13, 27, 42, 0.75);
+      --gold: #D4AF37;
+      --gold-light: #F6E27A;
+      --gold-dark: #997A15;
+      --text: #F0F4F8;
+      --text-muted: #8E9BAE;
+      --border: rgba(212, 175, 55, 0.25);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 50% 10%, rgba(212, 175, 55, 0.12) 0%, transparent 60%),
+        radial-gradient(circle at 10% 90%, rgba(24, 76, 120, 0.2) 0%, transparent 50%);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 24px;
+      max-width: 800px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--border);
+      color: var(--gold-light);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #FFF 30%, var(--gold-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+    p.subtitle {
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 1100px;
+      gap: 24px;
+    }
+
+    /* Video Canvas Frame */
+    .canvas-wrapper {
+      position: relative;
+      background: #000;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 40px rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--border);
+      max-width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 70vh;
+      object-fit: contain;
+    }
+
+    /* Progress Overlay */
+    .recording-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(7, 13, 24, 0.85);
+      backdrop-filter: blur(8px);
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+    .recording-overlay.active {
+      display: flex;
+    }
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(212, 175, 55, 0.2);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 1s infinite linear;
+      margin-bottom: 16px;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .progress-bar-container {
+      width: 280px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 12px;
+    }
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      transition: width 0.1s linear;
+    }
+
+    /* Controls Bar */
+    .controls-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(16px);
+      border-radius: 16px;
+      padding: 20px;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+    .btn {
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      border: none;
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      color: #070D18;
+      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.35);
+    }
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #FFF;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .aspect-selector {
+      display: flex;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 4px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .aspect-btn {
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: transparent;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .aspect-btn.active {
+      background: rgba(212, 175, 55, 0.2);
+      color: var(--gold-light);
+    }
+
+    /* Social Graphics Gallery */
+    .gallery-section {
+      width: 100%;
+      margin-top: 16px;
+    }
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .asset-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s;
+    }
+    .asset-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border);
+    }
+    .asset-img-wrap {
+      width: 100%;
+      height: 200px;
+      background: #000;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .asset-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .asset-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .asset-body h4 {
+      font-size: 15px;
+      color: #FFF;
+    }
+    .asset-body p {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Caption Copy Box */
+    .caption-box {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 16px;
+      width: 100%;
+    }
+    .caption-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .copy-btn {
+      padding: 6px 12px;
+      font-size: 12px;
+      border-radius: 6px;
+      background: rgba(212, 175, 55, 0.2);
+      border: 1px solid var(--border);
+      color: var(--gold-light);
+      cursor: pointer;
+    }
+    pre {
+      white-space: pre-wrap;
+      font-family: inherit;
+      font-size: 13px;
+      color: #E2E8F0;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="badge">Social Media Announcement Teaser</div>
+    <h1>NexcoinPR Teaser Video &amp; Visual Studio</h1>
+    <p class="subtitle">Generate &amp; download blurred teaser videos &amp; high-resolution social assets for LinkedIn, Twitter, and Instagram.</p>
+  </header>
+
+  <div class="main-container">
+
+    <!-- Interactive Canvas Player -->
+    <div class="canvas-wrapper" id="canvasContainer">
+      <canvas id="teaserCanvas" width="1920" height="1080"></canvas>
+      <div class="recording-overlay" id="recordingOverlay">
+        <div class="spinner"></div>
+        <h3 style="color: #FFF; margin-bottom: 6px;" id="recordingStatus">Recording 10s Cinematic Video...</h3>
+        <p style="color: var(--gold-light); font-size: 14px;" id="recordingTimer">0% Complete</p>
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls Bar -->
+    <div class="controls-card">
+      <div class="aspect-selector">
+        <button class="aspect-btn active" onclick="setAspect('16:9')">16:9 Landscape</button>
+        <button class="aspect-btn" onclick="setAspect('1:1')">1:1 Square</button>
+        <button class="aspect-btn" onclick="setAspect('9:16')">9:16 Story / Reel</button>
+      </div>
+
+      <div class="button-group">
+        <button class="btn btn-secondary" id="playBtn" onclick="togglePlay()">
+          <span id="playIcon">▶</span> <span id="playText">Play Preview</span>
+        </button>
+        <button class="btn btn-gold" id="recordBtn" onclick="startExportVideo()">
+          <span>🔴</span> Download Video (.webm / .mp4)
+        </button>
+      </div>
+    </div>
+
+    <!-- Ready Assets Gallery -->
+    <div class="gallery-section">
+      <div class="section-title">
+        <span>📸</span> Ready-to-Post High-Resolution Teaser Images
+      </div>
+      <div class="grid-cards">
+        
+        <!-- Wide 16:9 -->
+        <div class="asset-card">
+          <div class="asset-img-wrap">
+            <img src="assets/images/teaser-announcement-wide.jpg" alt="16:9 Teaser Announcement">
+          </div>
+          <div class="asset-body">
+            <h4>Landscape 16:9 (LinkedIn &amp; X)</h4>
+            <p>Perfect for LinkedIn feed posts, Twitter/X tweets, and video thumbnails.</p>
+            <a href="assets/images/teaser-announcement-wide.jpg" download="NexcoinPR-Teaser-16x9.jpg" class="btn btn-secondary" style="font-size: 13px; justify-content: center; margin-top: 4px;">
+              💾 Download 16:9 Image
+            </a>
+          </div>
+        </div>
+
+        <!-- Square 1:1 -->
+        <div class="asset-card">
+          <div class="asset-img-wrap">
+            <img src="assets/images/teaser-announcement-square.jpg" alt="1:1 Teaser Announcement">
+          </div>
+          <div class="asset-body">
+            <h4>Square 1:1 (Instagram &amp; Feed)</h4>
+            <p>Optimized for Instagram feeds, Facebook posts, and carousel covers.</p>
+            <a href="assets/images/teaser-announcement-square.jpg" download="NexcoinPR-Teaser-1x1.jpg" class="btn btn-secondary" style="font-size: 13px; justify-content: center; margin-top: 4px;">
+              💾 Download 1:1 Image
+            </a>
+          </div>
+        </div>
+
+        <!-- Vertical 9:16 -->
+        <div class="asset-card">
+          <div class="asset-img-wrap">
+            <img src="assets/images/teaser-announcement-vertical.jpg" alt="9:16 Teaser Announcement">
+          </div>
+          <div class="asset-body">
+            <h4>Vertical 9:16 (Stories &amp; Reels)</h4>
+            <p>Full-screen mobile format for Instagram Stories, Reels, and TikTok.</p>
+            <a href="assets/images/teaser-announcement-vertical.jpg" download="NexcoinPR-Teaser-9x16.jpg" class="btn btn-secondary" style="font-size: 13px; justify-content: center; margin-top: 4px;">
+              💾 Download 9:16 Image
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Suggested Post Caption -->
+    <div class="caption-box">
+      <div class="caption-header">
+        <strong style="color: var(--gold-light); font-size: 14px;">📝 Suggested Social Media Caption (Urdu &amp; English)</strong>
+        <button class="copy-btn" onclick="copyCaption()">Copy Caption</button>
+      </div>
+      <pre id="captionText">🚨 SOMETHING BIG IS COMING... 🤫✨
+
+The Web3 &amp; Crypto PR landscape is about to evolve. 
+
+We have been building something extraordinary behind the scenes for blockchain projects, crypto founders, and financial institutions worldwide. 
+
+Get ready for unmatched speed, guaranteed tier-1 media distribution, and real human editorial standards.
+
+Stay tuned. NexcoinPR is entering a new chapter. 🚀
+
+🔗 Follow our journey: https://www.linkedin.com/company/nexcoinpr-agency
+🌐 https://nexcoinpr.com
+
+#NexcoinPR #CryptoPR #Web3 #Blockchain #Fintech #PressRelease #SomethingNewIsComing #StayTuned #CryptoNews</pre>
+    </div>
+
+  </div>
+
+  <script>
+    const canvas = document.getElementById('teaserCanvas');
+    const ctx = canvas.getContext('2d');
+    const playBtn = document.getElementById('playBtn');
+    const playIcon = document.getElementById('playIcon');
+    const playText = document.getElementById('playText');
+    const recordingOverlay = document.getElementById('recordingOverlay');
+    const progressBar = document.getElementById('progressBar');
+    const recordingTimer = document.getElementById('recordingTimer');
+
+    let currentAspect = '16:9';
+    let isPlaying = true;
+    let isRecording = false;
+    let startTime = null;
+    const TOTAL_DURATION = 10000; // 10 seconds
+
+    // Particle system
+    const particles = [];
+    const NUM_PARTICLES = 120;
+
+    function initParticles() {
+      particles.length = 0;
+      for (let i = 0; i < NUM_PARTICLES; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 2.5 + 0.8,
+          speedY: Math.random() * 0.8 + 0.3,
+          speedX: (Math.random() - 0.5) * 0.4,
+          opacity: Math.random() * 0.8 + 0.2,
+          pulseSpeed: Math.random() * 0.04 + 0.01,
+          pulse: Math.random() * Math.PI
+        });
+      }
+    }
+
+    // Load background image
+    const bgImage = new Image();
+    bgImage.src = 'assets/images/teaser-announcement-wide.jpg';
+    bgImage.onload = () => {
+      initParticles();
+      requestAnimationFrame(renderLoop);
+    };
+
+    function setAspect(aspect) {
+      currentAspect = aspect;
+      document.querySelectorAll('.aspect-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.includes(aspect));
+      });
+
+      if (aspect === '16:9') {
+        canvas.width = 1920;
+        canvas.height = 1080;
+        bgImage.src = 'assets/images/teaser-announcement-wide.jpg';
+      } else if (aspect === '1:1') {
+        canvas.width = 1080;
+        canvas.height = 1080;
+        bgImage.src = 'assets/images/teaser-announcement-square.jpg';
+      } else if (aspect === '9:16') {
+        canvas.width = 1080;
+        canvas.height = 1920;
+        bgImage.src = 'assets/images/teaser-announcement-vertical.jpg';
+      }
+      initParticles();
+    }
+
+    function togglePlay() {
+      isPlaying = !isPlaying;
+      if (isPlaying) {
+        startTime = performance.now();
+        playIcon.textContent = '⏸';
+        playText.textContent = 'Pause';
+        requestAnimationFrame(renderLoop);
+      } else {
+        playIcon.textContent = '▶';
+        playText.textContent = 'Play Preview';
+      }
+    }
+
+    function renderLoop(timestamp) {
+      if (!startTime) startTime = timestamp;
+      const elapsed = (timestamp - startTime) % TOTAL_DURATION;
+      const progress = elapsed / TOTAL_DURATION;
+
+      drawFrame(elapsed, progress);
+
+      if (isPlaying) {
+        requestAnimationFrame(renderLoop);
+      }
+    }
+
+    function drawFrame(elapsed, progress) {
+      const w = canvas.width;
+      const h = canvas.height;
+
+      // 1. Draw Blurred Animated Background (Slow Zoom In)
+      ctx.save();
+      const zoom = 1 + progress * 0.08;
+      const panX = Math.sin(progress * Math.PI * 2) * 15;
+      ctx.translate(w / 2 + panX, h / 2);
+      ctx.scale(zoom, zoom);
+      ctx.translate(-w / 2, -h / 2);
+
+      if (bgImage.complete && bgImage.naturalWidth > 0) {
+        ctx.drawImage(bgImage, 0, 0, w, h);
+      } else {
+        // Fallback gradient
+        ctx.fillStyle = '#070D18';
+        ctx.fillRect(0, 0, w, h);
+      }
+      ctx.restore();
+
+      // 2. Cinematic Vignette & Ambient Radial Glow
+      const vignette = ctx.createRadialGradient(w / 2, h / 2, w * 0.25, w / 2, h / 2, w * 0.7);
+      vignette.addColorStop(0, 'rgba(7, 13, 24, 0.15)');
+      vignette.addColorStop(1, 'rgba(4, 8, 15, 0.75)');
+      ctx.fillStyle = vignette;
+      ctx.fillRect(0, 0, w, h);
+
+      // Gold center glow pulse
+      const glowAlpha = 0.15 + Math.sin(progress * Math.PI * 4) * 0.08;
+      const centerGlow = ctx.createRadialGradient(w / 2, h / 2, 50, w / 2, h / 2, w * 0.45);
+      centerGlow.addColorStop(0, `rgba(212, 175, 55, ${glowAlpha})`);
+      centerGlow.addColorStop(1, 'rgba(212, 175, 55, 0)');
+      ctx.fillStyle = centerGlow;
+      ctx.fillRect(0, 0, w, h);
+
+      // 3. Floating Gold Sparkles
+      ctx.save();
+      particles.forEach(p => {
+        p.y -= p.speedY;
+        p.x += p.speedX;
+        p.pulse += p.pulseSpeed;
+        if (p.y < 0) p.y = h;
+        if (p.x < 0) p.x = w;
+        if (p.x > w) p.x = 0;
+
+        const alpha = p.opacity * (0.6 + 0.4 * Math.sin(p.pulse));
+        ctx.fillStyle = `rgba(246, 226, 122, ${alpha})`;
+        ctx.shadowColor = '#D4AF37';
+        ctx.shadowBlur = 10;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      ctx.restore();
+
+      // 4. Sweeping Lens Flare Beam
+      const sweepX = (progress * 1.6 - 0.3) * w;
+      ctx.save();
+      const sweepGrad = ctx.createLinearGradient(sweepX - 250, 0, sweepX + 250, 0);
+      sweepGrad.addColorStop(0, 'rgba(255, 255, 255, 0)');
+      sweepGrad.addColorStop(0.5, 'rgba(212, 175, 55, 0.18)');
+      sweepGrad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+      ctx.fillStyle = sweepGrad;
+      ctx.fillRect(0, 0, w, h);
+      ctx.restore();
+
+      // 5. Cinematic Typography Animation Stages
+      // Phase 1 (0s - 3.2s): "ARE YOU READY?"
+      // Phase 2 (3.2s - 7.5s): "SOMETHING NEW IS COMING"
+      // Phase 3 (7.5s - 10s): "NEXCOINPR • THE FUTURE OF CRYPTO PR"
+
+      const isLandscape = currentAspect === '16:9';
+      const isVertical = currentAspect === '9:16';
+      const scaleFactor = isVertical ? 0.9 : (isLandscape ? 1 : 0.85);
+
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+
+      if (elapsed < 3000) {
+        // Pre-teaser intro
+        const p1Alpha = Math.min(1, Math.sin((elapsed / 3000) * Math.PI));
+        ctx.save();
+        ctx.fillStyle = `rgba(246, 226, 122, ${p1Alpha * 0.9})`;
+        ctx.font = `700 ${32 * scaleFactor}px 'Plus Jakarta Sans', sans-serif`;
+        ctx.letterSpacing = '6px';
+        ctx.shadowColor = 'rgba(212, 175, 55, 0.8)';
+        ctx.shadowBlur = 20;
+        ctx.fillText("SOMETHING BIG IS BREWING", w / 2, h / 2 - 30);
+
+        ctx.fillStyle = `rgba(255, 255, 255, ${p1Alpha * 0.7})`;
+        ctx.font = `500 ${22 * scaleFactor}px 'Plus Jakarta Sans', sans-serif`;
+        ctx.letterSpacing = '3px';
+        ctx.shadowBlur = 0;
+        ctx.fillText("FOR THE WEB3 & CRYPTO INDUSTRY", w / 2, h / 2 + 25);
+        ctx.restore();
+      } else if (elapsed >= 3000 && elapsed < 7500) {
+        // Main Reveal
+        const p2Progress = (elapsed - 3000) / 4500;
+        const p2Alpha = Math.min(1, Math.sin(p2Progress * Math.PI));
+        
+        ctx.save();
+        // Top badge
+        ctx.fillStyle = `rgba(212, 175, 55, ${p2Alpha * 0.95})`;
+        ctx.font = `800 ${26 * scaleFactor}px 'Plus Jakarta Sans', sans-serif`;
+        ctx.letterSpacing = '8px';
+        ctx.shadowColor = '#D4AF37';
+        ctx.shadowBlur = 15;
+        ctx.fillText("COMING SOON", w / 2, h / 2 - 90 * scaleFactor);
+
+        // Main Title: "SOMETHING NEW"
+        ctx.fillStyle = `rgba(255, 255, 255, ${p2Alpha})`;
+        ctx.font = `900 ${76 * scaleFactor}px 'Plus Jakarta Sans', sans-serif`;
+        ctx.letterSpacing = '4px';
+        ctx.shadowColor = 'rgba(212, 175, 55, 0.9)';
+        ctx.shadowBlur = 35;
+        ctx.fillText("SOMETHING NEW", w / 2, h / 2 - 10 * scaleFactor);
+
+        // Line 2: "IS COMING" in Glowing Gold
+        const grad = ctx.createLinearGradient(w / 2 - 250, 0, w / 2 + 250, 0);
+        grad.addColorStop(0, '#F6E27A');
+        grad.addColorStop(0.5, '#FFF');
+        grad.addColorStop(1, '#D4AF37');
+        ctx.fillStyle = grad;
+        ctx.font = `900 ${84 * scaleFactor}px 'Plus Jakarta Sans', sans-serif`;
+        ctx.shadowColor = 'rgba(212, 175, 55, 1)';
+        ctx.shadowBlur = 45;
+        ctx.fillText("IS COMING", w / 2, h / 2 + 75 * scaleFactor);
+        ctx.restore();
+      } else {
+        // Outro / Call To Action
+        const p3Progress = (elapsed - 7500) / 2500;
+        const p3Alpha = Math.min(1, Math.sin(p3Progress * Math.PI));
+
+        ctx.save();
+        // NexcoinPR Logo Text
+        ctx.fillStyle = `rgba(255, 255, 255, ${p3Alpha})`;
+        ctx.font = `900 ${60 * scaleFactor}px 'Plus Jakarta Sans', sans-serif`;
+        ctx.letterSpacing = '6px';
+        ctx.shadowColor = '#D4AF37';
+        ctx.shadowBlur = 25;
+        ctx.fillText("NEXCOINPR 2.0", w / 2, h / 2 - 40 * scaleFactor);
+
+        // Subtext
+        ctx.fillStyle = `rgba(246, 226, 122, ${p3Alpha * 0.95})`;
+        ctx.font = `700 ${28 * scaleFactor}px 'Plus Jakarta Sans', sans-serif`;
+        ctx.letterSpacing = '4px';
+        ctx.shadowBlur = 10;
+        ctx.fillText("THE NEXT ERA OF CRYPTO PR", w / 2, h / 2 + 30 * scaleFactor);
+
+        // Stay Tuned
+        ctx.fillStyle = `rgba(255, 255, 255, ${p3Alpha * 0.8})`;
+        ctx.font = `600 ${20 * scaleFactor}px 'Plus Jakarta Sans', sans-serif`;
+        ctx.letterSpacing = '5px';
+        ctx.fillText("STAY TUNED • LAUNCHING WORLDWIDE", w / 2, h / 2 + 85 * scaleFactor);
+        ctx.restore();
+      }
+    }
+
+    // Video Recording & Export Function
+    async function startExportVideo() {
+      if (isRecording) return;
+      isRecording = true;
+      recordingOverlay.classList.add('active');
+      progressBar.style.width = '0%';
+      recordingTimer.textContent = '0% Complete';
+
+      // Setup Web Audio API Synthesizer for Cinematic Sound
+      let audioDestination = null;
+      let audioCtx = null;
+      try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContext();
+        audioDestination = audioCtx.createMediaStreamDestination();
+
+        // Sub-bass cinematic boom
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(110, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(35, audioCtx.currentTime + 4);
+        gain.gain.setValueAtTime(0.7, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 5);
+        osc.connect(gain);
+        gain.connect(audioDestination);
+        osc.start();
+
+        // Shimmer chime at reveal (3.2s)
+        setTimeout(() => {
+          if (!audioCtx) return;
+          const chime = audioCtx.createOscillator();
+          const chimeGain = audioCtx.createGain();
+          chime.type = 'triangle';
+          chime.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5
+          chimeGain.gain.setValueAtTime(0.4, audioCtx.currentTime);
+          chimeGain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 3);
+          chime.connect(chimeGain);
+          chimeGain.connect(audioDestination);
+          chime.start();
+        }, 3200);
+
+      } catch (e) {
+        console.warn('Audio synthesis not supported or blocked, recording silent video.', e);
+      }
+
+      // Capture Canvas Stream (60 fps)
+      const stream = canvas.captureStream(60);
+      if (audioDestination && audioDestination.stream.getAudioTracks().length > 0) {
+        stream.addTrack(audioDestination.stream.getAudioTracks()[0]);
+      }
+
+      // Check supported mime types
+      let mimeType = 'video/webm;codecs=vp9';
+      if (!MediaRecorder.isTypeSupported(mimeType)) {
+        mimeType = 'video/webm;codecs=vp8';
+      }
+      if (!MediaRecorder.isTypeSupported(mimeType)) {
+        mimeType = 'video/webm';
+      }
+
+      const recorder = new MediaRecorder(stream, {
+        mimeType: mimeType,
+        videoBitsPerSecond: 8000000 // 8 Mbps high quality
+      });
+
+      const recordedChunks = [];
+      recorder.ondataavailable = e => {
+        if (e.data.size > 0) recordedChunks.push(e.data);
+      };
+
+      recorder.onstop = () => {
+        const blob = new Blob(recordedChunks, { type: 'video/webm' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = `NexcoinPR-Something-New-Is-Coming-${currentAspect.replace(':', 'x')}.webm`;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => {
+          document.body.removeChild(a);
+          window.URL.revokeObjectURL(url);
+          recordingOverlay.classList.remove('active');
+          isRecording = false;
+        }, 1000);
+      };
+
+      // Reset animation start time
+      startTime = performance.now();
+      recorder.start();
+
+      // Progress updater
+      const recordStart = performance.now();
+      const progressInterval = setInterval(() => {
+        const now = performance.now();
+        const elapsed = now - recordStart;
+        const pct = Math.min(100, Math.round((elapsed / TOTAL_DURATION) * 100));
+        progressBar.style.width = `${pct}%`;
+        recordingTimer.textContent = `${pct}% Complete (${Math.round(elapsed / 1000)}s / 10s)`;
+
+        if (elapsed >= TOTAL_DURATION) {
+          clearInterval(progressInterval);
+          recorder.stop();
+          if (audioCtx) audioCtx.close();
+        }
+      }, 100);
+    }
+
+    function copyCaption() {
+      const text = document.getElementById('captionText').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        const orig = btn.innerText;
+        btn.innerText = '✅ Copied!';
+        setTimeout(() => btn.innerText = orig, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
