@@ -196,6 +196,14 @@ input, select { font-family: 'Inter', sans-serif; outline: none; }
 .trade-action-btn { padding: 6px 14px; font-size: 12px; font-weight: 700; border-radius: 6px; background: rgba(201, 168, 76, 0.15); border: 1px solid var(--border-gold); color: var(--gold); transition: all 0.15s; }
 .trade-action-btn:hover { background: var(--gold); color: #070D18; }
 
+/* PAGINATION */
+.mkt-pagination-bar { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; border-top: 1px solid var(--border); background: var(--bg-card); flex-wrap: wrap; gap: 12px; }
+.mpb-info { font-size: 13px; color: var(--text-muted); font-family: var(--font-mono); }
+.mpb-pages { display: flex; gap: 4px; align-items: center; }
+.mpb-btn { padding: 6px 12px; font-size: 12px; font-weight: 700; color: var(--text-muted); background: var(--bg-card-sub); border: 1px solid var(--border); border-radius: 7px; transition: all 0.15s; font-family: var(--font-mono); cursor: pointer; }
+.mpb-btn.active { background: rgba(201, 168, 76, 0.2); border-color: var(--border-gold); color: var(--gold); }
+.mpb-btn:not(.active):hover { color: #fff; background: var(--bg-hover); }
+
 /* ============================================================
    VIEW 3: PRO TRADING TERMINAL (BINANCE STYLE)
 ============================================================ */
@@ -773,6 +781,12 @@ input, select { font-family: 'Inter', sans-serif; outline: none; }
           </tr>
         </tbody>
       </table>
+
+      <!-- PAGINATION BAR -->
+      <div class="mkt-pagination-bar" id="mkt-pagination-bar">
+        <div class="mpb-info" id="mpb-info">Showing 1–25 of 600+ coins (Auto-Synced)</div>
+        <div class="mpb-pages" id="mpb-pages"></div>
+      </div>
     </div>
 
   </div>
@@ -1166,7 +1180,7 @@ input, select { font-family: 'Inter', sans-serif; outline: none; }
 const AFF_REF = 'CPA_CPA2SG0ILQN';
 const AFF_BASE = 'https://www.binance.com/activity/referral-entry/CPA?ref=' + AFF_REF;
 
-const COIN_DATABASE = [
+let COIN_DATABASE = [
   { s: 'BTCUSDT', b: 'BTC', n: 'Bitcoin', cats: ['layer1'], color: '#F7931A', emoji: '₿', mcap: 1720 },
   { s: 'ETHUSDT', b: 'ETH', n: 'Ethereum', cats: ['layer1', 'defi'], color: '#627EEA', emoji: '♦', mcap: 420 },
   { s: 'BNBUSDT', b: 'BNB', n: 'BNB Chain', cats: ['layer1'], color: '#F3BA2F', emoji: '⭐', mcap: 92 },
@@ -1420,16 +1434,28 @@ function executeBinanceBuyHandoff() {
 /* ============================================================
    MARKETS OVERVIEW (Full Table + Movers)
 ============================================================ */
+let currentMarketPage = 1;
+const MARKET_PAGE_SIZE = 25;
+
 function filterCategory(btn, cat) {
   document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
   activeCategory = cat;
+  currentMarketPage = 1;
   renderMarketTable();
 }
 
 function onSearchInput(val) {
   searchKeyword = val.toLowerCase().trim();
+  currentMarketPage = 1;
   renderMarketTable();
+}
+
+function setMarketPage(p) {
+  currentMarketPage = p;
+  renderMarketTable();
+  const tbl = document.getElementById('full-market-tbody');
+  if (tbl) tbl.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function renderMarketTable() {
@@ -1440,62 +1466,100 @@ function renderMarketTable() {
     return matchCat && matchSearch;
   });
 
-  if (filtered.length === 0) {
+  const totalCoins = filtered.length;
+  const totalPages = Math.ceil(totalCoins / MARKET_PAGE_SIZE) || 1;
+  if (currentMarketPage > totalPages) currentMarketPage = totalPages;
+  if (currentMarketPage < 1) currentMarketPage = 1;
+
+  const startIdx = (currentMarketPage - 1) * MARKET_PAGE_SIZE;
+  const pageItems = filtered.slice(startIdx, startIdx + MARKET_PAGE_SIZE);
+
+  if (pageItems.length === 0) {
     tbody.innerHTML = `<tr><td colspan="9" style="text-align:center;padding:32px;color:var(--text-muted);">No coins found matching criteria.</td></tr>`;
-    return;
+  } else {
+    tbody.innerHTML = pageItems.map((coin, idx) => {
+      const globalIdx = startIdx + idx + 1;
+      const ticker = liveTickerData[coin.s];
+      const price = ticker ? formatPrice(parseFloat(ticker.c), coin.s) : (coin.price ? formatPrice(coin.price, coin.s) : '--');
+      const pct = ticker ? parseFloat(ticker.P) : (coin.change24 || 0);
+      const isUp = pct >= 0;
+      const hi = ticker ? formatPrice(parseFloat(ticker.h), coin.s) : (coin.high24 ? formatPrice(coin.high24, coin.s) : '--');
+      const lo = ticker ? formatPrice(parseFloat(ticker.l), coin.s) : (coin.low24 ? formatPrice(coin.low24, coin.s) : '--');
+      const vol = ticker ? humanVolume(parseFloat(ticker.q)) : (coin.quoteVol24 ? humanVolume(coin.quoteVol24) : '--');
+      const mcap = coin.mcap ? `$${coin.mcap.toLocaleString()}B` : '--';
+
+      return `<tr onclick="openCoinInTerminal('${coin.s}')">
+        <td class="c" style="color:var(--text-dim);font-family:var(--font-mono);font-size:12px;">${globalIdx}</td>
+        <td>
+          <div class="coin-cell-info">
+            <div class="coin-badge-icon" style="color:${coin.color};border:1px solid ${coin.color}40;">${coin.emoji}</div>
+            <div>
+              <div class="coin-title-bold">${coin.n}</div>
+              <div class="coin-sub-sym">${coin.b}/USDT</div>
+            </div>
+          </div>
+        </td>
+        <td class="r" style="font-family:var(--font-mono);font-weight:700;">$${price}</td>
+        <td class="r">
+          <span class="${isUp ? 'up' : 'down'}" style="font-family:var(--font-mono);font-weight:700;">
+            ${isUp ? '+' : ''}${pct.toFixed(2)}%
+          </span>
+        </td>
+        <td class="r" style="font-size:12px;font-family:var(--font-mono);color:var(--text-muted);">
+          $${hi} / $${lo}
+        </td>
+        <td class="r" style="font-family:var(--font-mono);">$${vol}</td>
+        <td class="r" style="font-family:var(--font-mono);font-weight:600;">${mcap}</td>
+        <td class="c">
+          <canvas id="sparkline-${coin.s}" width="70" height="26"></canvas>
+        </td>
+        <td class="r">
+          <button class="trade-action-btn" onclick="event.stopPropagation(); openCoinInTerminal('${coin.s}')">
+            Trade &#8594;
+          </button>
+        </td>
+      </tr>`;
+    }).join('');
+
+    // Render sparklines
+    pageItems.forEach(coin => {
+      const cvs = document.getElementById(`sparkline-${coin.s}`);
+      if (cvs) {
+        const ticker = liveTickerData[coin.s];
+        drawSparkline(cvs, ticker ? parseFloat(ticker.P) >= 0 : (coin.change24 >= 0));
+      }
+    });
   }
 
-  tbody.innerHTML = filtered.map((coin, idx) => {
-    const ticker = liveTickerData[coin.s];
-    const price = ticker ? formatPrice(parseFloat(ticker.c), coin.s) : '--';
-    const pct = ticker ? parseFloat(ticker.P) : 0;
-    const isUp = pct >= 0;
-    const hi = ticker ? formatPrice(parseFloat(ticker.h), coin.s) : '--';
-    const lo = ticker ? formatPrice(parseFloat(ticker.l), coin.s) : '--';
-    const vol = ticker ? humanVolume(parseFloat(ticker.q)) : '--';
-    const mcap = coin.mcap ? `$${coin.mcap.toLocaleString()}B` : '--';
+  // Update Pagination Bar
+  const infoEl = document.getElementById('mpb-info');
+  if (infoEl) {
+    infoEl.textContent = `Showing ${totalCoins > 0 ? startIdx + 1 : 0}–${Math.min(startIdx + MARKET_PAGE_SIZE, totalCoins)} of ${totalCoins} coins on Binance (Auto-synced)`;
+  }
 
-    return `<tr onclick="openCoinInTerminal('${coin.s}')">
-      <td class="c" style="color:var(--text-dim);font-family:var(--font-mono);font-size:12px;">${idx + 1}</td>
-      <td>
-        <div class="coin-cell-info">
-          <div class="coin-badge-icon" style="color:${coin.color};border:1px solid ${coin.color}40;">${coin.emoji}</div>
-          <div>
-            <div class="coin-title-bold">${coin.n}</div>
-            <div class="coin-sub-sym">${coin.b}/USDT</div>
-          </div>
-        </div>
-      </td>
-      <td class="r" style="font-family:var(--font-mono);font-weight:700;">$${price}</td>
-      <td class="r">
-        <span class="${isUp ? 'up' : 'down'}" style="font-family:var(--font-mono);font-weight:700;">
-          ${isUp ? '+' : ''}${pct.toFixed(2)}%
-        </span>
-      </td>
-      <td class="r" style="font-size:12px;font-family:var(--font-mono);color:var(--text-muted);">
-        $${hi} / $${lo}
-      </td>
-      <td class="r" style="font-family:var(--font-mono);">$${vol}</td>
-      <td class="r" style="font-family:var(--font-mono);font-weight:600;">${mcap}</td>
-      <td class="c">
-        <canvas id="sparkline-${coin.s}" width="70" height="26"></canvas>
-      </td>
-      <td class="r">
-        <button class="trade-action-btn" onclick="event.stopPropagation(); openCoinInTerminal('${coin.s}')">
-          Trade &#8594;
-        </button>
-      </td>
-    </tr>`;
-  }).join('');
+  const pagesEl = document.getElementById('mpb-pages');
+  if (pagesEl) {
+    let pButtons = '';
+    pButtons += `<button class="mpb-btn" onclick="setMarketPage(${currentMarketPage - 1})" ${currentMarketPage === 1 ? 'disabled style="opacity:0.35;cursor:default;"' : ''}>&larr; Prev</button>`;
 
-  // Render sparklines
-  filtered.forEach(coin => {
-    const cvs = document.getElementById(`sparkline-${coin.s}`);
-    if (cvs) {
-      const ticker = liveTickerData[coin.s];
-      drawSparkline(cvs, ticker ? parseFloat(ticker.P) >= 0 : true);
+    let pStart = Math.max(1, currentMarketPage - 2);
+    let pEnd = Math.min(totalPages, currentMarketPage + 2);
+    if (pStart > 1) {
+      pButtons += `<button class="mpb-btn" onclick="setMarketPage(1)">1</button>`;
+      if (pStart > 2) pButtons += `<span style="color:var(--text-dim);padding:0 2px;">...</span>`;
     }
-  });
+    for (let p = pStart; p <= pEnd; p++) {
+      pButtons += `<button class="mpb-btn ${p === currentMarketPage ? 'active' : ''}" onclick="setMarketPage(${p})">${p}</button>`;
+    }
+    if (pEnd < totalPages) {
+      if (pEnd < totalPages - 1) pButtons += `<span style="color:var(--text-dim);padding:0 2px;">...</span>`;
+      pButtons += `<button class="mpb-btn" onclick="setMarketPage(${totalPages})">${totalPages}</button>`;
+    }
+
+    pButtons += `<button class="mpb-btn" onclick="setMarketPage(${currentMarketPage + 1})" ${currentMarketPage === totalPages ? 'disabled style="opacity:0.35;cursor:default;"' : ''}>Next &rarr;</button>`;
+
+    pagesEl.innerHTML = pButtons;
+  }
 }
 
 function updateHighlights() {
@@ -1875,6 +1939,45 @@ function updateAllViews() {
   calculateBuyQuote();
 }
 
+function guessCategory(sym) {
+  const s = sym.toUpperCase();
+  if (['USD', 'EUR', 'DAI', 'USDC', 'USDT', 'FDUSD', 'TUSD', 'USDD'].some(f => s.includes(f))) return ['stablecoin'];
+  if (['AI', 'GPT', 'BOT', 'DATA', 'AGIX', 'OCEAN', 'ARKM', 'WLD', 'FET', 'TAO', 'RENDER', 'NEAR'].some(f => s.includes(f))) return ['ai'];
+  if (['CAT', 'DOG', 'PUP', 'INU', 'MEME', 'BABY', 'BOME', 'NEIRO', 'PEPE', 'WIF', 'BONK', 'FLOKI', 'SHIB', 'DOGE'].some(f => s.includes(f))) return ['meme'];
+  if (['SWAP', 'DEX', 'YIELD', 'LEND', 'FINANCE', 'POOL', 'UNI', 'AAVE', 'MKR', 'CRV', 'PENDLE'].some(f => s.includes(f))) return ['defi'];
+  if (['ARB', 'OP', 'MATIC', 'POL', 'STRK', 'ZK', 'MANTA'].some(f => s.includes(f))) return ['layer2'];
+  return ['layer1'];
+}
+
+// Load full token catalog from tokens.json
+async function loadFullTokenCatalog() {
+  try {
+    const res = await fetch('/assets/data/tokens.json');
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.tokens && data.tokens.length > 0) {
+        COIN_DATABASE = data.tokens;
+        data.tokens.forEach(t => {
+          if (!liveTickerData[t.s]) {
+            liveTickerData[t.s] = {
+              s: t.s,
+              c: t.price.toString(),
+              P: t.change24.toString(),
+              h: t.high24.toString(),
+              l: t.low24.toString(),
+              v: t.volume24.toString(),
+              q: t.quoteVol24.toString()
+            };
+          }
+        });
+        updateAllViews();
+      }
+    }
+  } catch (e) {
+    console.warn("tokens.json load fallback:", e);
+  }
+}
+
 // Fetch Binance REST API over regular HTTPS (never blocked)
 async function fetchBinanceRestPrices() {
   try {
@@ -1891,7 +1994,7 @@ async function fetchBinanceRestPrices() {
     }
     if (data && Array.isArray(data)) {
       data.forEach(t => {
-        if (COIN_DATABASE.some(c => c.s === t.symbol)) {
+        if (t.symbol.endsWith('USDT') && !t.symbol.includes('UPUSDT') && !t.symbol.includes('DOWNUSDT') && !t.symbol.includes('BEARUSDT') && !t.symbol.includes('BULLUSDT') && parseFloat(t.lastPrice) > 0 && parseFloat(t.quoteVolume) > 500) {
           liveTickerData[t.symbol] = {
             s: t.symbol,
             c: t.lastPrice,
@@ -1901,6 +2004,27 @@ async function fetchBinanceRestPrices() {
             v: t.volume,
             q: t.quoteVolume
           };
+
+          // Auto-discover any new coin added to Binance!
+          let existing = COIN_DATABASE.find(c => c.s === t.symbol);
+          if (!existing) {
+            const base = t.symbol.replace('USDT', '');
+            COIN_DATABASE.push({
+              s: t.symbol,
+              b: base,
+              n: base,
+              cats: guessCategory(base),
+              color: '#C9A84C',
+              emoji: '🪙',
+              mcap: Math.round(parseFloat(t.quoteVolume) * 20 / 1e9),
+              price: parseFloat(t.lastPrice),
+              change24: parseFloat(t.priceChangePercent),
+              high24: parseFloat(t.highPrice),
+              low24: parseFloat(t.lowPrice),
+              volume24: parseFloat(t.volume),
+              quoteVol24: parseFloat(t.quoteVolume)
+            });
+          }
         }
       });
       updateAllViews();
@@ -1945,6 +2069,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Instant render with seed data in 0ms!
   updateAllViews();
+
+  // Load all 600+ coins from tokens catalog
+  loadFullTokenCatalog();
 
   // Fetch real-time REST API data immediately
   fetchBinanceRestPrices();
