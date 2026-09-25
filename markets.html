@@ -76,7 +76,7 @@ input, select { font-family: 'Inter', sans-serif; outline: none; }
 
 /* ============ LIVE TICKER STRIP ============ */
 .live-ticker-strip { background: #0A1424; border-bottom: 1px solid var(--border); height: 36px; overflow: hidden; display: flex; align-items: center; }
-.ticker-scroll-content { display: flex; animation: tickerScroll 80s linear infinite; white-space: nowrap; }
+.ticker-scroll-content { display: flex; animation: tickerScroll 120s linear infinite; white-space: nowrap; }
 .ticker-scroll-content:hover { animation-play-state: paused; }
 @keyframes tickerScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 .ticker-pill { display: inline-flex; align-items: center; gap: 7px; padding: 0 20px; font-size: 12px; font-family: var(--font-mono); border-right: 1px solid var(--border); cursor: pointer; }
@@ -1916,8 +1916,8 @@ const INITIAL_SEED_TICKERS = {
 liveTickerData = Object.assign({}, INITIAL_SEED_TICKERS);
 
 function updateAllViews() {
-  // Update Ticker Strip
-  const stripHtml = COIN_DATABASE.map(c => {
+  // Update Ticker Strip (Top 25 Volume Leaders at smooth readable pace)
+  const stripHtml = COIN_DATABASE.slice(0, 25).map(c => {
     const t = liveTickerData[c.s] || INITIAL_SEED_TICKERS[c.s];
     if (!t) return '';
     const p = parseFloat(t.P);
