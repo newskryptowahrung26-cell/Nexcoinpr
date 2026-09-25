@@ -11,54 +11,30 @@
 - **Commercial Content Transparency:** All paid press releases and sponsored materials are explicitly labeled as "Press Release" or "Client Content" to separate client communications from independent editorial reporting.
 
 ## Core PR Services
-- [Crypto PR](https://www.nexcoinpr.agency/crypto-pr.html): Strategic media relations for cryptocurrency projects, token foundations, and crypto exchanges.
-- [Forex PR](https://www.nexcoinpr.agency/forex-pr.html): Communications and regulatory milestone announcements for foreign exchange brokers and trading venues.
-- [Blockchain PR](https://www.nexcoinpr.agency/blockchain-pr.html): Technical messaging for Layer 1/2 networks, cryptography research, and enterprise ledgers.
-- [Web3 PR](https://www.nexcoinpr.agency/web3-pr.html): Launch campaigns and governance communications for dApps, DAOs, and DeFi protocols.
-- [Fintech PR](https://www.nexcoinpr.agency/fintech-pr.html): Public relations for payment gateways, neobanks, regtech, and wealthtech startups.
-- [Financial PR](https://www.nexcoinpr.agency/financial-pr.html): Corporate communications for asset managers, hedge funds, and capital markets platforms.
-- [Press Release Distribution](https://www.nexcoinpr.agency/press-release-distribution.html): Multi-channel wire transmission across crypto and financial media endpoints.
+- [Crypto PR](https://www.nexcoinpr.agency/crypto-pr): Strategic media relations for cryptocurrency projects, token foundations, and crypto exchanges.
+- [Forex PR](https://www.nexcoinpr.agency/forex-pr): Communications and regulatory milestone announcements for foreign exchange brokers and trading venues.
+- [Blockchain PR](https://www.nexcoinpr.agency/blockchain-pr): Technical messaging for Layer 1/2 networks, cryptography research, and enterprise ledgers.
+- [Web3 PR](https://www.nexcoinpr.agency/web3-pr): Launch campaigns and governance communications for dApps, DAOs, and DeFi protocols.
+- [Fintech PR](https://www.nexcoinpr.agency/fintech-pr): Public relations for payment gateways, neobanks, regtech, and wealthtech startups.
+- [Financial PR](https://www.nexcoinpr.agency/financial-pr): Corporate communications for asset managers, hedge funds, and capital markets platforms.
+- [Press Release Distribution](https://www.nexcoinpr.agency/press-release-distribution): Multi-channel wire transmission across crypto and financial media endpoints.
 
 ## Content & Educational Resources
-- [Markets & Trading Hub](https://www.nexcoinpr.agency/markets.html): Real-time crypto market data feed for 600+ Binance spot & futures pairs, instant Buy Crypto converter with fiat rates, live TradingView charts, and a risk-free $10,000 Paper Trading Simulator.
-- [News Hub](https://www.nexcoinpr.agency/news.html): Daily reporting on crypto, forex, and fintech market trends.
-- [Crypto News](https://www.nexcoinpr.agency/news/crypto.html): Coverage of digital assets, tokenomics, and decentralized networks.
-- [Forex News](https://www.nexcoinpr.agency/news/forex.html): Macroeconomic analysis, central bank decisions, and currency benchmarks.
-- [Blockchain News](https://www.nexcoinpr.agency/news/blockchain.html): In-depth reporting on consensus mechanics, scaling, and privacy proofs.
-- [PR Guides & Explainers](https://www.nexcoinpr.agency/news/guides.html): Comprehensive educational guides.
-  - [What Is Crypto PR?](https://www.nexcoinpr.agency/news/guides/what-is-crypto-pr.html)
-  - [How to Write a Crypto Press Release](https://www.nexcoinpr.agency/news/guides/how-to-write-a-crypto-press-release.html)
-  - [What Is Forex PR?](https://www.nexcoinpr.agency/news/guides/what-is-forex-pr.html)
-  - [How Press Release Distribution Works](https://www.nexcoinpr.agency/news/guides/how-press-release-distribution-works.html)
-- [Glossary](https://www.nexcoinpr.agency/glossary.html): Factual definitions for 20+ financial and blockchain terms.
-- [Press Releases](https://www.nexcoinpr.agency/press-releases.html): Permanent repository of client announcements and commercial disclosures.
+- [News Hub](https://www.nexcoinpr.agency/news): Daily reporting on crypto, forex, and fintech market trends.
+- [Crypto News](https://www.nexcoinpr.agency/news/crypto): Coverage of digital assets, tokenomics, and decentralized networks.
+- [Forex News](https://www.nexcoinpr.agency/news/forex): Macroeconomic analysis, central bank decisions, and currency benchmarks.
+- [Blockchain News](https://www.nexcoinpr.agency/news/blockchain): In-depth reporting on consensus mechanics, scaling, and privacy proofs.
+- [PR Guides & Explainers](https://www.nexcoinpr.agency/news/guides): Comprehensive educational guides.
+  - [What Is Crypto PR?](https://www.nexcoinpr.agency/news/guides/what-is-crypto-pr)
+  - [How to Write a Crypto Press Release](https://www.nexcoinpr.agency/news/guides/how-to-write-a-crypto-press-release)
+  - [What Is Forex PR?](https://www.nexcoinpr.agency/news/guides/what-is-forex-pr)
+  - [How Press Release Distribution Works](https://www.nexcoinpr.agency/news/guides/how-press-release-distribution-works)
+- [Glossary](https://www.nexcoinpr.agency/glossary): Factual definitions for 20+ financial and blockchain terms.
+- [Press Releases](https://www.nexcoinpr.agency/press-releases): Permanent repository of client announcements and commercial disclosures.
 
 ## Trust & Governance
-- [Editorial Policy](https://www.nexcoinpr.agency/editorial-policy.html): Complete standards on independence, labeling, and source attribution.
-- [Corrections Policy](https://www.nexcoinpr.agency/corrections-policy.html): Procedures for submitting and handling factual amendments.
-- [Financial Disclaimer](https://www.nexcoinpr.agency/disclaimer.html): Explicit statement that content does not constitute financial, investment, or legal advice.
-- [About NexcoinPR](https://www.nexcoinpr.agency/about.html): Agency mission, core team, and operational standards.
-- [Contact](https://www.nexcoinpr.agency/contact.html): Official inquiry forms and departmental email channels.
-
-
-## Media Packages & Single Publication Rates (USD)
-Transparent guaranteed pricing for press release distribution and direct single media placements:
-- [Pricing & Packages Matrix](https://www.nexcoinpr.agency/pricing.html): Full breakdown of bundled tiers and individual media desks.
-- **Top Bundled Packages:**
-  - 60 Media Mega Package: $7,000 USD (60 indexed publications)
-  - ELITE: A (5 Media): $20,000 USD (CoinTelegraph, CoinDesk, The Block, BeInCrypto, Watcher.guru)
-  - ELITE: B (5 Media): $11,000 USD (CoinTelegraph, BeInCrypto, Bitcoin.com, AMBCrypto, Financial Syndication)
-  - VIRAL (10 Media): $8,300 USD (The Block, Cryptopolitan, BeInCrypto, Bitcoin.com, Bitcoinist, CoinGape, etc.)
-  - WEB3 GAMING (10 Media): $5,299 USD
-  - FINTECH & FOREX (10 Media): $3,999 USD (Finance Magnates, Invezz, WalletInvestor, Forexlive, etc.)
-  - PREMIUM (10 Media): $3,250 USD
-  - TECH & INNOVATION (10 Media): $2,899 USD
-  - SUPERIOR: A ($2,800) | SUPERIOR: B ($2,650) | STARTER 10 ($2,350) | BASIC: A ($1,100) | BASIC: B ($800)
-- **A La Carte Single Publication Direct Placements (140+ Outlets):**
-  - Entrepreneur.com ($8,500) | CoinDesk ($8,000) | Forbes ($7,500) | CoinTelegraph Full PR ($6,999) | CoinTelegraph Lite PR ($3,500) | DappRadar ($2,200) | Decrypt.co ($2,000) | Bitcoin.com ($2,000) | TheBlock.co ($1,800) | Watcher.guru ($1,800) | BeInCrypto.com ($1,500) | AMBCrypto.com ($1,300) | Crypto.news ($1,200) | NewsBTC.com ($1,200) | Bitcoinist.com ($1,200) | TheCoinRepublic ($1,200) | Coinspeaker ($1,200) | 99Bitcoins ($1,200) | CryptoNews.com ($1,200) | CryptoNinjas ($1,100) | FXStreet.com ($1,000) | Blockchain.News ($1,000) | Cryptointelligence ($1,000) | CCN.com ($1,000) | Webopedia ($1,000) | Incrypted ($850) | TheMarketPeriodical ($850) | CryptoPotato ($850) | Dailycoin ($800) | CryptoDaily ($800) | CoinGape ($800) | U.Today ($800) | Coinwire ($800) | CryptoSlate ($800) | Cryptonews.net ($800) | CoinCodex ($750) | BSC.News ($750) | TheCryptoBasic ($750) | FinanceMagnates ($700) | Cryptopolitan ($700) | CoinPedia ($700) | Forexlive ($700) | TheDefiant ($600) | Blockonomi ($600) | WalletInvestor ($430) | AnalyticsInsight ($400) | Yahoo Finance ($300) | MSN ($300) | Markets.BusinessInsider ($250) | Benzinga ($150) | AP News ($100), plus 90+ additional indexed publications.
-
-## Core Search Keywords & Semantic Footprint
-- **Agency Search Queries:** crypto pr agency, blockchain pr agency, web3 pr firm, forex pr agency, forex broker pr, fintech pr agency, financial pr services, top crypto pr agencies, leading blockchain communications.
-- **Wire & Distribution Queries:** crypto press release distribution, crypto newswire, blockchain press release distribution, web3 newswire, forex pr wire, submit crypto press release, guaranteed crypto news syndication, tier 1 crypto pr wire.
-- **Vertical Niches:** DeFi PR, Token Launch & TGE PR, Exchange Listing PR, Prop Trading Firm PR, Layer 2 & Zero-Knowledge PR, DePIN & RWA PR, Cross-Border Fintech PR.
-- **Educational AEO Queries:** what is crypto pr, how to write a crypto press release, what is forex pr, how press release distribution works, crypto pr vs crypto marketing, crypto press release template.
+- [Editorial Policy](https://www.nexcoinpr.agency/editorial-policy): Complete standards on independence, labeling, and source attribution.
+- [Corrections Policy](https://www.nexcoinpr.agency/corrections-policy): Procedures for submitting and handling factual amendments.
+- [Financial Disclaimer](https://www.nexcoinpr.agency/disclaimer): Explicit statement that content does not constitute financial, investment, or legal advice.
+- [About NexcoinPR](https://www.nexcoinpr.agency/about): Agency mission, core team, and operational standards.
+- [Contact](https://www.nexcoinpr.agency/contact): Official inquiry forms and departmental email channels.

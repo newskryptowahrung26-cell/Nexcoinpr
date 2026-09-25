@@ -9,16 +9,16 @@
     <atom:link href="https://www.nexcoinpr.agency/feed-crypto.xml" rel="self" type="application/rss+xml" />
     <item>
       <title><![CDATA[Zero-Knowledge Prover Latency Drops 40% Across Major Testnets]]></title>
-      <link>https://www.nexcoinpr.agency/news/blockchain.html</link>
-      <guid isPermaLink="true">https://www.nexcoinpr.agency/news/blockchain.html</guid>
+      <link>https://www.nexcoinpr.agency/news/blockchain</link>
+      <guid isPermaLink="true">https://www.nexcoinpr.agency/news/blockchain</guid>
       <pubDate>Tue, 22 Sep 2026 08:00:00 GMT</pubDate>
       <description><![CDATA[Hardware acceleration optimizations compress state verification overhead for Ethereum Layer 2 rollups.]]></description>
       <category>Crypto</category>
     </item>
     <item>
       <title><![CDATA[Decentralized Physical Infrastructure Networks Reach Compute Milestones]]></title>
-      <link>https://www.nexcoinpr.agency/news/crypto.html</link>
-      <guid isPermaLink="true">https://www.nexcoinpr.agency/news/crypto.html</guid>
+      <link>https://www.nexcoinpr.agency/news/crypto</link>
+      <guid isPermaLink="true">https://www.nexcoinpr.agency/news/crypto</guid>
       <pubDate>Mon, 21 Sep 2026 12:00:00 GMT</pubDate>
       <description><![CDATA[Distributed GPU grids demonstrate real-world utility for open-source AI model inference.]]></description>
       <category>Crypto</category>

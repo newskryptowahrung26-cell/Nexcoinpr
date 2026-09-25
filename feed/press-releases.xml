@@ -9,8 +9,8 @@
     <atom:link href="https://www.nexcoinpr.agency/feed-press-releases.xml" rel="self" type="application/rss+xml" />
     <item>
       <title><![CDATA[[Press Release] AuraChain Deploys High-Throughput Layer 2 Mainnet with Zero-Knowledge State Compression]]></title>
-      <link>https://www.nexcoinpr.agency/press-releases/sample-press-release.html</link>
-      <guid isPermaLink="true">https://www.nexcoinpr.agency/press-releases/sample-press-release.html</guid>
+      <link>https://www.nexcoinpr.agency/press-releases/sample-press-release</link>
+      <guid isPermaLink="true">https://www.nexcoinpr.agency/press-releases/sample-press-release</guid>
       <pubDate>Tue, 22 Sep 2026 09:00:00 GMT</pubDate>
       <description><![CDATA[Official press release: AuraChain Foundation deploys Layer 2 mainnet with EVM equivalence and verified audits.]]></description>
       <category>Press Release</category>

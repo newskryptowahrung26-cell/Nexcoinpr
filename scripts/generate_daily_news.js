@@ -408,7 +408,7 @@ async function fetchForexCandidate(importedUrls) {
 function generateArticleHtml(article) {
   const pubDateFormatted = article.dateString;
   const isoDate = article.isoDate;
-  const canonicalUrl = `https://www.nexcoinpr.agency/news/${article.slug}.html`;
+  const canonicalUrl = `https://www.nexcoinpr.agency/news/${article.slug}`;
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -702,9 +702,9 @@ function updateNewsHub(article) {
                     <span class="news-card-date">${article.dateString}</span>
                     <a href="${article.sourceUrl}" target="_blank" rel="noopener nofollow" style="font-size:0.75rem;color:var(--color-gold);text-decoration:none;margin-left:auto;">${article.sourceName} &#8599;</a>
                   </div>
-                  <h3 class="news-card-title"><a href="/news/${article.slug}.html">${article.title}</a></h3>
+                  <h3 class="news-card-title"><a href="/news/${article.slug}">${article.title}</a></h3>
                   <p class="news-card-excerpt">${article.metaDescription}</p>
-                  <a href="/news/${article.slug}.html" class="news-card-link">Read more &rarr;</a>
+                  <a href="/news/${article.slug}" class="news-card-link">Read more &rarr;</a>
                 </div>
               </article>`;
 
@@ -732,9 +732,9 @@ function updateCategoryHub(article) {
                     <span class="news-card-date">${article.dateString}</span>
                     <a href="${article.sourceUrl}" target="_blank" rel="noopener nofollow" style="font-size:0.75rem;color:var(--color-gold);text-decoration:none;margin-left:auto;">${article.sourceName} &#8599;</a>
                   </div>
-                  <h2 class="news-card-title"><a href="/news/${article.slug}.html">${article.title}</a></h2>
+                  <h2 class="news-card-title"><a href="/news/${article.slug}">${article.title}</a></h2>
                   <p class="news-card-excerpt">${article.metaDescription}</p>
-                  <a href="/news/${article.slug}.html" class="news-card-link">Read more &rarr;</a>
+                  <a href="/news/${article.slug}" class="news-card-link">Read more &rarr;</a>
                 </div>
               </article>`;
 
@@ -752,7 +752,7 @@ function updateSitemaps(article) {
   if (fs.existsSync(SITEMAP_NEWS_FILE)) {
     let sitemap = fs.readFileSync(SITEMAP_NEWS_FILE, 'utf8');
     const newEntry = `  <url>
-    <loc>https://www.nexcoinpr.agency/news/${article.slug}.html</loc>
+    <loc>https://www.nexcoinpr.agency/news/${article.slug}</loc>
     <news:news>
       <news:publication>
         <news:name>NexcoinPR</news:name>
@@ -769,7 +769,7 @@ function updateSitemaps(article) {
 
   if (fs.existsSync(SITEMAP_INDEX_FILE)) {
     let indexMap = fs.readFileSync(SITEMAP_INDEX_FILE, 'utf8');
-    indexMap = indexMap.replace(/(<loc>https:\/\/nexcoinpr\.com\/sitemap-news\.xml<\/loc>\s*<lastmod>)[^<]+(<\/lastmod>)/, `$1${article.ymdDate}$2`);
+    indexMap = indexMap.replace(/(<loc>https:\/\/www\.nexcoinpr\.agency\/sitemap-news\.xml<\/loc>\s*<lastmod>)[^<]+(<\/lastmod>)/, `$1${article.ymdDate}$2`);
     fs.writeFileSync(SITEMAP_INDEX_FILE, indexMap, 'utf8');
   }
 }

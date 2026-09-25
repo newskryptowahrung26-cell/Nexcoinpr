@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://www.nexcoinpr.agency/news.html</loc>
+    <loc>https://www.nexcoinpr.agency/news</loc>
     <news:news>
       <news:publication>
         <news:name>NexcoinPR</news:name>
@@ -13,7 +13,7 @@
     </news:news>
   </url>
   <url>
-    <loc>https://www.nexcoinpr.agency/news/bitcoin-slips-under-84k-us-treasury-yields-surge.html</loc>
+    <loc>https://www.nexcoinpr.agency/news/bitcoin-slips-under-84k-us-treasury-yields-surge</loc>
     <news:news>
       <news:publication>
         <news:name>NexcoinPR</news:name>
@@ -24,7 +24,7 @@
     </news:news>
   </url>
   <url>
-    <loc>https://www.nexcoinpr.agency/news/usd-jpy-outlook-fed-recalibration-pressures-yen.html</loc>
+    <loc>https://www.nexcoinpr.agency/news/usd-jpy-outlook-fed-recalibration-pressures-yen</loc>
     <news:news>
       <news:publication>
         <news:name>NexcoinPR</news:name>
@@ -35,7 +35,7 @@
     </news:news>
   </url>
   <url>
-    <loc>https://www.nexcoinpr.agency/news/crypto.html</loc>
+    <loc>https://www.nexcoinpr.agency/news/crypto</loc>
     <news:news>
       <news:publication>
         <news:name>NexcoinPR</news:name>
@@ -46,7 +46,7 @@
     </news:news>
   </url>
   <url>
-    <loc>https://www.nexcoinpr.agency/news/forex.html</loc>
+    <loc>https://www.nexcoinpr.agency/news/forex</loc>
     <news:news>
       <news:publication>
         <news:name>NexcoinPR</news:name>
@@ -57,7 +57,7 @@
     </news:news>
   </url>
   <url>
-    <loc>https://www.nexcoinpr.agency/news/blockchain.html</loc>
+    <loc>https://www.nexcoinpr.agency/news/blockchain</loc>
     <news:news>
       <news:publication>
         <news:name>NexcoinPR</news:name>
@@ -68,7 +68,7 @@
     </news:news>
   </url>
   <url>
-    <loc>https://www.nexcoinpr.agency/news/web3.html</loc>
+    <loc>https://www.nexcoinpr.agency/news/web3</loc>
     <news:news>
       <news:publication>
         <news:name>NexcoinPR</news:name>
@@ -79,7 +79,7 @@
     </news:news>
   </url>
   <url>
-    <loc>https://www.nexcoinpr.agency/news/fintech.html</loc>
+    <loc>https://www.nexcoinpr.agency/news/fintech</loc>
     <news:news>
       <news:publication>
         <news:name>NexcoinPR</news:name>
@@ -90,7 +90,7 @@
     </news:news>
   </url>
   <url>
-    <loc>https://www.nexcoinpr.agency/news/financial-markets.html</loc>
+    <loc>https://www.nexcoinpr.agency/news/financial-markets</loc>
     <news:news>
       <news:publication>
         <news:name>NexcoinPR</news:name>
@@ -101,7 +101,7 @@
     </news:news>
   </url>
   <url>
-    <loc>https://www.nexcoinpr.agency/news/guides.html</loc>
+    <loc>https://www.nexcoinpr.agency/news/guides</loc>
     <news:news>
       <news:publication>
         <news:name>NexcoinPR</news:name>
@@ -112,7 +112,7 @@
     </news:news>
   </url>
   <url>
-    <loc>https://www.nexcoinpr.agency/news/guides/what-is-crypto-pr.html</loc>
+    <loc>https://www.nexcoinpr.agency/news/guides/what-is-crypto-pr</loc>
     <news:news>
       <news:publication>
         <news:name>NexcoinPR</news:name>
@@ -123,7 +123,7 @@
     </news:news>
   </url>
   <url>
-    <loc>https://www.nexcoinpr.agency/news/guides/how-to-write-a-crypto-press-release.html</loc>
+    <loc>https://www.nexcoinpr.agency/news/guides/how-to-write-a-crypto-press-release</loc>
     <news:news>
       <news:publication>
         <news:name>NexcoinPR</news:name>
@@ -134,7 +134,7 @@
     </news:news>
   </url>
   <url>
-    <loc>https://www.nexcoinpr.agency/news/guides/what-is-forex-pr.html</loc>
+    <loc>https://www.nexcoinpr.agency/news/guides/what-is-forex-pr</loc>
     <news:news>
       <news:publication>
         <news:name>NexcoinPR</news:name>
@@ -145,7 +145,7 @@
     </news:news>
   </url>
   <url>
-    <loc>https://www.nexcoinpr.agency/news/guides/how-press-release-distribution-works.html</loc>
+    <loc>https://www.nexcoinpr.agency/news/guides/how-press-release-distribution-works</loc>
     <news:news>
       <news:publication>
         <news:name>NexcoinPR</news:name>
@@ -156,7 +156,7 @@
     </news:news>
   </url>
   <url>
-    <loc>https://www.nexcoinpr.agency/news/trump-administration-weighs-a-global-stablecoin-plan-to-cement-dollar-s-dom.html</loc>
+    <loc>https://www.nexcoinpr.agency/news/trump-administration-weighs-a-global-stablecoin-plan-to-cement-dollar-s-dom</loc>
     <news:news>
       <news:publication>
         <news:name>NexcoinPR</news:name>
@@ -167,7 +167,7 @@
     </news:news>
   </url>
   <url>
-    <loc>https://www.nexcoinpr.agency/news/bitgets-352-million-hack-happened-via-spoofed-transfers-not-private-keys-ce.html</loc>
+    <loc>https://www.nexcoinpr.agency/news/bitgets-352-million-hack-happened-via-spoofed-transfers-not-private-keys-ce</loc>
     <news:news>
       <news:publication>
         <news:name>NexcoinPR</news:name>

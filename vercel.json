@@ -2,6 +2,12 @@
   "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    { "source": "/feed/news.xml", "destination": "/feed.xml" },
+    { "source": "/feed/crypto.xml", "destination": "/feed-crypto.xml" },
+    { "source": "/feed/forex.xml", "destination": "/feed-forex.xml" },
+    { "source": "/feed/press-releases.xml", "destination": "/feed-press-releases.xml" }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",

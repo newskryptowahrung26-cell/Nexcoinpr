@@ -28,31 +28,32 @@ console.log('Created sitemap.xml');
 // 2. sitemap-pages.xml
 const pagesList = [
   { loc: '/', priority: '1.0', changefreq: 'daily' },
-  { loc: '/services.html', priority: '0.9', changefreq: 'weekly' },
-  { loc: '/crypto-pr.html', priority: '0.9', changefreq: 'weekly' },
-  { loc: '/forex-pr.html', priority: '0.9', changefreq: 'weekly' },
-  { loc: '/blockchain-pr.html', priority: '0.9', changefreq: 'weekly' },
-  { loc: '/web3-pr.html', priority: '0.9', changefreq: 'weekly' },
-  { loc: '/fintech-pr.html', priority: '0.9', changefreq: 'weekly' },
-  { loc: '/financial-pr.html', priority: '0.9', changefreq: 'weekly' },
-  { loc: '/press-release-distribution.html', priority: '0.95', changefreq: 'daily' },
-  { loc: '/press-releases.html', priority: '0.9', changefreq: 'daily' },
-  { loc: '/pricing.html', priority: '0.85', changefreq: 'monthly' },
-  { loc: '/media.html', priority: '0.8', changefreq: 'monthly' },
-  { loc: '/case-studies.html', priority: '0.8', changefreq: 'monthly' },
-  { loc: '/about.html', priority: '0.8', changefreq: 'monthly' },
-  { loc: '/faq.html', priority: '0.8', changefreq: 'monthly' },
-  { loc: '/authors.html', priority: '0.7', changefreq: 'monthly' },
-  { loc: '/authors/editorial-team.html', priority: '0.7', changefreq: 'monthly' },
-  { loc: '/companies.html', priority: '0.75', changefreq: 'weekly' },
-  { loc: '/glossary.html', priority: '0.8', changefreq: 'monthly' },
-  { loc: '/contact.html', priority: '0.85', changefreq: 'monthly' },
-  { loc: '/editorial-policy.html', priority: '0.6', changefreq: 'yearly' },
-  { loc: '/corrections-policy.html', priority: '0.6', changefreq: 'yearly' },
-  { loc: '/disclaimer.html', priority: '0.6', changefreq: 'yearly' },
-  { loc: '/privacy-policy.html', priority: '0.5', changefreq: 'yearly' },
-  { loc: '/terms.html', priority: '0.5', changefreq: 'yearly' },
-  { loc: '/cookie-policy.html', priority: '0.5', changefreq: 'yearly' }
+  { loc: '/markets', priority: '0.95', changefreq: 'always' },
+  { loc: '/services', priority: '0.9', changefreq: 'weekly' },
+  { loc: '/crypto-pr', priority: '0.9', changefreq: 'weekly' },
+  { loc: '/forex-pr', priority: '0.9', changefreq: 'weekly' },
+  { loc: '/blockchain-pr', priority: '0.9', changefreq: 'weekly' },
+  { loc: '/web3-pr', priority: '0.9', changefreq: 'weekly' },
+  { loc: '/fintech-pr', priority: '0.9', changefreq: 'weekly' },
+  { loc: '/financial-pr', priority: '0.9', changefreq: 'weekly' },
+  { loc: '/press-release-distribution', priority: '0.95', changefreq: 'daily' },
+  { loc: '/press-releases', priority: '0.9', changefreq: 'daily' },
+  { loc: '/pricing', priority: '0.85', changefreq: 'monthly' },
+  { loc: '/media', priority: '0.8', changefreq: 'monthly' },
+  { loc: '/case-studies', priority: '0.8', changefreq: 'monthly' },
+  { loc: '/about', priority: '0.8', changefreq: 'monthly' },
+  { loc: '/faq', priority: '0.8', changefreq: 'monthly' },
+  { loc: '/authors', priority: '0.7', changefreq: 'monthly' },
+  { loc: '/authors/editorial-team', priority: '0.7', changefreq: 'monthly' },
+  { loc: '/companies', priority: '0.75', changefreq: 'weekly' },
+  { loc: '/glossary', priority: '0.8', changefreq: 'monthly' },
+  { loc: '/contact', priority: '0.85', changefreq: 'monthly' },
+  { loc: '/editorial-policy', priority: '0.6', changefreq: 'yearly' },
+  { loc: '/corrections-policy', priority: '0.6', changefreq: 'yearly' },
+  { loc: '/disclaimer', priority: '0.6', changefreq: 'yearly' },
+  { loc: '/privacy-policy', priority: '0.5', changefreq: 'yearly' },
+  { loc: '/terms', priority: '0.5', changefreq: 'yearly' },
+  { loc: '/cookie-policy', priority: '0.5', changefreq: 'yearly' }
 ];
 
 const sitemapPagesXml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -70,15 +71,15 @@ console.log('Created sitemap-pages.xml');
 
 // 3. sitemap-news.xml (Google News Sitemap format)
 const newsList = [
-  { loc: '/news.html', title: 'Crypto, Forex & Financial Markets News Hub', pubDate: '2026-09-22' },
-  { loc: '/news/crypto.html', title: 'Cryptocurrency Industry News & Protocol Developments', pubDate: '2026-09-22' },
-  { loc: '/news/forex.html', title: 'Forex Markets, Central Banks and Currency News', pubDate: '2026-09-22' },
-  { loc: '/news/blockchain.html', title: 'Blockchain Infrastructure and Consensus Technology News', pubDate: '2026-09-22' },
-  { loc: '/news/guides.html', title: 'Crypto & Forex Public Relations Guides and Explainers', pubDate: '2026-09-22' },
-  { loc: '/news/guides/what-is-crypto-pr.html', title: 'What Is Crypto PR? Complete Guide to Cryptocurrency Public Relations', pubDate: '2026-09-22' },
-  { loc: '/news/guides/how-to-write-a-crypto-press-release.html', title: 'How to Write a Crypto Press Release: Step-by-Step Structure & Template', pubDate: '2026-09-22' },
-  { loc: '/news/guides/what-is-forex-pr.html', title: 'What Is Forex PR? A Guide to Foreign Exchange Public Relations', pubDate: '2026-09-22' },
-  { loc: '/news/guides/how-press-release-distribution-works.html', title: 'How Press Release Distribution Works: Wire Networks & Syndication', pubDate: '2026-09-22' }
+  { loc: '/news', title: 'Crypto, Forex & Financial Markets News Hub', pubDate: '2026-09-22' },
+  { loc: '/news/crypto', title: 'Cryptocurrency Industry News & Protocol Developments', pubDate: '2026-09-22' },
+  { loc: '/news/forex', title: 'Forex Markets, Central Banks and Currency News', pubDate: '2026-09-22' },
+  { loc: '/news/blockchain', title: 'Blockchain Infrastructure and Consensus Technology News', pubDate: '2026-09-22' },
+  { loc: '/news/guides', title: 'Crypto & Forex Public Relations Guides and Explainers', pubDate: '2026-09-22' },
+  { loc: '/news/guides/what-is-crypto-pr', title: 'What Is Crypto PR? Complete Guide to Cryptocurrency Public Relations', pubDate: '2026-09-22' },
+  { loc: '/news/guides/how-to-write-a-crypto-press-release', title: 'How to Write a Crypto Press Release: Step-by-Step Structure & Template', pubDate: '2026-09-22' },
+  { loc: '/news/guides/what-is-forex-pr', title: 'What Is Forex PR? A Guide to Foreign Exchange Public Relations', pubDate: '2026-09-22' },
+  { loc: '/news/guides/how-press-release-distribution-works', title: 'How Press Release Distribution Works: Wire Networks & Syndication', pubDate: '2026-09-22' }
 ];
 
 const sitemapNewsXml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -97,13 +98,15 @@ ${newsList.map(n => `  <url>
   </url>`).join('\n')}
 </urlset>
 `;
-fs.writeFileSync(path.join(BASE_DIR, 'sitemap-news.xml'), sitemapNewsXml);
-console.log('Created sitemap-news.xml');
+if (!fs.existsSync(path.join(BASE_DIR, 'sitemap-news.xml'))) {
+  fs.writeFileSync(path.join(BASE_DIR, 'sitemap-news.xml'), sitemapNewsXml);
+  console.log('Created sitemap-news.xml');
+}
 
 // 4. sitemap-press-releases.xml
 const prList = [
-  { loc: '/press-releases.html', priority: '0.9', changefreq: 'daily' },
-  { loc: '/press-releases/sample-press-release.html', priority: '0.8', changefreq: 'monthly' }
+  { loc: '/press-releases', priority: '0.9', changefreq: 'daily' },
+  { loc: '/press-releases/sample-press-release', priority: '0.8', changefreq: 'monthly' }
 ];
 
 const sitemapPrXml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -116,8 +119,10 @@ ${prList.map(p => `  <url>
   </url>`).join('\n')}
 </urlset>
 `;
-fs.writeFileSync(path.join(BASE_DIR, 'sitemap-press-releases.xml'), sitemapPrXml);
-console.log('Created sitemap-press-releases.xml');
+if (!fs.existsSync(path.join(BASE_DIR, 'sitemap-press-releases.xml'))) {
+  fs.writeFileSync(path.join(BASE_DIR, 'sitemap-press-releases.xml'), sitemapPrXml);
+  console.log('Created sitemap-press-releases.xml');
+}
 
 // 5. RSS Feeds (RSS 2.0)
 function generateRssFeed({ title, description, feedUrl, items }) {
@@ -257,33 +262,33 @@ const llmsTxt = `# NexcoinPR
 - **Commercial Content Transparency:** All paid press releases and sponsored materials are explicitly labeled as "Press Release" or "Client Content" to separate client communications from independent editorial reporting.
 
 ## Core PR Services
-- [Crypto PR](https://www.nexcoinpr.agency/crypto-pr.html): Strategic media relations for cryptocurrency projects, token foundations, and crypto exchanges.
-- [Forex PR](https://www.nexcoinpr.agency/forex-pr.html): Communications and regulatory milestone announcements for foreign exchange brokers and trading venues.
-- [Blockchain PR](https://www.nexcoinpr.agency/blockchain-pr.html): Technical messaging for Layer 1/2 networks, cryptography research, and enterprise ledgers.
-- [Web3 PR](https://www.nexcoinpr.agency/web3-pr.html): Launch campaigns and governance communications for dApps, DAOs, and DeFi protocols.
-- [Fintech PR](https://www.nexcoinpr.agency/fintech-pr.html): Public relations for payment gateways, neobanks, regtech, and wealthtech startups.
-- [Financial PR](https://www.nexcoinpr.agency/financial-pr.html): Corporate communications for asset managers, hedge funds, and capital markets platforms.
-- [Press Release Distribution](https://www.nexcoinpr.agency/press-release-distribution.html): Multi-channel wire transmission across crypto and financial media endpoints.
+- [Crypto PR](https://www.nexcoinpr.agency/crypto-pr): Strategic media relations for cryptocurrency projects, token foundations, and crypto exchanges.
+- [Forex PR](https://www.nexcoinpr.agency/forex-pr): Communications and regulatory milestone announcements for foreign exchange brokers and trading venues.
+- [Blockchain PR](https://www.nexcoinpr.agency/blockchain-pr): Technical messaging for Layer 1/2 networks, cryptography research, and enterprise ledgers.
+- [Web3 PR](https://www.nexcoinpr.agency/web3-pr): Launch campaigns and governance communications for dApps, DAOs, and DeFi protocols.
+- [Fintech PR](https://www.nexcoinpr.agency/fintech-pr): Public relations for payment gateways, neobanks, regtech, and wealthtech startups.
+- [Financial PR](https://www.nexcoinpr.agency/financial-pr): Corporate communications for asset managers, hedge funds, and capital markets platforms.
+- [Press Release Distribution](https://www.nexcoinpr.agency/press-release-distribution): Multi-channel wire transmission across crypto and financial media endpoints.
 
 ## Content & Educational Resources
-- [News Hub](https://www.nexcoinpr.agency/news.html): Daily reporting on crypto, forex, and fintech market trends.
-- [Crypto News](https://www.nexcoinpr.agency/news/crypto.html): Coverage of digital assets, tokenomics, and decentralized networks.
-- [Forex News](https://www.nexcoinpr.agency/news/forex.html): Macroeconomic analysis, central bank decisions, and currency benchmarks.
-- [Blockchain News](https://www.nexcoinpr.agency/news/blockchain.html): In-depth reporting on consensus mechanics, scaling, and privacy proofs.
-- [PR Guides & Explainers](https://www.nexcoinpr.agency/news/guides.html): Comprehensive educational guides.
-  - [What Is Crypto PR?](https://www.nexcoinpr.agency/news/guides/what-is-crypto-pr.html)
-  - [How to Write a Crypto Press Release](https://www.nexcoinpr.agency/news/guides/how-to-write-a-crypto-press-release.html)
-  - [What Is Forex PR?](https://www.nexcoinpr.agency/news/guides/what-is-forex-pr.html)
-  - [How Press Release Distribution Works](https://www.nexcoinpr.agency/news/guides/how-press-release-distribution-works.html)
-- [Glossary](https://www.nexcoinpr.agency/glossary.html): Factual definitions for 20+ financial and blockchain terms.
-- [Press Releases](https://www.nexcoinpr.agency/press-releases.html): Permanent repository of client announcements and commercial disclosures.
+- [News Hub](https://www.nexcoinpr.agency/news): Daily reporting on crypto, forex, and fintech market trends.
+- [Crypto News](https://www.nexcoinpr.agency/news/crypto): Coverage of digital assets, tokenomics, and decentralized networks.
+- [Forex News](https://www.nexcoinpr.agency/news/forex): Macroeconomic analysis, central bank decisions, and currency benchmarks.
+- [Blockchain News](https://www.nexcoinpr.agency/news/blockchain): In-depth reporting on consensus mechanics, scaling, and privacy proofs.
+- [PR Guides & Explainers](https://www.nexcoinpr.agency/news/guides): Comprehensive educational guides.
+  - [What Is Crypto PR?](https://www.nexcoinpr.agency/news/guides/what-is-crypto-pr)
+  - [How to Write a Crypto Press Release](https://www.nexcoinpr.agency/news/guides/how-to-write-a-crypto-press-release)
+  - [What Is Forex PR?](https://www.nexcoinpr.agency/news/guides/what-is-forex-pr)
+  - [How Press Release Distribution Works](https://www.nexcoinpr.agency/news/guides/how-press-release-distribution-works)
+- [Glossary](https://www.nexcoinpr.agency/glossary): Factual definitions for 20+ financial and blockchain terms.
+- [Press Releases](https://www.nexcoinpr.agency/press-releases): Permanent repository of client announcements and commercial disclosures.
 
 ## Trust & Governance
-- [Editorial Policy](https://www.nexcoinpr.agency/editorial-policy.html): Complete standards on independence, labeling, and source attribution.
-- [Corrections Policy](https://www.nexcoinpr.agency/corrections-policy.html): Procedures for submitting and handling factual amendments.
-- [Financial Disclaimer](https://www.nexcoinpr.agency/disclaimer.html): Explicit statement that content does not constitute financial, investment, or legal advice.
-- [About NexcoinPR](https://www.nexcoinpr.agency/about.html): Agency mission, core team, and operational standards.
-- [Contact](https://www.nexcoinpr.agency/contact.html): Official inquiry forms and departmental email channels.
+- [Editorial Policy](https://www.nexcoinpr.agency/editorial-policy): Complete standards on independence, labeling, and source attribution.
+- [Corrections Policy](https://www.nexcoinpr.agency/corrections-policy): Procedures for submitting and handling factual amendments.
+- [Financial Disclaimer](https://www.nexcoinpr.agency/disclaimer): Explicit statement that content does not constitute financial, investment, or legal advice.
+- [About NexcoinPR](https://www.nexcoinpr.agency/about): Agency mission, core team, and operational standards.
+- [Contact](https://www.nexcoinpr.agency/contact): Official inquiry forms and departmental email channels.
 `;
 fs.writeFileSync(path.join(BASE_DIR, 'llms.txt'), llmsTxt);
 console.log('Created llms.txt');
@@ -339,43 +344,43 @@ NexcoinPR adheres to strict global communications ethics:
 
 ## 5. Information Architecture & Canonical Endpoints
 - Homepage: https://www.nexcoinpr.agency/
-- Services Directory: https://www.nexcoinpr.agency/services.html
-  - Crypto PR: https://www.nexcoinpr.agency/crypto-pr.html
-  - Forex PR: https://www.nexcoinpr.agency/forex-pr.html
-  - Blockchain PR: https://www.nexcoinpr.agency/blockchain-pr.html
-  - Web3 PR: https://www.nexcoinpr.agency/web3-pr.html
-  - Fintech PR: https://www.nexcoinpr.agency/fintech-pr.html
-  - Financial PR: https://www.nexcoinpr.agency/financial-pr.html
-  - Press Release Distribution: https://www.nexcoinpr.agency/press-release-distribution.html
-- Commercial Newsroom: https://www.nexcoinpr.agency/press-releases.html
-  - Sample Press Release: https://www.nexcoinpr.agency/press-releases/sample-press-release.html
-- News & Content Hub: https://www.nexcoinpr.agency/news.html
-  - Crypto News: https://www.nexcoinpr.agency/news/crypto.html
-  - Forex News: https://www.nexcoinpr.agency/news/forex.html
-  - Blockchain News: https://www.nexcoinpr.agency/news/blockchain.html
-  - Guides Index: https://www.nexcoinpr.agency/news/guides.html
-  - Guide - What Is Crypto PR: https://www.nexcoinpr.agency/news/guides/what-is-crypto-pr.html
-  - Guide - How to Write a Press Release: https://www.nexcoinpr.agency/news/guides/how-to-write-a-crypto-press-release.html
-  - Guide - What Is Forex PR: https://www.nexcoinpr.agency/news/guides/what-is-forex-pr.html
-  - Guide - Distribution Mechanics: https://www.nexcoinpr.agency/news/guides/how-press-release-distribution-works.html
+- Services Directory: https://www.nexcoinpr.agency/services
+  - Crypto PR: https://www.nexcoinpr.agency/crypto-pr
+  - Forex PR: https://www.nexcoinpr.agency/forex-pr
+  - Blockchain PR: https://www.nexcoinpr.agency/blockchain-pr
+  - Web3 PR: https://www.nexcoinpr.agency/web3-pr
+  - Fintech PR: https://www.nexcoinpr.agency/fintech-pr
+  - Financial PR: https://www.nexcoinpr.agency/financial-pr
+  - Press Release Distribution: https://www.nexcoinpr.agency/press-release-distribution
+- Commercial Newsroom: https://www.nexcoinpr.agency/press-releases
+  - Sample Press Release: https://www.nexcoinpr.agency/press-releases/sample-press-release
+- News & Content Hub: https://www.nexcoinpr.agency/news
+  - Crypto News: https://www.nexcoinpr.agency/news/crypto
+  - Forex News: https://www.nexcoinpr.agency/news/forex
+  - Blockchain News: https://www.nexcoinpr.agency/news/blockchain
+  - Guides Index: https://www.nexcoinpr.agency/news/guides
+  - Guide - What Is Crypto PR: https://www.nexcoinpr.agency/news/guides/what-is-crypto-pr
+  - Guide - How to Write a Press Release: https://www.nexcoinpr.agency/news/guides/how-to-write-a-crypto-press-release
+  - Guide - What Is Forex PR: https://www.nexcoinpr.agency/news/guides/what-is-forex-pr
+  - Guide - Distribution Mechanics: https://www.nexcoinpr.agency/news/guides/how-press-release-distribution-works
 - Supporting Pages:
-  - Pricing & Packages: https://www.nexcoinpr.agency/pricing.html
-  - Media & Distribution Channels: https://www.nexcoinpr.agency/media.html
-  - Case Studies: https://www.nexcoinpr.agency/case-studies.html
-  - About NexcoinPR: https://www.nexcoinpr.agency/about.html
-  - FAQ: https://www.nexcoinpr.agency/faq.html
-  - Authors Directory: https://www.nexcoinpr.agency/authors.html
-  - Editorial Team Profile: https://www.nexcoinpr.agency/authors/editorial-team.html
-  - Companies Directory: https://www.nexcoinpr.agency/companies.html
-  - Industry Glossary: https://www.nexcoinpr.agency/glossary.html
-  - Contact Us: https://www.nexcoinpr.agency/contact.html
+  - Pricing & Packages: https://www.nexcoinpr.agency/pricing
+  - Media & Distribution Channels: https://www.nexcoinpr.agency/media
+  - Case Studies: https://www.nexcoinpr.agency/case-studies
+  - About NexcoinPR: https://www.nexcoinpr.agency/about
+  - FAQ: https://www.nexcoinpr.agency/faq
+  - Authors Directory: https://www.nexcoinpr.agency/authors
+  - Editorial Team Profile: https://www.nexcoinpr.agency/authors/editorial-team
+  - Companies Directory: https://www.nexcoinpr.agency/companies
+  - Industry Glossary: https://www.nexcoinpr.agency/glossary
+  - Contact Us: https://www.nexcoinpr.agency/contact
 - Governance & Legal:
-  - Editorial Policy: https://www.nexcoinpr.agency/editorial-policy.html
-  - Corrections Policy: https://www.nexcoinpr.agency/corrections-policy.html
-  - Financial Disclaimer: https://www.nexcoinpr.agency/disclaimer.html
-  - Privacy Policy: https://www.nexcoinpr.agency/privacy-policy.html
-  - Terms & Conditions: https://www.nexcoinpr.agency/terms.html
-  - Cookie Policy: https://www.nexcoinpr.agency/cookie-policy.html
+  - Editorial Policy: https://www.nexcoinpr.agency/editorial-policy
+  - Corrections Policy: https://www.nexcoinpr.agency/corrections-policy
+  - Financial Disclaimer: https://www.nexcoinpr.agency/disclaimer
+  - Privacy Policy: https://www.nexcoinpr.agency/privacy-policy
+  - Terms & Conditions: https://www.nexcoinpr.agency/terms
+  - Cookie Policy: https://www.nexcoinpr.agency/cookie-policy
 - Feeds & Sitemaps:
   - Sitemap Index: https://www.nexcoinpr.agency/sitemap.xml
   - Pages Sitemap: https://www.nexcoinpr.agency/sitemap-pages.xml
