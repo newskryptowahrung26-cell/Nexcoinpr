@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /assets/js/
 Disallow: /admin/
 Disallow: /private/
 

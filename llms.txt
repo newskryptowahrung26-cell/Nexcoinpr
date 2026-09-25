@@ -20,6 +20,7 @@
 - [Press Release Distribution](https://nexcoinpr.com/press-release-distribution.html): Multi-channel wire transmission across crypto and financial media endpoints.
 
 ## Content & Educational Resources
+- [Markets & Trading Hub](https://nexcoinpr.com/markets.html): Real-time crypto market data feed for 600+ Binance spot & futures pairs, instant Buy Crypto converter with fiat rates, live TradingView charts, and a risk-free $10,000 Paper Trading Simulator.
 - [News Hub](https://nexcoinpr.com/news.html): Daily reporting on crypto, forex, and fintech market trends.
 - [Crypto News](https://nexcoinpr.com/news/crypto.html): Coverage of digital assets, tokenomics, and decentralized networks.
 - [Forex News](https://nexcoinpr.com/news/forex.html): Macroeconomic analysis, central bank decisions, and currency benchmarks.

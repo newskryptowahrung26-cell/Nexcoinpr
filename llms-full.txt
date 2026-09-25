@@ -58,6 +58,7 @@ NexcoinPR adheres to strict global communications ethics:
   - Press Release Distribution: https://nexcoinpr.com/press-release-distribution.html
 - Commercial Newsroom: https://nexcoinpr.com/press-releases.html
   - Sample Press Release: https://nexcoinpr.com/press-releases/sample-press-release.html
+- Markets & Trading Hub: https://nexcoinpr.com/markets.html
 - News & Content Hub: https://nexcoinpr.com/news.html
   - Crypto News: https://nexcoinpr.com/news/crypto.html
   - Forex News: https://nexcoinpr.com/news/forex.html
