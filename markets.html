@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -23,7 +23,7 @@
 
   <style>
     /* ====================================================
-       TRADING TERMINAL — NexcoinPR Design System
+       TRADING TERMINAL â€” NexcoinPR Design System
     ==================================================== */
     :root {
       --bg-base:       #070D18;
@@ -741,7 +741,7 @@
       <ul class="nav-menu" id="nav-menu" role="list">
         <li><a href="/" class="nav-link">Home</a></li>
         <li class="nav-item-dropdown">
-          <button class="nav-link nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">Services <span class="dropdown-arrow">▾</span></button>
+          <button class="nav-link nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">Services <span class="dropdown-arrow">â–¾</span></button>
           <ul class="dropdown-menu" role="list">
             <li><a href="/crypto-pr.html" class="dropdown-link">Crypto PR</a></li>
             <li><a href="/forex-pr.html" class="dropdown-link">Forex PR</a></li>
@@ -753,7 +753,7 @@
         </li>
         <li><a href="/press-releases.html" class="nav-link">Press Releases</a></li>
         <li class="nav-item-dropdown">
-          <button class="nav-link nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">News <span class="dropdown-arrow">▾</span></button>
+          <button class="nav-link nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">News <span class="dropdown-arrow">â–¾</span></button>
           <ul class="dropdown-menu" role="list">
             <li><a href="/news.html" class="dropdown-link">All News</a></li>
             <li><a href="/news/crypto.html" class="dropdown-link">Crypto</a></li>
@@ -766,7 +766,7 @@
         <li><a href="/about.html" class="nav-link">About</a></li>
         <li><a href="/contact.html" class="nav-link">Contact</a></li>
       </ul>
-      <a href="https://accounts.binance.com/register?ref=NEXCOINPR" target="_blank" rel="noopener" class="nav-cta">Trade on Binance</a>
+      <a href="https://www.binance.com/activity/referral-entry/CPA?ref=CPA_CPA2SG0ILQN" target="_blank" rel="noopener" class="nav-cta">Trade on Binance</a>
       <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -779,7 +779,7 @@
 ============================================================ -->
 <div class="ticker-strip">
   <div class="ticker-track" id="ticker-track">
-    <!-- Duplicated for seamless loop — JS will populate -->
+    <!-- Duplicated for seamless loop â€” JS will populate -->
   </div>
 </div>
 
@@ -815,8 +815,8 @@
 
   <div class="affiliate-banner">
     <span>Powered by Binance Real-Time Data</span>
-    <a href="https://accounts.binance.com/register?ref=NEXCOINPR" target="_blank" rel="noopener sponsored">
-      🚀 Open Binance Account (20% Fee Discount)
+    <a href="https://www.binance.com/activity/referral-entry/CPA?ref=CPA_CPA2SG0ILQN" target="_blank" rel="noopener sponsored">
+      ðŸš€ Open Binance Account (20% Fee Discount)
     </a>
   </div>
 </div>
@@ -829,7 +829,7 @@
   <!-- LEFT: Pair List -->
   <div class="pair-list-panel">
     <div class="panel-header">
-      Pairs <span id="pair-count">Loading…</span>
+      Pairs <span id="pair-count">Loadingâ€¦</span>
     </div>
     <div class="pair-list-scroll" id="pair-list-scroll">
       <!-- Populated by JS -->
@@ -850,27 +850,27 @@
         <div class="chart-pair-name" id="chart-pair-name">BTC/USDT</div>
         <div style="font-size:11px;color:var(--text-dim)" id="chart-market-label">Spot Market</div>
       </div>
-      <div class="chart-pair-price up" id="chart-price">—</div>
+      <div class="chart-pair-price up" id="chart-price">â€”</div>
     </div>
     <div class="chart-stat-divider"></div>
     <div class="chart-stat">
       <div class="chart-stat-label">24h Change</div>
-      <div class="chart-stat-val" id="chart-change">—</div>
+      <div class="chart-stat-val" id="chart-change">â€”</div>
     </div>
     <div class="chart-stat-divider"></div>
     <div class="chart-stat">
       <div class="chart-stat-label">24h High</div>
-      <div class="chart-stat-val" id="chart-high">—</div>
+      <div class="chart-stat-val" id="chart-high">â€”</div>
     </div>
     <div class="chart-stat-divider"></div>
     <div class="chart-stat">
       <div class="chart-stat-label">24h Low</div>
-      <div class="chart-stat-val" id="chart-low">—</div>
+      <div class="chart-stat-val" id="chart-low">â€”</div>
     </div>
     <div class="chart-stat-divider"></div>
     <div class="chart-stat">
       <div class="chart-stat-label">24h Volume</div>
-      <div class="chart-stat-val" id="chart-vol">—</div>
+      <div class="chart-stat-val" id="chart-vol">â€”</div>
     </div>
     <div class="chart-tf-tabs" id="tf-tabs">
       <button class="tf-btn" onclick="setTF(this,'1')">1m</button>
@@ -904,7 +904,7 @@
           </tr>
         </thead>
         <tbody id="trades-body">
-          <tr><td colspan="3" style="text-align:center;color:var(--text-dim);padding:20px;">Connecting to Binance…</td></tr>
+          <tr><td colspan="3" style="text-align:center;color:var(--text-dim);padding:20px;">Connecting to Binanceâ€¦</td></tr>
         </tbody>
       </table>
     </div>
@@ -926,15 +926,15 @@
       <span>Total</span>
     </div>
 
-    <!-- Asks (sells) — reversed so highest ask is at bottom -->
+    <!-- Asks (sells) â€” reversed so highest ask is at bottom -->
     <div class="ob-sells" id="ob-sells">
       <!-- Populated by WS -->
     </div>
 
     <!-- Mid price spread -->
     <div class="ob-spread">
-      <span class="ob-spread-price up" id="ob-mid-price">—</span>
-      <span class="ob-spread-pct" id="ob-spread-pct">spread —</span>
+      <span class="ob-spread-price up" id="ob-mid-price">â€”</span>
+      <span class="ob-spread-pct" id="ob-spread-pct">spread â€”</span>
     </div>
 
     <!-- Bids (buys) -->
@@ -963,7 +963,7 @@
 
       <div class="balance-row">
         <span>Available</span>
-        <span id="balance-display">— USDT</span>
+        <span id="balance-display">â€” USDT</span>
       </div>
 
       <div class="form-field" id="price-field">
@@ -1002,8 +1002,8 @@
       </button>
 
       <div class="affiliate-note">
-        Orders execute on <strong>Binance</strong> — the world's largest crypto exchange.<br>
-        <a href="https://accounts.binance.com/register?ref=NEXCOINPR" target="_blank" rel="noopener sponsored">
+        Orders execute on <strong>Binance</strong> â€” the world's largest crypto exchange.<br>
+        <a href="https://www.binance.com/activity/referral-entry/CPA?ref=CPA_CPA2SG0ILQN" target="_blank" rel="noopener sponsored">
           Sign up via NexcoinPR
         </a> for a <strong>20% lifetime fee discount</strong>.
       </div>
@@ -1029,7 +1029,7 @@
 /* ============================================================
    CONFIGURATION
 ============================================================ */
-const AFFILIATE_URL = 'https://accounts.binance.com/register?ref=NEXCOINPR';
+const AFFILIATE_URL = 'https://www.binance.com/activity/referral-entry/CPA?ref=CPA_CPA2SG0ILQN';
 const AFFILIATE_TRADE_URL = 'https://www.binance.com/en/trade/'; // pair appended
 
 // Spot pairs with metadata
@@ -1206,12 +1206,12 @@ function _renderPairs(pairs) {
     const pct = t ? parseFloat(t.P) : 0;
     const cls = pct >= 0 ? 'up' : 'down';
     const sign = pct >= 0 ? '+' : '';
-    const price = t ? formatPrice(parseFloat(t.c), p.symbol) : '—';
+    const price = t ? formatPrice(parseFloat(t.c), p.symbol) : 'â€”';
     const isActive = activePair.symbol === p.symbol ? 'active' : '';
     return `<div class="pair-row ${isActive}" onclick="selectPair('${p.symbol}')" id="prow-${p.symbol}">
       <div>
         <div class="pair-name">${p.base}/${p.quote}</div>
-        <div class="pair-vol">${t ? humanVol(t.v) : '—'} ${p.base}</div>
+        <div class="pair-vol">${t ? humanVol(t.v) : 'â€”'} ${p.base}</div>
       </div>
       <div class="pair-price-col">
         <div class="pair-price ${cls}">${price}</div>
@@ -1462,7 +1462,7 @@ function setOrderType(btn, type) {
 }
 
 function setPct(pct) {
-  // UI hint only — actual order placed on Binance
+  // UI hint only â€” actual order placed on Binance
   const priceEl = document.getElementById('order-price');
   if (priceEl.value) {
     const price = parseFloat(priceEl.value) || 0;
@@ -1477,7 +1477,7 @@ function updateTradeForm() {
   document.getElementById('amount-unit').textContent = activePair.base;
   document.getElementById('base-unit').textContent   = activePair.base;
   document.getElementById('trade-submit-btn').textContent = `${currentSide === 'buy' ? 'Buy' : 'Sell'} ${activePair.base}`;
-  document.getElementById('balance-display').textContent = '— USDT';
+  document.getElementById('balance-display').textContent = 'â€” USDT';
   document.getElementById('order-qty').value   = '';
   document.getElementById('order-total').value = '';
 
@@ -1499,12 +1499,12 @@ document.addEventListener('input', e => {
 });
 
 /* ============================================================
-   TRADE BUTTON → redirect to Binance
+   TRADE BUTTON â†’ redirect to Binance
 ============================================================ */
 function handleTrade() {
   const pair = `${activePair.base}_${activePair.quote}`;
   const modeParam = currentMarket === 'FUTURES' ? 'futures' : 'trade';
-  const url  = `https://www.binance.com/en/${modeParam}/${pair}?ref=NEXCOINPR`;
+  const url  = `https://www.binance.com/en/${modeParam}/${pair}?ref=CPA_CPA2SG0ILQN`;
   window.open(url, '_blank', 'noopener');
 }
 
@@ -1520,10 +1520,10 @@ function switchBTab(btn, tab) {
     bc.innerHTML = `<div style="padding:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;">
       ${infoCard('Symbol', activePair.symbol)}
       ${infoCard('Market', currentMarket)}
-      ${infoCard('24h Volume', t ? humanVol(parseFloat(t.v)) + ' ' + activePair.base : '—')}
-      ${infoCard('24h Trades', t ? Number(t.n).toLocaleString() : '—')}
-      ${infoCard('Best Bid', t ? formatPrice(parseFloat(t.b), activePair.symbol) : '—')}
-      ${infoCard('Best Ask', t ? formatPrice(parseFloat(t.B), activePair.symbol) : '—')}
+      ${infoCard('24h Volume', t ? humanVol(parseFloat(t.v)) + ' ' + activePair.base : 'â€”')}
+      ${infoCard('24h Trades', t ? Number(t.n).toLocaleString() : 'â€”')}
+      ${infoCard('Best Bid', t ? formatPrice(parseFloat(t.b), activePair.symbol) : 'â€”')}
+      ${infoCard('Best Ask', t ? formatPrice(parseFloat(t.B), activePair.symbol) : 'â€”')}
     </div>`;
   } else {
     bc.innerHTML = `<table class="trades-table">
@@ -1545,7 +1545,7 @@ function infoCard(label, val) {
    UTILITIES
 ============================================================ */
 function formatPrice(p, symbol, asString = true) {
-  if (!p || isNaN(p)) return asString ? '—' : '';
+  if (!p || isNaN(p)) return asString ? 'â€”' : '';
   const decimals = p > 10000 ? 2 : p > 100 ? 2 : p > 1 ? 4 : p > 0.01 ? 5 : 6;
   return asString ? p.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) : p.toFixed(decimals);
 }
@@ -1560,3 +1560,4 @@ function humanVol(v) {
 
 </body>
 </html>
+
