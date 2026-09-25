@@ -22,7 +22,7 @@ if (!ACCESS_TOKEN) {
   console.log('[LinkedIn Auto-Post] Notice: LINKEDIN_ACCESS_TOKEN is not configured in environment/secrets.');
   console.log('[LinkedIn Auto-Post] To enable direct API posting to https://www.linkedin.com/company/nexcoinpr-agency:');
   console.log('  1. Add LINKEDIN_ACCESS_TOKEN to GitHub Repository Secrets (Settings -> Secrets -> Actions).');
-  console.log('  2. Or connect https://nexcoinpr.com/feed.xml to Buffer.com / Zapier for 100% no-code auto-posting.');
+  console.log('  2. Or connect https://www.nexcoinpr.agency/feed.xml to Buffer.com / Zapier for 100% no-code auto-posting.');
   process.exit(0);
 }
 

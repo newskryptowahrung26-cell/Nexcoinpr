@@ -13,21 +13,21 @@ const content = `<!DOCTYPE html>
   <meta name="keywords" content="how to write a crypto press release, crypto press release template, crypto press release format, blockchain announcement template, web3 pr drafting, chainwire formatting guidelines, coinscribble submission guide, pr newswire crypto submission, marketacross drafting standards, finpr press release guide, crypto newswire submission, cointelegraph press release format, coindesk editorial guidelines, token launch pr template, cex listing press release, mica compliant crypto press release, sec compliant crypto pr, crypto dofollow backlinks, crypto pr agency">
   <meta name="description" content="Master how to write a high-impact, compliant crypto press release that journalists publish. Includes 4 real-world Web3 templates (TGE, Mainnet, Funding, CEX listing), AP-style rules, newswire comparisons (NexcoinPR vs Chainwire vs PR Newswire), and MiCA/SEC compliance guardrails.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://nexcoinpr.com/news/guides/how-to-write-a-crypto-press-release.html">
+  <link rel="canonical" href="https://www.nexcoinpr.agency/news/guides/how-to-write-a-crypto-press-release.html">
 
   <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:title" content="How to Write a Crypto Press Release: The 2026 Master Guide, Framework &amp; Templates">
   <meta property="og:description" content="Step-by-step crypto press release writing playbook with 4 battle-tested Web3 templates, headline formulas, newswire comparison tables, and MiCA/SEC compliance rules.">
-  <meta property="og:url" content="https://nexcoinpr.com/news/guides/how-to-write-a-crypto-press-release.html">
+  <meta property="og:url" content="https://www.nexcoinpr.agency/news/guides/how-to-write-a-crypto-press-release.html">
   <meta property="og:site_name" content="NexcoinPR">
-  <meta property="og:image" content="https://nexcoinpr.com/assets/images/nexcoinpr-logo-dark.jpg">
+  <meta property="og:image" content="https://www.nexcoinpr.agency/assets/images/nexcoinpr-logo-dark.jpg">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="How to Write a Crypto Press Release: Master Guide &amp; Templates">
   <meta name="twitter:description" content="Step-by-step crypto press release writing playbook with 4 battle-tested Web3 templates, headline formulas, newswire comparison tables, and MiCA/SEC compliance rules.">
-  <meta name="twitter:image" content="https://nexcoinpr.com/assets/images/nexcoinpr-logo-dark.jpg">
+  <meta name="twitter:image" content="https://www.nexcoinpr.agency/assets/images/nexcoinpr-logo-dark.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,25 +43,25 @@ const content = `<!DOCTYPE html>
     "@graph": [
       {
         "@type": "Article",
-        "@id": "https://nexcoinpr.com/news/guides/how-to-write-a-crypto-press-release.html#article",
+        "@id": "https://www.nexcoinpr.agency/news/guides/how-to-write-a-crypto-press-release.html#article",
         "headline": "How to Write a Crypto Press Release: The 2026 Master Guide, Framework & Templates",
         "description": "Exhaustive, practical playbook detailing how to write, structure, format, and optimize cryptocurrency press releases for maximum media pickup, newswire distribution (NexcoinPR, Chainwire, Coinscribble, PR Newswire), and regulatory compliance.",
         "datePublished": "2026-09-22T08:00:00Z",
         "dateModified": "2026-09-23T11:00:00Z",
         "inLanguage": "en-US",
-        "mainEntityOfPage": "https://nexcoinpr.com/news/guides/how-to-write-a-crypto-press-release.html",
+        "mainEntityOfPage": "https://www.nexcoinpr.agency/news/guides/how-to-write-a-crypto-press-release.html",
         "author": {
           "@type": "Organization",
           "name": "NexcoinPR Editorial Team",
-          "url": "https://nexcoinpr.com/authors/editorial-team.html"
+          "url": "https://www.nexcoinpr.agency/authors/editorial-team.html"
         },
         "publisher": {
           "@type": "Organization",
           "name": "NexcoinPR",
-          "url": "https://nexcoinpr.com",
+          "url": "https://www.nexcoinpr.agency",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://nexcoinpr.com/assets/images/nexcoinpr-logo-dark.jpg"
+            "url": "https://www.nexcoinpr.agency/assets/images/nexcoinpr-logo-dark.jpg"
           }
         }
       },

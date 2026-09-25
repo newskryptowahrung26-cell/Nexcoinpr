@@ -3,7 +3,7 @@ Allow: /
 Disallow: /admin/
 Disallow: /private/
 
-Sitemap: https://nexcoinpr.com/sitemap.xml
+Sitemap: https://www.nexcoinpr.agency/sitemap.xml
 
 User-agent: GPTBot
 Allow: /

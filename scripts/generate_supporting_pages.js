@@ -6,14 +6,14 @@ const { BASE_DIR, pageTemplate } = require('./templates');
 const samplePR = pageTemplate({
   title: "AuraChain Deploys High-Throughput Layer 2 Mainnet with Zero-Knowledge State Compression | NexcoinPR",
   description: "Official press release: AuraChain announces the general availability of its Layer 2 network featuring sub-second finality and EVM equivalence.",
-  canonical: "https://nexcoinpr.com/press-releases/sample-press-release.html",
+  canonical: "https://www.nexcoinpr.agency/press-releases/sample-press-release.html",
   activePage: "press-releases",
   jsonLd: {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "NewsArticle",
-        "@id": "https://nexcoinpr.com/press-releases/sample-press-release.html#article",
+        "@id": "https://www.nexcoinpr.agency/press-releases/sample-press-release.html#article",
         "headline": "AuraChain Deploys High-Throughput Layer 2 Mainnet with Zero-Knowledge State Compression",
         "description": "AuraChain announces the production deployment of its zero-knowledge rollup solution.",
         "datePublished": "2026-09-22T09:00:00Z",
@@ -21,12 +21,12 @@ const samplePR = pageTemplate({
         "author": {
           "@type": "Organization",
           "name": "AuraChain Foundation",
-          "url": "https://nexcoinpr.com/companies.html"
+          "url": "https://www.nexcoinpr.agency/companies.html"
         },
         "publisher": {
           "@type": "Organization",
           "name": "NexcoinPR",
-          "url": "https://nexcoinpr.com"
+          "url": "https://www.nexcoinpr.agency"
         }
       }
     ]
@@ -133,17 +133,17 @@ console.log('Created press-releases/sample-press-release.html');
 const mediaPage = pageTemplate({
   title: "Media & Distribution Network — Verified Media Channels | NexcoinPR",
   description: "Learn about NexcoinPR's transparent media syndication channels across crypto, blockchain, foreign exchange, and financial news networks.",
-  canonical: "https://nexcoinpr.com/media.html",
+  canonical: "https://www.nexcoinpr.agency/media.html",
   activePage: "media",
   jsonLd: {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": "https://nexcoinpr.com/media.html",
+        "@id": "https://www.nexcoinpr.agency/media.html",
         "name": "Media & Distribution Channels — NexcoinPR",
         "description": "Detailed explanation of NexcoinPR's distribution reach, media partnerships, and press room access.",
-        "publisher": { "@type": "Organization", "name": "NexcoinPR", "url": "https://nexcoinpr.com" }
+        "publisher": { "@type": "Organization", "name": "NexcoinPR", "url": "https://www.nexcoinpr.agency" }
       }
     ]
   },
@@ -223,17 +223,17 @@ console.log('Created media.html');
 const caseStudies = pageTemplate({
   title: "Case Studies — Verifiable PR & Distribution Results | NexcoinPR",
   description: "Explore real-world case studies detailing how NexcoinPR helps blockchain protocols, fintech startups, and trading platforms earn credible media coverage.",
-  canonical: "https://nexcoinpr.com/case-studies.html",
+  canonical: "https://www.nexcoinpr.agency/case-studies.html",
   activePage: "case-studies",
   jsonLd: {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": "https://nexcoinpr.com/case-studies.html",
+        "@id": "https://www.nexcoinpr.agency/case-studies.html",
         "name": "Case Studies — NexcoinPR",
         "description": "Factual case studies showcasing communications strategy and media distribution outcomes.",
-        "publisher": { "@type": "Organization", "name": "NexcoinPR", "url": "https://nexcoinpr.com" }
+        "publisher": { "@type": "Organization", "name": "NexcoinPR", "url": "https://www.nexcoinpr.agency" }
       }
     ]
   },
@@ -312,14 +312,14 @@ console.log('Created case-studies.html');
 const faqPage = pageTemplate({
   title: "Frequently Asked Questions (FAQ) — PR & Distribution | NexcoinPR",
   description: "Comprehensive answers to common questions about crypto PR, forex communications, press release distribution workflows, editorial guidelines, and pricing.",
-  canonical: "https://nexcoinpr.com/faq.html",
+  canonical: "https://www.nexcoinpr.agency/faq.html",
   activePage: "faq",
   jsonLd: {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "FAQPage",
-        "@id": "https://nexcoinpr.com/faq.html#faq",
+        "@id": "https://www.nexcoinpr.agency/faq.html#faq",
         "mainEntity": [
           {
             "@type": "Question",
@@ -458,17 +458,17 @@ console.log('Created faq.html');
 const authorsPage = pageTemplate({
   title: "Editorial Team & Contributors — Authors | NexcoinPR",
   description: "Meet the editorial desk, financial analysts, and Web3 journalists responsible for NexcoinPR's reporting and communications standards.",
-  canonical: "https://nexcoinpr.com/authors.html",
+  canonical: "https://www.nexcoinpr.agency/authors.html",
   activePage: "about",
   jsonLd: {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": "https://nexcoinpr.com/authors.html",
+        "@id": "https://www.nexcoinpr.agency/authors.html",
         "name": "Authors & Editorial Team — NexcoinPR",
         "description": "Directory of NexcoinPR editorial desks, journalists, and market analysts.",
-        "publisher": { "@type": "Organization", "name": "NexcoinPR", "url": "https://nexcoinpr.com" }
+        "publisher": { "@type": "Organization", "name": "NexcoinPR", "url": "https://www.nexcoinpr.agency" }
       }
     ]
   },
@@ -530,19 +530,19 @@ console.log('Created authors.html');
 const authorDetail = pageTemplate({
   title: "NexcoinPR Editorial Team — Author Profile & Articles | NexcoinPR",
   description: "Read articles and guides published by the NexcoinPR Editorial Team covering crypto PR, forex media, and financial technology.",
-  canonical: "https://nexcoinpr.com/authors/editorial-team.html",
+  canonical: "https://www.nexcoinpr.agency/authors/editorial-team.html",
   activePage: "about",
   jsonLd: {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Person",
-        "@id": "https://nexcoinpr.com/authors/editorial-team.html#author",
+        "@id": "https://www.nexcoinpr.agency/authors/editorial-team.html#author",
         "name": "NexcoinPR Editorial Team",
         "jobTitle": "Editorial Desk",
-        "worksFor": { "@type": "Organization", "name": "NexcoinPR", "url": "https://nexcoinpr.com" },
+        "worksFor": { "@type": "Organization", "name": "NexcoinPR", "url": "https://www.nexcoinpr.agency" },
         "description": "Financial journalists, Web3 analysts, and public relations specialists dedicated to accurate reporting and ethical communications.",
-        "url": "https://nexcoinpr.com/authors/editorial-team.html"
+        "url": "https://www.nexcoinpr.agency/authors/editorial-team.html"
       }
     ]
   },
@@ -613,17 +613,17 @@ console.log('Created authors/editorial-team.html');
 const companiesPage = pageTemplate({
   title: "Companies Directory — Blockchain, Forex & Fintech Profiles | NexcoinPR",
   description: "Directory of cryptocurrency, forex, blockchain, and financial technology companies covered or distributed through NexcoinPR.",
-  canonical: "https://nexcoinpr.com/companies.html",
+  canonical: "https://www.nexcoinpr.agency/companies.html",
   activePage: "companies",
   jsonLd: {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": "https://nexcoinpr.com/companies.html",
+        "@id": "https://www.nexcoinpr.agency/companies.html",
         "name": "Companies Directory — NexcoinPR",
         "description": "Verified directory of financial and blockchain organizations.",
-        "publisher": { "@type": "Organization", "name": "NexcoinPR", "url": "https://nexcoinpr.com" }
+        "publisher": { "@type": "Organization", "name": "NexcoinPR", "url": "https://www.nexcoinpr.agency" }
       }
     ]
   },
@@ -692,17 +692,17 @@ console.log('Created companies.html');
 const glossaryPage = pageTemplate({
   title: "Crypto & Forex Glossary — PR & Financial Terms | NexcoinPR",
   description: "Comprehensive glossary defining essential terms across cryptocurrency, blockchain, forex trading, press release distribution, and financial media.",
-  canonical: "https://nexcoinpr.com/glossary.html",
+  canonical: "https://www.nexcoinpr.agency/glossary.html",
   activePage: "glossary",
   jsonLd: {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "DefinedTermSet",
-        "@id": "https://nexcoinpr.com/glossary.html#glossary",
+        "@id": "https://www.nexcoinpr.agency/glossary.html#glossary",
         "name": "Crypto, Forex & PR Industry Glossary",
         "description": "Authoritative definitions for digital assets, currency markets, and communications terminology.",
-        "publisher": { "@type": "Organization", "name": "NexcoinPR", "url": "https://nexcoinpr.com" }
+        "publisher": { "@type": "Organization", "name": "NexcoinPR", "url": "https://www.nexcoinpr.agency" }
       }
     ]
   },
@@ -820,17 +820,17 @@ console.log('Created glossary.html');
 const contactPage = pageTemplate({
   title: "Contact NexcoinPR — Talk to Our PR & Media Team",
   description: "Get in touch with NexcoinPR for press release distribution inquiries, bespoke crypto PR retainers, media questions, and editorial feedback.",
-  canonical: "https://nexcoinpr.com/contact.html",
+  canonical: "https://www.nexcoinpr.agency/contact.html",
   activePage: "contact",
   jsonLd: {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "ContactPage",
-        "@id": "https://nexcoinpr.com/contact.html",
+        "@id": "https://www.nexcoinpr.agency/contact.html",
         "name": "Contact NexcoinPR",
         "description": "Official contact channels for NexcoinPR public relations and press distribution.",
-        "url": "https://nexcoinpr.com/contact.html"
+        "url": "https://www.nexcoinpr.agency/contact.html"
       }
     ]
   },
@@ -972,7 +972,7 @@ console.log('Created contact.html');
 const notFoundPage = pageTemplate({
   title: "Page Not Found — 404 | NexcoinPR",
   description: "The page you requested could not be found. Explore NexcoinPR services, latest news, and press releases.",
-  canonical: "https://nexcoinpr.com/404.html",
+  canonical: "https://www.nexcoinpr.agency/404.html",
   activePage: "",
   jsonLd: null,
   bodyContent: `

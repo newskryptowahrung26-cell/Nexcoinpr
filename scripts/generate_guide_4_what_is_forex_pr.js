@@ -13,21 +13,21 @@ const content = `<!DOCTYPE html>
   <meta name="keywords" content="what is forex pr, forex pr agency, fx broker pr firm, retail forex communications, prop trading pr, cfd media syndication, fxstreet press release, investing.com sponsored article, finance magnates editorial, leaprate pr, fca compliant forex pr, cysec broker communications, asic licensed broker pr, forex dofollow backlinks, pr newswire forex, business wire finance, financial pr agency, ecn broker pr">
   <meta name="description" content="Discover what Forex PR is, how retail currency brokers, prop trading firms, and CFD platforms build institutional credibility, acquire active traders, and satisfy FCA, CySEC &amp; ASIC regulations. Compare PR agencies and newswire syndication across Finance Magnates and FXStreet.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://nexcoinpr.com/news/guides/what-is-forex-pr.html">
+  <link rel="canonical" href="https://www.nexcoinpr.agency/news/guides/what-is-forex-pr.html">
 
   <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:title" content="What Is Forex PR? Complete Guide to Currency Broker Communications (2026)">
   <meta property="og:description" content="Master Forex PR: strategic media relations for FX brokers, prop firms, and CFD platforms across Finance Magnates, FXStreet, and Investing.com.">
-  <meta property="og:url" content="https://nexcoinpr.com/news/guides/what-is-forex-pr.html">
+  <meta property="og:url" content="https://www.nexcoinpr.agency/news/guides/what-is-forex-pr.html">
   <meta property="og:site_name" content="NexcoinPR">
-  <meta property="og:image" content="https://nexcoinpr.com/assets/images/nexcoinpr-logo-dark.jpg">
+  <meta property="og:image" content="https://www.nexcoinpr.agency/assets/images/nexcoinpr-logo-dark.jpg">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="What Is Forex PR? Complete Guide to Currency Broker Communications (2026)">
   <meta name="twitter:description" content="Master Forex PR: strategic media relations for FX brokers, prop firms, and CFD platforms across Finance Magnates, FXStreet, and Investing.com.">
-  <meta name="twitter:image" content="https://nexcoinpr.com/assets/images/nexcoinpr-logo-dark.jpg">
+  <meta name="twitter:image" content="https://www.nexcoinpr.agency/assets/images/nexcoinpr-logo-dark.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,25 +43,25 @@ const content = `<!DOCTYPE html>
     "@graph": [
       {
         "@type": "Article",
-        "@id": "https://nexcoinpr.com/news/guides/what-is-forex-pr.html#article",
+        "@id": "https://www.nexcoinpr.agency/news/guides/what-is-forex-pr.html#article",
         "headline": "What Is Forex PR? Complete Guide to Currency Broker Communications (2026)",
         "description": "Comprehensive guide exploring public relations for retail currency brokers, proprietary trading firms, and CFD fintech providers across premier financial trading media, regulatory frameworks, and distribution agencies.",
         "datePublished": "2026-09-22T08:00:00Z",
         "dateModified": "2026-09-23T11:00:00Z",
         "inLanguage": "en-US",
-        "mainEntityOfPage": "https://nexcoinpr.com/news/guides/what-is-forex-pr.html",
+        "mainEntityOfPage": "https://www.nexcoinpr.agency/news/guides/what-is-forex-pr.html",
         "author": {
           "@type": "Organization",
           "name": "NexcoinPR Editorial Team",
-          "url": "https://nexcoinpr.com/authors/editorial-team.html"
+          "url": "https://www.nexcoinpr.agency/authors/editorial-team.html"
         },
         "publisher": {
           "@type": "Organization",
           "name": "NexcoinPR",
-          "url": "https://nexcoinpr.com",
+          "url": "https://www.nexcoinpr.agency",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://nexcoinpr.com/assets/images/nexcoinpr-logo-dark.jpg"
+            "url": "https://www.nexcoinpr.agency/assets/images/nexcoinpr-logo-dark.jpg"
           }
         }
       },

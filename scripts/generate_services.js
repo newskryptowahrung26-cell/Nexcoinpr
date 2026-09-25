@@ -6,20 +6,20 @@ const { BASE_DIR, pageTemplate } = require('./templates');
 const blockchainPR = pageTemplate({
   title: "Blockchain PR Agency — Blockchain Public Relations | NexcoinPR",
   description: "NexcoinPR provides specialized blockchain PR services for Layer 1/2 networks, enterprise blockchain, infrastructure protocols, and cryptography startups.",
-  canonical: "https://nexcoinpr.com/blockchain-pr.html",
+  canonical: "https://www.nexcoinpr.agency/blockchain-pr.html",
   activePage: "services",
   jsonLd: {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://nexcoinpr.com/blockchain-pr.html#service",
+        "@id": "https://www.nexcoinpr.agency/blockchain-pr.html#service",
         "name": "Blockchain PR Services",
         "description": "Strategic public relations, technical messaging, media outreach and distribution for blockchain protocols, layer 1 and layer 2 networks, and enterprise technology.",
-        "provider": { "@type": "Organization", "name": "NexcoinPR", "url": "https://nexcoinpr.com" },
+        "provider": { "@type": "Organization", "name": "NexcoinPR", "url": "https://www.nexcoinpr.agency" },
         "serviceType": "Public Relations",
         "areaServed": "Worldwide",
-        "url": "https://nexcoinpr.com/blockchain-pr.html"
+        "url": "https://www.nexcoinpr.agency/blockchain-pr.html"
       },
       {
         "@type": "FAQPage",
@@ -230,20 +230,20 @@ console.log('Created blockchain-pr.html');
 const web3PR = pageTemplate({
   title: "Web3 PR Agency — Decentralized Web Public Relations | NexcoinPR",
   description: "NexcoinPR delivers Web3 PR campaigns for dApps, DeFi protocols, NFT ecosystems, DAO governance, and decentralized autonomous organizations.",
-  canonical: "https://nexcoinpr.com/web3-pr.html",
+  canonical: "https://www.nexcoinpr.agency/web3-pr.html",
   activePage: "services",
   jsonLd: {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://nexcoinpr.com/web3-pr.html#service",
+        "@id": "https://www.nexcoinpr.agency/web3-pr.html#service",
         "name": "Web3 PR Services",
         "description": "Public relations and community communications for decentralized applications, decentralized finance (DeFi), DAO governance, and metaverse environments.",
-        "provider": { "@type": "Organization", "name": "NexcoinPR", "url": "https://nexcoinpr.com" },
+        "provider": { "@type": "Organization", "name": "NexcoinPR", "url": "https://www.nexcoinpr.agency" },
         "serviceType": "Public Relations",
         "areaServed": "Worldwide",
-        "url": "https://nexcoinpr.com/web3-pr.html"
+        "url": "https://www.nexcoinpr.agency/web3-pr.html"
       },
       {
         "@type": "FAQPage",
@@ -388,20 +388,20 @@ console.log('Created web3-pr.html');
 const fintechPR = pageTemplate({
   title: "Fintech PR Agency — Financial Technology Public Relations | NexcoinPR",
   description: "NexcoinPR delivers strategic PR for payment gateways, digital banking, wealthtech, regtech, and enterprise financial technology leaders.",
-  canonical: "https://nexcoinpr.com/fintech-pr.html",
+  canonical: "https://www.nexcoinpr.agency/fintech-pr.html",
   activePage: "services",
   jsonLd: {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://nexcoinpr.com/fintech-pr.html#service",
+        "@id": "https://www.nexcoinpr.agency/fintech-pr.html#service",
         "name": "Fintech PR Services",
         "description": "Public relations and communications for payment gateways, neobanks, cross-border remittances, open banking platforms, and regtech systems.",
-        "provider": { "@type": "Organization", "name": "NexcoinPR", "url": "https://nexcoinpr.com" },
+        "provider": { "@type": "Organization", "name": "NexcoinPR", "url": "https://www.nexcoinpr.agency" },
         "serviceType": "Public Relations",
         "areaServed": "Worldwide",
-        "url": "https://nexcoinpr.com/fintech-pr.html"
+        "url": "https://www.nexcoinpr.agency/fintech-pr.html"
       }
     ]
   },
@@ -513,20 +513,20 @@ console.log('Created fintech-pr.html');
 const financialPR = pageTemplate({
   title: "Financial PR Agency — Financial Communications Services | NexcoinPR",
   description: "NexcoinPR provides corporate financial communications, investor relations support, fund launch announcements, and institutional media outreach.",
-  canonical: "https://nexcoinpr.com/financial-pr.html",
+  canonical: "https://www.nexcoinpr.agency/financial-pr.html",
   activePage: "services",
   jsonLd: {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://nexcoinpr.com/financial-pr.html#service",
+        "@id": "https://www.nexcoinpr.agency/financial-pr.html#service",
         "name": "Financial PR Services",
         "description": "Corporate financial communications, media relations for investment funds, asset managers, capital markets infrastructure, and corporate finance announcements.",
-        "provider": { "@type": "Organization", "name": "NexcoinPR", "url": "https://nexcoinpr.com" },
+        "provider": { "@type": "Organization", "name": "NexcoinPR", "url": "https://www.nexcoinpr.agency" },
         "serviceType": "Public Relations",
         "areaServed": "Worldwide",
-        "url": "https://nexcoinpr.com/financial-pr.html"
+        "url": "https://www.nexcoinpr.agency/financial-pr.html"
       }
     ]
   },
@@ -626,20 +626,20 @@ console.log('Created financial-pr.html');
 const prDistribution = pageTemplate({
   title: "Press Release Distribution — Crypto & Financial PR Distribution | NexcoinPR",
   description: "NexcoinPR distributes press releases for crypto, forex, blockchain, Web3, and fintech brands across international financial and technology media.",
-  canonical: "https://nexcoinpr.com/press-release-distribution.html",
+  canonical: "https://www.nexcoinpr.agency/press-release-distribution.html",
   activePage: "services",
   jsonLd: {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Service",
-        "@id": "https://nexcoinpr.com/press-release-distribution.html#service",
+        "@id": "https://www.nexcoinpr.agency/press-release-distribution.html#service",
         "name": "Press Release Distribution",
         "description": "Comprehensive press release syndication across cryptocurrency, forex, blockchain, and financial news media channels.",
-        "provider": { "@type": "Organization", "name": "NexcoinPR", "url": "https://nexcoinpr.com" },
+        "provider": { "@type": "Organization", "name": "NexcoinPR", "url": "https://www.nexcoinpr.agency" },
         "serviceType": "Press Release Distribution",
         "areaServed": "Worldwide",
-        "url": "https://nexcoinpr.com/press-release-distribution.html"
+        "url": "https://www.nexcoinpr.agency/press-release-distribution.html"
       },
       {
         "@type": "FAQPage",

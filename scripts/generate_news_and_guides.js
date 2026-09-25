@@ -6,17 +6,17 @@ const { BASE_DIR, pageTemplate } = require('./templates');
 const newsBlockchain = pageTemplate({
   title: "Blockchain News — Protocol Updates & Infrastructure | NexcoinPR",
   description: "Independent reporting on blockchain technology, consensus protocols, Layer 2 scaling, enterprise adoption, and distributed network security.",
-  canonical: "https://nexcoinpr.com/news/blockchain.html",
+  canonical: "https://www.nexcoinpr.agency/news/blockchain.html",
   activePage: "news",
   jsonLd: {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": "https://nexcoinpr.com/news/blockchain.html",
+        "@id": "https://www.nexcoinpr.agency/news/blockchain.html",
         "name": "Blockchain News — NexcoinPR",
         "description": "Latest blockchain technology, protocol developments, and enterprise adoption reporting.",
-        "publisher": { "@type": "Organization", "name": "NexcoinPR", "url": "https://nexcoinpr.com" }
+        "publisher": { "@type": "Organization", "name": "NexcoinPR", "url": "https://www.nexcoinpr.agency" }
       }
     ]
   },
@@ -161,17 +161,17 @@ console.log('Created news/blockchain.html');
 const newsGuides = pageTemplate({
   title: "PR & Financial Media Guides — Explainers & Best Practices | NexcoinPR",
   description: "Comprehensive educational guides on crypto PR, forex communications, press release writing, media outreach strategies, and financial disclosures.",
-  canonical: "https://nexcoinpr.com/news/guides.html",
+  canonical: "https://www.nexcoinpr.agency/news/guides.html",
   activePage: "news",
   jsonLd: {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": "https://nexcoinpr.com/news/guides.html",
+        "@id": "https://www.nexcoinpr.agency/news/guides.html",
         "name": "PR Guides & Explainers — NexcoinPR",
         "description": "Educational articles, step-by-step guides, and communication best practices for blockchain and financial organizations.",
-        "publisher": { "@type": "Organization", "name": "NexcoinPR", "url": "https://nexcoinpr.com" }
+        "publisher": { "@type": "Organization", "name": "NexcoinPR", "url": "https://www.nexcoinpr.agency" }
       }
     ]
   },
@@ -252,14 +252,14 @@ console.log('Created news/guides.html');
 const guideWhatIsCryptoPR = pageTemplate({
   title: "What Is Crypto PR? A Complete Guide to Cryptocurrency Public Relations | NexcoinPR",
   description: "Learn what crypto PR is, how cryptocurrency communications differ from traditional PR, who needs it, and how to execute an ethical, effective campaign.",
-  canonical: "https://nexcoinpr.com/news/guides/what-is-crypto-pr.html",
+  canonical: "https://www.nexcoinpr.agency/news/guides/what-is-crypto-pr.html",
   activePage: "news",
   jsonLd: {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Article",
-        "@id": "https://nexcoinpr.com/news/guides/what-is-crypto-pr.html#article",
+        "@id": "https://www.nexcoinpr.agency/news/guides/what-is-crypto-pr.html#article",
         "headline": "What Is Crypto PR? A Complete Guide to Cryptocurrency Public Relations",
         "description": "Comprehensive guide explaining cryptocurrency public relations, distribution processes, and strategic media outreach.",
         "datePublished": "2026-09-22T08:00:00Z",
@@ -267,9 +267,9 @@ const guideWhatIsCryptoPR = pageTemplate({
         "author": {
           "@type": "Organization",
           "name": "NexcoinPR Editorial Team",
-          "url": "https://nexcoinpr.com/authors/editorial-team.html"
+          "url": "https://www.nexcoinpr.agency/authors/editorial-team.html"
         },
-        "publisher": { "@type": "Organization", "name": "NexcoinPR", "url": "https://nexcoinpr.com" }
+        "publisher": { "@type": "Organization", "name": "NexcoinPR", "url": "https://www.nexcoinpr.agency" }
       },
       {
         "@type": "FAQPage",
@@ -458,18 +458,18 @@ console.log('Created news/guides/what-is-crypto-pr.html');
 const guideHowToWrite = pageTemplate({
   title: "How to Write a Crypto Press Release — Step-by-Step Guide | NexcoinPR",
   description: "A complete step-by-step guide to writing a compliant, engaging crypto press release that journalists read and publish. Includes template and mistakes to avoid.",
-  canonical: "https://nexcoinpr.com/news/guides/how-to-write-a-crypto-press-release.html",
+  canonical: "https://www.nexcoinpr.agency/news/guides/how-to-write-a-crypto-press-release.html",
   activePage: "news",
   jsonLd: {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Article",
-        "@id": "https://nexcoinpr.com/news/guides/how-to-write-a-crypto-press-release.html#article",
+        "@id": "https://www.nexcoinpr.agency/news/guides/how-to-write-a-crypto-press-release.html#article",
         "headline": "How to Write a Crypto Press Release — Step-by-Step Guide",
         "description": "Practical guide and template for writing cryptocurrency press releases that earn media pickup.",
         "datePublished": "2026-09-22T08:00:00Z",
-        "author": { "@type": "Organization", "name": "NexcoinPR Editorial Team", "url": "https://nexcoinpr.com/authors/editorial-team.html" }
+        "author": { "@type": "Organization", "name": "NexcoinPR Editorial Team", "url": "https://www.nexcoinpr.agency/authors/editorial-team.html" }
       }
     ]
   },
@@ -578,18 +578,18 @@ console.log('Created news/guides/how-to-write-a-crypto-press-release.html');
 const guideWhatIsForex = pageTemplate({
   title: "What Is Forex PR? A Guide to Foreign Exchange Public Relations | NexcoinPR",
   description: "Learn what forex PR is, who uses foreign exchange public relations, regulatory compliance obligations, and how brokers earn media authority.",
-  canonical: "https://nexcoinpr.com/news/guides/what-is-forex-pr.html",
+  canonical: "https://www.nexcoinpr.agency/news/guides/what-is-forex-pr.html",
   activePage: "news",
   jsonLd: {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Article",
-        "@id": "https://nexcoinpr.com/news/guides/what-is-forex-pr.html#article",
+        "@id": "https://www.nexcoinpr.agency/news/guides/what-is-forex-pr.html#article",
         "headline": "What Is Forex PR? A Guide to Foreign Exchange Public Relations",
         "description": "Essential guide explaining public relations for foreign exchange brokers, trading platforms, and financial analytics firms.",
         "datePublished": "2026-09-22T08:00:00Z",
-        "author": { "@type": "Organization", "name": "NexcoinPR Editorial Team", "url": "https://nexcoinpr.com/authors/editorial-team.html" }
+        "author": { "@type": "Organization", "name": "NexcoinPR Editorial Team", "url": "https://www.nexcoinpr.agency/authors/editorial-team.html" }
       }
     ]
   },
@@ -666,18 +666,18 @@ console.log('Created news/guides/what-is-forex-pr.html');
 const guideHowDistWorks = pageTemplate({
   title: "How Press Release Distribution Works — A Complete Guide | NexcoinPR",
   description: "Understand the wire distribution process: editorial screening, syndication networks, search engine discovery, and verified reporting.",
-  canonical: "https://nexcoinpr.com/news/guides/how-press-release-distribution-works.html",
+  canonical: "https://www.nexcoinpr.agency/news/guides/how-press-release-distribution-works.html",
   activePage: "news",
   jsonLd: {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Article",
-        "@id": "https://nexcoinpr.com/news/guides/how-press-release-distribution-works.html#article",
+        "@id": "https://www.nexcoinpr.agency/news/guides/how-press-release-distribution-works.html#article",
         "headline": "How Press Release Distribution Works — A Complete Guide",
         "description": "Explaining the technical and editorial mechanics of digital press release distribution.",
         "datePublished": "2026-09-22T08:00:00Z",
-        "author": { "@type": "Organization", "name": "NexcoinPR Editorial Team", "url": "https://nexcoinpr.com/authors/editorial-team.html" }
+        "author": { "@type": "Organization", "name": "NexcoinPR Editorial Team", "url": "https://www.nexcoinpr.agency/authors/editorial-team.html" }
       }
     ]
   },

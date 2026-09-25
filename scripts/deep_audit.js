@@ -86,8 +86,8 @@ const excludedHtml = ['404.html', 'teaser-video.html'];
 htmlFiles.forEach(f => {
   const rel = path.relative(ROOT, f).replace(/\\/g, '/');
   if (excludedHtml.includes(rel)) return;
-  const canonicalUrl1 = `https://nexcoinpr.com/${rel}`;
-  const canonicalUrl2 = rel === 'index.html' ? 'https://nexcoinpr.com/' : `https://nexcoinpr.com/${rel.replace(/\.html$/, '')}`;
+  const canonicalUrl1 = `https://www.nexcoinpr.agency/${rel}`;
+  const canonicalUrl2 = rel === 'index.html' ? 'https://www.nexcoinpr.agency/' : `https://www.nexcoinpr.agency/${rel.replace(/\.html$/, '')}`;
   
   if (!sitemapUrls.has(canonicalUrl1) && !sitemapUrls.has(canonicalUrl2)) {
     warnings.push(`HTML file missing from sitemaps: ${rel}`);
@@ -116,7 +116,7 @@ console.log('--- 2. AUDITING LLMS.TXT & LLMS-FULL.TXT ---');
   while ((match = linkRegex.exec(content)) !== null) {
     const url = match[2];
     linkCount++;
-    if (url.startsWith('https://nexcoinpr.com')) {
+    if (url.startsWith('https://www.nexcoinpr.agency')) {
       const u = new URL(url);
       let pathname = u.pathname;
       if (pathname === '/' || pathname === '') pathname = '/index.html';

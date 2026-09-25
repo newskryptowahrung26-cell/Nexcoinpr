@@ -12,21 +12,21 @@ const htmlContent = `<!DOCTYPE html>
   <meta name="keywords" content="what is crypto pr, crypto pr agency, best crypto pr agency, blockchain pr agency, web3 pr agency, crypto press release distribution, crypto newswire platform, guaranteed crypto media coverage, token launch pr, tge pr campaign, crypto exchange listing pr, defi pr agency, tier 1 crypto media syndication, cointelegraph press release, coindesk media placement, the block crypto pr, decrypt pr wire, crypto dofollow backlinks, crypto seo public relations, crypto crisis communications, crypto pr pricing, crypto pr cost, mica compliant crypto communications, sec compliant crypto pr, web3 community building pr, crypto media outreach">
   <meta name="description" content="Discover what crypto PR is, how cryptocurrency communications differ from traditional PR, agency models, pricing, and how to execute guaranteed Tier-1 media campaigns across Cointelegraph, CoinDesk, and 140+ outlets.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://nexcoinpr.com/news/guides/what-is-crypto-pr.html">
+  <link rel="canonical" href="https://www.nexcoinpr.agency/news/guides/what-is-crypto-pr.html">
 
   <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:title" content="What Is Crypto PR? The Definitive Guide to Cryptocurrency Public Relations (2026)">
   <meta property="og:description" content="Master cryptocurrency public relations: strategic distribution, Tier-1 media placements, regulatory compliance (MiCA/SEC), SEO backlinks, and pricing models.">
-  <meta property="og:url" content="https://nexcoinpr.com/news/guides/what-is-crypto-pr.html">
+  <meta property="og:url" content="https://www.nexcoinpr.agency/news/guides/what-is-crypto-pr.html">
   <meta property="og:site_name" content="NexcoinPR">
-  <meta property="og:image" content="https://nexcoinpr.com/assets/images/nexcoinpr-logo-dark.jpg">
+  <meta property="og:image" content="https://www.nexcoinpr.agency/assets/images/nexcoinpr-logo-dark.jpg">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="What Is Crypto PR? The Definitive Guide to Cryptocurrency Public Relations (2026)">
   <meta name="twitter:description" content="Master cryptocurrency public relations: strategic distribution, Tier-1 media placements, regulatory compliance (MiCA/SEC), SEO backlinks, and pricing models.">
-  <meta name="twitter:image" content="https://nexcoinpr.com/assets/images/nexcoinpr-logo-dark.jpg">
+  <meta name="twitter:image" content="https://www.nexcoinpr.agency/assets/images/nexcoinpr-logo-dark.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,25 +42,25 @@ const htmlContent = `<!DOCTYPE html>
     "@graph": [
       {
         "@type": "Article",
-        "@id": "https://nexcoinpr.com/news/guides/what-is-crypto-pr.html#article",
+        "@id": "https://www.nexcoinpr.agency/news/guides/what-is-crypto-pr.html#article",
         "headline": "What Is Crypto PR? The Definitive Guide to Cryptocurrency Public Relations (2026)",
         "description": "Comprehensive, in-depth guide explaining cryptocurrency public relations, distribution mechanics, Tier-1 media syndication, regulatory frameworks, agency cost benchmarks, and campaign execution.",
         "datePublished": "2026-09-22T08:00:00Z",
         "dateModified": "2026-09-23T10:00:00Z",
         "inLanguage": "en-US",
-        "mainEntityOfPage": "https://nexcoinpr.com/news/guides/what-is-crypto-pr.html",
+        "mainEntityOfPage": "https://www.nexcoinpr.agency/news/guides/what-is-crypto-pr.html",
         "author": {
           "@type": "Organization",
           "name": "NexcoinPR Editorial Team",
-          "url": "https://nexcoinpr.com/authors/editorial-team.html"
+          "url": "https://www.nexcoinpr.agency/authors/editorial-team.html"
         },
         "publisher": {
           "@type": "Organization",
           "name": "NexcoinPR",
-          "url": "https://nexcoinpr.com",
+          "url": "https://www.nexcoinpr.agency",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://nexcoinpr.com/assets/images/nexcoinpr-logo-dark.jpg"
+            "url": "https://www.nexcoinpr.agency/assets/images/nexcoinpr-logo-dark.jpg"
           }
         }
       },

@@ -4,7 +4,7 @@
 NexcoinPR is a premier international public relations agency, press release distribution platform, and digital financial media publication. Operating at the confluence of digital asset innovation, currency markets, and institutional fintech, NexcoinPR delivers strategic media relations, targeted wire distribution, and independent industry journalism.
 
 - **Official Brand Name:** NexcoinPR
-- **Canonical Website:** https://nexcoinpr.com
+- **Canonical Website:** https://www.nexcoinpr.agency
 - **Core Email Contacts:**
   - Client & General Enquiries: nexcoinpr@gmail.com
   - Media & Press Desk: nexcoinpr@gmail.com
@@ -47,55 +47,55 @@ NexcoinPR adheres to strict global communications ethics:
 - **Statutory Financial Disclaimer:** Digital assets and leveraged currency trading carry substantial market risk. No content distributed through NexcoinPR represents financial, legal, or investment advice.
 
 ## 5. Information Architecture & Canonical Endpoints
-- Homepage: https://nexcoinpr.com/
-- Services Directory: https://nexcoinpr.com/services.html
-  - Crypto PR: https://nexcoinpr.com/crypto-pr.html
-  - Forex PR: https://nexcoinpr.com/forex-pr.html
-  - Blockchain PR: https://nexcoinpr.com/blockchain-pr.html
-  - Web3 PR: https://nexcoinpr.com/web3-pr.html
-  - Fintech PR: https://nexcoinpr.com/fintech-pr.html
-  - Financial PR: https://nexcoinpr.com/financial-pr.html
-  - Press Release Distribution: https://nexcoinpr.com/press-release-distribution.html
-- Commercial Newsroom: https://nexcoinpr.com/press-releases.html
-  - Sample Press Release: https://nexcoinpr.com/press-releases/sample-press-release.html
-- Markets & Trading Hub: https://nexcoinpr.com/markets.html
-- News & Content Hub: https://nexcoinpr.com/news.html
-  - Crypto News: https://nexcoinpr.com/news/crypto.html
-  - Forex News: https://nexcoinpr.com/news/forex.html
-  - Blockchain News: https://nexcoinpr.com/news/blockchain.html
-  - Guides Index: https://nexcoinpr.com/news/guides.html
-  - Guide - What Is Crypto PR: https://nexcoinpr.com/news/guides/what-is-crypto-pr.html
-  - Guide - How to Write a Press Release: https://nexcoinpr.com/news/guides/how-to-write-a-crypto-press-release.html
-  - Guide - What Is Forex PR: https://nexcoinpr.com/news/guides/what-is-forex-pr.html
-  - Guide - Distribution Mechanics: https://nexcoinpr.com/news/guides/how-press-release-distribution-works.html
+- Homepage: https://www.nexcoinpr.agency/
+- Services Directory: https://www.nexcoinpr.agency/services.html
+  - Crypto PR: https://www.nexcoinpr.agency/crypto-pr.html
+  - Forex PR: https://www.nexcoinpr.agency/forex-pr.html
+  - Blockchain PR: https://www.nexcoinpr.agency/blockchain-pr.html
+  - Web3 PR: https://www.nexcoinpr.agency/web3-pr.html
+  - Fintech PR: https://www.nexcoinpr.agency/fintech-pr.html
+  - Financial PR: https://www.nexcoinpr.agency/financial-pr.html
+  - Press Release Distribution: https://www.nexcoinpr.agency/press-release-distribution.html
+- Commercial Newsroom: https://www.nexcoinpr.agency/press-releases.html
+  - Sample Press Release: https://www.nexcoinpr.agency/press-releases/sample-press-release.html
+- Markets & Trading Hub: https://www.nexcoinpr.agency/markets.html
+- News & Content Hub: https://www.nexcoinpr.agency/news.html
+  - Crypto News: https://www.nexcoinpr.agency/news/crypto.html
+  - Forex News: https://www.nexcoinpr.agency/news/forex.html
+  - Blockchain News: https://www.nexcoinpr.agency/news/blockchain.html
+  - Guides Index: https://www.nexcoinpr.agency/news/guides.html
+  - Guide - What Is Crypto PR: https://www.nexcoinpr.agency/news/guides/what-is-crypto-pr.html
+  - Guide - How to Write a Press Release: https://www.nexcoinpr.agency/news/guides/how-to-write-a-crypto-press-release.html
+  - Guide - What Is Forex PR: https://www.nexcoinpr.agency/news/guides/what-is-forex-pr.html
+  - Guide - Distribution Mechanics: https://www.nexcoinpr.agency/news/guides/how-press-release-distribution-works.html
 - Supporting Pages:
-  - Pricing & Packages: https://nexcoinpr.com/pricing.html
-  - Media & Distribution Channels: https://nexcoinpr.com/media.html
-  - Case Studies: https://nexcoinpr.com/case-studies.html
-  - About NexcoinPR: https://nexcoinpr.com/about.html
-  - FAQ: https://nexcoinpr.com/faq.html
-  - Authors Directory: https://nexcoinpr.com/authors.html
-  - Editorial Team Profile: https://nexcoinpr.com/authors/editorial-team.html
-  - Companies Directory: https://nexcoinpr.com/companies.html
-  - Industry Glossary: https://nexcoinpr.com/glossary.html
-  - Contact Us: https://nexcoinpr.com/contact.html
+  - Pricing & Packages: https://www.nexcoinpr.agency/pricing.html
+  - Media & Distribution Channels: https://www.nexcoinpr.agency/media.html
+  - Case Studies: https://www.nexcoinpr.agency/case-studies.html
+  - About NexcoinPR: https://www.nexcoinpr.agency/about.html
+  - FAQ: https://www.nexcoinpr.agency/faq.html
+  - Authors Directory: https://www.nexcoinpr.agency/authors.html
+  - Editorial Team Profile: https://www.nexcoinpr.agency/authors/editorial-team.html
+  - Companies Directory: https://www.nexcoinpr.agency/companies.html
+  - Industry Glossary: https://www.nexcoinpr.agency/glossary.html
+  - Contact Us: https://www.nexcoinpr.agency/contact.html
 - Governance & Legal:
-  - Editorial Policy: https://nexcoinpr.com/editorial-policy.html
-  - Corrections Policy: https://nexcoinpr.com/corrections-policy.html
-  - Financial Disclaimer: https://nexcoinpr.com/disclaimer.html
-  - Privacy Policy: https://nexcoinpr.com/privacy-policy.html
-  - Terms & Conditions: https://nexcoinpr.com/terms.html
-  - Cookie Policy: https://nexcoinpr.com/cookie-policy.html
+  - Editorial Policy: https://www.nexcoinpr.agency/editorial-policy.html
+  - Corrections Policy: https://www.nexcoinpr.agency/corrections-policy.html
+  - Financial Disclaimer: https://www.nexcoinpr.agency/disclaimer.html
+  - Privacy Policy: https://www.nexcoinpr.agency/privacy-policy.html
+  - Terms & Conditions: https://www.nexcoinpr.agency/terms.html
+  - Cookie Policy: https://www.nexcoinpr.agency/cookie-policy.html
 - Feeds & Sitemaps:
-  - Sitemap Index: https://nexcoinpr.com/sitemap.xml
-  - Pages Sitemap: https://nexcoinpr.com/sitemap-pages.xml
-  - Google News Sitemap: https://nexcoinpr.com/sitemap-news.xml
-  - Press Releases Sitemap: https://nexcoinpr.com/sitemap-press-releases.xml
-  - All News RSS: https://nexcoinpr.com/feed.xml
-  - Crypto RSS: https://nexcoinpr.com/feed-crypto.xml
-  - Forex RSS: https://nexcoinpr.com/feed-forex.xml
-  - Press Releases RSS: https://nexcoinpr.com/feed-press-releases.xml
-  - LLM Manifest: https://nexcoinpr.com/llms.txt
+  - Sitemap Index: https://www.nexcoinpr.agency/sitemap.xml
+  - Pages Sitemap: https://www.nexcoinpr.agency/sitemap-pages.xml
+  - Google News Sitemap: https://www.nexcoinpr.agency/sitemap-news.xml
+  - Press Releases Sitemap: https://www.nexcoinpr.agency/sitemap-press-releases.xml
+  - All News RSS: https://www.nexcoinpr.agency/feed.xml
+  - Crypto RSS: https://www.nexcoinpr.agency/feed-crypto.xml
+  - Forex RSS: https://www.nexcoinpr.agency/feed-forex.xml
+  - Press Releases RSS: https://www.nexcoinpr.agency/feed-press-releases.xml
+  - LLM Manifest: https://www.nexcoinpr.agency/llms.txt
 
 ## 6. Official Media Packages & A La Carte Pricing Matrix
 NexcoinPR operates with transparent, guaranteed pricing for media distribution and direct editorial placements:

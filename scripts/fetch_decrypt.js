@@ -265,7 +265,7 @@ async function run() {
 
   const slug = `${slugify(cleanTitle)}.html`;
   const articleUrl = `/press-releases/${slug}`;
-  const fullArticleUrl = `https://nexcoinpr.com/press-releases/${slug}`;
+  const fullArticleUrl = `https://www.nexcoinpr.agency/press-releases/${slug}`;
 
   // SEO Summary (strictly locked to max 140 characters)
   const excerpt = createSummary(bodyContent, 140);
@@ -323,10 +323,10 @@ async function run() {
     "publisher": {
       "@type": "Organization",
       "name": "NexcoinPR",
-      "url": "https://nexcoinpr.com",
+      "url": "https://www.nexcoinpr.agency",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://nexcoinpr.com/favicon.svg"
+        "url": "https://www.nexcoinpr.agency/favicon.svg"
       }
     }
   }

@@ -63,7 +63,7 @@ function getHtmlFiles(dir) {
 const faviconBlock = `  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/jpeg" href="/assets/images/nexcoinpr-favicon.jpg" sizes="32x32">
   <link rel="apple-touch-icon" href="/assets/images/nexcoinpr-favicon.jpg">
-  <meta property="og:image" content="https://nexcoinpr.com/assets/images/nexcoinpr-logo-dark.jpg">`;
+  <meta property="og:image" content="https://www.nexcoinpr.agency/assets/images/nexcoinpr-logo-dark.jpg">`;
 
 const htmlFiles = getHtmlFiles(BASE_DIR);
 let patched = 0;

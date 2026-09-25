@@ -402,7 +402,7 @@ async function fetchForexCandidate(importedUrls) {
 function generateArticleHtml(article) {
   const pubDateFormatted = article.dateString;
   const isoDate = article.isoDate;
-  const canonicalUrl = `https://nexcoinpr.com/news/${article.slug}.html`;
+  const canonicalUrl = `https://www.nexcoinpr.agency/news/${article.slug}.html`;
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -449,15 +449,15 @@ function generateArticleHtml(article) {
     "author": {
       "@type": "Organization",
       "name": "NexcoinPR Editorial Desk",
-      "url": "https://nexcoinpr.com/about.html"
+      "url": "https://www.nexcoinpr.agency/about.html"
     },
     "publisher": {
       "@type": "Organization",
       "name": "NexcoinPR",
-      "url": "https://nexcoinpr.com",
+      "url": "https://www.nexcoinpr.agency",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://nexcoinpr.com/favicon.svg"
+        "url": "https://www.nexcoinpr.agency/favicon.svg"
       }
     }
   }
@@ -746,7 +746,7 @@ function updateSitemaps(article) {
   if (fs.existsSync(SITEMAP_NEWS_FILE)) {
     let sitemap = fs.readFileSync(SITEMAP_NEWS_FILE, 'utf8');
     const newEntry = `  <url>
-    <loc>https://nexcoinpr.com/news/${article.slug}.html</loc>
+    <loc>https://www.nexcoinpr.agency/news/${article.slug}.html</loc>
     <news:news>
       <news:publication>
         <news:name>NexcoinPR</news:name>
@@ -902,7 +902,7 @@ function generateForexBody(cand) {
     const finalImageUrl = cand.imageUrl || defaultImage;
     const absImageUrl = finalImageUrl.startsWith('http')
       ? finalImageUrl
-      : `https://nexcoinpr.com${finalImageUrl}`;
+      : `https://www.nexcoinpr.agency${finalImageUrl}`;
 
     const articleData = {
       sourceName: cand.source,

@@ -241,7 +241,7 @@ async function run() {
 
   const slug = `${slugify(cleanTitle)}.html`;
   const articleUrl = `/press-releases/${slug}`;
-  const fullArticleUrl = `https://nexcoinpr.com/press-releases/${slug}`;
+  const fullArticleUrl = `https://www.nexcoinpr.agency/press-releases/${slug}`;
 
   // SEO Summary (strictly locked to max 140 characters)
   const excerpt = createSummary(bodyContent, 140);
@@ -304,12 +304,12 @@ async function run() {
       "author": {
         "@type": "Organization",
         "name": "${company.replace(/"/g, '\\"')}",
-        "url": "https://nexcoinpr.com/companies.html"
+        "url": "https://www.nexcoinpr.agency/companies.html"
       },
       "publisher": {
         "@type": "Organization",
         "name": "NexcoinPR",
-        "url": "https://nexcoinpr.com"
+        "url": "https://www.nexcoinpr.agency"
       }
     }
   ]
@@ -321,7 +321,7 @@ async function run() {
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="#0A1628">
-  <meta property="og:image" content="https://nexcoinpr.com/assets/images/nexcoinpr-logo-dark.jpg">
+  <meta property="og:image" content="https://www.nexcoinpr.agency/assets/images/nexcoinpr-logo-dark.jpg">
 </head>
 <body>
   <!-- HEADER -->

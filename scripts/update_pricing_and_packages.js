@@ -244,19 +244,19 @@ const schemaOffers = [
 const pricingHtml = pageTemplate({
   title: "Crypto & Forex Media Packages & Single Media Pricing | NexcoinPR",
   description: `Official media distribution packages and direct single publication placements across ${countAll}+ top media outlets including Forbes, Entrepreneur, Decrypt, Bitcoin.com, CoinDesk, CoinTelegraph, and more.`,
-  canonical: "https://nexcoinpr.com/pricing.html",
+  canonical: "https://www.nexcoinpr.agency/pricing.html",
   activePage: "pricing",
   jsonLd: {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": "Crypto & Forex Media Packages & Single Media Pricing — NexcoinPR",
     "description": "Transparent pricing packages and single publication placements for crypto, forex, and fintech press release distribution.",
-    "url": "https://nexcoinpr.com/pricing.html",
+    "url": "https://www.nexcoinpr.agency/pricing.html",
     "breadcrumb": {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://nexcoinpr.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Pricing", "item": "https://nexcoinpr.com/pricing.html" }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.nexcoinpr.agency/" },
+        { "@type": "ListItem", "position": 2, "name": "Pricing", "item": "https://www.nexcoinpr.agency/pricing.html" }
       ]
     },
     "mainEntity": {
