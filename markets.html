@@ -618,13 +618,21 @@ input, select { font-family: 'Inter', sans-serif; outline: none; }
           <div class="bcw-input-box">
             <input type="number" class="bcw-input" id="receive-amount" value="0.0058" readonly>
             <select class="bcw-select-btn" id="receive-crypto" onchange="calculateBuyQuote()">
-              <option value="BTC" selected>BTC</option>
-              <option value="ETH">ETH</option>
-              <option value="SOL">SOL</option>
-              <option value="BNB">BNB</option>
-              <option value="USDT">USDT</option>
-              <option value="XRP">XRP</option>
-              <option value="DOGE">DOGE</option>
+              <option value="BTC" selected>BTC (Bitcoin)</option>
+              <option value="USDT">USDT (Tether USD)</option>
+              <option value="ETH">ETH (Ethereum)</option>
+              <option value="SOL">SOL (Solana)</option>
+              <option value="BNB">BNB (BNB Chain)</option>
+              <option value="XRP">XRP (Ripple)</option>
+              <option value="DOGE">DOGE (Dogecoin)</option>
+              <option value="SUI">SUI (Sui)</option>
+              <option value="PEPE">PEPE (Pepe)</option>
+              <option value="NEAR">NEAR (NEAR)</option>
+              <option value="ADA">ADA (Cardano)</option>
+              <option value="AVAX">AVAX (Avalanche)</option>
+              <option value="LINK">LINK (Chainlink)</option>
+              <option value="SHIB">SHIB (Shiba Inu)</option>
+              <option value="USDC">USDC (USD Coin)</option>
             </select>
           </div>
         </div>
@@ -1294,6 +1302,7 @@ function updateDemoUI() {
   tpnlEl.textContent = `${isNetProfit ? '+' : ''}$${totalPnL.toFixed(2)} (${isNetProfit ? '+' : ''}${totalPnLPct.toFixed(2)}%)`;
 
   document.getElementById('top-demo-balance').textContent = `$${demoBalance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USDT`;
+  onDemoCoinChange();
 }
 
 function executeDemoOrder(side) {
@@ -1302,17 +1311,24 @@ function executeDemoOrder(side) {
   if (!amount || amount <= 0) return alert("Please enter a valid order amount.");
   if (amount > demoBalance) return alert("Insufficient demo balance! Reset balance or reduce order size.");
 
-  const ticker = liveTickerData[sym];
-  if (!ticker) return alert("Waiting for live price feed...");
+  const ticker = liveTickerData[sym] || INITIAL_SEED_TICKERS[sym];
+  let price = 0;
+  if (ticker && parseFloat(ticker.c) > 0) {
+    price = parseFloat(ticker.c);
+  } else {
+    const coinObj = COIN_DATABASE.find(c => c.s === sym);
+    if (coinObj && coinObj.price) price = coinObj.price;
+  }
+  if (!price) return alert("Waiting for live price feed...");
 
-  const price = parseFloat(ticker.c);
   const qty = amount / price;
   const coinObj = COIN_DATABASE.find(c => c.s === sym);
+  const baseName = coinObj ? coinObj.b : sym.replace('USDT', '');
 
   demoBalance -= amount;
   demoPositions.unshift({
     symbol: sym,
-    base: coinObj ? coinObj.b : sym.replace('USDT', ''),
+    base: baseName,
     side: side,
     entryPrice: price,
     qty: qty,
@@ -1320,13 +1336,13 @@ function executeDemoOrder(side) {
   });
 
   saveDemoStorage();
-  alert(`Paper trade filled! ${side} ${qty.toFixed(4)} ${coinObj.b} @ $${formatPrice(price, sym)}`);
+  alert(`Paper trade filled! ${side} ${qty.toFixed(4)} ${baseName} @ $${formatPrice(price, sym)}`);
 }
 
 function closeDemoPosition(index) {
   const pos = demoPositions[index];
-  const ticker = liveTickerData[pos.symbol];
-  const curPrice = ticker ? parseFloat(ticker.c) : pos.entryPrice;
+  const ticker = liveTickerData[pos.symbol] || INITIAL_SEED_TICKERS[pos.symbol];
+  const curPrice = (ticker && parseFloat(ticker.c) > 0) ? parseFloat(ticker.c) : pos.entryPrice;
   const priceDiff = pos.side === 'BUY' ? (curPrice - pos.entryPrice) : (pos.entryPrice - curPrice);
   const posPnL = priceDiff * pos.qty;
   const returnCash = (pos.qty * pos.entryPrice) + posPnL;
@@ -1341,10 +1357,19 @@ function setDemoAmount(val) {
 }
 
 function onDemoCoinChange() {
-  const sym = document.getElementById('demo-trade-coin').value;
-  const ticker = liveTickerData[sym];
-  if (ticker) {
-    document.getElementById('demo-coin-live-price').textContent = `$${formatPrice(parseFloat(ticker.c), sym)}`;
+  const el = document.getElementById('demo-trade-coin');
+  if (!el) return;
+  const sym = el.value;
+  const ticker = liveTickerData[sym] || INITIAL_SEED_TICKERS[sym];
+  const dispEl = document.getElementById('demo-coin-live-price');
+  if (!dispEl) return;
+  if (ticker && parseFloat(ticker.c) > 0) {
+    dispEl.textContent = `$${formatPrice(parseFloat(ticker.c), sym)}`;
+  } else {
+    const coinObj = COIN_DATABASE.find(c => c.s === sym);
+    if (coinObj && coinObj.price) {
+      dispEl.textContent = `$${formatPrice(coinObj.price, sym)}`;
+    }
   }
 }
 
@@ -1406,21 +1431,48 @@ function calculateBuyQuote() {
   const spend = parseFloat(document.getElementById('spend-amount').value) || 0;
   const fiat = document.getElementById('spend-currency').value;
   const crypto = document.getElementById('receive-crypto').value;
-  const sym = `${crypto}USDT`;
-  const ticker = liveTickerData[sym];
 
-  // Fiat conversion rate approximations relative to USD
-  const fiatRates = { USD: 1.0, EUR: 1.08, GBP: 1.28, AED: 0.272, CAD: 0.74, AUD: 0.65, PKR: 0.0036, INR: 0.012 };
+  // Fiat exchange rates relative to USD
+  const fiatRates = { 
+    USD: 1.0, 
+    EUR: 1.08, 
+    GBP: 1.28, 
+    AED: 0.272, 
+    CAD: 0.74, 
+    AUD: 0.65, 
+    PKR: 0.0036, 
+    INR: 0.012 
+  };
   const usdValue = spend * (fiatRates[fiat] || 1.0);
 
-  if (ticker) {
-    const cryptoPrice = parseFloat(ticker.c);
-    const estCrypto = (usdValue / cryptoPrice);
-    document.getElementById('receive-amount').value = estCrypto > 1 ? estCrypto.toFixed(4) : estCrypto.toFixed(6);
-    document.getElementById('receive-rate-hint').textContent = `1 ${crypto} ≈ $${formatPrice(cryptoPrice, sym)}`;
+  let cryptoPrice = 1.0;
+  if (crypto === 'USDT' || crypto === 'USDC' || crypto === 'FDUSD') {
+    cryptoPrice = 1.0;
+  } else {
+    const sym = `${crypto}USDT`;
+    const ticker = liveTickerData[sym] || INITIAL_SEED_TICKERS[sym];
+    if (ticker && parseFloat(ticker.c) > 0) {
+      cryptoPrice = parseFloat(ticker.c);
+    } else {
+      const coin = COIN_DATABASE.find(c => c.b === crypto || c.s === sym);
+      if (coin && coin.price) cryptoPrice = coin.price;
+    }
   }
 
-  document.getElementById('btn-crypto-name').textContent = crypto;
+  if (buyCardMode === 'buy') {
+    const estCrypto = cryptoPrice > 0 ? (usdValue / cryptoPrice) : 0;
+    const dec = estCrypto >= 1000 ? 2 : estCrypto >= 1 ? 4 : (estCrypto >= 0.001 ? 6 : 8);
+    document.getElementById('receive-amount').value = estCrypto.toFixed(dec);
+    document.getElementById('receive-rate-hint').textContent = `1 ${crypto} ≈ $${formatPrice(cryptoPrice, crypto + 'USDT')} USD`;
+  } else {
+    // Sell mode: user enters crypto to sell, receives fiat
+    const estFiatValue = (spend * cryptoPrice) / (fiatRates[fiat] || 1.0);
+    document.getElementById('receive-amount').value = estFiatValue.toFixed(2);
+    document.getElementById('receive-rate-hint').textContent = `1 ${crypto} ≈ $${formatPrice(cryptoPrice, crypto + 'USDT')} USD`;
+  }
+
+  const btnCryptoEl = document.getElementById('btn-crypto-name');
+  if (btnCryptoEl) btnCryptoEl.textContent = crypto;
 }
 
 function executeBinanceBuyHandoff() {
@@ -1690,6 +1742,12 @@ function openCoinInTerminal(sym, mode) {
     const base = sym.replace('USDT', '');
     pill.classList.toggle('active', pill.textContent.trim() === base);
   });
+
+  const ticker = liveTickerData[sym] || INITIAL_SEED_TICKERS[sym];
+  if (ticker && parseFloat(ticker.c) > 0) {
+    const orderInput = document.getElementById('term-input-price');
+    if (orderInput) orderInput.value = parseFloat(ticker.c);
+  }
 
   initProTerminal();
   renderTerminalSidebar();
