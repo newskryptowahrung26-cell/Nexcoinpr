@@ -201,22 +201,37 @@ input, select { font-family: 'Inter', sans-serif; outline: none; }
 ============================================================ */
 .pro-terminal-layout { display: flex; flex-direction: column; height: calc(100vh - 134px); min-height: 640px; }
 .term-top-bar { background: var(--bg-card); border-bottom: 1px solid var(--border); padding: 8px 18px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-.tt-pair-details { display: flex; align-items: center; gap: 18px; }
-.tt-pair-name { font-size: 19px; font-weight: 800; color: #fff; }
-.tt-pair-price { font-size: 22px; font-weight: 700; font-family: var(--font-mono); }
-.tt-stat-col { display: flex; flex-direction: column; gap: 1px; border-left: 1px solid var(--border); padding-left: 14px; }
-.tt-lbl { font-size: 10px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.6px; font-weight: 600; }
-.tt-val { font-size: 12.5px; font-weight: 600; font-family: var(--font-mono); }
+.tt-pair-details { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.tt-pair-name { font-size: 18px; font-weight: 800; color: #fff; }
+.tt-pair-select { background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border-gold); color: #fff; font-weight: 700; font-size: 13px; border-radius: 7px; padding: 5px 10px; cursor: pointer; }
+.tt-quick-pills { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; }
+.tt-q-pill { padding: 4px 9px; font-size: 11.5px; font-weight: 700; color: var(--text-muted); background: rgba(255, 255, 255, 0.05); border-radius: 6px; cursor: pointer; transition: all 0.15s; font-family: var(--font-mono); }
+.tt-q-pill.active, .tt-q-pill:hover { background: rgba(201, 168, 76, 0.2); color: var(--gold); }
+.tt-pair-price { font-size: 20px; font-weight: 700; font-family: var(--font-mono); }
+.tt-stat-col { display: flex; flex-direction: column; gap: 1px; border-left: 1px solid var(--border); padding-left: 12px; }
+.tt-lbl { font-size: 9.5px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.6px; font-weight: 600; }
+.tt-val { font-size: 12px; font-weight: 600; font-family: var(--font-mono); }
 
-.term-grid-workspace { flex: 1; display: grid; grid-template-columns: 1fr 320px; grid-template-rows: 1fr 200px; overflow: hidden; }
-.chart-container-box { grid-row: 1; grid-column: 1; background: #070D18; position: relative; overflow: hidden; }
+.term-grid-workspace { flex: 1; display: grid; grid-template-columns: 240px 1fr 310px; grid-template-rows: 1fr 190px; overflow: hidden; }
+
+/* LEFT PAIRS SIDEBAR */
+.left-pairs-sidebar { grid-row: 1 / -1; grid-column: 1; background: var(--bg-card); border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; }
+.lps-header { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+.lps-search-input { width: 100%; padding: 6px 10px; background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 6px; color: #fff; font-size: 12px; }
+.lps-coins-list { flex: 1; overflow-y: auto; scrollbar-width: thin; }
+.lps-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.03); cursor: pointer; font-size: 12px; font-family: var(--font-mono); transition: background 0.12s; }
+.lps-row:hover, .lps-row.active { background: rgba(201, 168, 76, 0.1); border-left: 2px solid var(--gold); }
+.lps-coin-name { font-weight: 700; color: #fff; }
+.lps-price-col { text-align: right; }
+
+.chart-container-box { grid-row: 1; grid-column: 2; background: #070D18; position: relative; overflow: hidden; }
 #tv-live-frame { width: 100%; height: 100%; border: none; }
 
-.bottom-trades-box { grid-row: 2; grid-column: 1; background: var(--bg-card); border-top: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; }
+.bottom-trades-box { grid-row: 2; grid-column: 2; background: var(--bg-card); border-top: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; }
 .btb-header { padding: 8px 16px; border-bottom: 1px solid var(--border); font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
 .btb-content { flex: 1; overflow-y: auto; scrollbar-width: thin; }
 
-.right-terminal-sidebar { grid-row: 1 / -1; grid-column: 2; background: var(--bg-card); border-left: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; }
+.right-terminal-sidebar { grid-row: 1 / -1; grid-column: 3; background: var(--bg-card); border-left: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; }
 .ob-header-row { padding: 10px 14px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
 .ob-bids-asks-stream { flex: 0 0 280px; display: flex; flex-direction: column; overflow: hidden; }
 .ob-scroll-area { flex: 1; overflow-y: auto; scrollbar-width: none; }
@@ -775,22 +790,60 @@ input, select { font-family: 'Inter', sans-serif; outline: none; }
           <div class="tt-pair-name" id="term-pair-symbol">BTC/USDT</div>
           <div style="font-size:11px;color:var(--gold)" id="term-market-type">Spot Market</div>
         </div>
-        <div class="tt-pair-price up" id="term-live-price">--</div>
+
+        <!-- COIN SELECTOR DROPDOWN -->
+        <select class="tt-pair-select" id="term-pair-select" onchange="openCoinInTerminal(this.value)">
+          <option value="BTCUSDT" selected>BTC/USDT (Bitcoin)</option>
+          <option value="ETHUSDT">ETH/USDT (Ethereum)</option>
+          <option value="SOLUSDT">SOL/USDT (Solana)</option>
+          <option value="BNBUSDT">BNB/USDT (BNB Chain)</option>
+          <option value="XRPUSDT">XRP/USDT (Ripple)</option>
+          <option value="DOGEUSDT">DOGE/USDT (Dogecoin)</option>
+          <option value="ADAUSDT">ADA/USDT (Cardano)</option>
+          <option value="AVAXUSDT">AVAX/USDT (Avalanche)</option>
+          <option value="LINKUSDT">LINK/USDT (Chainlink)</option>
+          <option value="NEARUSDT">NEAR/USDT (NEAR)</option>
+          <option value="PEPEUSDT">PEPE/USDT (Pepe)</option>
+          <option value="SHIBUSDT">SHIB/USDT (Shiba Inu)</option>
+          <option value="MATICUSDT">MATIC/USDT (Polygon)</option>
+          <option value="DOTUSDT">DOT/USDT (Polkadot)</option>
+          <option value="TRXUSDT">TRX/USDT (TRON)</option>
+          <option value="UNIUSDT">UNI/USDT (Uniswap)</option>
+          <option value="LTCUSDT">LTC/USDT (Litecoin)</option>
+          <option value="ARBUSDT">ARB/USDT (Arbitrum)</option>
+          <option value="OPUSDT">OP/USDT (Optimism)</option>
+          <option value="INJUSDT">INJ/USDT (Injective)</option>
+          <option value="FETUSDT">FET/USDT (Artificial Intelligence)</option>
+        </select>
+
+        <!-- QUICK PAIR PILLS -->
+        <div class="tt-quick-pills">
+          <button class="tt-q-pill active" onclick="openCoinInTerminal('BTCUSDT')">BTC</button>
+          <button class="tt-q-pill" onclick="openCoinInTerminal('ETHUSDT')">ETH</button>
+          <button class="tt-q-pill" onclick="openCoinInTerminal('SOLUSDT')">SOL</button>
+          <button class="tt-q-pill" onclick="openCoinInTerminal('BNBUSDT')">BNB</button>
+          <button class="tt-q-pill" onclick="openCoinInTerminal('XRPUSDT')">XRP</button>
+          <button class="tt-q-pill" onclick="openCoinInTerminal('DOGEUSDT')">DOGE</button>
+          <button class="tt-q-pill" onclick="openCoinInTerminal('PEPEUSDT')">PEPE</button>
+          <button class="tt-q-pill" onclick="openCoinInTerminal('NEARUSDT')">NEAR</button>
+        </div>
+
+        <div class="tt-pair-price up" id="term-live-price">$84,678.00</div>
         <div class="tt-stat-col">
           <div class="tt-lbl">24h Change</div>
-          <div class="tt-val up" id="term-24h-chg">--</div>
+          <div class="tt-val up" id="term-24h-chg">+1.71%</div>
         </div>
         <div class="tt-stat-col">
           <div class="tt-lbl">24h High</div>
-          <div class="tt-val" id="term-24h-hi">--</div>
+          <div class="tt-val" id="term-24h-hi">$85,420.00</div>
         </div>
         <div class="tt-stat-col">
           <div class="tt-lbl">24h Low</div>
-          <div class="tt-val" id="term-24h-lo">--</div>
+          <div class="tt-val" id="term-24h-lo">$82,950.00</div>
         </div>
         <div class="tt-stat-col">
           <div class="tt-lbl">24h Volume</div>
-          <div class="tt-val" id="term-24h-vol">--</div>
+          <div class="tt-val" id="term-24h-vol">$1.57B</div>
         </div>
       </div>
 
@@ -804,6 +857,16 @@ input, select { font-family: 'Inter', sans-serif; outline: none; }
     </div>
 
     <div class="term-grid-workspace">
+      <!-- LEFT PAIRS SIDEBAR (Binance Pro Style) -->
+      <div class="left-pairs-sidebar">
+        <div class="lps-header">
+          <input type="text" class="lps-search-input" id="lps-search-input" placeholder="Search 22+ pairs..." oninput="filterTerminalSidebar(this.value)">
+        </div>
+        <div class="lps-coins-list" id="lps-coins-list">
+          <!-- Populated dynamically via renderTerminalSidebar -->
+        </div>
+      </div>
+
       <!-- CHART -->
       <div class="chart-container-box">
         <iframe id="tv-live-frame" src="" title="TradingView Chart" allowtransparency="true" scrolling="no"></iframe>
@@ -1515,9 +1578,57 @@ function initProTerminal() {
   updateTerminalHeader();
 }
 
+let sidebarSearchTerm = '';
+
+function renderTerminalSidebar() {
+  const container = document.getElementById('lps-coins-list');
+  if (!container) return;
+
+  const filtered = COIN_DATABASE.filter(c => {
+    return !sidebarSearchTerm || c.b.toLowerCase().includes(sidebarSearchTerm) || c.n.toLowerCase().includes(sidebarSearchTerm);
+  });
+
+  container.innerHTML = filtered.map(c => {
+    const t = liveTickerData[c.s] || INITIAL_SEED_TICKERS[c.s];
+    const price = t ? formatPrice(parseFloat(t.c), c.s) : '--';
+    const pct = t ? parseFloat(t.P) : 0;
+    const isUp = pct >= 0;
+    const isActive = c.s === currentTerminalPair ? 'active' : '';
+
+    return `<div class="lps-row ${isActive}" onclick="openCoinInTerminal('${c.s}')">
+      <div>
+        <div class="lps-coin-name">${c.b}/USDT</div>
+        <div style="font-size:10px;color:var(--text-dim);">${c.n}</div>
+      </div>
+      <div class="lps-price-col">
+        <div style="color:#fff;font-weight:600;">$${price}</div>
+        <div class="${isUp ? 'up' : 'down'}" style="font-size:10.5px;">${isUp ? '+' : ''}${pct.toFixed(2)}%</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function filterTerminalSidebar(val) {
+  sidebarSearchTerm = val.toLowerCase().trim();
+  renderTerminalSidebar();
+}
+
 function openCoinInTerminal(sym, mode) {
   currentTerminalPair = sym;
   if (mode) currentTerminalMode = mode;
+
+  // Sync select dropdown
+  const sel = document.getElementById('term-pair-select');
+  if (sel) sel.value = sym;
+
+  // Sync quick pills
+  document.querySelectorAll('.tt-q-pill').forEach(pill => {
+    const base = sym.replace('USDT', '');
+    pill.classList.toggle('active', pill.textContent.trim() === base);
+  });
+
+  initProTerminal();
+  renderTerminalSidebar();
   switchHubView('pro-terminal');
 }
 
@@ -1759,6 +1870,7 @@ function updateAllViews() {
   updateHighlights();
   renderMarketTable();
   updateTerminalHeader();
+  renderTerminalSidebar();
   updateDemoUI();
   calculateBuyQuote();
 }
