@@ -166,4 +166,15 @@
       <news:title>Trump Administration Weighs A Global Stablecoin Plan To Cement Dollar S Dominance</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://nexcoinpr.com/news/bitgets-352-million-hack-happened-via-spoofed-transfers-not-private-keys-ce.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-25</news:publication_date>
+      <news:title>Bitget's $352 million hack happened via spoofed transfers, not private keys, CEO Gray Chen says</news:title>
+    </news:news>
+  </url>
 </urlset>
