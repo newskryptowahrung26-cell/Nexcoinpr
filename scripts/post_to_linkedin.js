@@ -1,3 +1,9 @@
+// AUTO-POSTING PAUSED: User requested all auto posting to be paused.
+if (process.env.RESUME_AUTO_POST !== 'true') {
+  console.log('[PAUSED] LinkedIn auto-posting is currently PAUSED by user request. Exiting cleanly.');
+  process.exit(0);
+}
+
 const fs = require('fs');
 const path = require('path');
 const https = require('https');

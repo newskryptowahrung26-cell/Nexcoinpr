@@ -1,3 +1,9 @@
+// AUTO-POSTING PAUSED: User requested all auto posting to be paused.
+if (process.env.RESUME_AUTO_POST !== 'true') {
+  console.log('[PAUSED] Auto-posting is currently PAUSED by user request. Exiting cleanly without generating news.');
+  process.exit(0);
+}
+
 const https = require('https');
 const http = require('http');
 const fs = require('fs');
