@@ -70,19 +70,17 @@ jobs:
             "launcherName": "NexcoinPR",
             "display": "standalone",
             "themeColor": "#0A1628",
+            "navigationColor": "#0A1628",
             "backgroundColor": "#0A1628",
             "enableNotifications": true,
             "startUrl": "/?source=twa",
             "iconUrl": "https://nexcoinpr.agency/assets/images/android-chrome-512x512.png",
             "splashScreenFadeOutDuration": 600,
-            "appVersionName": "1.0.0",
+            "appVersion": "1.0.0",
             "appVersionCode": 1,
-            "signing": {
-              "outputFormat": "AAB",
-              "uploadKeystore": "signing.keystore",
-              "alias": "my-key-alias",
-              "keyPassword": "${{ secrets.KEY_PASSWORD }}",
-              "storePassword": "${{ secrets.KEYSTORE_PASSWORD }}"
+            "signingKey": {
+              "path": "./signing.keystore",
+              "alias": "my-key-alias"
             },
             "generatorApp": "bubblewrap-cli",
             "webManifestUrl": "https://nexcoinpr.agency/site.webmanifest",
