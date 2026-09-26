@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
@@ -446,6 +446,15 @@
     </div>
   </div>
 </div>
-<script src="/assets/js/main.min.js?v=8.0" defer></script>
+<script src="/assets/js/main.min.js?v=8.0" defer>  /* ---- Service Worker Registration (PWA + TWA) ---- */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('/sw.js', { scope: '/' })
+        .then(function (reg) { console.log('[SW] Registered:', reg.scope); })
+        .catch(function (err) { console.warn('[SW] Registration failed:', err); });
+    });
+  }
+</script>
+
 </body>
 </html>

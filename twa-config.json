@@ -1,0 +1,69 @@
+{
+  "packageId": "agency.nexcoinpr.twa",
+  "host": "nexcoinpr.agency",
+  "name": "NexcoinPR",
+  "launcherName": "NexcoinPR",
+  "display": "standalone",
+  "themeColor": "#0A1628",
+  "themeColorDark": "#0A1628",
+  "navigationColor": "#0A1628",
+  "navigationColorDark": "#0A1628",
+  "navigationDividerColor": "#C9A84C",
+  "navigationDividerColorDark": "#C9A84C",
+  "backgroundColor": "#0A1628",
+  "enableNotifications": true,
+  "startUrl": "/?source=twa",
+  "iconUrl": "https://nexcoinpr.agency/assets/images/android-chrome-512x512.png",
+  "splashScreenFadeOutDuration": 600,
+  "signing": {
+    "outputFormat": "AAB",
+    "uploadKeystore": ""
+  },
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://nexcoinpr.agency/site.webmanifest",
+  "fallbackType": "customtabs",
+  "features": {
+    "locationDelegation": {
+      "enabled": false
+    },
+    "playBilling": {
+      "enabled": false
+    }
+  },
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://nexcoinpr.agency/",
+  "minSdkVersion": 21,
+  "orientation": "portrait",
+  "fingerprints": [],
+  "shortcuts": [
+    {
+      "name": "Press Release Distribution",
+      "short_name": "Distribution",
+      "url": "/press-release-distribution?source=twa_shortcut",
+      "icons": [{ "src": "https://nexcoinpr.agency/assets/images/android-chrome-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Latest News",
+      "short_name": "News",
+      "url": "/news?source=twa_shortcut",
+      "icons": [{ "src": "https://nexcoinpr.agency/assets/images/android-chrome-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Pricing",
+      "short_name": "Pricing",
+      "url": "/pricing?source=twa_shortcut",
+      "icons": [{ "src": "https://nexcoinpr.agency/assets/images/android-chrome-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "url": "/contact?source=twa_shortcut",
+      "icons": [{ "src": "https://nexcoinpr.agency/assets/images/android-chrome-192x192.png", "sizes": "192x192" }]
+    }
+  ]
+}

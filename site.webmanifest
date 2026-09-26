@@ -1,20 +1,90 @@
 {
   "name": "NexcoinPR — Crypto & Forex PR Agency",
   "short_name": "NexcoinPR",
+  "description": "Official NexcoinPR app — crypto PR, forex PR, Web3 press releases, financial news, and institutional media relations.",
+  "lang": "en-US",
+  "dir": "ltr",
+  "scope": "/",
+  "start_url": "/?source=pwa",
+  "id": "/?source=pwa",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait-primary",
+  "theme_color": "#0A1628",
+  "background_color": "#0A1628",
+  "categories": ["finance", "news", "business"],
   "icons": [
     {
       "src": "/assets/images/android-chrome-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "/assets/images/android-chrome-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/images/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
-  "theme_color": "#0A1628",
-  "background_color": "#0A1628",
-  "display": "standalone",
-  "start_url": "/"
+  "screenshots": [
+    {
+      "src": "/assets/images/screenshot-mobile-home.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "NexcoinPR Home — Crypto & Forex PR Agency"
+    },
+    {
+      "src": "/assets/images/screenshot-desktop-home.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "NexcoinPR Desktop — Institutional PR Services"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Press Release Distribution",
+      "short_name": "Distribution",
+      "description": "Submit and distribute your crypto press release",
+      "url": "/press-release-distribution?source=pwa_shortcut",
+      "icons": [{ "src": "/assets/images/android-chrome-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Latest News",
+      "short_name": "News",
+      "description": "Crypto, Forex & Web3 breaking news",
+      "url": "/news?source=pwa_shortcut",
+      "icons": [{ "src": "/assets/images/android-chrome-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Pricing",
+      "short_name": "Pricing",
+      "description": "PR service packages and pricing",
+      "url": "/pricing?source=pwa_shortcut",
+      "icons": [{ "src": "/assets/images/android-chrome-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "description": "Get in touch with NexcoinPR team",
+      "url": "/contact?source=pwa_shortcut",
+      "icons": [{ "src": "/assets/images/android-chrome-192x192.png", "sizes": "192x192" }]
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=agency.nexcoinpr.twa",
+      "id": "agency.nexcoinpr.twa"
+    }
+  ],
+  "prefer_related_applications": false
 }
