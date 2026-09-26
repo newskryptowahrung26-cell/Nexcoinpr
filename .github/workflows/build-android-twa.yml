@@ -29,6 +29,18 @@ jobs:
       - name: Install Bubblewrap CLI
         run: npm install -g @bubblewrap/cli
 
+      - name: Pre-configure Bubblewrap (skip interactive JDK/SDK prompts)
+        run: |
+          mkdir -p ~/.bubblewrap
+          cat > ~/.bubblewrap/config.json << ENDCONFIG
+          {
+            "jdkPath": "${JAVA_HOME}",
+            "androidSdkPath": "${ANDROID_HOME}"
+          }
+          ENDCONFIG
+          echo "Bubblewrap config written:"
+          cat ~/.bubblewrap/config.json
+
       - name: Decode keystore
         run: echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > signing.keystore
 
@@ -75,8 +87,7 @@ jobs:
           ENDOFFILE
 
       - name: Build Android App Bundle
-        run: |
-          printf "No\n${JAVA_HOME}\nNo\n${ANDROID_HOME}\n" | bubblewrap build --manifest=twa-manifest.json --skipPwaValidation
+        run: bubblewrap build --manifest=twa-manifest.json --skipPwaValidation
 
       - name: Upload AAB artifact
         uses: actions/upload-artifact@v4
