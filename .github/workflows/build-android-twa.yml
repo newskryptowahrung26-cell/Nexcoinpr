@@ -1,0 +1,88 @@
+name: Build NexcoinPR Android TWA
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-twa:
+    name: Build Android App Bundle (SDK 24)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Bubblewrap CLI
+        run: npm install -g @bubblewrap/cli
+
+      - name: Decode keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > signing.keystore
+
+      - name: Write twa-manifest.json
+        run: |
+          cat > twa-manifest.json << 'ENDOFFILE'
+          {
+            "packageId": "agency.nexcoinpr.www.twa",
+            "host": "nexcoinpr.agency",
+            "name": "NexcoinPR",
+            "launcherName": "NexcoinPR",
+            "display": "standalone",
+            "themeColor": "#0A1628",
+            "backgroundColor": "#0A1628",
+            "enableNotifications": true,
+            "startUrl": "/?source=twa",
+            "iconUrl": "https://nexcoinpr.agency/assets/images/android-chrome-512x512.png",
+            "splashScreenFadeOutDuration": 600,
+            "signing": {
+              "outputFormat": "AAB",
+              "uploadKeystore": "signing.keystore",
+              "alias": "my-key-alias",
+              "keyPassword": "BmXzzl5nfft8",
+              "storePassword": "BmXzzl5nfft8"
+            },
+            "generatorApp": "bubblewrap-cli",
+            "webManifestUrl": "https://nexcoinpr.agency/site.webmanifest",
+            "fallbackType": "customtabs",
+            "features": {},
+            "alphaDependencies": { "enabled": false },
+            "enableSiteSettingsShortcut": true,
+            "isChromeOSOnly": false,
+            "isMetaQuest": false,
+            "fullScopeUrl": "https://nexcoinpr.agency/",
+            "minSdkVersion": 24,
+            "orientation": "portrait",
+            "fingerprints": [
+              {
+                "name": "release",
+                "value": "A9:23:A9:34:8D:4A:3A:CB:AE:06:A9:59:FE:C2:9F:5C:C9:7A:60:30:E0:CF:8A:A5:A7:F5:AF:85:00:3D:28:D7"
+              }
+            ]
+          }
+          ENDOFFILE
+
+      - name: Build Android App Bundle
+        run: bubblewrap build --manifest=twa-manifest.json --skipPwaValidation
+
+      - name: Upload AAB artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: NexcoinPR-Android-SDK24
+          path: |
+            app-release-bundle.aab
+            app-release.apk
+          retention-days: 30
+
+      - name: Build summary
+        run: |
+          echo "✅ Build complete! Min SDK: 24"
+          ls -lh app-release-bundle.aab app-release.apk 2>/dev/null
