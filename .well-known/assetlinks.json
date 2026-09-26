@@ -2,9 +2,9 @@
   "relation": ["delegate_permission/common.handle_all_urls"],
   "target": {
     "namespace": "android_app",
-    "package_name": "agency.nexcoinpr.twa",
+    "package_name": "agency.nexcoinpr.www.twa",
     "sha256_cert_fingerprints": [
-      "REPLACE_WITH_YOUR_SHA256_SIGNING_FINGERPRINT"
+      "A9:23:A9:34:8D:4A:3A:CB:AE:06:A9:59:FE:C2:9F:5C:C9:7A:60:30:E0:CF:8A:A5:A7:F5:AF:85:00:3D:28:D7"
     ]
   }
 }]
