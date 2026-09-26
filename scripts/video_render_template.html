@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NexcoinPR Video Render Template</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #000;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    #canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    let currentW = 1920;
+    let currentH = 1080;
+    const TOTAL_FRAMES = 480; // 16s at 30fps
+    const FPS = 30;
+
+    // Generate static stars and particles once
+    const stars = [];
+    for (let i = 0; i < 200; i++) {
+      stars.push({
+        x: Math.random(),
+        y: Math.random(),
+        size: Math.random() * 2.5 + 0.5,
+        speed: Math.random() * 0.003 + 0.001,
+        alpha: Math.random() * 0.7 + 0.3
+      });
+    }
+
+    const floatingNodes = [];
+    for (let i = 0; i < 35; i++) {
+      floatingNodes.push({
+        x: Math.random(),
+        y: Math.random(),
+        vx: (Math.random() - 0.5) * 0.0015,
+        vy: (Math.random() - 0.5) * 0.0015,
+        radius: Math.random() * 3 + 2,
+        color: Math.random() > 0.4 ? '#D4AF37' : '#2B75FF'
+      });
+    }
+
+    function initCanvas(w, h) {
+      currentW = w;
+      currentH = h;
+      canvas.width = w;
+      canvas.height = h;
+    }
+
+    function renderFrame(frame) {
+      const w = currentW;
+      const h = currentH;
+      const t = frame / FPS; // time in seconds (0 to 16)
+      const scale = w / 1920;
+      const isSquare = (w === h);
+
+      ctx.clearRect(0, 0, w, h);
+
+      // 1. Deep Luxury Background with Dynamic Radial Gradient
+      const bgGrad = ctx.createRadialGradient(
+        w / 2 + Math.sin(t * 0.8) * 80 * scale,
+        h / 2 + Math.cos(t * 0.6) * 60 * scale,
+        50 * scale,
+        w / 2, h / 2, Math.max(w, h) * 0.85
+      );
+      bgGrad.addColorStop(0, '#0D1E3A');
+      bgGrad.addColorStop(0.4, '#070D18');
+      bgGrad.addColorStop(1, '#02050A');
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, w, h);
+
+      // 2. Animated Starfield
+      stars.forEach(s => {
+        const starY = (s.y + t * s.speed) % 1;
+        const starX = s.x;
+        ctx.fillStyle = `rgba(246, 226, 122, ${s.alpha * (0.6 + 0.4 * Math.sin(t * 4 + s.x * 10))})`;
+        ctx.beginPath();
+        ctx.arc(starX * w, starY * h, s.size * scale, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      // 3. Network Connecting Constellation Lines
+      ctx.lineWidth = 1 * scale;
+      for (let i = 0; i < floatingNodes.length; i++) {
+        const n1 = floatingNodes[i];
+        const n1x = ((n1.x + n1.vx * frame) % 1 + 1) % 1 * w;
+        const n1y = ((n1.y + n1.vy * frame) % 1 + 1) % 1 * h;
+
+        for (let j = i + 1; j < floatingNodes.length; j++) {
+          const n2 = floatingNodes[j];
+          const n2x = ((n2.x + n2.vx * frame) % 1 + 1) % 1 * w;
+          const n2y = ((n2.y + n2.vy * frame) % 1 + 1) % 1 * h;
+          const dist = Math.hypot(n1x - n2x, n1y - n2y);
+          const maxDist = 240 * scale;
+          if (dist < maxDist) {
+            ctx.strokeStyle = `rgba(212, 175, 55, ${(1 - dist / maxDist) * 0.18})`;
+            ctx.beginPath();
+            ctx.moveTo(n1x, n1y);
+            ctx.lineTo(n2x, n2y);
+            ctx.stroke();
+          }
+        }
+
+        ctx.fillStyle = n1.color;
+        ctx.shadowColor = n1.color;
+        ctx.shadowBlur = 8 * scale;
+        ctx.beginPath();
+        ctx.arc(n1x, n1y, n1.radius * scale, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+
+      // 4. Subtle Ambient Golden Vignette Border
+      ctx.strokeStyle = 'rgba(212, 175, 55, 0.25)';
+      ctx.lineWidth = 2 * scale;
+      ctx.strokeRect(20 * scale, 20 * scale, w - 40 * scale, h - 40 * scale);
+
+      // Gold Corner Accents
+      const cornerSize = 40 * scale;
+      ctx.strokeStyle = '#D4AF37';
+      ctx.lineWidth = 4 * scale;
+      // Top-Left
+      ctx.beginPath(); ctx.moveTo(20*scale, (20+cornerSize)*scale); ctx.lineTo(20*scale, 20*scale); ctx.lineTo((20+cornerSize)*scale, 20*scale); ctx.stroke();
+      // Top-Right
+      ctx.beginPath(); ctx.moveTo((w-20-cornerSize)*scale, 20*scale); ctx.lineTo((w-20)*scale, 20*scale); ctx.lineTo((w-20)*scale, (20+cornerSize)*scale); ctx.stroke();
+      // Bottom-Left
+      ctx.beginPath(); ctx.moveTo(20*scale, (h-20-cornerSize)*scale); ctx.lineTo(20*scale, (h-20)*scale); ctx.lineTo((20+cornerSize)*scale, (h-20)*scale); ctx.stroke();
+      // Bottom-Right
+      ctx.beginPath(); ctx.moveTo((w-20-cornerSize)*scale, (h-20)*scale); ctx.lineTo((w-20)*scale, (h-20)*scale); ctx.lineTo((w-20)*scale, (h-20-cornerSize)*scale); ctx.stroke();
+
+      // Top Brand Bar (always present)
+      ctx.save();
+      ctx.fillStyle = 'rgba(246, 226, 122, 0.9)';
+      ctx.font = `700 ${18 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`;
+      ctx.textAlign = 'left';
+      ctx.fillText('NEXCOINPR • OFFICIAL ANNOUNCEMENT', 50 * scale, 60 * scale);
+
+      ctx.textAlign = 'right';
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+      ctx.font = `600 ${16 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`;
+      ctx.fillText('WWW.NEXCOINPR.AGENCY', w - 50 * scale, 60 * scale);
+      ctx.restore();
+
+      // SCENE LOGIC
+      if (t < 4.0) {
+        renderScene1(t, w, h, scale, isSquare);
+      } else if (t < 8.0) {
+        renderScene2(t - 4.0, w, h, scale, isSquare);
+      } else if (t < 12.0) {
+        renderScene3(t - 8.0, w, h, scale, isSquare);
+      } else {
+        renderScene4(t - 12.0, w, h, scale, isSquare);
+      }
+
+      // Master Fade In / Out
+      if (t < 0.4) {
+        ctx.fillStyle = `rgba(0, 0, 0, ${1 - t / 0.4})`;
+        ctx.fillRect(0, 0, w, h);
+      } else if (t > 15.3) {
+        ctx.fillStyle = `rgba(0, 0, 0, ${(t - 15.3) / 0.7})`;
+        ctx.fillRect(0, 0, w, h);
+      }
+    }
+
+    // Helper: Draw Glowing Golden Hexagon / Diamond Logo Emblem
+    function drawLogoEmblem(cx, cy, radius, scale, pulse = 1) {
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.scale(pulse, pulse);
+
+      // Outer Glow
+      const glowGrad = ctx.createRadialGradient(0, 0, radius * 0.3, 0, 0, radius * 1.5);
+      glowGrad.addColorStop(0, 'rgba(246, 226, 122, 0.4)');
+      glowGrad.addColorStop(0.5, 'rgba(212, 175, 55, 0.15)');
+      glowGrad.addColorStop(1, 'transparent');
+      ctx.fillStyle = glowGrad;
+      ctx.beginPath();
+      ctx.arc(0, 0, radius * 1.5, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Outer Hexagon
+      ctx.strokeStyle = '#D4AF37';
+      ctx.lineWidth = 4 * scale;
+      ctx.shadowColor = '#F6E27A';
+      ctx.shadowBlur = 25 * scale;
+      ctx.beginPath();
+      for (let i = 0; i < 6; i++) {
+        const angle = (i * Math.PI) / 3 - Math.PI / 6;
+        const x = radius * Math.cos(angle);
+        const y = radius * Math.sin(angle);
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.closePath();
+      ctx.stroke();
+
+      // Inner Hexagon
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+      ctx.lineWidth = 2 * scale;
+      ctx.beginPath();
+      for (let i = 0; i < 6; i++) {
+        const angle = (i * Math.PI) / 3 - Math.PI / 6;
+        const x = (radius * 0.75) * Math.cos(angle);
+        const y = (radius * 0.75) * Math.sin(angle);
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.closePath();
+      ctx.stroke();
+
+      // Center Bold 'N' Monogram
+      ctx.fillStyle = '#FFF';
+      ctx.font = `900 ${radius * 0.9}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.shadowColor = '#D4AF37';
+      ctx.shadowBlur = 20 * scale;
+      ctx.fillText('N', 0, 4 * scale);
+
+      ctx.restore();
+    }
+
+    // ============================================================
+    // SCENE 1: Brand Announcement & Vision
+    // ============================================================
+    function renderScene1(st, w, h, scale, isSquare) {
+      const alpha = Math.min(1, st / 0.5);
+      const outAlpha = st > 3.4 ? Math.max(0, (4.0 - st) / 0.6) : 1;
+      const combinedAlpha = alpha * outAlpha;
+
+      ctx.save();
+      ctx.globalAlpha = combinedAlpha;
+
+      const centerY = isSquare ? h * 0.42 : h * 0.45;
+      const emblemPulse = 1 + 0.03 * Math.sin(st * 4);
+      drawLogoEmblem(w / 2, centerY - 100 * scale, 75 * scale, scale, emblemPulse);
+
+      // Pill Tag
+      ctx.fillStyle = 'rgba(212, 175, 55, 0.15)';
+      ctx.strokeStyle = '#D4AF37';
+      ctx.lineWidth = 1.5 * scale;
+      const pillW = 340 * scale;
+      const pillH = 38 * scale;
+      const pillY = centerY + 10 * scale;
+      roundRect(ctx, w / 2 - pillW / 2, pillY, pillW, pillH, 19 * scale, true, true);
+
+      ctx.fillStyle = '#F6E27A';
+      ctx.font = `800 ${14 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.fillText('⚡ GLOBAL PRESS RELEASE WIRE', w / 2, pillY + 24 * scale);
+
+      // Main Big Brand Title
+      const goldGrad = ctx.createLinearGradient(w / 2 - 300 * scale, 0, w / 2 + 300 * scale, 0);
+      goldGrad.addColorStop(0, '#FFFFFF');
+      goldGrad.addColorStop(0.3, '#F6E27A');
+      goldGrad.addColorStop(0.7, '#D4AF37');
+      goldGrad.addColorStop(1, '#FFFFFF');
+
+      ctx.fillStyle = goldGrad;
+      ctx.font = `900 ${72 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`;
+      ctx.shadowColor = 'rgba(212, 175, 55, 0.8)';
+      ctx.shadowBlur = 30 * scale;
+      ctx.fillText('NEXCOINPR', w / 2, centerY + 95 * scale);
+      ctx.shadowBlur = 0;
+
+      // Subtitle
+      ctx.fillStyle = '#E2E8F0';
+      ctx.font = `700 ${28 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`;
+      ctx.fillText('The Next Generation of Web3 & Crypto PR', w / 2, centerY + 145 * scale);
+
+      // Category tags
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+      ctx.font = `600 ${18 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`;
+      ctx.fillText('Crypto • Blockchain • Forex • Web3 • Fintech • Capital Markets', w / 2, centerY + 195 * scale);
+
+      ctx.restore();
+    }
+
+    // ============================================================
+    // SCENE 2: Massive Media Reach (500+ Outlets)
+    // ============================================================
+    function renderScene2(st, w, h, scale, isSquare) {
+      const alpha = Math.min(1, st / 0.5);
+      const outAlpha = st > 3.4 ? Math.max(0, (4.0 - st) / 0.6) : 1;
+      const combinedAlpha = alpha * outAlpha;
+
+      ctx.save();
+      ctx.globalAlpha = combinedAlpha;
+
+      const topY = isSquare ? h * 0.18 : h * 0.16;
+
+      // Section Header
+      ctx.fillStyle = '#D4AF37';
+      ctx.font = `800 ${16 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.fillText('GUARANTEED MEDIA DISTRIBUTION', w / 2, topY);
+
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = `900 ${52 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`;
+      ctx.shadowColor = 'rgba(212, 175, 55, 0.6)';
+      ctx.shadowBlur = 20 * scale;
+      ctx.fillText('Get Featured on Top Global Outlets', w / 2, topY + 55 * scale);
+      ctx.shadowBlur = 0;
+
+      // Grid of Tier-1 Media Logos / Badges
+      const mediaList = [
+        { name: 'Bloomberg', cat: 'Tier-1 Financial', color: '#1E40AF' },
+        { name: 'CoinDesk', cat: 'Top Crypto Wire', color: '#047857' },
+        { name: 'Cointelegraph', cat: 'Global Web3 News', color: '#B45309' },
+        { name: 'Yahoo Finance', cat: 'Global Syndication', color: '#6D28D9' },
+        { name: 'Benzinga', cat: 'Capital Markets', color: '#1D4ED8' },
+        { name: 'BeInCrypto', cat: '10M+ Monthly Readers', color: '#0F766E' }
+      ];
+
+      const cols = isSquare ? 2 : 3;
+      const cardW = (isSquare ? 460 : 380) * scale;
+      const cardH = 95 * scale;
+      const gapX = 30 * scale;
+      const gapY = 24 * scale;
+      const totalGridW = cols * cardW + (cols - 1) * gapX;
+      const startX = (w - totalGridW) / 2;
+      const startY = topY + 100 * scale;
+
+      mediaList.forEach((m, idx) => {
+        const col = idx % cols;
+        const row = Math.floor(idx / cols);
+        const cx = startX + col * (cardW + gapX);
+        const cy = startY + row * (cardH + gapY);
+
+        // Slide in animation per item
+        const itemDelay = idx * 0.08;
+        const itemProgress = Math.min(1, Math.max(0, (st - itemDelay) / 0.4));
+        const slideY = (1 - itemProgress) * 30 * scale;
+
+        ctx.save();
+        ctx.translate(0, slideY);
+        ctx.fillStyle = 'rgba(13, 26, 45, 0.85)';
+        ctx.strokeStyle = 'rgba(212, 175, 55, 0.35)';
+        ctx.lineWidth = 1.5 * scale;
+        roundRect(ctx, cx, cy, cardW, cardH, 12 * scale, true, true);
+
+        // Left Accent Bar
+        ctx.fillStyle = m.color;
+        roundRect(ctx, cx, cy, 6 * scale, cardH, 3 * scale, true, false);
+
+        // Outlet Name
+        ctx.fillStyle = '#FFFFFF';
+        ctx.font = `800 ${24 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`;
+        ctx.textAlign = 'left';
+        ctx.fillText(m.name, cx + 24 * scale, cy + 42 * scale);
+
+        // Category Tag
+        ctx.fillStyle = '#F6E27A';
+        ctx.font = `600 ${14 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`;
+        ctx.fillText('✓ ' + m.cat, cx + 24 * scale, cy + 72 * scale);
+
+        ctx.restore();
+      });
+
+      // Bottom Key Metric Highlights
+      const metricY = startY + (Math.ceil(mediaList.length / cols)) * (cardH + gapY) + 30 * scale;
+      const metrics = [
+        '✦ 500+ Verified Publications',
+        '✦ Google News & Finance Indexing',
+        '✦ Permanent High-DA Backlinks'
+      ];
+
+      ctx.fillStyle = '#CBD5E1';
+      ctx.font = `700 ${20 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.fillText(metrics.join('    •    '), w / 2, metricY);
+
+      ctx.restore();
+    }
+
+    // ============================================================
+    // SCENE 3: Comprehensive Solutions & Markets Hub
+    // ============================================================
+    function renderScene3(st, w, h, scale, isSquare) {
+      const alpha = Math.min(1, st / 0.5);
+      const outAlpha = st > 3.4 ? Math.max(0, (4.0 - st) / 0.6) : 1;
+      const combinedAlpha = alpha * outAlpha;
+
+      ctx.save();
+      ctx.globalAlpha = combinedAlpha;
+
+      const topY = isSquare ? h * 0.16 : h * 0.14;
+
+      ctx.fillStyle = '#D4AF37';
+      ctx.font = `800 ${16 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.fillText('FULL-SPECTRUM COMMUNICATIONS & PLATFORM', w / 2, topY);
+
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = `900 ${50 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`;
+      ctx.shadowColor = 'rgba(212, 175, 55, 0.6)';
+      ctx.shadowBlur = 20 * scale;
+      ctx.fillText('Engineered for Market Leaders', w / 2, topY + 52 * scale);
+      ctx.shadowBlur = 0;
+
+      // 3 Showcase Pillars
+      const pillars = [
+        {
+          title: 'Crypto & Token PR',
+          desc: 'Token Generation Events (TGE), Exchange Listings, DeFi Protocols & AI Crypto Wires',
+          icon: '🪙',
+          accent: '#0ECB81'
+        },
+        {
+          title: 'Forex & Broker PR',
+          desc: 'Prop Trading Firms, FX Broker Announcements, Regulated Capital Markets Outreach',
+          icon: '📈',
+          accent: '#2B75FF'
+        },
+        {
+          title: 'Live Markets Hub',
+          desc: 'Real-Time Crypto Price Feeds, Trading Terminals & $100,000 Paper Trading Simulator',
+          icon: '⚡',
+          accent: '#D4AF37'
+        }
+      ];
+
+      const pW = (isSquare ? 800 : 360) * scale;
+      const pH = (isSquare ? 130 : 300) * scale;
+      const pGap = (isSquare ? 18 : 36) * scale;
+
+      if (!isSquare) {
+        // Landscape: 3 vertical cards
+        const totalW = 3 * pW + 2 * pGap;
+        const sX = (w - totalW) / 2;
+        const sY = topY + 105 * scale;
+
+        pillars.forEach((p, idx) => {
+          const px = sX + idx * (pW + pGap);
+          const py = sY;
+
+          ctx.fillStyle = 'rgba(13, 26, 45, 0.9)';
+          ctx.strokeStyle = 'rgba(212, 175, 55, 0.4)';
+          ctx.lineWidth = 1.5 * scale;
+          roundRect(ctx, px, py, pW, pH, 16 * scale, true, true);
+
+          // Top Header
+          ctx.fillStyle = 'rgba(212, 175, 55, 0.12)';
+          roundRect(ctx, px + 20 * scale, py + 24 * scale, 56 * scale, 56 * scale, 12 * scale, true, false);
+
+          ctx.font = `${30 * scale}px sans-serif`;
+          ctx.textAlign = 'center';
+          ctx.fillText(p.icon, px + 48 * scale, py + 62 * scale);
+
+          ctx.fillStyle = '#FFFFFF';
+          ctx.font = `800 ${24 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`;
+          ctx.textAlign = 'left';
+          ctx.fillText(p.title, px + 20 * scale, py + 125 * scale);
+
+          ctx.fillStyle = '#94A3B8';
+          ctx.font = `500 ${16 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`;
+          wrapText(ctx, p.desc, px + 20 * scale, py + 165 * scale, pW - 40 * scale, 24 * scale);
+
+          // Bottom Checkmark
+          ctx.fillStyle = p.accent;
+          ctx.font = `700 ${14 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`;
+          ctx.fillText('✓ GUARANTEED EXECUTION', px + 20 * scale, py + pH - 24 * scale);
+        });
+      } else {
+        // Square: 3 horizontal wide rows
+        const sY = topY + 95 * scale;
+        pillars.forEach((p, idx) => {
+          const px = (w - pW) / 2;
+          const py = sY + idx * (pH + pGap);
+
+          ctx.fillStyle = 'rgba(13, 26, 45, 0.9)';
+          ctx.strokeStyle = 'rgba(212, 175, 55, 0.4)';
+          ctx.lineWidth = 1.5 * scale;
+          roundRect(ctx, px, py, pW, pH, 14 * scale, true, true);
+
+          ctx.font = `${36 * scale}px sans-serif`;
+          ctx.textAlign = 'center';
+          ctx.fillText(p.icon, px + 50 * scale, py + pH / 2 + 10 * scale);
+
+          ctx.fillStyle = '#FFFFFF';
+          ctx.font = `800 ${24 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`;
+          ctx.textAlign = 'left';
+          ctx.fillText(p.title, px + 100 * scale, py + 42 * scale);
+
+          ctx.fillStyle = '#94A3B8';
+          ctx.font = `500 ${15 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`;
+          wrapText(ctx, p.desc, px + 100 * scale, py + 72 * scale, pW - 120 * scale, 22 * scale);
+        });
+      }
+
+      ctx.restore();
+    }
+
+    // ============================================================
+    // SCENE 4: Grand Finale & Official CTA
+    // ============================================================
+    function renderScene4(st, w, h, scale, isSquare) {
+      const alpha = Math.min(1, st / 0.5);
+      ctx.save();
+      ctx.globalAlpha = alpha;
+
+      const centerY = isSquare ? h * 0.42 : h * 0.46;
+
+      // Sweeping Light Beams
+      const beamX = ((st * 0.8) % 1) * w;
+      const beamGrad = ctx.createLinearGradient(beamX - 200 * scale, 0, beamX + 200 * scale, 0);
+      beamGrad.addColorStop(0, 'transparent');
+      beamGrad.addColorStop(0.5, 'rgba(246, 226, 122, 0.08)');
+      beamGrad.addColorStop(1, 'transparent');
+      ctx.fillStyle = beamGrad;
+      ctx.fillRect(0, 0, w, h);
+
+      // Glowing Center Emblem
+      const pulse = 1 + 0.04 * Math.sin(st * 5);
+      drawLogoEmblem(w / 2, centerY - 110 * scale, 85 * scale, scale, pulse);
+
+      // Top Tag
+      ctx.fillStyle = '#F6E27A';
+      ctx.font = `800 ${16 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.fillText('PARTNER WITH NEXCOINPR TODAY', w / 2, centerY + 15 * scale);
+
+      // Headline
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = `900 ${56 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`;
+      ctx.shadowColor = 'rgba(212, 175, 55, 0.8)';
+      ctx.shadowBlur = 30 * scale;
+      ctx.fillText('Scale Your Brand Across The Globe', w / 2, centerY + 80 * scale);
+      ctx.shadowBlur = 0;
+
+      // Giant Golden Website URL Button / Badge
+      const urlBoxW = (isSquare ? 650 : 750) * scale;
+      const urlBoxH = 75 * scale;
+      const urlBoxY = centerY + 125 * scale;
+
+      const urlGrad = ctx.createLinearGradient(w / 2 - urlBoxW / 2, 0, w / 2 + urlBoxW / 2, 0);
+      urlGrad.addColorStop(0, '#F6E27A');
+      urlGrad.addColorStop(0.5, '#FFFFFF');
+      urlGrad.addColorStop(1, '#D4AF37');
+
+      ctx.fillStyle = urlGrad;
+      roundRect(ctx, w / 2 - urlBoxW / 2, urlBoxY, urlBoxW, urlBoxH, 18 * scale, true, false);
+
+      ctx.fillStyle = '#070D18';
+      ctx.font = `900 ${36 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.fillText('WWW.NEXCOINPR.AGENCY', w / 2, urlBoxY + 50 * scale);
+
+      // Sub-footer info
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+      ctx.font = `600 ${20 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`;
+      ctx.fillText('Official Inquiries: nexcoinpr@gmail.com  •  Follow on LinkedIn', w / 2, urlBoxY + 125 * scale);
+
+      ctx.restore();
+    }
+
+    // Helper: Rounded Rectangle
+    function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.lineTo(x + width - radius, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+      ctx.lineTo(x + width, y + height - radius);
+      ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+      ctx.lineTo(x + radius, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+      ctx.lineTo(x, y + radius);
+      ctx.quadraticCurveTo(x, y, x + radius, y);
+      ctx.closePath();
+      if (fill) ctx.fill();
+      if (stroke) ctx.stroke();
+    }
+
+    // Helper: Multiline text wrapping
+    function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+      const words = text.split(' ');
+      let line = '';
+      let curY = y;
+      for (let n = 0; n < words.length; n++) {
+        const testLine = line + words[n] + ' ';
+        const metrics = ctx.measureText(testLine);
+        if (metrics.width > maxWidth && n > 0) {
+          ctx.fillText(line, x, curY);
+          line = words[n] + ' ';
+          curY += lineHeight;
+        } else {
+          line = testLine;
+        }
+      }
+      ctx.fillText(line, x, curY);
+    }
+
+    window.initCanvas = initCanvas;
+    window.renderFrame = renderFrame;
+    window.TOTAL_FRAMES = TOTAL_FRAMES;
+  </script>
+</body>
+</html>
