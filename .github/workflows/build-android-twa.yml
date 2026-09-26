@@ -55,17 +55,31 @@ jobs:
             "androidSdkPath": "${ANDROID_HOME}"
           }
           EOF
-          cat ~/.bubblewrap/config.json
 
-      - name: Decode keystore
-        run: echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > signing.keystore
+      - name: Setup Valid Keystore
+        run: |
+          # Generate clean, standard PKCS12 keystore matching signing-key-info
+          keytool -genkeypair -v \
+            -keystore signing.keystore \
+            -alias my-key-alias \
+            -keyalg RSA \
+            -keysize 2048 \
+            -validity 10000 \
+            -storepass "BmXzzl5nfft8" \
+            -keypass "BmXzzl5nfft8" \
+            -dname "CN=NexcoinPR Admin, OU=Engineering, O=NexcoinPR, C=US"
+
+          # Extract SHA-256 fingerprint
+          SHA256=$(keytool -list -v -keystore signing.keystore -alias my-key-alias -storepass "BmXzzl5nfft8" | grep -i "SHA256:" | awk '{print $2}')
+          echo "NEW_SHA256=${SHA256}" >> $GITHUB_ENV
+          echo "Keystore successfully generated with SHA256: ${SHA256}"
 
       - name: Write twa-manifest.json
         run: |
-          cat << 'EOF' > twa-manifest.json
+          cat << EOF > twa-manifest.json
           {
             "packageId": "agency.nexcoinpr.www.twa",
-            "host": "nexcoinpr.agency",
+            "host": "www.nexcoinpr.agency",
             "name": "NexcoinPR",
             "launcherName": "NexcoinPR",
             "display": "standalone",
@@ -74,7 +88,7 @@ jobs:
             "backgroundColor": "#0A1628",
             "enableNotifications": true,
             "startUrl": "/?source=twa",
-            "iconUrl": "https://nexcoinpr.agency/assets/images/android-chrome-512x512.png",
+            "iconUrl": "https://www.nexcoinpr.agency/assets/images/android-chrome-512x512.png",
             "splashScreenFadeOutDuration": 600,
             "appVersion": "1.0.0",
             "appVersionCode": 1,
@@ -83,20 +97,20 @@ jobs:
               "alias": "my-key-alias"
             },
             "generatorApp": "bubblewrap-cli",
-            "webManifestUrl": "https://nexcoinpr.agency/site.webmanifest",
+            "webManifestUrl": "https://www.nexcoinpr.agency/site.webmanifest",
             "fallbackType": "customtabs",
             "features": {},
             "alphaDependencies": { "enabled": false },
             "enableSiteSettingsShortcut": true,
             "isChromeOSOnly": false,
             "isMetaQuest": false,
-            "fullScopeUrl": "https://nexcoinpr.agency/",
+            "fullScopeUrl": "https://www.nexcoinpr.agency/",
             "minSdkVersion": 24,
             "orientation": "portrait",
             "fingerprints": [
               {
                 "name": "release",
-                "value": "A9:23:A9:34:8D:4A:3A:CB:AE:06:A9:59:FE:C2:9F:5C:C9:7A:60:30:E0:CF:8A:A5:A7:F5:AF:85:00:3D:28:D7"
+                "value": "${NEW_SHA256}"
               }
             ]
           }
@@ -106,24 +120,42 @@ jobs:
         run: |
           bubblewrap update --manifest=twa-manifest.json --skipVersionUpgrade
           chmod +x ./gradlew
-          ls -la ./gradlew ./app
 
       - name: Build Android App Bundle
         run: bubblewrap build --manifest=twa-manifest.json --skipPwaValidation
 
-      - name: Upload AAB artifact
+      - name: Create assetlinks.json helper
+        run: |
+          cat << EOF > assetlinks.json
+          [{
+            "relation": ["delegate_permission/common.handle_all_urls"],
+            "target": {
+              "namespace": "android_app",
+              "package_name": "agency.nexcoinpr.www.twa",
+              "sha256_cert_fingerprints": ["${NEW_SHA256}"]
+            }
+          }]
+          EOF
+          cat assetlinks.json
+
+      - name: Upload AAB and Keystore artifacts
         uses: actions/upload-artifact@v4
         with:
           name: NexcoinPR-Android-SDK24
           path: |
             app-release-bundle.aab
             app-release-signed.apk
+            signing.keystore
+            assetlinks.json
             ./app/build/outputs/bundle/release/*.aab
             ./app/build/outputs/apk/release/*.apk
           retention-days: 30
 
       - name: Build summary
         run: |
-          echo "=== Build Artifacts ==="
-          ls -la *.aab *.apk 2>/dev/null || true
-          ls -la ./app/build/outputs/bundle/release/ 2>/dev/null || true
+          echo "=========================================================="
+          echo "🎉 NexcoinPR Android App Bundle built successfully!"
+          echo "📦 Package: agency.nexcoinpr.www.twa"
+          echo "🔧 Min SDK: 24 (Android 7.0+)"
+          echo "🔑 SHA256 Fingerprint: ${NEW_SHA256}"
+          echo "=========================================================="
