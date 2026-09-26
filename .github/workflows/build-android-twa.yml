@@ -102,20 +102,14 @@ jobs:
           }
           EOF
 
-      - name: Generate Android project files and checksum
+      - name: Generate Android project files
         run: |
-          bubblewrap update --manifest=twa-manifest.json --skipVersionCheck || true
-          node -e "
-            const fs = require('fs');
-            const crypto = require('crypto');
-            const data = fs.readFileSync('twa-manifest.json');
-            const sum = crypto.createHash('sha1').update(data).digest('hex');
-            fs.writeFileSync('manifest-checksum.txt', sum);
-            console.log('SHA1 checksum generated:', sum);
-          "
+          bubblewrap update --manifest=twa-manifest.json --skipVersionUpgrade
+          chmod +x ./gradlew
+          ls -la ./gradlew ./app
 
       - name: Build Android App Bundle
-        run: echo "no" | bubblewrap build --manifest=twa-manifest.json --skipPwaValidation
+        run: bubblewrap build --manifest=twa-manifest.json --skipPwaValidation
 
       - name: Upload AAB artifact
         uses: actions/upload-artifact@v4
