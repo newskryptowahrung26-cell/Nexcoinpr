@@ -18,37 +18,29 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Setup Android SDK and install required components
+      - name: Setup Android SDK components
         run: |
-          ANDROID_SDK=/usr/local/lib/android/sdk
-          echo "ANDROID_HOME=${ANDROID_SDK}" >> $GITHUB_ENV
-          echo "ANDROID_SDK_ROOT=${ANDROID_SDK}" >> $GITHUB_ENV
-          yes | ${ANDROID_SDK}/cmdline-tools/latest/bin/sdkmanager --licenses || true
-          ${ANDROID_SDK}/cmdline-tools/latest/bin/sdkmanager \
+          yes | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --licenses || true
+          /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager \
             "platform-tools" \
             "build-tools;34.0.0" \
             "platforms;android-34" || true
-          echo "SDK contents:"
-          ls ${ANDROID_SDK}
+          echo "SDK structure:"
+          ls /usr/local/lib/android/sdk/
 
       - name: Install Bubblewrap CLI
         run: npm install -g @bubblewrap/cli
 
-      - name: Pre-configure Bubblewrap (write config.json to skip all prompts)
+      - name: Write Bubblewrap config (pre-set JDK and SDK paths)
         run: |
-          ANDROID_SDK=/usr/local/lib/android/sdk
           mkdir -p ~/.bubblewrap
-          python3 -c "
-          import json, os
-          config = {
-            'jdkPath': os.environ.get('JAVA_HOME', ''),
-            'androidSdkPath': '${ANDROID_SDK}'
-          }
-          with open(os.path.expanduser('~/.bubblewrap/config.json'), 'w') as f:
-            json.dump(config, f, indent=2)
-          print('Config written:', json.dumps(config))
-          "
+          JDK_PATH="$JAVA_HOME"
+          SDK_PATH="/usr/local/lib/android/sdk"
+          echo "{\"jdkPath\":\"${JDK_PATH}\",\"androidSdkPath\":\"${SDK_PATH}\"}" > ~/.bubblewrap/config.json
+          echo "Config written:"
           cat ~/.bubblewrap/config.json
+          echo "Verifying SDK path:"
+          ls "${SDK_PATH}/cmdline-tools/latest/bin/sdkmanager" && echo "SDK OK" || echo "SDK NOT FOUND"
 
       - name: Decode keystore
         run: echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > signing.keystore
@@ -111,6 +103,4 @@ jobs:
           retention-days: 30
 
       - name: Build summary
-        run: |
-          echo "Build complete! Min SDK 24"
-          ls -lh app-release-bundle.aab app-release.apk 2>/dev/null || true
+        run: ls -lh app-release-bundle.aab app-release.apk 2>/dev/null || true
