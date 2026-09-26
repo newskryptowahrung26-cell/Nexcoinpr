@@ -76,7 +76,7 @@ jobs:
           ENDOFFILE
 
       - name: Build Android App Bundle
-        run: bubblewrap build --manifest=twa-manifest.json --skipPwaValidation
+        run: echo "No" | bubblewrap build --manifest=twa-manifest.json --skipPwaValidation
         env:
           ANDROID_HOME: /usr/local/lib/android/sdk
           ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
