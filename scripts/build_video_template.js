@@ -2,14 +2,14 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
+const officialLogoB64 = fs.readFileSync(path.join(ROOT, 'assets', 'images', 'nexcoinpr-official-logo.png')).toString('base64');
 const emblemB64 = fs.readFileSync(path.join(ROOT, 'assets', 'images', 'nexcoinpr-favicon.jpg')).toString('base64');
-const logoB64 = fs.readFileSync(path.join(ROOT, 'assets', 'images', 'nexcoinpr-logo-dark.jpg')).toString('base64');
 
 const htmlContent = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>NexcoinPR Video Render Template (Official Logo)</title>
+  <title>NexcoinPR Official Announcement Video</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -32,19 +32,19 @@ const htmlContent = `<!DOCTYPE html>
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
 
-    // Load authentic 3D logos
+    // Load authentic official logo matching user's exact uploaded image
+    const officialLogoImg = new Image();
+    officialLogoImg.src = 'data:image/png;base64,${officialLogoB64}';
+
     const emblemImg = new Image();
     emblemImg.src = 'data:image/jpeg;base64,${emblemB64}';
-
-    const fullLogoImg = new Image();
-    fullLogoImg.src = 'data:image/jpeg;base64,${logoB64}';
 
     let currentW = 1920;
     let currentH = 1080;
     const TOTAL_FRAMES = 480; // 16s at 30fps
     const FPS = 30;
 
-    // Generate static stars and particles once
+    // Static stars & constellation nodes
     const stars = [];
     for (let i = 0; i < 220; i++) {
       stars.push({
@@ -84,7 +84,7 @@ const htmlContent = `<!DOCTYPE html>
 
       ctx.clearRect(0, 0, w, h);
 
-      // 1. Deep Luxury Background with Dynamic Radial Gradient
+      // 1. Luxury Dark Space Radial Gradient
       const bgGrad = ctx.createRadialGradient(
         w / 2 + Math.sin(t * 0.8) * 80 * scale,
         h / 2 + Math.cos(t * 0.6) * 60 * scale,
@@ -107,7 +107,7 @@ const htmlContent = `<!DOCTYPE html>
         ctx.fill();
       });
 
-      // 3. Network Connecting Constellation Lines
+      // 3. Network Constellation Lines
       ctx.lineWidth = 1 * scale;
       for (let i = 0; i < floatingNodes.length; i++) {
         const n1 = floatingNodes[i];
@@ -138,12 +138,11 @@ const htmlContent = `<!DOCTYPE html>
         ctx.shadowBlur = 0;
       }
 
-      // 4. Subtle Ambient Golden Vignette Border
+      // 4. Elegant Gold Border & Corner Accents
       ctx.strokeStyle = 'rgba(212, 175, 55, 0.25)';
       ctx.lineWidth = 2 * scale;
       ctx.strokeRect(20 * scale, 20 * scale, w - 40 * scale, h - 40 * scale);
 
-      // Gold Corner Accents
       const cornerSize = 40 * scale;
       ctx.strokeStyle = '#D4AF37';
       ctx.lineWidth = 4 * scale;
@@ -162,12 +161,11 @@ const htmlContent = `<!DOCTYPE html>
       const topEmblemX = 46 * scale + topEmblemR;
       const topEmblemY = 56 * scale;
 
-      // Draw mini emblem
       ctx.save();
       ctx.beginPath();
       ctx.arc(topEmblemX, topEmblemY, topEmblemR, 0, Math.PI * 2);
       ctx.clip();
-      ctx.drawImage(emblemImg, topEmblemX - topEmblemR, topEmblemY - topEmblemR, topEmblemR * 2, topEmblemR * 2);
+      ctx.drawImage(emblemImg, 102.5, 102, 818, 818, topEmblemX - topEmblemR, topEmblemY - topEmblemR, topEmblemR * 2, topEmblemR * 2);
       ctx.restore();
 
       ctx.strokeStyle = '#D4AF37';
@@ -176,7 +174,6 @@ const htmlContent = `<!DOCTYPE html>
       ctx.arc(topEmblemX, topEmblemY, topEmblemR, 0, Math.PI * 2);
       ctx.stroke();
 
-      // Wordmark: Nexcoin in white, PR in gold
       ctx.textAlign = 'left';
       ctx.textBaseline = 'middle';
       ctx.font = \`800 \${18 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\`;
@@ -191,7 +188,6 @@ const htmlContent = `<!DOCTYPE html>
       ctx.font = \`600 \${15 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\`;
       ctx.fillText('• OFFICIAL ANNOUNCEMENT', topEmblemX + topEmblemR + 10 * scale + nexWidth + prWidth + 8 * scale, topEmblemY);
 
-      // Top Right: Website URL
       ctx.textAlign = 'right';
       ctx.fillStyle = 'rgba(246, 226, 122, 0.9)';
       ctx.font = \`700 \${16 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\`;
@@ -219,44 +215,8 @@ const htmlContent = `<!DOCTYPE html>
       }
     }
 
-    // Helper: Draw the AUTHENTIC 3D NexcoinPR Emblem with circular clip and gold glow
-    function drawAuthenticEmblem(cx, cy, radius, scale, pulse = 1) {
-      ctx.save();
-      ctx.translate(cx, cy);
-      ctx.scale(pulse, pulse);
-
-      // Outer Glow
-      const glowGrad = ctx.createRadialGradient(0, 0, radius * 0.5, 0, 0, radius * 1.45);
-      glowGrad.addColorStop(0, 'rgba(246, 226, 122, 0.45)');
-      glowGrad.addColorStop(0.4, 'rgba(56, 189, 248, 0.25)');
-      glowGrad.addColorStop(1, 'transparent');
-      ctx.fillStyle = glowGrad;
-      ctx.beginPath();
-      ctx.arc(0, 0, radius * 1.45, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Draw Authentic 3D Emblem clipped in circle
-      ctx.save();
-      ctx.beginPath();
-      ctx.arc(0, 0, radius, 0, Math.PI * 2);
-      ctx.clip();
-      ctx.drawImage(emblemImg, -radius, -radius, radius * 2, radius * 2);
-      ctx.restore();
-
-      // Metallic Gold Outer Ring
-      ctx.strokeStyle = '#D4AF37';
-      ctx.lineWidth = 3.5 * scale;
-      ctx.shadowColor = '#F6E27A';
-      ctx.shadowBlur = 18 * scale;
-      ctx.beginPath();
-      ctx.arc(0, 0, radius, 0, Math.PI * 2);
-      ctx.stroke();
-
-      ctx.restore();
-    }
-
     // ============================================================
-    // SCENE 1: Brand Announcement with Authentic Logo
+    // SCENE 1: Brand Announcement with EXACT Official Logo
     // ============================================================
     function renderScene1(st, w, h, scale, isSquare) {
       const alpha = Math.min(1, st / 0.5);
@@ -266,18 +226,38 @@ const htmlContent = `<!DOCTYPE html>
       ctx.save();
       ctx.globalAlpha = combinedAlpha;
 
-      const centerY = isSquare ? h * 0.42 : h * 0.45;
-      const emblemPulse = 1 + 0.035 * Math.sin(st * 4);
-      const emblemRadius = (isSquare ? 90 : 85) * scale;
-      drawAuthenticEmblem(w / 2, centerY - 110 * scale, emblemRadius, scale, emblemPulse);
+      const centerY = isSquare ? h * 0.42 : h * 0.43;
+      const pulse = 1 + 0.035 * Math.sin(st * 4);
 
-      // Pill Tag
-      ctx.fillStyle = 'rgba(212, 175, 55, 0.15)';
+      // Draw the EXACT Official Logo (Globe + NEXCOINPR)
+      const logoSize = (isSquare ? 500 : 440) * scale * pulse;
+      const logoX = w / 2 - logoSize / 2;
+      const logoY = centerY - logoSize / 2 - 20 * scale;
+
+      // Glow behind the official logo
+      const glowGrad = ctx.createRadialGradient(w / 2, centerY - 20 * scale, 100 * scale, w / 2, centerY - 20 * scale, 320 * scale);
+      glowGrad.addColorStop(0, 'rgba(43, 117, 255, 0.45)');
+      glowGrad.addColorStop(0.4, 'rgba(212, 175, 55, 0.25)');
+      glowGrad.addColorStop(1, 'transparent');
+      ctx.fillStyle = glowGrad;
+      ctx.beginPath();
+      ctx.arc(w / 2, centerY - 20 * scale, 320 * scale, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Render Official Logo Image
+      ctx.save();
+      ctx.shadowColor = 'rgba(43, 117, 255, 0.9)';
+      ctx.shadowBlur = 30 * scale;
+      ctx.drawImage(officialLogoImg, logoX, logoY, logoSize, logoSize);
+      ctx.restore();
+
+      // Top Tag Badge
+      ctx.fillStyle = 'rgba(212, 175, 55, 0.18)';
       ctx.strokeStyle = '#D4AF37';
       ctx.lineWidth = 1.5 * scale;
       const pillW = 340 * scale;
       const pillH = 38 * scale;
-      const pillY = centerY + 10 * scale;
+      const pillY = logoY - 50 * scale;
       roundRect(ctx, w / 2 - pillW / 2, pillY, pillW, pillH, 19 * scale, true, true);
 
       ctx.fillStyle = '#F6E27A';
@@ -285,46 +265,17 @@ const htmlContent = `<!DOCTYPE html>
       ctx.textAlign = 'center';
       ctx.fillText('⚡ GLOBAL PRESS RELEASE WIRE', w / 2, pillY + 24 * scale);
 
-      // EXACT SITE WORDMARK: "NEXCOIN" in White, "PR" in Luxury Gold
-      ctx.textAlign = 'center';
-      ctx.font = \`900 \${72 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\`;
-
-      // Calculate total text width to center correctly
-      const textNexcoin = 'NEXCOIN';
-      const textPR = 'PR';
-      const wNex = ctx.measureText(textNexcoin).width;
-      const wPR = ctx.measureText(textPR).width;
-      const totalBrandW = wNex + wPR;
-      const brandStartX = w / 2 - totalBrandW / 2;
-      const brandBaselineY = centerY + 95 * scale;
-
-      ctx.textAlign = 'left';
-      // "NEXCOIN" in Crisp Metallic Silver/White
-      ctx.fillStyle = '#FFFFFF';
-      ctx.shadowColor = 'rgba(255, 255, 255, 0.7)';
-      ctx.shadowBlur = 20 * scale;
-      ctx.fillText(textNexcoin, brandStartX, brandBaselineY);
-
-      // "PR" in Luxury Gold
-      const prGrad = ctx.createLinearGradient(brandStartX + wNex, 0, brandStartX + totalBrandW, 0);
-      prGrad.addColorStop(0, '#F6E27A');
-      prGrad.addColorStop(1, '#C9A84C');
-      ctx.fillStyle = prGrad;
-      ctx.shadowColor = 'rgba(212, 175, 55, 0.9)';
-      ctx.shadowBlur = 30 * scale;
-      ctx.fillText(textPR, brandStartX + wNex, brandBaselineY);
-      ctx.shadowBlur = 0;
-
-      // Subtitle
+      // Subtitle below official logo
+      const subY = logoY + logoSize + 25 * scale;
       ctx.textAlign = 'center';
       ctx.fillStyle = '#E2E8F0';
       ctx.font = \`700 \${28 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\`;
-      ctx.fillText('The Next Generation of Web3 & Crypto PR', w / 2, centerY + 148 * scale);
+      ctx.fillText('The Next Generation of Web3 & Crypto PR', w / 2, subY);
 
       // Category tags
       ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
       ctx.font = \`600 \${18 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\`;
-      ctx.fillText('Crypto • Blockchain • Forex • Web3 • Fintech • Capital Markets', w / 2, centerY + 195 * scale);
+      ctx.fillText('Crypto • Blockchain • Forex • Web3 • Fintech • Capital Markets', w / 2, subY + 38 * scale);
 
       ctx.restore();
     }
@@ -342,7 +293,6 @@ const htmlContent = `<!DOCTYPE html>
 
       const topY = isSquare ? h * 0.18 : h * 0.16;
 
-      // Section Header
       ctx.fillStyle = '#D4AF37';
       ctx.font = \`800 \${16 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\`;
       ctx.textAlign = 'center';
@@ -355,7 +305,6 @@ const htmlContent = `<!DOCTYPE html>
       ctx.fillText('Get Featured on Top Global Outlets', w / 2, topY + 55 * scale);
       ctx.shadowBlur = 0;
 
-      // Grid of Tier-1 Media Logos / Badges
       const mediaList = [
         { name: 'Bloomberg', cat: 'Tier-1 Financial', color: '#1E40AF' },
         { name: 'CoinDesk', cat: 'Top Crypto Wire', color: '#047857' },
@@ -391,17 +340,14 @@ const htmlContent = `<!DOCTYPE html>
         ctx.lineWidth = 1.5 * scale;
         roundRect(ctx, cx, cy, cardW, cardH, 12 * scale, true, true);
 
-        // Left Accent Bar
         ctx.fillStyle = m.color;
         roundRect(ctx, cx, cy, 6 * scale, cardH, 3 * scale, true, false);
 
-        // Outlet Name
         ctx.fillStyle = '#FFFFFF';
         ctx.font = \`800 \${24 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\`;
         ctx.textAlign = 'left';
         ctx.fillText(m.name, cx + 24 * scale, cy + 42 * scale);
 
-        // Category Tag
         ctx.fillStyle = '#F6E27A';
         ctx.font = \`600 \${14 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\`;
         ctx.fillText('✓ ' + m.cat, cx + 24 * scale, cy + 72 * scale);
@@ -409,7 +355,6 @@ const htmlContent = `<!DOCTYPE html>
         ctx.restore();
       });
 
-      // Bottom Key Metric Highlights
       const metricY = startY + (Math.ceil(mediaList.length / cols)) * (cardH + gapY) + 30 * scale;
       const metrics = [
         '✦ 500+ Verified Publications',
@@ -539,14 +484,14 @@ const htmlContent = `<!DOCTYPE html>
     }
 
     // ============================================================
-    // SCENE 4: Grand Finale with Official 3D Master Logo
+    // SCENE 4: Grand Finale with Official Logo Front & Center
     // ============================================================
     function renderScene4(st, w, h, scale, isSquare) {
       const alpha = Math.min(1, st / 0.5);
       ctx.save();
       ctx.globalAlpha = alpha;
 
-      const centerY = isSquare ? h * 0.42 : h * 0.46;
+      const centerY = isSquare ? h * 0.42 : h * 0.44;
 
       // Sweeping Light Beams
       const beamX = ((st * 0.8) % 1) * w;
@@ -557,37 +502,37 @@ const htmlContent = `<!DOCTYPE html>
       ctx.fillStyle = beamGrad;
       ctx.fillRect(0, 0, w, h);
 
-      // Render the Authentic 3D Master Logo
+      // Render the Official Logo in Scene 4
       const pulse = 1 + 0.035 * Math.sin(st * 5);
-      const logoW = (isSquare ? 650 : 750) * scale * pulse;
-      const logoH = (logoW / (1376 / 768));
-      const logoX = w / 2 - logoW / 2;
-      const logoY = centerY - 145 * scale;
+      const logoSize = (isSquare ? 480 : 420) * scale * pulse;
+      const logoX = w / 2 - logoSize / 2;
+      const logoY = centerY - logoSize / 2 - 35 * scale;
 
       ctx.save();
-      ctx.shadowColor = 'rgba(212, 175, 55, 0.85)';
+      ctx.shadowColor = 'rgba(43, 117, 255, 0.85)';
       ctx.shadowBlur = 35 * scale;
-      ctx.drawImage(fullLogoImg, logoX, logoY, logoW, logoH);
+      ctx.drawImage(officialLogoImg, logoX, logoY, logoSize, logoSize);
       ctx.restore();
 
       // Top Tag
       ctx.fillStyle = '#F6E27A';
       ctx.font = \`800 \${16 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\`;
       ctx.textAlign = 'center';
-      ctx.fillText('PARTNER WITH NEXCOINPR TODAY', w / 2, logoY + logoH + 20 * scale);
+      ctx.fillText('PARTNER WITH NEXCOINPR TODAY', w / 2, logoY - 20 * scale);
 
-      // Headline
+      // Headline below logo
+      const textBelowY = logoY + logoSize + 25 * scale;
       ctx.fillStyle = '#FFFFFF';
       ctx.font = \`900 \${48 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\`;
       ctx.shadowColor = 'rgba(212, 175, 55, 0.8)';
       ctx.shadowBlur = 25 * scale;
-      ctx.fillText('Scale Your Brand Across The Globe', w / 2, logoY + logoH + 75 * scale);
+      ctx.fillText('Scale Your Brand Across The Globe', w / 2, textBelowY);
       ctx.shadowBlur = 0;
 
-      // Giant Golden Website URL Button / Badge
+      // Giant Golden Website URL Button
       const urlBoxW = (isSquare ? 650 : 750) * scale;
       const urlBoxH = 75 * scale;
-      const urlBoxY = logoY + logoH + 115 * scale;
+      const urlBoxY = textBelowY + 30 * scale;
 
       const urlGrad = ctx.createLinearGradient(w / 2 - urlBoxW / 2, 0, w / 2 + urlBoxW / 2, 0);
       urlGrad.addColorStop(0, '#F6E27A');
@@ -605,7 +550,7 @@ const htmlContent = `<!DOCTYPE html>
       // Sub-footer info
       ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
       ctx.font = \`600 \${20 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\`;
-      ctx.fillText('Official Inquiries: nexcoinpr@gmail.com  •  Follow on LinkedIn', w / 2, urlBoxY + 125 * scale);
+      ctx.fillText('Official Inquiries: nexcoinpr@gmail.com  •  Follow on LinkedIn', w / 2, urlBoxY + 120 * scale);
 
       ctx.restore();
     }
@@ -652,4 +597,4 @@ const htmlContent = `<!DOCTYPE html>
 </html>`;
 
 fs.writeFileSync(path.join(ROOT, 'scripts', 'video_render_template.html'), htmlContent, 'utf8');
-console.log('Successfully generated video_render_template.html with authentic 3D NexcoinPR logo and emblem!');
+console.log('Successfully updated video_render_template.html with user official logo!');
