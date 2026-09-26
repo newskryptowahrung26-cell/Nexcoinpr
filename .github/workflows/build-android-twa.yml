@@ -7,9 +7,6 @@ jobs:
   build-twa:
     name: Build Android App Bundle (SDK 24)
     runs-on: ubuntu-latest
-    env:
-      ANDROID_HOME: /usr/local/lib/android/sdk
-      ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
 
     steps:
       - name: Checkout repository
@@ -21,24 +18,36 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Accept Android SDK licenses
+      - name: Setup Android SDK and install required components
         run: |
-          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
-          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "build-tools;34.0.0" "platforms;android-34" || true
+          ANDROID_SDK=/usr/local/lib/android/sdk
+          echo "ANDROID_HOME=${ANDROID_SDK}" >> $GITHUB_ENV
+          echo "ANDROID_SDK_ROOT=${ANDROID_SDK}" >> $GITHUB_ENV
+          yes | ${ANDROID_SDK}/cmdline-tools/latest/bin/sdkmanager --licenses || true
+          ${ANDROID_SDK}/cmdline-tools/latest/bin/sdkmanager \
+            "platform-tools" \
+            "build-tools;34.0.0" \
+            "platforms;android-34" || true
+          echo "SDK contents:"
+          ls ${ANDROID_SDK}
 
       - name: Install Bubblewrap CLI
         run: npm install -g @bubblewrap/cli
 
-      - name: Pre-configure Bubblewrap (skip interactive JDK/SDK prompts)
+      - name: Pre-configure Bubblewrap (write config.json to skip all prompts)
         run: |
+          ANDROID_SDK=/usr/local/lib/android/sdk
           mkdir -p ~/.bubblewrap
-          cat > ~/.bubblewrap/config.json << ENDCONFIG
-          {
-            "jdkPath": "${JAVA_HOME}",
-            "androidSdkPath": "${ANDROID_HOME}"
+          python3 -c "
+          import json, os
+          config = {
+            'jdkPath': os.environ.get('JAVA_HOME', ''),
+            'androidSdkPath': '${ANDROID_SDK}'
           }
-          ENDCONFIG
-          echo "Bubblewrap config written:"
+          with open(os.path.expanduser('~/.bubblewrap/config.json'), 'w') as f:
+            json.dump(config, f, indent=2)
+          print('Config written:', json.dumps(config))
+          "
           cat ~/.bubblewrap/config.json
 
       - name: Decode keystore
@@ -88,6 +97,9 @@ jobs:
 
       - name: Build Android App Bundle
         run: bubblewrap build --manifest=twa-manifest.json --skipPwaValidation
+        env:
+          ANDROID_HOME: /usr/local/lib/android/sdk
+          ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
 
       - name: Upload AAB artifact
         uses: actions/upload-artifact@v4
