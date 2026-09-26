@@ -18,29 +18,46 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Setup Android SDK components
+      - name: Install fresh Android SDK from Google
         run: |
-          yes | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --licenses || true
-          /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager \
+          # Download Android commandline-tools directly from Google
+          mkdir -p $HOME/android-sdk/cmdline-tools
+          wget -q "https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip" -O /tmp/cmdline-tools.zip
+          unzip -q /tmp/cmdline-tools.zip -d $HOME/android-sdk/cmdline-tools/
+          mv $HOME/android-sdk/cmdline-tools/cmdline-tools $HOME/android-sdk/cmdline-tools/latest
+
+          # Export paths
+          export ANDROID_HOME=$HOME/android-sdk
+          export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools
+
+          # Accept licenses and install required SDK components
+          yes | $HOME/android-sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=$HOME/android-sdk --licenses
+          $HOME/android-sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=$HOME/android-sdk \
             "platform-tools" \
             "build-tools;34.0.0" \
-            "platforms;android-34" || true
-          echo "SDK structure:"
-          ls /usr/local/lib/android/sdk/
+            "platforms;android-34"
+
+          # Verify
+          echo "=== SDK build-tools ==="
+          ls $HOME/android-sdk/build-tools/
+          echo "=== SDK platforms ==="
+          ls $HOME/android-sdk/platforms/
+
+          # Persist to GITHUB_ENV for next steps
+          echo "ANDROID_HOME=$HOME/android-sdk" >> $GITHUB_ENV
+          echo "ANDROID_SDK_ROOT=$HOME/android-sdk" >> $GITHUB_ENV
 
       - name: Install Bubblewrap CLI
         run: npm install -g @bubblewrap/cli
 
-      - name: Write Bubblewrap config (pre-set JDK and SDK paths)
+      - name: Write Bubblewrap config
         run: |
           mkdir -p ~/.bubblewrap
-          JDK_PATH="$JAVA_HOME"
-          SDK_PATH="/usr/local/lib/android/sdk"
-          echo "{\"jdkPath\":\"${JDK_PATH}\",\"androidSdkPath\":\"${SDK_PATH}\"}" > ~/.bubblewrap/config.json
-          echo "Config written:"
+          echo "{\"jdkPath\":\"$JAVA_HOME\",\"androidSdkPath\":\"$ANDROID_HOME\"}" > ~/.bubblewrap/config.json
+          echo "=== Bubblewrap config ==="
           cat ~/.bubblewrap/config.json
-          echo "Verifying SDK path:"
-          ls "${SDK_PATH}/cmdline-tools/latest/bin/sdkmanager" && echo "SDK OK" || echo "SDK NOT FOUND"
+          echo "=== SDK validation check ==="
+          ls "$ANDROID_HOME/build-tools/" && echo "build-tools OK" || echo "build-tools MISSING"
 
       - name: Decode keystore
         run: echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > signing.keystore
@@ -89,9 +106,6 @@ jobs:
 
       - name: Build Android App Bundle
         run: bubblewrap build --manifest=twa-manifest.json --skipPwaValidation
-        env:
-          ANDROID_HOME: /usr/local/lib/android/sdk
-          ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
 
       - name: Upload AAB artifact
         uses: actions/upload-artifact@v4
@@ -103,4 +117,4 @@ jobs:
           retention-days: 30
 
       - name: Build summary
-        run: ls -lh app-release-bundle.aab app-release.apk 2>/dev/null || true
+        run: ls -lh app-release-bundle.aab app-release.apk 2>/dev/null || echo "Check artifacts tab"
