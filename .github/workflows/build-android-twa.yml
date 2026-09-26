@@ -56,7 +56,6 @@ jobs:
           }
           EOF
           cat ~/.bubblewrap/config.json
-          bubblewrap doctor || true
 
       - name: Decode keystore
         run: echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > signing.keystore
@@ -76,6 +75,8 @@ jobs:
             "startUrl": "/?source=twa",
             "iconUrl": "https://nexcoinpr.agency/assets/images/android-chrome-512x512.png",
             "splashScreenFadeOutDuration": 600,
+            "appVersionName": "1.0.0",
+            "appVersionCode": 1,
             "signing": {
               "outputFormat": "AAB",
               "uploadKeystore": "signing.keystore",
@@ -103,11 +104,20 @@ jobs:
           }
           EOF
 
-      - name: Generate Android project files
-        run: bubblewrap update --manifest=twa-manifest.json --skipVersionCheck || true
+      - name: Generate Android project files and checksum
+        run: |
+          bubblewrap update --manifest=twa-manifest.json --skipVersionCheck || true
+          node -e "
+            const fs = require('fs');
+            const crypto = require('crypto');
+            const data = fs.readFileSync('twa-manifest.json');
+            const sum = crypto.createHash('sha1').update(data).digest('hex');
+            fs.writeFileSync('manifest-checksum.txt', sum);
+            console.log('SHA1 checksum generated:', sum);
+          "
 
       - name: Build Android App Bundle
-        run: bubblewrap build --manifest=twa-manifest.json --skipPwaValidation
+        run: echo "no" | bubblewrap build --manifest=twa-manifest.json --skipPwaValidation
 
       - name: Upload AAB artifact
         uses: actions/upload-artifact@v4
@@ -116,9 +126,12 @@ jobs:
           path: |
             app-release-bundle.aab
             app-release-signed.apk
-            *.aab
-            *.apk
+            ./app/build/outputs/bundle/release/*.aab
+            ./app/build/outputs/apk/release/*.apk
           retention-days: 30
 
       - name: Build summary
-        run: ls -lh *.aab *.apk 2>/dev/null || true
+        run: |
+          echo "=== Build Artifacts ==="
+          ls -la *.aab *.apk 2>/dev/null || true
+          ls -la ./app/build/outputs/bundle/release/ 2>/dev/null || true
