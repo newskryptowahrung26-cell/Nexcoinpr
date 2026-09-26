@@ -4,7 +4,8 @@
     "namespace": "android_app",
     "package_name": "agency.nexcoinpr.www.twa",
     "sha256_cert_fingerprints": [
-      "A9:23:A9:34:8D:4A:3A:CB:AE:06:A9:59:FE:C2:9F:5C:C9:7A:60:30:E0:CF:8A:A5:A7:F5:AF:85:00:3D:28:D7"
+      "A9:23:A9:34:8D:4A:3A:CB:AE:06:A9:59:FE:C2:9F:5C:C9:7A:60:30:E0:CF:8A:A5:A7:F5:AF:85:00:3D:28:D7",
+      "2F:92:C4:18:6C:50:B9:D0:2B:F2:94:D0:FB:9C:C8:18:A0:DB:8E:AF:A4:DD:3D:A0:AD:00:71:A5:FA:C5:1F:07"
     ]
   }
 }]
