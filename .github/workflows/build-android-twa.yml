@@ -58,21 +58,13 @@ jobs:
 
       - name: Setup Valid Keystore
         run: |
-          # Generate clean, standard PKCS12 keystore matching signing-key-info
-          keytool -genkeypair -v \
-            -keystore signing.keystore \
-            -alias my-key-alias \
-            -keyalg RSA \
-            -keysize 2048 \
-            -validity 10000 \
-            -storepass "BmXzzl5nfft8" \
-            -keypass "BmXzzl5nfft8" \
-            -dname "CN=NexcoinPR Admin, OU=Engineering, O=NexcoinPR, C=US"
+          # Use the permanent repository keystore that matches Google Play
+          cp .github/signing.keystore signing.keystore
 
           # Extract SHA-256 fingerprint
           SHA256=$(keytool -list -v -keystore signing.keystore -alias my-key-alias -storepass "BmXzzl5nfft8" | grep -i "SHA256:" | awk '{print $2}')
           echo "NEW_SHA256=${SHA256}" >> $GITHUB_ENV
-          echo "Keystore successfully generated with SHA256: ${SHA256}"
+          echo "Permanent Keystore loaded with SHA256: ${SHA256}"
 
       - name: Write twa-manifest.json
         run: |
