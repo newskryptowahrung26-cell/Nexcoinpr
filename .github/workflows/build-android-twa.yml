@@ -78,7 +78,7 @@ jobs:
         run: |
           cat << EOF > twa-manifest.json
           {
-            "packageId": "agency.nexcoinpr.www.twa",
+            "packageId": "agency.nexcoinpr.app",
             "host": "www.nexcoinpr.agency",
             "name": "NexcoinPR",
             "launcherName": "NexcoinPR",
@@ -131,7 +131,7 @@ jobs:
             "relation": ["delegate_permission/common.handle_all_urls"],
             "target": {
               "namespace": "android_app",
-              "package_name": "agency.nexcoinpr.www.twa",
+              "package_name": "agency.nexcoinpr.app",
               "sha256_cert_fingerprints": ["${NEW_SHA256}"]
             }
           }]
@@ -155,7 +155,7 @@ jobs:
         run: |
           echo "=========================================================="
           echo "🎉 NexcoinPR Android App Bundle built successfully!"
-          echo "📦 Package: agency.nexcoinpr.www.twa"
+          echo "📦 Package: agency.nexcoinpr.app"
           echo "🔧 Min SDK: 24 (Android 7.0+)"
           echo "🔑 SHA256 Fingerprint: ${NEW_SHA256}"
           echo "=========================================================="
