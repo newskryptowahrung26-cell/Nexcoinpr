@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
@@ -41,17 +41,45 @@
   <!-- JSON-LD -->
   <script type="application/ld+json">
   {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ContactPage",
-      "@id": "https://www.nexcoinpr.agency/contact",
-      "name": "Contact NexcoinPR",
-      "description": "Official contact channels for NexcoinPR public relations and press distribution.",
-      "url": "https://www.nexcoinpr.agency/contact"
-    }
-  ]
-}
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ContactPage",
+        "@id": "https://www.nexcoinpr.agency/contact",
+        "name": "Contact NexcoinPR",
+        "description": "Official contact channels for NexcoinPR public relations and press distribution.",
+        "url": "https://www.nexcoinpr.agency/contact",
+        "mainEntity": {
+          "@id": "https://www.nexcoinpr.agency/#organization"
+        }
+      },
+      {
+        "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
+        "@id": "https://www.nexcoinpr.agency/#organization",
+        "name": "NexcoinPR",
+        "legalName": "NexcoinPR Agency",
+        "url": "https://www.nexcoinpr.agency",
+        "logo": "https://www.nexcoinpr.agency/assets/images/nexcoinpr-official-logo.png",
+        "image": [
+          "https://www.nexcoinpr.agency/assets/images/storefront-exterior.jpg",
+          "https://www.nexcoinpr.agency/assets/images/office-interior.jpg"
+        ],
+        "email": "nexcoinpr@gmail.com",
+        "sameAs": [
+          "https://t.me/Nexcoinpr",
+          "https://play.google.com/store/apps/details?id=agency.nexcoinpr.app"
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "18:00"
+          }
+        ]
+      }
+    ]
+  }
   </script>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">

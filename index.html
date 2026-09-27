@@ -56,20 +56,80 @@
   <link rel="stylesheet" href="/assets/css/main.min.css?v=8.0">
   <link rel="stylesheet" href="/assets/css/components.min.css?v=8.0">
   <link rel="stylesheet" href="/assets/css/pages.min.css?v=8.0">
-  <!-- Organization + WebSite + WebPage JSON-LD -->
+  <!-- Organization + LocalBusiness + WebSite + WebPage JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Organization",
+        "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
         "@id": "https://www.nexcoinpr.agency/#organization",
         "name": "NexcoinPR",
+        "legalName": "NexcoinPR Agency",
+        "alternateName": "NexcoinPR - Crypto & Forex PR Agency",
         "url": "https://www.nexcoinpr.agency",
-        "logo": "https://www.nexcoinpr.agency/assets/img/logo.png",
-        "description": "Premium international PR and press release distribution agency for crypto, blockchain, Web3, forex, fintech and financial brands.",
+        "logo": "https://www.nexcoinpr.agency/assets/images/nexcoinpr-official-logo.png",
+        "image": [
+          "https://www.nexcoinpr.agency/assets/images/storefront-exterior.jpg",
+          "https://www.nexcoinpr.agency/assets/images/office-interior.jpg",
+          "https://www.nexcoinpr.agency/assets/images/team-strategy.jpg",
+          "https://www.nexcoinpr.agency/assets/images/nexcoinpr-logo-dark.jpg"
+        ],
+        "description": "Premium international PR and press release distribution agency for crypto, blockchain, Web3, forex, fintech and financial brands. Guaranteed publication in Tier-1 media including Bloomberg, CoinDesk, Cointelegraph, and Yahoo Finance.",
         "email": "nexcoinpr@gmail.com",
-        "sameAs": ["https://t.me/Nexcoinpr"],
+        "priceRange": "$$$",
+        "currenciesAccepted": "USD, EUR, USDT, BTC, ETH",
+        "paymentAccepted": "Cryptocurrency, Bank Transfer, Credit Card",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "18:00"
+          }
+        ],
+        "sameAs": [
+          "https://t.me/Nexcoinpr",
+          "https://play.google.com/store/apps/details?id=agency.nexcoinpr.app"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "NexcoinPR Core Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Crypto & Web3 PR Distribution",
+                "description": "Guaranteed press release distribution to CoinDesk, Cointelegraph, Decrypt, and global crypto publications."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Forex & Financial Broker PR",
+                "description": "Authoritative financial media syndication on Bloomberg, Yahoo Finance, MarketWatch, and Benzinga."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Token Launch & Exchange Listing PR",
+                "description": "High-impact PR campaigns for Token Generation Events (TGE), DEX, and CEX listings."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Crisis & Financial Communications",
+                "description": "Rapid advisory and public statements for fintech, blockchain protocols, and capital market entities."
+              }
+            }
+          ]
+        },
         "knowsAbout": [
           "Crypto PR Agency",
           "Forex PR Agency",
