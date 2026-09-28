@@ -25,29 +25,30 @@ jobs:
           channel: 'stable'
           cache: true
 
+      - name: Ensure Android SDK 36 is Installed
+        run: |
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-36" "build-tools;36.0.0" || true
+
       - name: Initialize Flutter Project Structure
         run: |
-          # Back up custom lib and pubspec
           mkdir -p /tmp/flutter_backup
           cp -r mobile_app/lib /tmp/flutter_backup/
           cp mobile_app/pubspec.yaml /tmp/flutter_backup/
           if [ -d "mobile_app/assets" ]; then cp -r mobile_app/assets /tmp/flutter_backup/; fi
 
-          # Generate fresh Flutter Android structure
           flutter create --org agency.nexcoinpr --project-name nexcoinpr_app mobile_app
 
-          # Restore custom files
           cp -r /tmp/flutter_backup/lib/* mobile_app/lib/
           cp /tmp/flutter_backup/pubspec.yaml mobile_app/pubspec.yaml
           if [ -d "/tmp/flutter_backup/assets" ]; then cp -r /tmp/flutter_backup/assets mobile_app/; fi
 
-      - name: Patch Android Build Configuration
+      - name: Patch Android Build Configuration for API 36
         run: |
           node mobile_app/patch-android-build.js
 
       - name: Replace App Launcher Icons
         run: |
-          # If high-res icon exists, copy to mipmap directories
           if [ -f "mobile_app/assets/images/app_icon.png" ]; then
             for dir in mobile_app/android/app/src/main/res/mipmap-*; do
               if [ -d "$dir" ]; then
@@ -71,11 +72,11 @@ jobs:
       - name: Upload Native Android App Bundle (.aab)
         uses: actions/upload-artifact@v4
         with:
-          name: NexcoinPR-Native-AppBundle
+          name: NexcoinPR-Native-AppBundle-v1.2.0-API36
           path: mobile_app/build/app/outputs/bundle/release/*.aab
 
       - name: Upload Native Android APK (.apk)
         uses: actions/upload-artifact@v4
         with:
-          name: NexcoinPR-Native-APK
+          name: NexcoinPR-Native-APK-v1.2.0-API36
           path: mobile_app/build/app/outputs/flutter-apk/*.apk

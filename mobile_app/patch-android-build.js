@@ -9,17 +9,19 @@ const keystorePath = (process.env.GITHUB_WORKSPACE
   : path.resolve(__dirname, '..', '.github', 'signing.keystore')).replace(/\\/g, '/');
 
 if (fs.existsSync(gradleKtsPath)) {
-  console.log('Patching build.gradle.kts with exact string replacements...');
+  console.log('Patching build.gradle.kts with targetSdk 36, compileSdk 36, versionCode 3...');
   let content = fs.readFileSync(gradleKtsPath, 'utf8');
 
   // ApplicationId & Namespace
   content = content.replace(/applicationId\s*=\s*["'][^"']+["']/, 'applicationId = "agency.nexcoinpr.app"');
   content = content.replace(/namespace\s*=\s*["'][^"']+["']/, 'namespace = "agency.nexcoinpr.app"');
 
-  // minSdk, versionCode, versionName
+  // API 36 compliance + versionCode 3
+  content = content.replace(/compileSdk\s*=\s*flutter\.compileSdkVersion/, 'compileSdk = 36');
+  content = content.replace(/targetSdk\s*=\s*flutter\.targetSdkVersion/, 'targetSdk = 36');
   content = content.replace(/minSdk\s*=\s*flutter\.minSdkVersion/, 'minSdk = 24');
-  content = content.replace(/versionCode\s*=\s*flutter\.versionCode/, 'versionCode = 2');
-  content = content.replace(/versionName\s*=\s*flutter\.versionName/, 'versionName = "1.1.0"');
+  content = content.replace(/versionCode\s*=\s*flutter\.versionCode/, 'versionCode = 3');
+  content = content.replace(/versionName\s*=\s*flutter\.versionName/, 'versionName = "1.2.0"');
 
   // Add signingConfigs block right before buildTypes {
   const signingConfigKts = `
@@ -44,16 +46,18 @@ if (fs.existsSync(gradleKtsPath)) {
   );
 
   fs.writeFileSync(gradleKtsPath, content, 'utf8');
-  console.log('Successfully patched build.gradle.kts!');
+  console.log('Successfully patched build.gradle.kts for API 36!');
 } else if (fs.existsSync(gradleGroovyPath)) {
-  console.log('Patching build.gradle (Groovy)...');
+  console.log('Patching build.gradle (Groovy) for API 36...');
   let content = fs.readFileSync(gradleGroovyPath, 'utf8');
 
   content = content.replace(/applicationId\s+["'][^"']+["']/, 'applicationId "agency.nexcoinpr.app"');
   content = content.replace(/namespace\s+["'][^"']+["']/, 'namespace "agency.nexcoinpr.app"');
+  content = content.replace(/compileSdkVersion\s+flutter\.compileSdkVersion/, 'compileSdkVersion 36');
+  content = content.replace(/targetSdkVersion\s+flutter\.targetSdkVersion/, 'targetSdkVersion 36');
   content = content.replace(/minSdkVersion\s+flutter\.minSdkVersion/, 'minSdkVersion 24');
-  content = content.replace(/versionCode\s+flutterVersionCode\.toInteger\(\)/, 'versionCode 2');
-  content = content.replace(/versionName\s+flutterVersionName/, 'versionName "1.1.0"');
+  content = content.replace(/versionCode\s+flutterVersionCode\.toInteger\(\)/, 'versionCode 3');
+  content = content.replace(/versionName\s+flutterVersionName/, 'versionName "1.2.0"');
 
   const signingConfigGroovy = `
     signingConfigs {
@@ -76,7 +80,7 @@ if (fs.existsSync(gradleKtsPath)) {
   );
 
   fs.writeFileSync(gradleGroovyPath, content, 'utf8');
-  console.log('Successfully patched build.gradle!');
+  console.log('Successfully patched build.gradle for API 36!');
 } else {
   console.error('No build.gradle found!');
   process.exit(1);
