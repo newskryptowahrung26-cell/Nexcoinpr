@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bhadBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1628"/>
+      <stop offset="100%" stop-color="#060c16"/>
+    </linearGradient>
+    <linearGradient id="bhadArea" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe" stop-opacity="0.30"/>
+      <stop offset="100%" stop-color="#00f2fe" stop-opacity="0.0"/>
+    </linearGradient>
+    <linearGradient id="bhadLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#00f2fe"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <filter id="glowBhad" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="320" rx="16" fill="url(#bhadBg)" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Grid Lines -->
+  <line x1="50" y1="60" x2="560" y2="60" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4 4"/>
+  <line x1="50" y1="120" x2="560" y2="120" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4 4"/>
+  <line x1="50" y1="180" x2="560" y2="180" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4 4"/>
+  <line x1="50" y1="240" x2="560" y2="240" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4 4"/>
+
+  <!-- Volume Bars (Explosive Growth) -->
+  <rect x="70" y="235" width="14" height="20" fill="rgba(0,242,254,0.15)" rx="2"/>
+  <rect x="115" y="230" width="14" height="25" fill="rgba(0,242,254,0.2)" rx="2"/>
+  <rect x="160" y="210" width="14" height="45" fill="rgba(0,242,254,0.35)" rx="2"/>
+  <rect x="205" y="170" width="14" height="85" fill="rgba(0,242,254,0.6)" rx="2"/>
+  <rect x="250" y="130" width="14" height="125" fill="rgba(0,242,254,0.85)" rx="2"/>
+  <rect x="295" y="110" width="14" height="145" fill="rgba(16,185,129,0.9)" rx="2"/>
+  <rect x="340" y="125" width="14" height="130" fill="rgba(16,185,129,0.7)" rx="2"/>
+  <rect x="385" y="140" width="14" height="115" fill="rgba(16,185,129,0.6)" rx="2"/>
+  <rect x="430" y="135" width="14" height="120" fill="rgba(16,185,129,0.65)" rx="2"/>
+  <rect x="475" y="120" width="14" height="135" fill="rgba(16,185,129,0.75)" rx="2"/>
+  <rect x="520" y="115" width="14" height="140" fill="rgba(16,185,129,0.8)" rx="2"/>
+
+  <!-- Price Curve & Shading -->
+  <path d="M 50 245 L 80 240 L 130 236 L 175 220 L 220 160 L 265 110 L 310 80 L 360 95 L 410 85 L 460 75 L 510 65 L 560 55 L 560 255 L 50 255 Z" fill="url(#bhadArea)"/>
+  <path d="M 50 245 L 80 240 L 130 236 L 175 220 L 220 160 L 265 110 L 310 80 L 360 95 L 410 85 L 460 75 L 510 65 L 560 55" fill="none" stroke="url(#bhadLine)" stroke-width="3.5" filter="url(#glowBhad)"/>
+
+  <!-- Breakout Callout Badge -->
+  <g transform="translate(245, 35)">
+    <rect width="210" height="34" rx="8" fill="#0c2038" stroke="#10b981" stroke-width="1.5"/>
+    <text x="105" y="21" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" text-anchor="middle">
+      ⚡ Top-Performing Token in 1 Week
+    </text>
+  </g>
+
+  <!-- Syndication Milestone -->
+  <g transform="translate(170, 215)">
+    <circle cx="10" cy="10" r="7" fill="#00f2fe" stroke="#ffffff" stroke-width="2"/>
+    <line x1="10" y1="0" x2="10" y2="-45" stroke="#00f2fe" stroke-width="1.5" stroke-dasharray="2 2"/>
+    <rect x="-70" y="-72" width="160" height="24" rx="6" fill="#0a1628" stroke="#00f2fe" stroke-width="1"/>
+    <text x="10" y="-56" fill="#00f2fe" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="700" text-anchor="middle">
+      Cointelegraph + 75 Desks Live
+    </text>
+  </g>
+
+  <!-- Chart Header -->
+  <text x="50" y="38" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="800">
+    $BHAD Token Case Study
+  </text>
+  <text x="220" y="38" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">
+    Multi-Desk Media Syndication Velocity
+  </text>
+
+  <!-- Timeline Labels -->
+  <text x="50" y="280" fill="#64748b" font-family="sans-serif" font-size="10">Day 1: Planning</text>
+  <text x="180" y="280" fill="#00f2fe" font-family="sans-serif" font-size="10" font-weight="700">Day 2: Wire Launch</text>
+  <text x="320" y="280" fill="#10b981" font-family="sans-serif" font-size="10" font-weight="700">Day 3-4: Viral Surge</text>
+  <text x="470" y="280" fill="#ffffff" font-family="sans-serif" font-size="10" font-weight="700">Week 1: Market Leader</text>
+
+  <!-- Key Metrics Strip -->
+  <line x1="50" y1="295" x2="560" y2="295" stroke="rgba(255,255,255,0.08)"/>
+  <text x="50" y="312" fill="#94a3b8" font-family="sans-serif" font-size="9">Media Coverage: <tspan fill="#ffffff" font-weight="bold">80+ Top Tier Outlets</tspan></text>
+  <text x="245" y="312" fill="#94a3b8" font-family="sans-serif" font-size="9">Syndication: <tspan fill="#00f2fe" font-weight="bold">Binance, MarketWatch, AP</tspan></text>
+  <text x="450" y="312" fill="#94a3b8" font-family="sans-serif" font-size="9">Delivery Rate: <tspan fill="#10b981" font-weight="bold">100% Guaranteed</tspan></text>
+</svg>

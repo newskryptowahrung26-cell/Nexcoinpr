@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ariaBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1628"/>
+      <stop offset="100%" stop-color="#070d18"/>
+    </linearGradient>
+    <linearGradient id="ariaArea" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0.0"/>
+    </linearGradient>
+    <linearGradient id="ariaLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f2fe"/>
+      <stop offset="50%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="320" rx="16" fill="url(#ariaBg)" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Grid Lines -->
+  <line x1="50" y1="60" x2="560" y2="60" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4 4"/>
+  <line x1="50" y1="120" x2="560" y2="120" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4 4"/>
+  <line x1="50" y1="180" x2="560" y2="180" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4 4"/>
+  <line x1="50" y1="240" x2="560" y2="240" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4 4"/>
+
+  <!-- Volume Bars -->
+  <rect x="70" y="240" width="12" height="15" fill="rgba(0,242,254,0.2)" rx="2"/>
+  <rect x="110" y="235" width="12" height="20" fill="rgba(0,242,254,0.2)" rx="2"/>
+  <rect x="150" y="230" width="12" height="25" fill="rgba(0,242,254,0.25)" rx="2"/>
+  <rect x="190" y="220" width="12" height="35" fill="rgba(0,242,254,0.3)" rx="2"/>
+  <rect x="230" y="190" width="12" height="65" fill="rgba(16,185,129,0.5)" rx="2"/>
+  <rect x="270" y="160" width="12" height="95" fill="rgba(16,185,129,0.7)" rx="2"/>
+  <rect x="310" y="140" width="12" height="115" fill="rgba(16,185,129,0.8)" rx="2"/>
+  <rect x="350" y="150" width="12" height="105" fill="rgba(16,185,129,0.6)" rx="2"/>
+  <rect x="390" y="170" width="12" height="85" fill="rgba(16,185,129,0.4)" rx="2"/>
+  <rect x="430" y="180" width="12" height="75" fill="rgba(16,185,129,0.4)" rx="2"/>
+  <rect x="470" y="175" width="12" height="80" fill="rgba(16,185,129,0.45)" rx="2"/>
+  <rect x="510" y="170" width="12" height="85" fill="rgba(16,185,129,0.5)" rx="2"/>
+
+  <!-- Price Area & Curve -->
+  <path d="M 50 240 L 70 238 L 120 235 L 180 230 L 220 215 L 260 145 L 300 85 L 340 70 L 380 90 L 440 95 L 500 88 L 560 80 L 560 255 L 50 255 Z" fill="url(#ariaArea)"/>
+  <path d="M 50 240 L 70 238 L 120 235 L 180 230 L 220 215 L 260 145 L 300 85 L 340 70 L 380 90 L 440 95 L 500 88 L 560 80" fill="none" stroke="url(#ariaLine)" stroke-width="3.5" filter="url(#glow)"/>
+
+  <!-- Surge Callout Badge -->
+  <g transform="translate(260, 40)">
+    <rect width="160" height="34" rx="8" fill="#0f223d" stroke="#00f2fe" stroke-width="1.5"/>
+    <text x="80" y="21" fill="#00f2fe" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" text-anchor="middle">
+      🚀 +147% In 2 Hours
+    </text>
+  </g>
+
+  <!-- News Event Marker -->
+  <g transform="translate(195, 205)">
+    <circle cx="10" cy="10" r="7" fill="#c9a84c" stroke="#ffffff" stroke-width="2"/>
+    <line x1="10" y1="0" x2="10" y2="-45" stroke="#c9a84c" stroke-width="1.5" stroke-dasharray="2 2"/>
+    <rect x="-65" y="-72" width="150" height="24" rx="6" fill="#0a1628" stroke="#c9a84c" stroke-width="1"/>
+    <text x="10" y="-56" fill="#c9a84c" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" text-anchor="middle">
+      Cointelegraph Release Live
+    </text>
+  </g>
+
+  <!-- Chart Header -->
+  <text x="50" y="38" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="800">
+    Aria Coin ($ARIA)
+  </text>
+  <text x="180" y="38" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">
+    Market Impact After Distribution
+  </text>
+
+  <!-- Time Labels -->
+  <text x="50" y="280" fill="#64748b" font-family="sans-serif" font-size="10">T-0h (Pre-Wire)</text>
+  <text x="210" y="280" fill="#00f2fe" font-family="sans-serif" font-size="10" font-weight="700">Wire Broadcast</text>
+  <text x="340" y="280" fill="#10b981" font-family="sans-serif" font-size="10" font-weight="700">+2h Peak (+147%)</text>
+  <text x="500" y="280" fill="#64748b" font-family="sans-serif" font-size="10">Sustained Support</text>
+
+  <!-- Key Metrics Strip -->
+  <line x1="50" y1="295" x2="560" y2="295" stroke="rgba(255,255,255,0.08)"/>
+  <text x="50" y="312" fill="#94a3b8" font-family="sans-serif" font-size="9">Global Reach: <tspan fill="#ffffff" font-weight="bold">3M+ Readers</tspan></text>
+  <text x="230" y="312" fill="#94a3b8" font-family="sans-serif" font-size="9">Traffic Surge: <tspan fill="#10b981" font-weight="bold">+42% Organic Visits</tspan></text>
+  <text x="430" y="312" fill="#94a3b8" font-family="sans-serif" font-size="9">Placement: <tspan fill="#c9a84c" font-weight="bold">Cointelegraph Premium</tspan></text>
+</svg>
