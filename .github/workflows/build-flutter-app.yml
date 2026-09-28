@@ -1,0 +1,81 @@
+name: Build NexcoinPR Native Android App
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-native-app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.29.0'
+          channel: 'stable'
+          cache: true
+
+      - name: Initialize Flutter Project Structure
+        run: |
+          # Back up custom lib and pubspec
+          mkdir -p /tmp/flutter_backup
+          cp -r mobile_app/lib /tmp/flutter_backup/
+          cp mobile_app/pubspec.yaml /tmp/flutter_backup/
+          if [ -d "mobile_app/assets" ]; then cp -r mobile_app/assets /tmp/flutter_backup/; fi
+
+          # Generate fresh Flutter Android structure
+          flutter create --org agency.nexcoinpr --project-name nexcoinpr_app mobile_app
+
+          # Restore custom files
+          cp -r /tmp/flutter_backup/lib/* mobile_app/lib/
+          cp /tmp/flutter_backup/pubspec.yaml mobile_app/pubspec.yaml
+          if [ -d "/tmp/flutter_backup/assets" ]; then cp -r /tmp/flutter_backup/assets mobile_app/; fi
+
+      - name: Patch Android Build Configuration
+        run: |
+          node mobile_app/patch-android-build.js
+
+      - name: Replace App Launcher Icons
+        run: |
+          # If high-res icon exists, copy to mipmap directories
+          if [ -f "mobile_app/assets/images/app_icon.png" ]; then
+            for dir in mobile_app/android/app/src/main/res/mipmap-*; do
+              if [ -d "$dir" ]; then
+                cp mobile_app/assets/images/app_icon.png "$dir/ic_launcher.png"
+              fi
+            done
+          fi
+
+      - name: Install Flutter Dependencies
+        working-directory: ./mobile_app
+        run: flutter pub get
+
+      - name: Build Signed Android App Bundle (.aab)
+        working-directory: ./mobile_app
+        run: flutter build appbundle --release
+
+      - name: Build Signed Android APK (.apk)
+        working-directory: ./mobile_app
+        run: flutter build apk --release
+
+      - name: Upload Native Android App Bundle (.aab)
+        uses: actions/upload-artifact@v4
+        with:
+          name: NexcoinPR-Native-AppBundle
+          path: mobile_app/build/app/outputs/bundle/release/*.aab
+
+      - name: Upload Native Android APK (.apk)
+        uses: actions/upload-artifact@v4
+        with:
+          name: NexcoinPR-Native-APK
+          path: mobile_app/build/app/outputs/flutter-apk/*.apk
