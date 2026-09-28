@@ -160,7 +160,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
           backgroundColor: Colors.transparent,
           indicatorColor: const Color(0xFF00F2FE).withOpacity(0.15),
           elevation: 0,
-          labelBehavior: NavigationBarDestinationLabelBehavior.alwaysShow,
+          labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
           destinations: const [
             NavigationDestination(
               icon: Icon(Icons.dashboard_outlined, color: Color(0xFF94A3B8)),
