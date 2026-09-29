@@ -111,19 +111,12 @@ class MainActivity: FlutterActivity()
   }
 }
 
-// Also create Java fallback for MainActivity
+// Clean up any Java directory to prevent duplicate class definition
 const javaBase = path.join(__dirname, 'android', 'app', 'src', 'main', 'java');
-const javaTargetDir = path.join(javaBase, 'agency', 'nexcoinpr', 'app');
-fs.mkdirSync(javaTargetDir, { recursive: true });
-const mainActivityJava = `package agency.nexcoinpr.app;
-
-import io.flutter.embedding.android.FlutterActivity;
-
-public class MainActivity extends FlutterActivity {
+if (fs.existsSync(javaBase)) {
+  fs.rmSync(javaBase, { recursive: true, force: true });
+  console.log('Removed Java directory to avoid duplicate class definitions');
 }
-`;
-fs.writeFileSync(path.join(javaTargetDir, 'MainActivity.java'), mainActivityJava, 'utf8');
-console.log('Wrote MainActivity.java fallback at:', path.join(javaTargetDir, 'MainActivity.java'));
 
 // 3. Patch AndroidManifest.xml
 const manifestPath = path.join(__dirname, 'android', 'app', 'src', 'main', 'AndroidManifest.xml');
