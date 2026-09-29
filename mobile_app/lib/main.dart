@@ -554,7 +554,8 @@ class _DashboardViewState extends State<DashboardView> {
                   'Verified Client Highlights',
                   style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white),
                 ),
-                GestureDirectional(
+                InkWell(
+                  onTap: () {},
                   child: const Text('View All →', style: TextStyle(color: Color(0xFF00F2FE), fontSize: 13, fontWeight: FontWeight.bold)),
                 ),
               ],

@@ -17,12 +17,15 @@ if (fs.existsSync(gradleKtsPath)) {
   content = content.replace(/applicationId\s*=\s*["'][^"']+["']/, 'applicationId = "agency.nexcoinpr.app"');
   content = content.replace(/namespace\s*=\s*["'][^"']+["']/, 'namespace = "agency.nexcoinpr.app"');
 
-  // API 36 compliance + versionCode 5 + versionName 1.3.1 + NDK 27
-  content = content.replace(/compileSdk\s*=\s*flutter\.compileSdkVersion/, 'compileSdk = 36\n    ndkVersion = "27.0.12077973"');
-  content = content.replace(/targetSdk\s*=\s*flutter\.targetSdkVersion/, 'targetSdk = 36');
-  content = content.replace(/minSdk\s*=\s*flutter\.minSdkVersion/, 'minSdk = 24');
-  content = content.replace(/versionCode\s*=\s*flutter\.versionCode/, 'versionCode = 6');
-  content = content.replace(/versionName\s*=\s*flutter\.versionName/, 'versionName = "1.4.0"');
+  // API 36 compliance + versionCode 6 + versionName 1.4.0 + NDK 27
+  if (!content.includes('ndkVersion = "27.0.12077973"')) {
+    content = content.replace(/android\s*\{/, 'android {\n    ndkVersion = "27.0.12077973"');
+  }
+  content = content.replace(/compileSdk\s*=\s*(?:flutter\.compileSdkVersion|\d+)/, 'compileSdk = 36');
+  content = content.replace(/targetSdk\s*=\s*(?:flutter\.targetSdkVersion|\d+)/, 'targetSdk = 36');
+  content = content.replace(/minSdk\s*=\s*(?:flutter\.minSdkVersion|\d+)/, 'minSdk = 24');
+  content = content.replace(/versionCode\s*=\s*(?:flutter\.versionCode|\d+)/, 'versionCode = 6');
+  content = content.replace(/versionName\s*=\s*(?:flutter\.versionName|"[^"]*")/, 'versionName = "1.4.0"');
 
   // Add signingConfigs block right before buildTypes {
   const signingConfigKts = `
@@ -56,11 +59,14 @@ if (fs.existsSync(gradleKtsPath)) {
 
   content = content.replace(/applicationId\s+["'][^"']+["']/, 'applicationId "agency.nexcoinpr.app"');
   content = content.replace(/namespace\s+["'][^"']+["']/, 'namespace "agency.nexcoinpr.app"');
-  content = content.replace(/compileSdkVersion\s+flutter\.compileSdkVersion/, 'compileSdkVersion 36\n    ndkVersion "27.0.12077973"');
-  content = content.replace(/targetSdkVersion\s+flutter\.targetSdkVersion/, 'targetSdkVersion 36');
-  content = content.replace(/minSdkVersion\s+flutter\.minSdkVersion/, 'minSdkVersion 24');
-  content = content.replace(/versionCode\s+flutterVersionCode\.toInteger\(\)/, 'versionCode 6');
-  content = content.replace(/versionName\s+flutterVersionName/, 'versionName "1.4.0"');
+  if (!content.includes('ndkVersion "27.0.12077973"')) {
+    content = content.replace(/android\s*\{/, 'android {\n    ndkVersion "27.0.12077973"');
+  }
+  content = content.replace(/compileSdkVersion\s+(?:flutter\.compileSdkVersion|\d+)/, 'compileSdkVersion 36');
+  content = content.replace(/targetSdkVersion\s+(?:flutter\.targetSdkVersion|\d+)/, 'targetSdkVersion 36');
+  content = content.replace(/minSdkVersion\s+(?:flutter\.minSdkVersion|\d+)/, 'minSdkVersion 24');
+  content = content.replace(/versionCode\s+(?:flutterVersionCode\.toInteger\(\)|\d+)/, 'versionCode 6');
+  content = content.replace(/versionName\s+(?:flutterVersionName|"[^"]*")/, 'versionName "1.4.0"');
 
   const signingConfigGroovy = `
     signingConfigs {
