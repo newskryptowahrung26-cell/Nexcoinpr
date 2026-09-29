@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'pricing_data.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -732,6 +733,8 @@ class _DashboardViewState extends State<DashboardView> {
 // ============================================================================
 // TAB 2: AUTHENTIC PRICING (13 Bundled Packages + Single A La Carte Outlets)
 // ============================================================================
+// TAB 2: AUTHENTIC PRICING (13 Bundled Packages + 144 Single Media Placements)
+// ============================================================================
 class PackagesView extends StatefulWidget {
   const PackagesView({super.key});
 
@@ -742,192 +745,15 @@ class PackagesView extends StatefulWidget {
 class _PackagesViewState extends State<PackagesView> with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
-  // 13 Official Bundled Packages from scripts/update_pricing_and_packages.js & pricing.html
-  final List<Map<String, dynamic>> _bundledPackages = [
-    {
-      'title': 'ELITE: A',
-      'price': 20000,
-      'badge': 'MAXIMUM PRESTIGE',
-      'traffic': '22M+ Total Traffic',
-      'outlets': 'CoinTelegraph, CoinDesk, TheBlock, BeInCrypto, Watcher.guru',
-      'features': [
-        'Guaranteed publication on CoinTelegraph & CoinDesk',
-        'Featured inclusion on TheBlock & BeInCrypto',
-        'Watcher.guru wire broadcast with 22M+ audience',
-        '100% DoFollow SEO backlinks & indexed on Google News',
-        'Turnaround: 24-48 Hours with live link report',
-      ],
-    },
-    {
-      'title': 'ELITE: B',
-      'price': 11000,
-      'badge': 'TIER-1 REACH',
-      'traffic': '15M+ Total Traffic',
-      'outlets': 'CoinTelegraph, BeInCrypto, Bitcoin.com, AMBCrypto, Syndication',
-      'features': [
-        'CoinTelegraph full editorial publication',
-        'BeInCrypto & Bitcoin.com authoritative syndication',
-        'AMBCrypto top banner broadcast',
-        'Full PDF white-label dossier & executive report',
-      ],
-    },
-    {
-      'title': 'VIRAL (10 Media)',
-      'price': 8300,
-      'badge': 'VIRAL MOMENTUM',
-      'traffic': '15M+ Total Traffic',
-      'outlets': 'TheBlock, Cryptopolitan, BeInCrypto, Bitcoin.com, Bitcoinist, CoinGape, NewsBTC, Investing.com, Benzinga',
-      'features': [
-        '10 Heavyweight crypto & financial newsrooms',
-        'Simultaneous broadcast across TheBlock & BeInCrypto',
-        'Finance desk distribution on Benzinga & Investing.com',
-        'Rapid investor and retail trader discovery',
-      ],
-    },
-    {
-      'title': '60 Media Mega Package',
-      'price': 7000,
-      'badge': 'MASS BACKLINK POWER',
-      'traffic': 'SEO Dominance',
-      'outlets': '60 Crypto & Web3 Portals (Mass Syndication)',
-      'features': [
-        'Mass distribution across 60 cryptocurrency portals',
-        'Maximum domain authority backlinks for Google ranking',
-        'Guaranteed Google News, Yahoo Finance & Bing indexing',
-        'Comprehensive live tracking spreadsheet delivered',
-      ],
-    },
-    {
-      'title': 'WEB3 GAMING (10 Media)',
-      'price': 5299,
-      'badge': 'GAMING & METAVERSE',
-      'traffic': 'Targeted Gamer Reach',
-      'outlets': 'Gam3s.gg, Playtoearn.com, Chainplay.gg, Gurugamer, Gamespace, TechBullion',
-      'features': [
-        'Direct publication across top Web3 gaming hubs',
-        'Gam3s.gg and PlayToEarn editorial placement',
-        'Community gamer onboarding & discord link tracking',
-        'Featured exposure to GameFi and NFT investors',
-      ],
-    },
-    {
-      'title': 'FINTECH & FOREX (10 Media)',
-      'price': 3999,
-      'badge': 'CAPITAL MARKETS',
-      'traffic': 'Institutional Traders',
-      'outlets': 'FinanceMagnates, Invezz, WalletInvestor, TradingBeasts, ForexLive, Investing.com',
-      'features': [
-        'Premier coverage on FinanceMagnates & ForexLive',
-        'Market trader exposure on WalletInvestor & TradingBeasts',
-        'Broker, CFD, and institutional FX syndicate',
-        'Direct reach to retail currency and crypto traders',
-      ],
-    },
-    {
-      'title': 'PREMIUM (10 Media)',
-      'price': 3250,
-      'badge': 'POPULAR CHOICE',
-      'traffic': 'High Web3 Engagement',
-      'outlets': 'HackerNoon, TheDefiant, CoinEdition, Mpost.io, Blockonomi, BraveNewCoin',
-      'features': [
-        'Guaranteed feature on HackerNoon and TheDefiant',
-        'CoinEdition & Blockonomi deep-dive coverage',
-        'DoFollow contextual backlinks with high domain authority',
-        'Fast turnaround within 24-36 hours',
-      ],
-    },
-    {
-      'title': 'TECH & INNOVATION (10 Media)',
-      'price': 2899,
-      'badge': 'DEVELOPERS & TECH',
-      'traffic': '5M+ Tech Readers',
-      'outlets': 'TechBullion, TechAnnouncer, HackerNoon, TechPanga, Web3Portal',
-      'features': [
-        'Featured tech coverage on TechBullion & HackerNoon',
-        'Syndication across developer-focused newsletters',
-        'Targeted AI, blockchain architecture, and protocol audience',
-      ],
-    },
-    {
-      'title': 'SUPERIOR: A',
-      'price': 2800,
-      'badge': '5-MEDIA TIER 1',
-      'traffic': '8M+ Total Traffic',
-      'outlets': 'Cryptopolitan, Crypto.news, Bitcoinist, HackerNoon, NewsBTC',
-      'features': [
-        'Cryptopolitan & Crypto.news authoritative release',
-        'Bitcoinist and HackerNoon permanent publications',
-        'Full Google News and aggregator pickup',
-      ],
-    },
-    {
-      'title': 'SUPERIOR: B',
-      'price': 2650,
-      'badge': '5-MEDIA TIER 1',
-      'traffic': '7M+ Total Traffic',
-      'outlets': 'Crypto.news, HackerNoon, CoinGape, CoinCheckup, Mpost.io',
-      'features': [
-        'Crypto.news and CoinGape top-tier placement',
-        'HackerNoon technical feature & Mpost syndicate',
-        'Verifiable live indexing URL report',
-      ],
-    },
-    {
-      'title': 'STARTER (10 Media)',
-      'price': 2350,
-      'badge': 'BUDGET 10-PACK',
-      'traffic': 'Broad Web3 Reach',
-      'outlets': 'CoinGabbar, Invezz, Bitcoin Insider, CoinJournal, TimesTabloid',
-      'features': [
-        '10 Verified cryptocurrency media portals',
-        'CoinJournal and Invezz guaranteed publications',
-        'Permanent article links and indexation',
-      ],
-    },
-    {
-      'title': 'BASIC: A',
-      'price': 1100,
-      'badge': '5-MEDIA STARTER',
-      'traffic': '1M+ Total Traffic',
-      'outlets': 'Blockonomi, TechBullion, Publish0x, CoinJournal, Bitcoin Insider',
-      'features': [
-        'Blockonomi and TechBullion permanent feature',
-        'CoinJournal & Bitcoin Insider syndication',
-        'Ideal for token updates and initial PR tests',
-      ],
-    },
-    {
-      'title': 'BASIC: B',
-      'price': 800,
-      'badge': 'ENTRY LEVEL',
-      'traffic': '600K+ Total Traffic',
-      'outlets': 'Digital Journal, CaptainAltcoin, TechAnnouncer, Bitcoin Insider, TechBullion',
-      'features': [
-        'Digital Journal and CaptainAltcoin placement',
-        'Quick turnaround: 24 hours guaranteed',
-        'Verified live link report with Google indexing',
-      ],
-    },
-  ];
+  // Bundled Packages state
+  String _selectedPkgCategory = 'All';
+  final Set<String> _expandedMega = {};
 
-  // Authentic Single Outlets (From master_single_publications.json & pricing.html)
-  final List<Map<String, dynamic>> _singlePlacements = [
-    {'name': 'Entrepreneur.com', 'price': 8500, 'da': 92, 'type': 'Global Business', 'badge': 'TIER-1 PRESTIGE'},
-    {'name': 'CoinDesk', 'price': 8000, 'da': 90, 'type': 'Top Crypto Authority', 'badge': 'INDUSTRY LEADER'},
-    {'name': 'Forbes', 'price': 7500, 'da': 94, 'type': 'World Capital & Business', 'badge': 'HIGHEST PRESTIGE'},
-    {'name': 'CoinTelegraph', 'price': 6500, 'da': 89, 'type': 'Crypto Global Giant', 'badge': 'MOST REQUESTED'},
-    {'name': 'Bloomberg Terminal Wire', 'price': 5000, 'da': 94, 'type': 'Institutional Financial', 'badge': 'INSTITUTIONAL'},
-    {'name': 'The Block', 'price': 5000, 'da': 85, 'type': 'Institutional Web3', 'badge': 'PREMIUM CRYPTO'},
-    {'name': 'BeInCrypto', 'price': 4500, 'da': 84, 'type': 'Global Crypto Portal', 'badge': 'TIER 1'},
-    {'name': 'Yahoo! Finance', 'price': 3500, 'da': 92, 'type': 'Global Retail Financial', 'badge': 'FINANCIAL GIANT'},
-    {'name': 'Decrypt', 'price': 3800, 'da': 82, 'type': 'Web3 & Culture', 'badge': 'CULTURE'},
-    {'name': 'Investing.com', 'price': 3000, 'da': 91, 'type': 'Stock & FX Network', 'badge': 'MARKETS'},
-    {'name': 'MarketWatch', 'price': 2500, 'da': 92, 'type': 'Dow Jones Media Group', 'badge': 'WALL STREET'},
-    {'name': 'Benzinga / AP News', 'price': 2200, 'da': 88, 'type': 'Brokerage Wire', 'badge': 'TRADER REACH'},
-    {'name': 'Finbold', 'price': 1800, 'da': 76, 'type': 'Finance & Crypto', 'badge': 'FAST INDEX'},
-    {'name': 'HackerNoon', 'price': 1500, 'da': 81, 'type': 'Tech & Developers', 'badge': 'DO-FOLLOW'},
-    {'name': 'U.Today', 'price': 1400, 'da': 78, 'type': 'Crypto News Daily', 'badge': 'RELIABLE'},
-  ];
+  // Single Media Outlets state
+  String _selectedSingleCategory = 'All';
+  String _searchQuery = '';
+  String _sortBy = 'Price: High to Low';
+  final TextEditingController _searchCtrl = TextEditingController();
 
   @override
   void initState() {
@@ -938,13 +764,98 @@ class _PackagesViewState extends State<PackagesView> with SingleTickerProviderSt
   @override
   void dispose() {
     _tabController.dispose();
+    _searchCtrl.dispose();
     super.dispose();
+  }
+
+  String _formatPrice(int price) {
+    return price.toString().replaceAllMapped(
+      RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+      (Match m) => '${m[1]},',
+    );
+  }
+
+  List<NexcoinPackage> get _filteredPackages {
+    if (_selectedPkgCategory == 'All') return kOfficialPackages;
+    if (_selectedPkgCategory == '60-Media Mega') {
+      return kOfficialPackages.where((p) => p.category.contains('Mega')).toList();
+    }
+    if (_selectedPkgCategory == '5-Media Packs') {
+      return kOfficialPackages.where((p) => p.category.contains('5-Media')).toList();
+    }
+    if (_selectedPkgCategory == '10-Media Packs') {
+      return kOfficialPackages.where((p) => p.category.contains('10-Media')).toList();
+    }
+    if (_selectedPkgCategory == 'Specialized Niche') {
+      return kOfficialPackages.where((p) => p.category.contains('Specialized')).toList();
+    }
+    return kOfficialPackages;
+  }
+
+  List<NexcoinSingleOutlet> get _filteredSingleOutlets {
+    List<NexcoinSingleOutlet> list = kOfficialSingleOutlets;
+
+    if (_selectedSingleCategory != 'All') {
+      list = list.where((o) => o.categoryLabel == _selectedSingleCategory).toList();
+    }
+
+    if (_searchQuery.trim().isNotEmpty) {
+      final q = _searchQuery.trim().toLowerCase();
+      list = list.where((o) {
+        return o.name.toLowerCase().contains(q) ||
+            o.domain.toLowerCase().contains(q) ||
+            o.focus.toLowerCase().contains(q);
+      }).toList();
+    }
+
+    // Sort
+    list = List.from(list);
+    if (_sortBy == 'Price: High to Low') {
+      list.sort((a, b) => b.price.compareTo(a.price));
+    } else if (_sortBy == 'Price: Low to High') {
+      list.sort((a, b) => a.price.compareTo(b.price));
+    } else if (_sortBy == 'Name: A to Z') {
+      list.sort((a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()));
+    }
+
+    return list;
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // Top Matrix Notice Banner
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          color: const Color(0xFF0F1E36),
+          child: Row(
+            children: [
+              const Icon(Icons.verified_rounded, color: Color(0xFF00F2FE), size: 14),
+              const SizedBox(width: 8),
+              const Expanded(
+                child: Text(
+                  'Official Site Pricing: 13 Packages & 144 Single Outlets Synced',
+                  style: TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w700,
+                    color: Color(0xFFE2E8F0),
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () => AppLauncher.open(context, 'https://www.nexcoinpr.agency/pricing.html'),
+                child: const Text(
+                  'pricing.html ↗',
+                  style: TextStyle(fontSize: 11, color: Color(0xFF00F2FE), fontWeight: FontWeight.bold),
+                ),
+              ),
+            ],
+          ),
+        ),
+
+        // Tab Selector
         Container(
           color: const Color(0xFF070A13),
           padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -955,232 +866,581 @@ class _PackagesViewState extends State<PackagesView> with SingleTickerProviderSt
             unselectedLabelColor: const Color(0xFF94A3B8),
             tabs: const [
               Tab(text: 'Bundled Packages (13)'),
-              Tab(text: 'Single Placements'),
+              Tab(text: 'Single Outlets (144)'),
             ],
           ),
         ),
+
         Expanded(
           child: TabBarView(
             controller: _tabController,
             children: [
-              // BUNDLED PACKAGES LIST
-              ListView.builder(
-                padding: const EdgeInsets.all(16),
-                itemCount: _bundledPackages.length,
-                itemBuilder: (context, index) {
-                  final pkg = _bundledPackages[index];
-                  return Container(
-                    margin: const EdgeInsets.only(bottom: 16),
-                    padding: const EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF0D1527),
-                      borderRadius: BorderRadius.circular(18),
-                      border: Border.all(
-                        color: index == 0
-                            ? const Color(0xFF00F2FE).withOpacity(0.6)
-                            : const Color(0xFF1E293B),
-                        width: index == 0 ? 1.5 : 1,
-                      ),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+              // ==========================================
+              // TAB 1: BUNDLED PR PACKAGES (13)
+              // ==========================================
+              Column(
+                children: [
+                  // Filter Chips
+                  Container(
+                    height: 48,
+                    padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+                    color: const Color(0xFF09101D),
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
-                              decoration: BoxDecoration(
-                                color: const Color(0xFF00F2FE).withOpacity(0.12),
-                                borderRadius: BorderRadius.circular(6),
-                              ),
-                              child: Text(
-                                pkg['badge'],
-                                style: const TextStyle(
-                                  color: Color(0xFF00F2FE),
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w800,
-                                  letterSpacing: 0.8,
-                                ),
-                              ),
-                            ),
-                            Text(
-                              '\$${(pkg['price'] as int).toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},')}',
-                              style: const TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.w900,
-                                color: Color(0xFF00F2FE),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 10),
-                        Text(
-                          pkg['title'],
-                          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: Colors.white),
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          pkg['traffic'],
-                          style: const TextStyle(fontSize: 12, color: Color(0xFFC9A84C), fontWeight: FontWeight.w700),
-                        ),
-                        const SizedBox(height: 10),
-                        Container(
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: const Color(0xFF09101D),
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: const Color(0xFF1E293B)),
-                          ),
-                          child: Text(
-                            pkg['outlets'],
-                            style: const TextStyle(fontSize: 12, color: Color(0xFFCBD5E1), height: 1.4),
-                          ),
-                        ),
-                        const SizedBox(height: 12),
-                        ...(pkg['features'] as List<String>).map(
-                          (feat) => Padding(
-                            padding: const EdgeInsets.only(bottom: 6),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Icon(Icons.check_circle_rounded, color: Color(0xFF10B981), size: 15),
-                                const SizedBox(width: 8),
-                                Expanded(
-                                  child: Text(
-                                    feat,
-                                    style: const TextStyle(color: Color(0xFF94A3B8), fontSize: 12),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 14),
-                        SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton.icon(
-                            icon: const Icon(Icons.send_rounded, size: 15),
-                            label: Text('Book ${pkg['title']} via Telegram'),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFF2AABEE),
-                              foregroundColor: Colors.white,
-                              padding: const EdgeInsets.symmetric(vertical: 12),
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                            ),
-                            onPressed: () {
-                              final msg = Uri.encodeComponent(
-                                'Hello NexcoinPR! I want to book ${pkg['title']} (\$${pkg['price']}). Please provide submission details.',
-                              );
-                              AppLauncher.open(context, 'https://t.me/Nexcoinpr?text=$msg');
-                            },
-                          ),
-                        ),
+                        _buildPkgChip('All', 'All (13)'),
+                        _buildPkgChip('60-Media Mega', '60-Media Mega (\$7k)'),
+                        _buildPkgChip('5-Media Packs', '5-Media Packs (6)'),
+                        _buildPkgChip('10-Media Packs', '10-Media Packs (3)'),
+                        _buildPkgChip('Specialized Niche', 'Specialized / Niche (3)'),
                       ],
                     ),
-                  );
-                },
-              ),
+                  ),
 
-              // SINGLE PLACEMENTS LIST
-              ListView.separated(
-                padding: const EdgeInsets.all(16),
-                itemCount: _singlePlacements.length,
-                separatorBuilder: (_, __) => const SizedBox(height: 10),
-                itemBuilder: (context, index) {
-                  final item = _singlePlacements[index];
-                  return Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF0D1527),
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: const Color(0xFF1E293B)),
-                    ),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 44,
-                          height: 44,
+                  // Packages List
+                  Expanded(
+                    child: ListView.builder(
+                      padding: const EdgeInsets.all(16),
+                      itemCount: _filteredPackages.length,
+                      itemBuilder: (context, index) {
+                        final pkg = _filteredPackages[index];
+                        final isMega = pkg.pubs.length > 10;
+                        final isExpanded = _expandedMega.contains(pkg.title);
+
+                        return Container(
+                          margin: const EdgeInsets.only(bottom: 18),
+                          padding: const EdgeInsets.all(20),
                           decoration: BoxDecoration(
-                            color: const Color(0xFF1E293B),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'DA\n${item['da']}',
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                fontSize: 11,
-                                fontWeight: FontWeight.w900,
-                                color: Color(0xFF00F2FE),
-                                height: 1.1,
-                              ),
+                            color: const Color(0xFF0D1527),
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(
+                              color: pkg.price >= 10000
+                                  ? const Color(0xFF00F2FE).withOpacity(0.6)
+                                  : pkg.category.contains('Mega')
+                                      ? const Color(0xFFC9A84C).withOpacity(0.6)
+                                      : const Color(0xFF1E293B),
+                              width: (pkg.price >= 10000 || pkg.category.contains('Mega')) ? 1.5 : 1.0,
                             ),
                           ),
-                        ),
-                        const SizedBox(width: 14),
-                        Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              // Badge & Price Row
                               Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                                    decoration: BoxDecoration(
+                                      color: pkg.category.contains('Mega')
+                                          ? const Color(0xFFC9A84C).withOpacity(0.18)
+                                          : const Color(0xFF00F2FE).withOpacity(0.14),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Text(
+                                      pkg.badge.toUpperCase(),
+                                      style: TextStyle(
+                                        color: pkg.category.contains('Mega')
+                                            ? const Color(0xFFC9A84C)
+                                            : const Color(0xFF00F2FE),
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w800,
+                                        letterSpacing: 0.8,
+                                      ),
+                                    ),
+                                  ),
                                   Text(
-                                    item['name'],
-                                    style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 15, color: Colors.white),
+                                    '\$${_formatPrice(pkg.price)} USD',
+                                    style: TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.w900,
+                                      color: pkg.category.contains('Mega')
+                                          ? const Color(0xFFC9A84C)
+                                          : const Color(0xFF00F2FE),
+                                    ),
                                   ),
                                 ],
                               ),
-                              const SizedBox(height: 2),
+                              const SizedBox(height: 12),
+
+                              // Title
                               Text(
-                                '${item['type']} • ${item['badge']}',
-                                style: const TextStyle(color: Color(0xFF94A3B8), fontSize: 11),
+                                pkg.title,
+                                style: const TextStyle(
+                                  fontSize: 19,
+                                  fontWeight: FontWeight.w900,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const SizedBox(height: 4),
+
+                              // Traffic & Category Subtitle
+                              Row(
+                                children: [
+                                  const Icon(Icons.show_chart_rounded, size: 14, color: Color(0xFFC9A84C)),
+                                  const SizedBox(width: 4),
+                                  Text(
+                                    pkg.traffic,
+                                    style: const TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w700,
+                                      color: Color(0xFFC9A84C),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 8),
+                                  Text(
+                                    '• ${pkg.category}',
+                                    style: const TextStyle(fontSize: 11, color: Color(0xFF64748B)),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+
+                              // Description
+                              Text(
+                                pkg.desc,
+                                style: const TextStyle(
+                                  fontSize: 13,
+                                  color: Color(0xFF94A3B8),
+                                  height: 1.45,
+                                ),
+                              ),
+                              const SizedBox(height: 16),
+
+                              // Publications Section
+                              Container(
+                                width: double.infinity,
+                                padding: const EdgeInsets.all(14),
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFF080E1B),
+                                  borderRadius: BorderRadius.circular(14),
+                                  border: Border.all(color: const Color(0xFF1E293B)),
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'INCLUDED PUBLICATIONS (${pkg.pubs.length}):',
+                                          style: const TextStyle(
+                                            fontSize: 11,
+                                            fontWeight: FontWeight.w800,
+                                            color: Color(0xFFC9A84C),
+                                            letterSpacing: 0.8,
+                                          ),
+                                        ),
+                                        if (isMega)
+                                          InkWell(
+                                            onTap: () {
+                                              setState(() {
+                                                if (isExpanded) {
+                                                  _expandedMega.remove(pkg.title);
+                                                } else {
+                                                  _expandedMega.add(pkg.title);
+                                                }
+                                              });
+                                            },
+                                            child: Text(
+                                              isExpanded ? 'Collapse ▲' : 'View All 60 ▼',
+                                              style: const TextStyle(
+                                                fontSize: 11,
+                                                fontWeight: FontWeight.bold,
+                                                color: Color(0xFF00F2FE),
+                                              ),
+                                            ),
+                                          ),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 10),
+
+                                    // If Mega Package & not expanded, show preview
+                                    if (isMega && !isExpanded) ...[
+                                      Wrap(
+                                        spacing: 6,
+                                        runSpacing: 6,
+                                        children: pkg.pubs.take(8).map((pub) {
+                                          return Container(
+                                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                            decoration: BoxDecoration(
+                                              color: const Color(0xFF131D33),
+                                              borderRadius: BorderRadius.circular(6),
+                                            ),
+                                            child: Text(
+                                              pub,
+                                              style: const TextStyle(fontSize: 11, color: Color(0xFFCBD5E1)),
+                                            ),
+                                          );
+                                        }).toList(),
+                                      ),
+                                      const SizedBox(height: 8),
+                                      Text(
+                                        '+ 52 additional verified crypto newsrooms & financial portals',
+                                        style: const TextStyle(fontSize: 11, color: Color(0xFF64748B), fontStyle: FontStyle.italic),
+                                      ),
+                                    ] else ...[
+                                      // Render all publications
+                                      Wrap(
+                                        spacing: 6,
+                                        runSpacing: 6,
+                                        children: pkg.pubs.map((pub) {
+                                          return Container(
+                                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                            decoration: BoxDecoration(
+                                              color: const Color(0xFF131D33),
+                                              borderRadius: BorderRadius.circular(6),
+                                            ),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                const Icon(Icons.check_circle_rounded, color: Color(0xFF10B981), size: 12),
+                                                const SizedBox(width: 4),
+                                                Text(
+                                                  pub,
+                                                  style: const TextStyle(fontSize: 11, color: Color(0xFFCBD5E1)),
+                                                ),
+                                              ],
+                                            ),
+                                          );
+                                        }).toList(),
+                                      ),
+                                    ],
+                                  ],
+                                ),
+                              ),
+                              const SizedBox(height: 16),
+
+                              // CTA Buttons
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: ElevatedButton.icon(
+                                      icon: const Icon(Icons.send_rounded, size: 15),
+                                      label: Text('Book ${pkg.shortTitle} via Telegram'),
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: const Color(0xFF2AABEE),
+                                        foregroundColor: Colors.white,
+                                        padding: const EdgeInsets.symmetric(vertical: 12),
+                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                      ),
+                                      onPressed: () {
+                                        final msg = Uri.encodeComponent(
+                                          'Hello NexcoinPR! I want to book ${pkg.title} (\$${_formatPrice(pkg.price)} USD). Please share submission requirements.',
+                                        );
+                                        AppLauncher.open(context, 'https://t.me/Nexcoinpr?text=$msg');
+                                      },
+                                    ),
+                                  ),
+                                  const SizedBox(width: 8),
+                                  IconButton(
+                                    tooltip: 'View on website',
+                                    icon: const Icon(Icons.open_in_browser_rounded, color: Color(0xFF94A3B8)),
+                                    onPressed: () => AppLauncher.open(context, 'https://www.nexcoinpr.agency/pricing.html'),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
+
+              // ==========================================
+              // TAB 2: ALL 144 SINGLE MEDIA OUTLETS
+              // ==========================================
+              Column(
+                children: [
+                  // Search & Category Bar
+                  Container(
+                    color: const Color(0xFF09101D),
+                    padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
+                    child: Column(
+                      children: [
+                        // Search Input
+                        TextField(
+                          controller: _searchCtrl,
+                          style: const TextStyle(color: Colors.white, fontSize: 14),
+                          onChanged: (val) {
+                            setState(() {
+                              _searchQuery = val;
+                            });
+                          },
+                          decoration: InputDecoration(
+                            hintText: 'Search 144 outlets (e.g. Coindesk, Forbes, Decrypt)...',
+                            hintStyle: const TextStyle(color: Color(0xFF64748B), fontSize: 13),
+                            prefixIcon: const Icon(Icons.search_rounded, color: Color(0xFF00F2FE), size: 20),
+                            suffixIcon: _searchQuery.isNotEmpty
+                                ? IconButton(
+                                    icon: const Icon(Icons.clear_rounded, color: Colors.white70, size: 18),
+                                    onPressed: () {
+                                      _searchCtrl.clear();
+                                      setState(() {
+                                        _searchQuery = '';
+                                      });
+                                    },
+                                  )
+                                : null,
+                            filled: true,
+                            fillColor: const Color(0xFF0D1527),
+                            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: const BorderSide(color: Color(0xFF1E293B)),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: const BorderSide(color: Color(0xFF1E293B)),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: const BorderSide(color: Color(0xFF00F2FE)),
+                            ),
+                          ),
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Text(
-                              '\$${(item['price'] as int).toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},')}',
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w900,
-                                color: Color(0xFFC9A84C),
-                              ),
-                            ),
-                            const SizedBox(height: 4),
-                            InkWell(
-                              onTap: () {
-                                final msg = Uri.encodeComponent(
-                                  'Hello NexcoinPR! I want to order a single placement on ${item['name']} (\$${item['price']}).',
-                                );
-                                AppLauncher.open(context, 'https://t.me/Nexcoinpr?text=$msg');
-                              },
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFF00F2FE).withOpacity(0.15),
-                                  borderRadius: BorderRadius.circular(8),
-                                  border: Border.all(color: const Color(0xFF00F2FE).withOpacity(0.4)),
-                                ),
-                                child: const Text(
-                                  'Book →',
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color(0xFF00F2FE),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
+                        const SizedBox(height: 8),
+
+                        // Category Chips Row
+                        SizedBox(
+                          height: 36,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              _buildSingleCatChip('All', 'All (144)'),
+                              _buildSingleCatChip('Crypto & Web3', 'Crypto & Web3 (117)'),
+                              _buildSingleCatChip('Mainstream Tier-1', 'Mainstream Tier-1 (8)'),
+                              _buildSingleCatChip('Forex & Trading', 'Forex & Trading (8)'),
+                              _buildSingleCatChip('Tech & Syndication', 'Tech & Syndication (11)'),
+                            ],
+                          ),
                         ),
                       ],
                     ),
-                  );
-                },
+                  ),
+
+                  // Sort & Results Count Header
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    color: const Color(0xFF070A13),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Showing ${_filteredSingleOutlets.length} Outlets (\$100 – \$8,500)',
+                          style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Color(0xFF94A3B8)),
+                        ),
+                        DropdownButton<String>(
+                          value: _sortBy,
+                          dropdownColor: const Color(0xFF0D1527),
+                          underline: const SizedBox(),
+                          icon: const Icon(Icons.sort_rounded, color: Color(0xFF00F2FE), size: 16),
+                          style: const TextStyle(fontSize: 12, color: Color(0xFF00F2FE), fontWeight: FontWeight.bold),
+                          items: const [
+                            DropdownMenuItem(value: 'Price: High to Low', child: Text('Price: High → Low')),
+                            DropdownMenuItem(value: 'Price: Low to High', child: Text('Price: Low → High')),
+                            DropdownMenuItem(value: 'Name: A to Z', child: Text('Name: A → Z')),
+                          ],
+                          onChanged: (val) {
+                            if (val != null) {
+                              setState(() {
+                                _sortBy = val;
+                              });
+                            }
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  // Outlets List
+                  Expanded(
+                    child: _filteredSingleOutlets.isEmpty
+                        ? Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Icon(Icons.search_off_rounded, size: 48, color: Color(0xFF64748B)),
+                                const SizedBox(height: 12),
+                                Text(
+                                  'No outlets match "$_searchQuery"',
+                                  style: const TextStyle(color: Colors.white70, fontSize: 14),
+                                ),
+                                const SizedBox(height: 6),
+                                const Text(
+                                  'Try searching another publication or reset category filter.',
+                                  style: TextStyle(color: Color(0xFF64748B), fontSize: 12),
+                                ),
+                              ],
+                            ),
+                          )
+                        : ListView.separated(
+                            padding: const EdgeInsets.all(16),
+                            itemCount: _filteredSingleOutlets.length,
+                            separatorBuilder: (_, __) => const SizedBox(height: 10),
+                            itemBuilder: (context, index) {
+                              final outlet = _filteredSingleOutlets[index];
+
+                              return Container(
+                                padding: const EdgeInsets.all(16),
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFF0D1527),
+                                  borderRadius: BorderRadius.circular(16),
+                                  border: Border.all(
+                                    color: outlet.price >= 5000
+                                        ? const Color(0xFF00F2FE).withOpacity(0.4)
+                                        : const Color(0xFF1E293B),
+                                  ),
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    // Row 1: Name & Price
+                                    Row(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                outlet.name,
+                                                style: const TextStyle(
+                                                  fontWeight: FontWeight.w800,
+                                                  fontSize: 16,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                              if (outlet.domain.isNotEmpty)
+                                                Text(
+                                                  outlet.domain,
+                                                  style: const TextStyle(
+                                                    color: Color(0xFF00F2FE),
+                                                    fontSize: 11,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                                ),
+                                            ],
+                                          ),
+                                        ),
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.end,
+                                          children: [
+                                            Text(
+                                              '\$${_formatPrice(outlet.price)}',
+                                              style: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w900,
+                                                color: outlet.price >= 5000
+                                                    ? const Color(0xFF00F2FE)
+                                                    : const Color(0xFFC9A84C),
+                                              ),
+                                            ),
+                                            const Text(
+                                              'USD Flat',
+                                              style: TextStyle(fontSize: 10, color: Color(0xFF64748B)),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 8),
+
+                                    // Row 2: Badges & Metrics
+                                    Wrap(
+                                      spacing: 6,
+                                      runSpacing: 4,
+                                      children: [
+                                        Container(
+                                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                                          decoration: BoxDecoration(
+                                            color: const Color(0xFF1E293B),
+                                            borderRadius: BorderRadius.circular(6),
+                                          ),
+                                          child: Text(
+                                            outlet.categoryLabel,
+                                            style: const TextStyle(color: Color(0xFFCBD5E1), fontSize: 10, fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                        if (outlet.badge.isNotEmpty)
+                                          Container(
+                                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                                            decoration: BoxDecoration(
+                                              color: const Color(0xFFC9A84C).withOpacity(0.15),
+                                              borderRadius: BorderRadius.circular(6),
+                                            ),
+                                            child: Text(
+                                              outlet.badge,
+                                              style: const TextStyle(color: Color(0xFFC9A84C), fontSize: 10, fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                        Container(
+                                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                                          decoration: BoxDecoration(
+                                            color: const Color(0xFF10B981).withOpacity(0.12),
+                                            borderRadius: BorderRadius.circular(6),
+                                          ),
+                                          child: Text(
+                                            '⚡ ${outlet.turnaround}',
+                                            style: const TextStyle(color: Color(0xFF10B981), fontSize: 10, fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                        if (outlet.traffic.isNotEmpty)
+                                          Container(
+                                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                                            decoration: BoxDecoration(
+                                              color: const Color(0xFF3B82F6).withOpacity(0.12),
+                                              borderRadius: BorderRadius.circular(6),
+                                            ),
+                                            child: Text(
+                                              '👁 ${outlet.traffic}',
+                                              style: const TextStyle(color: Color(0xFF60A5FA), fontSize: 10, fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                      ],
+                                    ),
+                                    if (outlet.focus.isNotEmpty) ...[
+                                      const SizedBox(height: 8),
+                                      Text(
+                                        outlet.focus,
+                                        style: const TextStyle(fontSize: 12, color: Color(0xFF94A3B8), height: 1.3),
+                                      ),
+                                    ],
+                                    const SizedBox(height: 12),
+
+                                    // Row 3: Action Buttons
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: ElevatedButton.icon(
+                                            icon: const Icon(Icons.send_rounded, size: 14),
+                                            label: Text('Order ${outlet.name} Placement'),
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor: const Color(0xFF1E293B),
+                                              foregroundColor: const Color(0xFF00F2FE),
+                                              side: BorderSide(color: const Color(0xFF00F2FE).withOpacity(0.3)),
+                                              padding: const EdgeInsets.symmetric(vertical: 10),
+                                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                            ),
+                                            onPressed: () {
+                                              final msg = Uri.encodeComponent(
+                                                'Hello NexcoinPR! I want to order a single placement on ${outlet.name} (\$${_formatPrice(outlet.price)} USD).',
+                                              );
+                                              AppLauncher.open(context, 'https://t.me/Nexcoinpr?text=$msg');
+                                            },
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -1188,7 +1448,62 @@ class _PackagesViewState extends State<PackagesView> with SingleTickerProviderSt
       ],
     );
   }
+
+  Widget _buildPkgChip(String cat, String label) {
+    final isSelected = _selectedPkgCategory == cat;
+    return Padding(
+      padding: const EdgeInsets.only(right: 8),
+      child: FilterChip(
+        label: Text(label),
+        selected: isSelected,
+        onSelected: (val) {
+          setState(() {
+            _selectedPkgCategory = cat;
+          });
+        },
+        selectedColor: const Color(0xFF00F2FE).withOpacity(0.2),
+        backgroundColor: const Color(0xFF0D1527),
+        checkmarkColor: const Color(0xFF00F2FE),
+        labelStyle: TextStyle(
+          color: isSelected ? const Color(0xFF00F2FE) : const Color(0xFF94A3B8),
+          fontSize: 11,
+          fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+        ),
+        side: BorderSide(
+          color: isSelected ? const Color(0xFF00F2FE) : const Color(0xFF1E293B),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSingleCatChip(String cat, String label) {
+    final isSelected = _selectedSingleCategory == cat;
+    return Padding(
+      padding: const EdgeInsets.only(right: 6),
+      child: FilterChip(
+        label: Text(label),
+        selected: isSelected,
+        onSelected: (val) {
+          setState(() {
+            _selectedSingleCategory = cat;
+          });
+        },
+        selectedColor: const Color(0xFFC9A84C).withOpacity(0.2),
+        backgroundColor: const Color(0xFF0D1527),
+        checkmarkColor: const Color(0xFFC9A84C),
+        labelStyle: TextStyle(
+          color: isSelected ? const Color(0xFFC9A84C) : const Color(0xFF94A3B8),
+          fontSize: 10,
+          fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+        ),
+        side: BorderSide(
+          color: isSelected ? const Color(0xFFC9A84C) : const Color(0xFF1E293B),
+        ),
+      ),
+    );
+  }
 }
+
 
 // ============================================================================
 // TAB 3: LIVE MARKETS & TRADING HUB (Binance Live Stream, Paper Simulator, Earn)
