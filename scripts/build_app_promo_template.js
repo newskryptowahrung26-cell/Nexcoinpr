@@ -453,13 +453,13 @@ const templateHtml = `<!DOCTYPE html>
       ctx.font = \`500 \${(isSquare ? 15 : 18) * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\`;
       ctx.fillText('Direct editorial desks with 100% transparent rates.', textX, textY + (isSquare ? 66 : 84) * scale);
 
-      // Animated Rate Cards
+      // Animated Rate Cards with 100% Authentic Website Prices
       const outlets = [
-        { name: 'FORBES', tier: 'Top Tier Global', price: '$3,500', delay: 0.1, color: '#C9A84C' },
-        { name: 'BLOOMBERG', tier: 'Global Financial', price: '$8,500', delay: 0.3, color: '#00F2FE' },
-        { name: 'COINTELEGRAPH', tier: 'Crypto Authority', price: '$2,999', delay: 0.5, color: '#F3D785' },
-        { name: 'DECRYPT', tier: 'Web3 & DeFi Desk', price: '$2,400', delay: 0.7, color: '#10B981' },
-        { name: 'COINDESK', tier: 'Crypto Institution', price: '$4,200', delay: 0.9, color: '#E2E8F0' }
+        { name: 'ENTREPRENEUR.COM', tier: 'Mainstream Tier-1', price: '$8,500', delay: 0.1, color: '#C9A84C' },
+        { name: 'COINDESK', tier: 'Crypto & Web3 Leader', price: '$8,000', delay: 0.25, color: '#00F2FE' },
+        { name: 'FORBES', tier: 'Global Editorial Wire', price: '$7,500', delay: 0.45, color: '#F3D785' },
+        { name: 'COINTELEGRAPH', tier: 'Crypto Authority (Full PR)', price: '$6,999', delay: 0.65, color: '#E2E8F0' },
+        { name: 'DECRYPT.CO', tier: 'Web3 & DeFi News', price: '$2,000', delay: 0.85, color: '#10B981' }
       ];
 
       const startCardY = textY + (isSquare ? 95 : 125) * scale;
@@ -496,12 +496,12 @@ const templateHtml = `<!DOCTYPE html>
         ctx.fillStyle = 'rgba(201, 168, 76, 0.2)';
         ctx.strokeStyle = '#D4AF37';
         ctx.lineWidth = 1 * scale;
-        const priceW = (isSquare ? 90 : 110) * scale;
+        const priceW = (isSquare ? 95 : 115) * scale;
         const priceH = (isSquare ? 30 : 36) * scale;
         roundRect(ctx, cardX + cardW - priceW - 14 * scale, cardY + (cardH - priceH) / 2, priceW, priceH, 8 * scale, true, true);
 
         ctx.fillStyle = '#F3D785';
-        ctx.font = \`900 \${(isSquare ? 15 : 18) * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\`;
+        ctx.font = \`900 \${(isSquare ? 15 : 19) * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\`;
         ctx.textAlign = 'center';
         ctx.fillText(item.price, cardX + cardW - priceW / 2 - 14 * scale, cardY + cardH / 2 + 1 * scale);
 
@@ -552,12 +552,12 @@ const templateHtml = `<!DOCTYPE html>
       ctx.font = \`500 \${(isSquare ? 15 : 18) * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\`;
       ctx.fillText('Guaranteed editorial syndication tailored for Web3 & Finance.', textX, textY + (isSquare ? 66 : 84) * scale);
 
-      // Package Highlights
+      // Package Highlights with 100% Authentic Website Prices
       const packages = [
-        { title: 'DeFi & Token Launch', desc: 'DEX/CEX listings, presales, and token generation events', icon: '🚀', tag: 'Fast-Track' },
-        { title: 'Tier-1 Crypto Wire', desc: 'Guaranteed syndication across CoinDesk, Cointelegraph & Decrypt', icon: '💎', tag: 'Authority' },
-        { title: 'Forex & Broker Elite', desc: 'Capital markets syndication on Bloomberg, Yahoo & Benzinga', icon: '📈', tag: 'Global Reach' },
-        { title: '60-Media Mega Package', desc: 'Massive full-spectrum media blast across 60 global publications', icon: '⚡', tag: 'Maximum Impact' }
+        { title: 'ELITE: A (5 Top Crypto)', desc: 'CoinDesk, Cointelegraph, Decrypt, Bitcoin.com, BeInCrypto', price: '$20,000', icon: '👑', tag: 'Flagship' },
+        { title: 'VIRAL (10 Crypto Media)', desc: 'High-impact 10-publication crypto syndication wire', price: '$8,300', icon: '🔥', tag: 'Top Viral' },
+        { title: '60 Media Mega Package', desc: 'Massive blast across 60 global crypto & financial publications', price: '$7,000', icon: '⚡', tag: 'Mega Reach' },
+        { title: 'Fintech & Forex (10 Media)', desc: 'Capital markets syndication on Bloomberg, Yahoo & Benzinga', price: '$3,999', icon: '📈', tag: 'Brokers' }
       ];
 
       const startY = textY + (isSquare ? 95 : 125) * scale;
@@ -589,24 +589,27 @@ const templateHtml = `<!DOCTYPE html>
         // Title
         ctx.textAlign = 'left';
         ctx.fillStyle = '#FFFFFF';
-        ctx.font = \`800 \${(isSquare ? 16 : 19) * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\`;
-        ctx.fillText(pkg.title, curX + 72 * scale, curY + blockH * 0.40);
+        ctx.font = \`800 \${(isSquare ? 15 : 18.5) * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\`;
+        ctx.fillText(pkg.title, curX + 72 * scale, curY + blockH * 0.38);
 
         // Desc
         ctx.fillStyle = '#94A3B8';
-        ctx.font = \`500 \${(isSquare ? 11.5 : 13.5) * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\`;
-        ctx.fillText(pkg.desc, curX + 72 * scale, curY + blockH * 0.74);
+        ctx.font = \`500 \${(isSquare ? 11 : 13) * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\`;
+        const maxDescW = blockW - (isSquare ? 180 : 210) * scale;
+        ctx.fillText(pkg.desc, curX + 72 * scale, curY + blockH * 0.74, maxDescW);
 
-        // Tag pill
-        ctx.fillStyle = 'rgba(243, 215, 133, 0.15)';
+        // Price Badge on Right
+        ctx.fillStyle = 'rgba(201, 168, 76, 0.22)';
         ctx.strokeStyle = '#F3D785';
         ctx.lineWidth = 1 * scale;
-        const tw = ctx.measureText(pkg.tag).width;
-        roundRect(ctx, curX + blockW - tw - 34 * scale, curY + 12 * scale, tw + 20 * scale, 24 * scale, 6 * scale, true, true);
+        const pw = (isSquare ? 90 : 108) * scale;
+        const ph = (isSquare ? 32 : 36) * scale;
+        roundRect(ctx, curX + blockW - pw - 14 * scale, curY + (blockH - ph) / 2, pw, ph, 8 * scale, true, true);
+
         ctx.fillStyle = '#F3D785';
-        ctx.font = \`700 \${11 * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\`;
+        ctx.font = \`900 \${(isSquare ? 15 : 18) * scale}px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\`;
         ctx.textAlign = 'center';
-        ctx.fillText(pkg.tag, curX + blockW - tw / 2 - 24 * scale, curY + 24 * scale);
+        ctx.fillText(pkg.price, curX + blockW - pw / 2 - 14 * scale, curY + blockH / 2 + 1 * scale);
 
         ctx.restore();
       });
