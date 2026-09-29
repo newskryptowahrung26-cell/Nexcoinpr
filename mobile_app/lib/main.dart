@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -13,6 +15,57 @@ void main() {
     ),
   );
   runApp(const NexcoinPRApp());
+}
+
+/// Robust launcher that tries external app, then platform default, then in-app browser
+class AppLauncher {
+  static Future<void> open(BuildContext context, String url) async {
+    HapticFeedback.lightImpact();
+    try {
+      final uri = Uri.parse(url);
+      bool launched = false;
+      try {
+        launched = await launchUrl(uri, mode: LaunchMode.externalApplication);
+      } catch (_) {
+        launched = false;
+      }
+
+      if (!launched) {
+        try {
+          launched = await launchUrl(uri, mode: LaunchMode.platformDefault);
+        } catch (_) {
+          launched = false;
+        }
+      }
+
+      if (!launched) {
+        try {
+          launched = await launchUrl(uri, mode: LaunchMode.inAppBrowserView);
+        } catch (_) {
+          launched = false;
+        }
+      }
+
+      if (!launched && context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Opening: $url'),
+            backgroundColor: const Color(0xFF0D1527),
+            duration: const Duration(seconds: 2),
+          ),
+        );
+      }
+    } catch (e) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Could not open: $url'),
+            backgroundColor: Colors.redAccent,
+          ),
+        );
+      }
+    }
+  }
 }
 
 class NexcoinPRApp extends StatelessWidget {
@@ -138,7 +191,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
               ),
               child: const Icon(Icons.send_rounded, color: Color(0xFF2AABEE), size: 16),
             ),
-            onPressed: () => _launchUrl('https://t.me/Nexcoinpr'),
+            onPressed: () => AppLauncher.open(context, 'https://t.me/Nexcoinpr'),
           ),
           const SizedBox(width: 8),
         ],
@@ -192,14 +245,8 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
       ),
     );
   }
-
-  static Future<void> _launchUrl(String url) async {
-    final uri = Uri.parse(url);
-    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
-      // fallback
-    }
-  }
 }
+
 
 // -------------------------------------------------------------
 // TAB 1: DASHBOARD
@@ -220,134 +267,197 @@ class _DashboardViewState extends State<DashboardView> {
     {'symbol': 'USD/JPY', 'price': '152.18', 'change': '-0.24%', 'isUp': false},
   ];
 
+  bool _isLiveLoaded = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchLivePrices();
+  }
+
+  Future<void> _fetchLivePrices() async {
+    try {
+      final client = HttpClient();
+      client.connectionTimeout = const Duration(seconds: 4);
+      final request = await client.getUrl(
+        Uri.parse('https://api.binance.com/api/v3/ticker/24hr?symbols=["BTCUSDT","ETHUSDT","SOLUSDT"]'),
+      );
+      final response = await request.close();
+      if (response.statusCode == 200) {
+        final body = await response.transform(utf8.decoder).join();
+        final List<dynamic> list = jsonDecode(body);
+        if (mounted) {
+          setState(() {
+            for (var item in list) {
+              final sym = item['symbol'].toString().replaceAll('USDT', '');
+              final p = double.tryParse(item['lastPrice'].toString()) ?? 0.0;
+              final chg = double.tryParse(item['priceChangePercent'].toString()) ?? 0.0;
+              final isUp = chg >= 0;
+              final idx = _tickers.indexWhere((t) => t['symbol'] == sym);
+              if (idx != -1) {
+                _tickers[idx] = {
+                  'symbol': sym,
+                  'price': sym == 'BTC' ? '\$${p.toStringAsFixed(0)}' : '\$${p.toStringAsFixed(2)}',
+                  'change': '${isUp ? '+' : ''}${chg.toStringAsFixed(2)}%',
+                  'isUp': isUp,
+                };
+              }
+            }
+            _isLiveLoaded = true;
+          });
+        }
+      }
+    } catch (_) {}
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Live Ticker Bar
-          SizedBox(
-            height: 44,
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              itemCount: _tickers.length,
-              separatorBuilder: (_, __) => const SizedBox(width: 8),
-              itemBuilder: (context, index) {
-                final t = _tickers[index];
-                return Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF0D1527),
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: const Color(0xFF1E293B)),
+    return RefreshIndicator(
+      onRefresh: _fetchLivePrices,
+      color: const Color(0xFF00F2FE),
+      backgroundColor: const Color(0xFF0D1527),
+      child: SingleChildScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Live Status & Ticker Bar
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Market Pulse',
+                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Color(0xFF94A3B8)),
+                ),
+                Text(
+                  _isLiveLoaded ? '● LIVE TICKER CONNECTED' : 'PULL TO REFRESH',
+                  style: TextStyle(
+                    fontSize: 9,
+                    fontWeight: FontWeight.bold,
+                    color: _isLiveLoaded ? const Color(0xFF10B981) : const Color(0xFF00F2FE),
                   ),
-                  child: Row(
+                ),
+              ],
+            ),
+            const SizedBox(height: 6),
+            SizedBox(
+              height: 44,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemCount: _tickers.length,
+                separatorBuilder: (_, __) => const SizedBox(width: 8),
+                itemBuilder: (context, index) {
+                  final t = _tickers[index];
+                  return Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF0D1527),
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: const Color(0xFF1E293B)),
+                    ),
+                    child: Row(
+                      children: [
+                        Text(
+                          t['symbol'],
+                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                        ),
+                        const SizedBox(width: 6),
+                        Text(
+                          t['price'],
+                          style: const TextStyle(color: Colors.white70, fontSize: 12),
+                        ),
+                        const SizedBox(width: 6),
+                        Text(
+                          t['change'],
+                          style: TextStyle(
+                            color: t['isUp'] ? const Color(0xFF10B981) : const Color(0xFFEF4444),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 11,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+            const SizedBox(height: 18),
+
+            // Hero Banner
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(22),
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: [Color(0xFF0F1E36), Color(0xFF091222)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                borderRadius: BorderRadius.circular(22),
+                border: Border.all(color: const Color(0xFF00F2FE).withOpacity(0.35)),
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color(0xFF00F2FE).withOpacity(0.08),
+                    blurRadius: 25,
+                    offset: const Offset(0, 8),
+                  ),
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF00F2FE).withOpacity(0.12),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: const Text(
+                      'TIER-1 MEDIA WIRE',
+                      style: TextStyle(
+                        color: Color(0xFF00F2FE),
+                        fontSize: 11,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: 1.2,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  const Text(
+                    'Global Crypto & Forex PR Distribution Agency',
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w800,
+                      height: 1.25,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  const Text(
+                    'Get guaranteed publications on Bloomberg, CoinDesk, Cointelegraph, Yahoo Finance, and 350+ financial newswires.',
+                    style: TextStyle(color: Color(0xFF94A3B8), fontSize: 13, height: 1.4),
+                  ),
+                  const SizedBox(height: 16),
+                  Row(
                     children: [
-                      Text(
-                        t['symbol'],
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
-                      ),
-                      const SizedBox(width: 6),
-                      Text(
-                        t['price'],
-                        style: const TextStyle(color: Colors.white70, fontSize: 12),
-                      ),
-                      const SizedBox(width: 6),
-                      Text(
-                        t['change'],
-                        style: TextStyle(
-                          color: t['isUp'] ? const Color(0xFF10B981) : const Color(0xFFEF4444),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 11,
+                      Expanded(
+                        child: ElevatedButton.icon(
+                          icon: const Icon(Icons.send_rounded, size: 16),
+                          label: const Text('Book Wire via Telegram'),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color(0xFF2AABEE),
+                            foregroundColor: Colors.white,
+                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                          onPressed: () => AppLauncher.open(context, 'https://t.me/Nexcoinpr'),
                         ),
                       ),
                     ],
                   ),
-                );
-              },
-            ),
-          ),
-          const SizedBox(height: 18),
-
-          // Hero Banner
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(22),
-            decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                colors: [Color(0xFF0F1E36), Color(0xFF091222)],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-              borderRadius: BorderRadius.circular(22),
-              border: Border.all(color: const Color(0xFF00F2FE).withOpacity(0.35)),
-              boxShadow: [
-                BoxShadow(
-                  color: const Color(0xFF00F2FE).withOpacity(0.08),
-                  blurRadius: 25,
-                  offset: const Offset(0, 8),
-                ),
-              ],
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF00F2FE).withOpacity(0.12),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: const Text(
-                    'TIER-1 MEDIA WIRE',
-                    style: TextStyle(
-                      color: Color(0xFF00F2FE),
-                      fontSize: 11,
-                      fontWeight: FontWeight.w800,
-                      letterSpacing: 1.2,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 12),
-                const Text(
-                  'Global Crypto & Forex PR Distribution Agency',
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w800,
-                    height: 1.25,
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                const Text(
-                  'Get guaranteed publications on Bloomberg, CoinDesk, Cointelegraph, Yahoo Finance, and 350+ financial newswires.',
-                  style: TextStyle(color: Color(0xFF94A3B8), fontSize: 13, height: 1.4),
-                ),
-                const SizedBox(height: 16),
-                Row(
-                  children: [
-                    Expanded(
-                      child: ElevatedButton.icon(
-                        icon: const Icon(Icons.send_rounded, size: 16),
-                        label: const Text('Book Wire via Telegram'),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF2AABEE),
-                          foregroundColor: Colors.white,
-                          padding: const EdgeInsets.symmetric(vertical: 12),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                        ),
-                        onPressed: () => launchUrl(
-                          Uri.parse('https://t.me/Nexcoinpr'),
-                          mode: LaunchMode.externalApplication,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
               ],
             ),
           ),
@@ -827,10 +937,7 @@ class _PackagesViewState extends State<PackagesView> {
                     final msg = Uri.encodeComponent(
                       'Hello NexcoinPR! I want to book ${cur['title']} (Total: \$${_calculateTotal()}).',
                     );
-                    launchUrl(
-                      Uri.parse('https://t.me/Nexcoinpr?text=$msg'),
-                      mode: LaunchMode.externalApplication,
-                    );
+                    AppLauncher.open(context, 'https://t.me/Nexcoinpr?text=$msg');
                   },
                 ),
               ],
@@ -841,6 +948,7 @@ class _PackagesViewState extends State<PackagesView> {
       ),
     );
   }
+
 
   Widget _buildAddonTile(String title, String price, bool val, ValueChanged<bool> onChanged) {
     return Container(
@@ -874,6 +982,7 @@ class MarketsAndNewsView extends StatefulWidget {
 
 class _MarketsAndNewsViewState extends State<MarketsAndNewsView> with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  bool _isLiveCrypto = false;
 
   final List<Map<String, dynamic>> _cryptoList = [
     {'name': 'Bitcoin', 'symbol': 'BTC', 'price': '\$96,480.00', 'change': '+2.8%', 'up': true},
@@ -898,6 +1007,51 @@ class _MarketsAndNewsViewState extends State<MarketsAndNewsView> with SingleTick
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
+    _fetchLiveCrypto();
+  }
+
+  Future<void> _fetchLiveCrypto() async {
+    try {
+      final client = HttpClient();
+      client.connectionTimeout = const Duration(seconds: 4);
+      final request = await client.getUrl(
+        Uri.parse('https://api.binance.com/api/v3/ticker/24hr?symbols=["BTCUSDT","ETHUSDT","SOLUSDT","BNBUSDT","XRPUSDT","ADAUSDT","AVAXUSDT"]'),
+      );
+      final response = await request.close();
+      if (response.statusCode == 200) {
+        final body = await response.transform(utf8.decoder).join();
+        final List<dynamic> list = jsonDecode(body);
+        if (mounted) {
+          setState(() {
+            for (var item in list) {
+              final sym = item['symbol'].toString().replaceAll('USDT', '');
+              final p = double.tryParse(item['lastPrice'].toString()) ?? 0.0;
+              final chg = double.tryParse(item['priceChangePercent'].toString()) ?? 0.0;
+              final isUp = chg >= 0;
+              final idx = _cryptoList.indexWhere((c) => c['symbol'] == sym);
+              if (idx != -1) {
+                String priceStr;
+                if (p >= 1000) {
+                  priceStr = '\$${p.toStringAsFixed(2)}';
+                } else if (p < 1) {
+                  priceStr = '\$${p.toStringAsFixed(4)}';
+                } else {
+                  priceStr = '\$${p.toStringAsFixed(2)}';
+                }
+                _cryptoList[idx] = {
+                  'name': _cryptoList[idx]['name'],
+                  'symbol': sym,
+                  'price': priceStr,
+                  'change': '${isUp ? '+' : ''}${chg.toStringAsFixed(2)}%',
+                  'up': isUp,
+                };
+              }
+            }
+            _isLiveCrypto = true;
+          });
+        }
+      }
+    } catch (_) {}
   }
 
   @override
@@ -928,12 +1082,17 @@ class _MarketsAndNewsViewState extends State<MarketsAndNewsView> with SingleTick
           child: TabBarView(
             controller: _tabController,
             children: [
-              // Crypto Tab
-              ListView.separated(
-                padding: const EdgeInsets.all(16),
-                itemCount: _cryptoList.length,
-                separatorBuilder: (_, __) => const SizedBox(height: 8),
-                itemBuilder: (context, i) {
+              // Crypto Tab with Pull to Refresh
+              RefreshIndicator(
+                onRefresh: _fetchLiveCrypto,
+                color: const Color(0xFF00F2FE),
+                backgroundColor: const Color(0xFF0D1527),
+                child: ListView.separated(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  padding: const EdgeInsets.all(16),
+                  itemCount: _cryptoList.length,
+                  separatorBuilder: (_, __) => const SizedBox(height: 8),
+                  itemBuilder: (context, i) {
                   final c = _cryptoList[i];
                   return Container(
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
@@ -979,8 +1138,9 @@ class _MarketsAndNewsViewState extends State<MarketsAndNewsView> with SingleTick
                   );
                 },
               ),
+            ),
 
-              // Forex Tab
+            // Forex Tab
               ListView.separated(
                 padding: const EdgeInsets.all(16),
                 itemCount: _forexList.length,
@@ -1233,7 +1393,7 @@ class _TrackerViewState extends State<TrackerView> {
           ),
           IconButton(
             icon: const Icon(Icons.open_in_new, color: Color(0xFF00F2FE), size: 18),
-            onPressed: () => launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication),
+            onPressed: () => AppLauncher.open(context, url),
           ),
         ],
       ),
@@ -1313,10 +1473,7 @@ class _ContactDeskViewState extends State<ContactDeskView> {
                     foregroundColor: const Color(0xFF0088CC),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                   ),
-                  onPressed: () => launchUrl(
-                    Uri.parse('https://t.me/Nexcoinpr'),
-                    mode: LaunchMode.externalApplication,
-                  ),
+                  onPressed: () => AppLauncher.open(context, 'https://t.me/Nexcoinpr'),
                   child: const Text('Open'),
                 ),
               ],

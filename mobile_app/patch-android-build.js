@@ -20,8 +20,8 @@ if (fs.existsSync(gradleKtsPath)) {
   content = content.replace(/compileSdk\s*=\s*flutter\.compileSdkVersion/, 'compileSdk = 36');
   content = content.replace(/targetSdk\s*=\s*flutter\.targetSdkVersion/, 'targetSdk = 36');
   content = content.replace(/minSdk\s*=\s*flutter\.minSdkVersion/, 'minSdk = 24');
-  content = content.replace(/versionCode\s*=\s*flutter\.versionCode/, 'versionCode = 3');
-  content = content.replace(/versionName\s*=\s*flutter\.versionName/, 'versionName = "1.2.0"');
+  content = content.replace(/versionCode\s*=\s*flutter\.versionCode/, 'versionCode = 4');
+  content = content.replace(/versionName\s*=\s*flutter\.versionName/, 'versionName = "1.3.0"');
 
   // Add signingConfigs block right before buildTypes {
   const signingConfigKts = `
@@ -56,8 +56,8 @@ if (fs.existsSync(gradleKtsPath)) {
   content = content.replace(/compileSdkVersion\s+flutter\.compileSdkVersion/, 'compileSdkVersion 36');
   content = content.replace(/targetSdkVersion\s+flutter\.targetSdkVersion/, 'targetSdkVersion 36');
   content = content.replace(/minSdkVersion\s+flutter\.minSdkVersion/, 'minSdkVersion 24');
-  content = content.replace(/versionCode\s+flutterVersionCode\.toInteger\(\)/, 'versionCode 3');
-  content = content.replace(/versionName\s+flutterVersionName/, 'versionName "1.2.0"');
+  content = content.replace(/versionCode\s+flutterVersionCode\.toInteger\(\)/, 'versionCode 4');
+  content = content.replace(/versionName\s+flutterVersionName/, 'versionName "1.3.0"');
 
   const signingConfigGroovy = `
     signingConfigs {
@@ -85,3 +85,39 @@ if (fs.existsSync(gradleKtsPath)) {
   console.error('No build.gradle found!');
   process.exit(1);
 }
+
+// Patch AndroidManifest.xml for INTERNET permission & url_launcher intent queries
+const manifestPath = path.join(__dirname, 'android', 'app', 'src', 'main', 'AndroidManifest.xml');
+if (fs.existsSync(manifestPath)) {
+  console.log('Patching AndroidManifest.xml with INTERNET permissions and intent queries...');
+  let manifest = fs.readFileSync(manifestPath, 'utf8');
+
+  if (!manifest.includes('android.permission.INTERNET')) {
+    const permissionsAndQueries = `
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="http" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="tg" />
+        </intent>
+    </queries>
+`;
+    manifest = manifest.replace(
+      '<application',
+      `${permissionsAndQueries}\n    <application`
+    );
+    fs.writeFileSync(manifestPath, manifest, 'utf8');
+    console.log('Successfully patched AndroidManifest.xml!');
+  }
+}
+
