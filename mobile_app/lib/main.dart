@@ -17,7 +17,7 @@ void main() {
   runApp(const NexcoinPRApp());
 }
 
-/// Robust launcher that tries external app, then platform default, then in-app browser
+/// Robust launcher that opens Telegram, Web, or Mail
 class AppLauncher {
   static Future<void> open(BuildContext context, String url) async {
     HapticFeedback.lightImpact();
@@ -59,7 +59,7 @@ class AppLauncher {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Could not open: $url'),
+            content: Text('Could not open link: $url'),
             backgroundColor: Colors.redAccent,
           ),
         );
@@ -84,7 +84,6 @@ class NexcoinPRApp extends StatelessWidget {
           primary: Color(0xFF00F2FE),
           secondary: Color(0xFFC9A84C),
           surface: Color(0xFF0D1527),
-          background: Color(0xFF070A13),
         ),
         cardTheme: CardTheme(
           color: const Color(0xFF0D1527),
@@ -120,7 +119,8 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
   final List<Widget> _pages = const [
     DashboardView(),
     PackagesView(),
-    MarketsAndNewsView(),
+    MarketsAndTradingView(),
+    NewsAndCaseStudiesView(),
     TrackerView(),
     ContactDeskView(),
   ];
@@ -129,20 +129,36 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        titleSpacing: 16,
         title: Row(
           children: [
             Container(
-              width: 32,
-              height: 32,
+              width: 36,
+              height: 36,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                gradient: const RadialGradient(
-                  colors: [Color(0xFF00F2FE), Color(0xFF0F223D)],
-                ),
-                border: Border.all(color: const Color(0xFF00F2FE), width: 1.5),
+                border: Border.all(color: const Color(0xFF00F2FE).withOpacity(0.5), width: 1.5),
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color(0xFF00F2FE).withOpacity(0.15),
+                    blurRadius: 8,
+                    spreadRadius: 1,
+                  ),
+                ],
               ),
-              child: const Center(
-                child: Icon(Icons.public, color: Colors.white, size: 18),
+              child: ClipOval(
+                child: Image.asset(
+                  'assets/images/app_icon.png',
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      color: const Color(0xFF0F223D),
+                      child: const Center(
+                        child: Icon(Icons.bolt, color: Color(0xFF00F2FE), size: 20),
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
             const SizedBox(width: 10),
@@ -183,7 +199,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
           IconButton(
             tooltip: 'Instant Telegram Support',
             icon: Container(
-              padding: const EdgeInsets.all(6),
+              padding: const EdgeInsets.all(7),
               decoration: BoxDecoration(
                 color: const Color(0xFF2AABEE).withOpacity(0.2),
                 shape: BoxShape.circle,
@@ -218,17 +234,22 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
             NavigationDestination(
               icon: Icon(Icons.dashboard_outlined, color: Color(0xFF94A3B8)),
               selectedIcon: Icon(Icons.dashboard, color: Color(0xFF00F2FE)),
-              label: 'Dashboard',
+              label: 'Overview',
             ),
             NavigationDestination(
-              icon: Icon(Icons.electric_bolt_outlined, color: Color(0xFF94A3B8)),
-              selectedIcon: Icon(Icons.electric_bolt, color: Color(0xFF00F2FE)),
-              label: 'PR Wire',
+              icon: Icon(Icons.sell_outlined, color: Color(0xFF94A3B8)),
+              selectedIcon: Icon(Icons.sell, color: Color(0xFF00F2FE)),
+              label: 'Pricing',
             ),
             NavigationDestination(
-              icon: Icon(Icons.trending_up, color: Color(0xFF94A3B8)),
-              selectedIcon: Icon(Icons.trending_up, color: Color(0xFF00F2FE)),
+              icon: Icon(Icons.candlestick_chart_outlined, color: Color(0xFF94A3B8)),
+              selectedIcon: Icon(Icons.candlestick_chart, color: Color(0xFF00F2FE)),
               label: 'Markets',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.newspaper_outlined, color: Color(0xFF94A3B8)),
+              selectedIcon: Icon(Icons.newspaper, color: Color(0xFF00F2FE)),
+              label: 'News',
             ),
             NavigationDestination(
               icon: Icon(Icons.track_changes_outlined, color: Color(0xFF94A3B8)),
@@ -236,8 +257,8 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
               label: 'Tracker',
             ),
             NavigationDestination(
-              icon: Icon(Icons.chat_bubble_outline, color: Color(0xFF94A3B8)),
-              selectedIcon: Icon(Icons.chat_bubble, color: Color(0xFF00F2FE)),
+              icon: Icon(Icons.headset_mic_outlined, color: Color(0xFF94A3B8)),
+              selectedIcon: Icon(Icons.headset_mic, color: Color(0xFF00F2FE)),
               label: 'Desk',
             ),
           ],
@@ -247,10 +268,9 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
   }
 }
 
-
-// -------------------------------------------------------------
-// TAB 1: DASHBOARD
-// -------------------------------------------------------------
+// ============================================================================
+// TAB 1: OVERVIEW / DASHBOARD (Verified metrics, partners, recent announcements)
+// ============================================================================
 class DashboardView extends StatefulWidget {
   const DashboardView({super.key});
 
@@ -259,10 +279,10 @@ class DashboardView extends StatefulWidget {
 }
 
 class _DashboardViewState extends State<DashboardView> {
-  final List<Map<String, dynamic>> _tickers = [
-    {'symbol': 'BTC', 'price': '\$96,480', 'change': '+2.8%', 'isUp': true},
-    {'symbol': 'ETH', 'price': '\$3,450', 'change': '+3.4%', 'isUp': true},
-    {'symbol': 'SOL', 'price': '\$215', 'change': '+5.9%', 'isUp': true},
+  final List<Map<String, dynamic>> _quickTickers = [
+    {'symbol': 'BTC', 'price': '\$84,120', 'change': '+1.4%', 'isUp': true},
+    {'symbol': 'ETH', 'price': '\$3,280', 'change': '+2.8%', 'isUp': true},
+    {'symbol': 'SOL', 'price': '\$198.50', 'change': '+4.2%', 'isUp': true},
     {'symbol': 'EUR/USD', 'price': '1.0842', 'change': '+0.12%', 'isUp': true},
     {'symbol': 'USD/JPY', 'price': '152.18', 'change': '-0.24%', 'isUp': false},
   ];
@@ -272,10 +292,10 @@ class _DashboardViewState extends State<DashboardView> {
   @override
   void initState() {
     super.initState();
-    _fetchLivePrices();
+    _fetchLiveRates();
   }
 
-  Future<void> _fetchLivePrices() async {
+  Future<void> _fetchLiveRates() async {
     try {
       final client = HttpClient();
       client.connectionTimeout = const Duration(seconds: 4);
@@ -293,9 +313,9 @@ class _DashboardViewState extends State<DashboardView> {
               final p = double.tryParse(item['lastPrice'].toString()) ?? 0.0;
               final chg = double.tryParse(item['priceChangePercent'].toString()) ?? 0.0;
               final isUp = chg >= 0;
-              final idx = _tickers.indexWhere((t) => t['symbol'] == sym);
+              final idx = _quickTickers.indexWhere((t) => t['symbol'] == sym);
               if (idx != -1) {
-                _tickers[idx] = {
+                _quickTickers[idx] = {
                   'symbol': sym,
                   'price': sym == 'BTC' ? '\$${p.toStringAsFixed(0)}' : '\$${p.toStringAsFixed(2)}',
                   'change': '${isUp ? '+' : ''}${chg.toStringAsFixed(2)}%',
@@ -313,7 +333,7 @@ class _DashboardViewState extends State<DashboardView> {
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
-      onRefresh: _fetchLivePrices,
+      onRefresh: _fetchLiveRates,
       color: const Color(0xFF00F2FE),
       backgroundColor: const Color(0xFF0D1527),
       child: SingleChildScrollView(
@@ -322,16 +342,16 @@ class _DashboardViewState extends State<DashboardView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Live Status & Ticker Bar
+            // Live Strip
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  'Market Pulse',
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Color(0xFF94A3B8)),
+                  'MARKET PULSE (LIVE)',
+                  style: TextStyle(fontSize: 11, fontWeight: FontWeight.w800, color: Color(0xFF94A3B8), letterSpacing: 0.8),
                 ),
                 Text(
-                  _isLiveLoaded ? '● LIVE TICKER CONNECTED' : 'PULL TO REFRESH',
+                  _isLiveLoaded ? '● BINANCE FEED ACTIVE' : 'PULL TO REFRESH',
                   style: TextStyle(
                     fontSize: 9,
                     fontWeight: FontWeight.bold,
@@ -342,13 +362,13 @@ class _DashboardViewState extends State<DashboardView> {
             ),
             const SizedBox(height: 6),
             SizedBox(
-              height: 44,
+              height: 42,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
-                itemCount: _tickers.length,
+                itemCount: _quickTickers.length,
                 separatorBuilder: (_, __) => const SizedBox(width: 8),
                 itemBuilder: (context, index) {
-                  final t = _tickers[index];
+                  final t = _quickTickers[index];
                   return Container(
                     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                     decoration: BoxDecoration(
@@ -360,7 +380,7 @@ class _DashboardViewState extends State<DashboardView> {
                       children: [
                         Text(
                           t['symbol'],
-                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color: Colors.white),
                         ),
                         const SizedBox(width: 6),
                         Text(
@@ -384,7 +404,7 @@ class _DashboardViewState extends State<DashboardView> {
             ),
             const SizedBox(height: 18),
 
-            // Hero Banner
+            // Hero Agency Branding Card
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(22),
@@ -407,38 +427,59 @@ class _DashboardViewState extends State<DashboardView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF00F2FE).withOpacity(0.12),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: const Text(
-                      'TIER-1 MEDIA WIRE',
-                      style: TextStyle(
-                        color: Color(0xFF00F2FE),
-                        fontSize: 11,
-                        fontWeight: FontWeight.w800,
-                        letterSpacing: 1.2,
+                  Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF00F2FE).withOpacity(0.15),
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: const Color(0xFF00F2FE).withOpacity(0.3)),
+                        ),
+                        child: const Text(
+                          'GLOBAL WIRE DISTRIBUTION',
+                          style: TextStyle(
+                            color: Color(0xFF00F2FE),
+                            fontSize: 11,
+                            fontWeight: FontWeight.w800,
+                            letterSpacing: 1.1,
+                          ),
+                        ),
                       ),
-                    ),
+                      const Spacer(),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFC9A84C).withOpacity(0.15),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: const Text(
+                          'TIER 1 AGENCY',
+                          style: TextStyle(
+                            color: Color(0xFFC9A84C),
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 14),
                   const Text(
-                    'Global Crypto & Forex PR Distribution Agency',
+                    'The Authority in Crypto, Web3 & Forex PR',
                     style: TextStyle(
                       fontSize: 22,
-                      fontWeight: FontWeight.w800,
+                      fontWeight: FontWeight.w900,
                       height: 1.25,
                       color: Colors.white,
                     ),
                   ),
                   const SizedBox(height: 8),
                   const Text(
-                    'Get guaranteed publications on Bloomberg, CoinDesk, Cointelegraph, Yahoo Finance, and 350+ financial newswires.',
-                    style: TextStyle(color: Color(0xFF94A3B8), fontSize: 13, height: 1.4),
+                    'Guaranteed publication on Bloomberg Terminal, CoinDesk, CoinTelegraph, Yahoo! Finance, BeInCrypto, and 350+ financial media networks.',
+                    style: TextStyle(color: Color(0xFF94A3B8), fontSize: 13, height: 1.45),
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 18),
                   Row(
                     children: [
                       Expanded(
@@ -448,96 +489,106 @@ class _DashboardViewState extends State<DashboardView> {
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFF2AABEE),
                             foregroundColor: Colors.white,
-                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            padding: const EdgeInsets.symmetric(vertical: 13),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),
                             ),
                           ),
-                          onPressed: () => AppLauncher.open(context, 'https://t.me/Nexcoinpr'),
+                          onPressed: () => AppLauncher.open(context, 'https://t.me/Nexcoinpr?text=Hello%20NexcoinPR!%20I%20want%20to%20inquire%20about%20wire%20distribution.'),
                         ),
                       ),
                     ],
                   ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 20),
+
+            // Key Agency Metrics (From Live Site)
+            Row(
+              children: [
+                _buildMetricCard('350+', 'Global Outlets', Icons.public, const Color(0xFF00F2FE)),
+                const SizedBox(width: 10),
+                _buildMetricCard('22M+', 'Audience Reach', Icons.groups_2, const Color(0xFFC9A84C)),
               ],
             ),
-          ),
-          const SizedBox(height: 20),
+            const SizedBox(height: 10),
+            Row(
+              children: [
+                _buildMetricCard('98.8%', 'Guaranteed Placement', Icons.verified, const Color(0xFF10B981)),
+                const SizedBox(width: 10),
+                _buildMetricCard('24-48h', 'Rapid Delivery', Icons.bolt, const Color(0xFFA855F7)),
+              ],
+            ),
+            const SizedBox(height: 24),
 
-          // Key Metrics Grid
-          Row(
-            children: [
-              _buildMetricCard('350+', 'Global Outlets', Icons.public, const Color(0xFF00F2FE)),
-              const SizedBox(width: 10),
-              _buildMetricCard('2.8M+', 'Audience Reach', Icons.groups, const Color(0xFFC9A84C)),
-            ],
-          ),
-          const SizedBox(height: 10),
-          Row(
-            children: [
-              _buildMetricCard('98.8%', 'Guaranteed Placement', Icons.verified, const Color(0xFF10B981)),
-              const SizedBox(width: 10),
-              _buildMetricCard('24-48h', 'Turnaround Time', Icons.speed, const Color(0xFFA855F7)),
-            ],
-          ),
-          const SizedBox(height: 24),
+            // Guaranteed Media Networks
+            const Text(
+              'Guaranteed Media Networks',
+              style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white),
+            ),
+            const SizedBox(height: 12),
+            Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              children: [
+                _buildMediaTag('Bloomberg Terminal', true),
+                _buildMediaTag('CoinDesk Wire', true),
+                _buildMediaTag('CoinTelegraph', true),
+                _buildMediaTag('BeInCrypto', true),
+                _buildMediaTag('Yahoo! Finance', true),
+                _buildMediaTag('MarketWatch', true),
+                _buildMediaTag('The Block', true),
+                _buildMediaTag('Investing.com', true),
+                _buildMediaTag('Benzinga', true),
+                _buildMediaTag('Google News Indexed', true),
+              ],
+            ),
+            const SizedBox(height: 24),
 
-          // Featured Media Partners
-          const Text(
-            'Guaranteed Media Networks',
-            style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white),
-          ),
-          const SizedBox(height: 12),
-          Wrap(
-            spacing: 8,
-            runSpacing: 8,
-            children: [
-              _buildMediaTag('Bloomberg Terminal', true),
-              _buildMediaTag('CoinDesk Wire', true),
-              _buildMediaTag('Cointelegraph', true),
-              _buildMediaTag('Yahoo! Finance', true),
-              _buildMediaTag('MarketWatch', true),
-              _buildMediaTag('Benzinga', true),
-              _buildMediaTag('Decrypt', true),
-              _buildMediaTag('Google News Indexed', true),
-            ],
-          ),
-          const SizedBox(height: 24),
-
-          // Recent Wire Releases
-          const Text(
-            'Latest Wire Announcements',
-            style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white),
-          ),
-          const SizedBox(height: 12),
-          _buildReleaseCard(
-            context,
-            'Cregis Marks 2 Years of Middle East Growth with Institutional Inflows',
-            'Cregis Foundation',
-            'Crypto • 24 Sep 2026',
-            'Leading Web3 MPC wallet and treasury platform announces rapid regional adoption.',
-          ),
-          const SizedBox(height: 10),
-          _buildReleaseCard(
-            context,
-            'LBank Ranks #1 for Mainstream Crypto Liquidity in BeInCrypto Study',
-            'LBank Exchange',
-            'Fintech • 23 Sep 2026',
-            'Exchange hits 4.4x average order book depth on top major pairs.',
-          ),
-          const SizedBox(height: 10),
-          _buildReleaseCard(
-            context,
-            'BC.GAME Rewards Exceed \$8.6 Million Amid Global Ecosystem Surge',
-            'BC.GAME',
-            'Blockchain • 23 Sep 2026',
-            'Decentralized ecosystem rewards reach new milestones for active token holders.',
-          ),
-          const SizedBox(height: 20),
-        ],
+            // Recent Wire Releases (From Live Site news.html & case-studies.html)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Verified Client Highlights',
+                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white),
+                ),
+                GestureDirectional(
+                  child: const Text('View All →', style: TextStyle(color: Color(0xFF00F2FE), fontSize: 13, fontWeight: FontWeight.bold)),
+                ),
+              ],
+            ),
+            const SizedBox(height: 12),
+            _buildReleaseCard(
+              context,
+              'Aria Coin (\$ARIA) Breakthrough: 147% Price Jump in 2 Hours',
+              'Aria Coin • Case Study',
+              'Dec 2024 • 3M+ Global Reach',
+              'Cointelegraph Premium PR Bundle transformed token into top trending asset with 42% organic traffic surge.',
+            ),
+            const SizedBox(height: 10),
+            _buildReleaseCard(
+              context,
+              'LBank Ranks #1 for Mainstream Crypto Liquidity in BeInCrypto Study',
+              'LBank Exchange • Wire',
+              'Sep 2026 • 4.4x Depth',
+              'BeInCrypto comprehensive institutional liquidity analysis ranks LBank highest depth across top trading pairs.',
+            ),
+            const SizedBox(height: 10),
+            _buildReleaseCard(
+              context,
+              'Cregis Marks 2 Years of Middle East Institutional Growth',
+              'Cregis Foundation • PR',
+              'Sep 2026 • Digital Asset Infra',
+              'Leading Web3 MPC wallet and treasury platform achieves massive adoption among traditional finance firms.',
+            ),
+            const SizedBox(height: 24),
+          ],
+        ),
       ),
-    ),
-  );
-}
+    );
+  }
 
   Widget _buildMetricCard(String val, String label, IconData icon, Color color) {
     return Expanded(
@@ -579,7 +630,7 @@ class _DashboardViewState extends State<DashboardView> {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(Icons.check_circle_rounded, color: const Color(0xFF00F2FE), size: 14),
+          const Icon(Icons.check_circle_rounded, color: Color(0xFF00F2FE), size: 14),
           const SizedBox(width: 6),
           Text(
             name,
@@ -677,9 +728,9 @@ class _DashboardViewState extends State<DashboardView> {
   }
 }
 
-// -------------------------------------------------------------
-// TAB 2: PR WIRE PACKAGES & CALCULATOR
-// -------------------------------------------------------------
+// ============================================================================
+// TAB 2: AUTHENTIC PRICING (13 Bundled Packages + Single A La Carte Outlets)
+// ============================================================================
 class PackagesView extends StatefulWidget {
   const PackagesView({super.key});
 
@@ -687,327 +738,502 @@ class PackagesView extends StatefulWidget {
   State<PackagesView> createState() => _PackagesViewState();
 }
 
-class _PackagesViewState extends State<PackagesView> {
-  int _selectedTier = 1; // Default to Tier-1 Synergy Wire
-
-  bool _auditAddon = false;
-  bool _translationAddon = false;
-  bool _videoAddon = false;
-
-  final List<Map<String, dynamic>> _tiers = [
-    {
-      'title': 'Starter Crypto Wire',
-      'price': 499,
-      'badge': 'ESSENTIAL',
-      'outlets': '50+ Global Outlets',
-      'features': [
-        'Google News & Crypto Directory Indexing',
-        'Distribution to 50+ Web3 & Tech Outlets',
-        'Standard Turnaround: 24-48 Hours',
-        'Verifiable Live Link Report',
-      ],
-    },
-    {
-      'title': 'Tier-1 Synergy Wire',
-      'price': 1499,
-      'badge': 'MOST POPULAR',
-      'outlets': '200+ Tier-1 Outlets',
-      'features': [
-        'Guaranteed Bloomberg Terminal Syndication',
-        'Yahoo! Finance & MarketWatch Placement',
-        'Benzinga & StreetInsider Distribution',
-        'Editorial Compliance & SEO Optimization',
-        'Priority Wire Scheduling (Same Day)',
-        'Full White-Label Executive PDF Report',
-      ],
-    },
-    {
-      'title': 'Crypto Elite Wire',
-      'price': 2999,
-      'badge': 'CRYPTO HEAVYWEIGHT',
-      'outlets': '300+ Crypto & Financial Outlets',
-      'features': [
-        'CoinDesk Wire & Cointelegraph Network',
-        'Decrypt & BeInCrypto Syndication',
-        'Bloomberg Terminal & Yahoo Finance',
-        'Featured Placement on Crypto Aggregators',
-        'Social Media Syndication Blast',
-        'Dedicated Senior PR Account Manager',
-      ],
-    },
-    {
-      'title': 'Enterprise Token Blitz',
-      'price': 5999,
-      'badge': 'FULL BLITZ',
-      'outlets': '500+ Worldwide Outlets',
-      'features': [
-        'Comprehensive Global Multi-Wire Distribution',
-        'Forbes & Business Insider Feature Outreach',
-        'Executive Video Interview Syndication',
-        'Multi-lingual Translation (Chinese, Korean, Arabic)',
-        'Crypto Influencer & Telegram Channel Push',
-        'Full Crisis & Retainer Media Support',
-      ],
-    },
-  ];
-
-  int _calculateTotal() {
-    int total = _tiers[_selectedTier]['price'] as int;
-    if (_auditAddon) total += 200;
-    if (_translationAddon) total += 350;
-    if (_videoAddon) total += 800;
-    return total;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final cur = _tiers[_selectedTier];
-
-    return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'PR Distribution Packages',
-            style: TextStyle(fontSize: 22, fontWeight: FontWeight.w900, color: Colors.white),
-          ),
-          const SizedBox(height: 4),
-          const Text(
-            'Select a package or customize with real-time add-ons.',
-            style: TextStyle(fontSize: 13, color: Color(0xFF94A3B8)),
-          ),
-          const SizedBox(height: 16),
-
-          // Horizontal package selector
-          SizedBox(
-            height: 48,
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              itemCount: _tiers.length,
-              separatorBuilder: (_, __) => const SizedBox(width: 8),
-              itemBuilder: (context, index) {
-                final isSel = _selectedTier == index;
-                final t = _tiers[index];
-                return ChoiceChip(
-                  label: Text('${t['title']} (\$${t['price']})'),
-                  selected: isSel,
-                  onSelected: (val) {
-                    if (val) setState(() => _selectedTier = index);
-                  },
-                  selectedColor: const Color(0xFF00F2FE),
-                  backgroundColor: const Color(0xFF0D1527),
-                  labelStyle: TextStyle(
-                    color: isSel ? Colors.black : Colors.white70,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12,
-                  ),
-                  side: BorderSide(
-                    color: isSel ? const Color(0xFF00F2FE) : const Color(0xFF1E293B),
-                  ),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                );
-              },
-            ),
-          ),
-          const SizedBox(height: 16),
-
-          // Selected Package Card
-          Container(
-            padding: const EdgeInsets.all(22),
-            decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                colors: [Color(0xFF0F1E36), Color(0xFF091222)],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: const Color(0xFF00F2FE).withOpacity(0.5), width: 1.5),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF00F2FE).withOpacity(0.15),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Text(
-                        cur['badge'],
-                        style: const TextStyle(
-                          color: Color(0xFF00F2FE),
-                          fontSize: 10,
-                          fontWeight: FontWeight.w900,
-                          letterSpacing: 1,
-                        ),
-                      ),
-                    ),
-                    Text(
-                      '\$${cur['price']}',
-                      style: const TextStyle(fontSize: 26, fontWeight: FontWeight.w900, color: Colors.white),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  cur['title'],
-                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-                ),
-                Text(
-                  cur['outlets'],
-                  style: const TextStyle(fontSize: 13, color: Color(0xFFC9A84C), fontWeight: FontWeight.w600),
-                ),
-                const SizedBox(height: 16),
-                const Divider(color: Color(0xFF1E293B)),
-                const SizedBox(height: 12),
-                ...(cur['features'] as List<String>).map(
-                  (f) => Padding(
-                    padding: const EdgeInsets.only(bottom: 8),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Icon(Icons.check_circle, color: Color(0xFF10B981), size: 16),
-                        const SizedBox(width: 8),
-                        Expanded(
-                          child: Text(
-                            f,
-                            style: const TextStyle(color: Color(0xFFE2E8F0), fontSize: 13),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 20),
-
-          // Add-Ons
-          const Text(
-            'Campaign Add-ons',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
-          ),
-          const SizedBox(height: 10),
-          _buildAddonTile('Editorial Review & SEO Optimization', '+\$200', _auditAddon, (v) {
-            setState(() => _auditAddon = v);
-          }),
-          _buildAddonTile('Asian Market Translation (KR/CN/JP)', '+\$350', _translationAddon, (v) {
-            setState(() => _translationAddon = v);
-          }),
-          _buildAddonTile('Executive Video Interview Syndication', '+\$800', _videoAddon, (v) {
-            setState(() => _videoAddon = v);
-          }),
-          const SizedBox(height: 20),
-
-          // Total & Book Button
-          Container(
-            padding: const EdgeInsets.all(18),
-            decoration: BoxDecoration(
-              color: const Color(0xFF0D1527),
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: const Color(0xFF1E293B)),
-            ),
-            child: Row(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text('Estimated Total', style: TextStyle(color: Color(0xFF94A3B8), fontSize: 12)),
-                    Text(
-                      '\$${_calculateTotal()}',
-                      style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w900, color: Color(0xFF00F2FE)),
-                    ),
-                  ],
-                ),
-                const Spacer(),
-                ElevatedButton.icon(
-                  icon: const Icon(Icons.send_rounded, size: 16),
-                  label: const Text('Book via Telegram'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF2AABEE),
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                  ),
-                  onPressed: () {
-                    final msg = Uri.encodeComponent(
-                      'Hello NexcoinPR! I want to book ${cur['title']} (Total: \$${_calculateTotal()}).',
-                    );
-                    AppLauncher.open(context, 'https://t.me/Nexcoinpr?text=$msg');
-                  },
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 20),
-        ],
-      ),
-    );
-  }
-
-
-  Widget _buildAddonTile(String title, String price, bool val, ValueChanged<bool> onChanged) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 8),
-      decoration: BoxDecoration(
-        color: const Color(0xFF0D1527),
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: val ? const Color(0xFF00F2FE) : const Color(0xFF1E293B)),
-      ),
-      child: CheckboxListTile(
-        value: val,
-        onChanged: (v) => onChanged(v ?? false),
-        activeColor: const Color(0xFF00F2FE),
-        checkColor: Colors.black,
-        title: Text(title, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
-        secondary: Text(price, style: const TextStyle(color: Color(0xFF00F2FE), fontWeight: FontWeight.bold)),
-      ),
-    );
-  }
-}
-
-// -------------------------------------------------------------
-// TAB 3: LIVE MARKETS & NEWS
-// -------------------------------------------------------------
-class MarketsAndNewsView extends StatefulWidget {
-  const MarketsAndNewsView({super.key});
-
-  @override
-  State<MarketsAndNewsView> createState() => _MarketsAndNewsViewState();
-}
-
-class _MarketsAndNewsViewState extends State<MarketsAndNewsView> with SingleTickerProviderStateMixin {
+class _PackagesViewState extends State<PackagesView> with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  bool _isLiveCrypto = false;
 
-  final List<Map<String, dynamic>> _cryptoList = [
-    {'name': 'Bitcoin', 'symbol': 'BTC', 'price': '\$96,480.00', 'change': '+2.8%', 'up': true},
-    {'name': 'Ethereum', 'symbol': 'ETH', 'price': '\$3,450.20', 'change': '+3.4%', 'up': true},
-    {'name': 'Solana', 'symbol': 'SOL', 'price': '\$215.40', 'change': '+5.9%', 'up': true},
-    {'name': 'Binance Coin', 'symbol': 'BNB', 'price': '\$642.10', 'change': '+1.1%', 'up': true},
-    {'name': 'Ripple', 'symbol': 'XRP', 'price': '\$1.18', 'change': '+4.2%', 'up': true},
-    {'name': 'Cardano', 'symbol': 'ADA', 'price': '\$0.78', 'change': '-0.5%', 'up': false},
-    {'name': 'Avalanche', 'symbol': 'AVAX', 'price': '\$38.40', 'change': '+3.8%', 'up': true},
+  // 13 Official Bundled Packages from scripts/update_pricing_and_packages.js & pricing.html
+  final List<Map<String, dynamic>> _bundledPackages = [
+    {
+      'title': 'ELITE: A',
+      'price': 20000,
+      'badge': 'MAXIMUM PRESTIGE',
+      'traffic': '22M+ Total Traffic',
+      'outlets': 'CoinTelegraph, CoinDesk, TheBlock, BeInCrypto, Watcher.guru',
+      'features': [
+        'Guaranteed publication on CoinTelegraph & CoinDesk',
+        'Featured inclusion on TheBlock & BeInCrypto',
+        'Watcher.guru wire broadcast with 22M+ audience',
+        '100% DoFollow SEO backlinks & indexed on Google News',
+        'Turnaround: 24-48 Hours with live link report',
+      ],
+    },
+    {
+      'title': 'ELITE: B',
+      'price': 11000,
+      'badge': 'TIER-1 REACH',
+      'traffic': '15M+ Total Traffic',
+      'outlets': 'CoinTelegraph, BeInCrypto, Bitcoin.com, AMBCrypto, Syndication',
+      'features': [
+        'CoinTelegraph full editorial publication',
+        'BeInCrypto & Bitcoin.com authoritative syndication',
+        'AMBCrypto top banner broadcast',
+        'Full PDF white-label dossier & executive report',
+      ],
+    },
+    {
+      'title': 'VIRAL (10 Media)',
+      'price': 8300,
+      'badge': 'VIRAL MOMENTUM',
+      'traffic': '15M+ Total Traffic',
+      'outlets': 'TheBlock, Cryptopolitan, BeInCrypto, Bitcoin.com, Bitcoinist, CoinGape, NewsBTC, Investing.com, Benzinga',
+      'features': [
+        '10 Heavyweight crypto & financial newsrooms',
+        'Simultaneous broadcast across TheBlock & BeInCrypto',
+        'Finance desk distribution on Benzinga & Investing.com',
+        'Rapid investor and retail trader discovery',
+      ],
+    },
+    {
+      'title': '60 Media Mega Package',
+      'price': 7000,
+      'badge': 'MASS BACKLINK POWER',
+      'traffic': 'SEO Dominance',
+      'outlets': '60 Crypto & Web3 Portals (Mass Syndication)',
+      'features': [
+        'Mass distribution across 60 cryptocurrency portals',
+        'Maximum domain authority backlinks for Google ranking',
+        'Guaranteed Google News, Yahoo Finance & Bing indexing',
+        'Comprehensive live tracking spreadsheet delivered',
+      ],
+    },
+    {
+      'title': 'WEB3 GAMING (10 Media)',
+      'price': 5299,
+      'badge': 'GAMING & METAVERSE',
+      'traffic': 'Targeted Gamer Reach',
+      'outlets': 'Gam3s.gg, Playtoearn.com, Chainplay.gg, Gurugamer, Gamespace, TechBullion',
+      'features': [
+        'Direct publication across top Web3 gaming hubs',
+        'Gam3s.gg and PlayToEarn editorial placement',
+        'Community gamer onboarding & discord link tracking',
+        'Featured exposure to GameFi and NFT investors',
+      ],
+    },
+    {
+      'title': 'FINTECH & FOREX (10 Media)',
+      'price': 3999,
+      'badge': 'CAPITAL MARKETS',
+      'traffic': 'Institutional Traders',
+      'outlets': 'FinanceMagnates, Invezz, WalletInvestor, TradingBeasts, ForexLive, Investing.com',
+      'features': [
+        'Premier coverage on FinanceMagnates & ForexLive',
+        'Market trader exposure on WalletInvestor & TradingBeasts',
+        'Broker, CFD, and institutional FX syndicate',
+        'Direct reach to retail currency and crypto traders',
+      ],
+    },
+    {
+      'title': 'PREMIUM (10 Media)',
+      'price': 3250,
+      'badge': 'POPULAR CHOICE',
+      'traffic': 'High Web3 Engagement',
+      'outlets': 'HackerNoon, TheDefiant, CoinEdition, Mpost.io, Blockonomi, BraveNewCoin',
+      'features': [
+        'Guaranteed feature on HackerNoon and TheDefiant',
+        'CoinEdition & Blockonomi deep-dive coverage',
+        'DoFollow contextual backlinks with high domain authority',
+        'Fast turnaround within 24-36 hours',
+      ],
+    },
+    {
+      'title': 'TECH & INNOVATION (10 Media)',
+      'price': 2899,
+      'badge': 'DEVELOPERS & TECH',
+      'traffic': '5M+ Tech Readers',
+      'outlets': 'TechBullion, TechAnnouncer, HackerNoon, TechPanga, Web3Portal',
+      'features': [
+        'Featured tech coverage on TechBullion & HackerNoon',
+        'Syndication across developer-focused newsletters',
+        'Targeted AI, blockchain architecture, and protocol audience',
+      ],
+    },
+    {
+      'title': 'SUPERIOR: A',
+      'price': 2800,
+      'badge': '5-MEDIA TIER 1',
+      'traffic': '8M+ Total Traffic',
+      'outlets': 'Cryptopolitan, Crypto.news, Bitcoinist, HackerNoon, NewsBTC',
+      'features': [
+        'Cryptopolitan & Crypto.news authoritative release',
+        'Bitcoinist and HackerNoon permanent publications',
+        'Full Google News and aggregator pickup',
+      ],
+    },
+    {
+      'title': 'SUPERIOR: B',
+      'price': 2650,
+      'badge': '5-MEDIA TIER 1',
+      'traffic': '7M+ Total Traffic',
+      'outlets': 'Crypto.news, HackerNoon, CoinGape, CoinCheckup, Mpost.io',
+      'features': [
+        'Crypto.news and CoinGape top-tier placement',
+        'HackerNoon technical feature & Mpost syndicate',
+        'Verifiable live indexing URL report',
+      ],
+    },
+    {
+      'title': 'STARTER (10 Media)',
+      'price': 2350,
+      'badge': 'BUDGET 10-PACK',
+      'traffic': 'Broad Web3 Reach',
+      'outlets': 'CoinGabbar, Invezz, Bitcoin Insider, CoinJournal, TimesTabloid',
+      'features': [
+        '10 Verified cryptocurrency media portals',
+        'CoinJournal and Invezz guaranteed publications',
+        'Permanent article links and indexation',
+      ],
+    },
+    {
+      'title': 'BASIC: A',
+      'price': 1100,
+      'badge': '5-MEDIA STARTER',
+      'traffic': '1M+ Total Traffic',
+      'outlets': 'Blockonomi, TechBullion, Publish0x, CoinJournal, Bitcoin Insider',
+      'features': [
+        'Blockonomi and TechBullion permanent feature',
+        'CoinJournal & Bitcoin Insider syndication',
+        'Ideal for token updates and initial PR tests',
+      ],
+    },
+    {
+      'title': 'BASIC: B',
+      'price': 800,
+      'badge': 'ENTRY LEVEL',
+      'traffic': '600K+ Total Traffic',
+      'outlets': 'Digital Journal, CaptainAltcoin, TechAnnouncer, Bitcoin Insider, TechBullion',
+      'features': [
+        'Digital Journal and CaptainAltcoin placement',
+        'Quick turnaround: 24 hours guaranteed',
+        'Verified live link report with Google indexing',
+      ],
+    },
   ];
 
-  final List<Map<String, dynamic>> _forexList = [
-    {'pair': 'EUR / USD', 'rate': '1.0842', 'change': '+0.12%', 'up': true},
-    {'pair': 'GBP / USD', 'rate': '1.2965', 'change': '+0.25%', 'up': true},
-    {'pair': 'USD / JPY', 'rate': '152.18', 'change': '-0.24%', 'up': false},
-    {'pair': 'USD / CHF', 'rate': '0.8840', 'change': '+0.05%', 'up': true},
-    {'pair': 'AUD / USD', 'rate': '0.6580', 'change': '+0.31%', 'up': true},
-    {'pair': 'USD / CAD', 'rate': '1.3850', 'change': '-0.15%', 'up': false},
+  // Authentic Single Outlets (From master_single_publications.json & pricing.html)
+  final List<Map<String, dynamic>> _singlePlacements = [
+    {'name': 'Entrepreneur.com', 'price': 8500, 'da': 92, 'type': 'Global Business', 'badge': 'TIER-1 PRESTIGE'},
+    {'name': 'CoinDesk', 'price': 8000, 'da': 90, 'type': 'Top Crypto Authority', 'badge': 'INDUSTRY LEADER'},
+    {'name': 'Forbes', 'price': 7500, 'da': 94, 'type': 'World Capital & Business', 'badge': 'HIGHEST PRESTIGE'},
+    {'name': 'CoinTelegraph', 'price': 6500, 'da': 89, 'type': 'Crypto Global Giant', 'badge': 'MOST REQUESTED'},
+    {'name': 'Bloomberg Terminal Wire', 'price': 5000, 'da': 94, 'type': 'Institutional Financial', 'badge': 'INSTITUTIONAL'},
+    {'name': 'The Block', 'price': 5000, 'da': 85, 'type': 'Institutional Web3', 'badge': 'PREMIUM CRYPTO'},
+    {'name': 'BeInCrypto', 'price': 4500, 'da': 84, 'type': 'Global Crypto Portal', 'badge': 'TIER 1'},
+    {'name': 'Yahoo! Finance', 'price': 3500, 'da': 92, 'type': 'Global Retail Financial', 'badge': 'FINANCIAL GIANT'},
+    {'name': 'Decrypt', 'price': 3800, 'da': 82, 'type': 'Web3 & Culture', 'badge': 'CULTURE'},
+    {'name': 'Investing.com', 'price': 3000, 'da': 91, 'type': 'Stock & FX Network', 'badge': 'MARKETS'},
+    {'name': 'MarketWatch', 'price': 2500, 'da': 92, 'type': 'Dow Jones Media Group', 'badge': 'WALL STREET'},
+    {'name': 'Benzinga / AP News', 'price': 2200, 'da': 88, 'type': 'Brokerage Wire', 'badge': 'TRADER REACH'},
+    {'name': 'Finbold', 'price': 1800, 'da': 76, 'type': 'Finance & Crypto', 'badge': 'FAST INDEX'},
+    {'name': 'HackerNoon', 'price': 1500, 'da': 81, 'type': 'Tech & Developers', 'badge': 'DO-FOLLOW'},
+    {'name': 'U.Today', 'price': 1400, 'da': 78, 'type': 'Crypto News Daily', 'badge': 'RELIABLE'},
   ];
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          color: const Color(0xFF070A13),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: TabBar(
+            controller: _tabController,
+            indicatorColor: const Color(0xFF00F2FE),
+            labelColor: const Color(0xFF00F2FE),
+            unselectedLabelColor: const Color(0xFF94A3B8),
+            tabs: const [
+              Tab(text: 'Bundled Packages (13)'),
+              Tab(text: 'Single Placements'),
+            ],
+          ),
+        ),
+        Expanded(
+          child: TabBarView(
+            controller: _tabController,
+            children: [
+              // BUNDLED PACKAGES LIST
+              ListView.builder(
+                padding: const EdgeInsets.all(16),
+                itemCount: _bundledPackages.length,
+                itemBuilder: (context, index) {
+                  final pkg = _bundledPackages[index];
+                  return Container(
+                    margin: const EdgeInsets.only(bottom: 16),
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF0D1527),
+                      borderRadius: BorderRadius.circular(18),
+                      border: Border.all(
+                        color: index == 0
+                            ? const Color(0xFF00F2FE).withOpacity(0.6)
+                            : const Color(0xFF1E293B),
+                        width: index == 0 ? 1.5 : 1,
+                      ),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
+                              decoration: BoxDecoration(
+                                color: const Color(0xFF00F2FE).withOpacity(0.12),
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              child: Text(
+                                pkg['badge'],
+                                style: const TextStyle(
+                                  color: Color(0xFF00F2FE),
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w800,
+                                  letterSpacing: 0.8,
+                                ),
+                              ),
+                            ),
+                            Text(
+                              '\$${(pkg['price'] as int).toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},')}',
+                              style: const TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.w900,
+                                color: Color(0xFF00F2FE),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 10),
+                        Text(
+                          pkg['title'],
+                          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: Colors.white),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          pkg['traffic'],
+                          style: const TextStyle(fontSize: 12, color: Color(0xFFC9A84C), fontWeight: FontWeight.w700),
+                        ),
+                        const SizedBox(height: 10),
+                        Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF09101D),
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: const Color(0xFF1E293B)),
+                          ),
+                          child: Text(
+                            pkg['outlets'],
+                            style: const TextStyle(fontSize: 12, color: Color(0xFFCBD5E1), height: 1.4),
+                          ),
+                        ),
+                        const SizedBox(height: 12),
+                        ...(pkg['features'] as List<String>).map(
+                          (feat) => Padding(
+                            padding: const EdgeInsets.only(bottom: 6),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Icon(Icons.check_circle_rounded, color: Color(0xFF10B981), size: 15),
+                                const SizedBox(width: 8),
+                                Expanded(
+                                  child: Text(
+                                    feat,
+                                    style: const TextStyle(color: Color(0xFF94A3B8), fontSize: 12),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 14),
+                        SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton.icon(
+                            icon: const Icon(Icons.send_rounded, size: 15),
+                            label: Text('Book ${pkg['title']} via Telegram'),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color(0xFF2AABEE),
+                              foregroundColor: Colors.white,
+                              padding: const EdgeInsets.symmetric(vertical: 12),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                            ),
+                            onPressed: () {
+                              final msg = Uri.encodeComponent(
+                                'Hello NexcoinPR! I want to book ${pkg['title']} (\$${pkg['price']}). Please provide submission details.',
+                              );
+                              AppLauncher.open(context, 'https://t.me/Nexcoinpr?text=$msg');
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+
+              // SINGLE PLACEMENTS LIST
+              ListView.separated(
+                padding: const EdgeInsets.all(16),
+                itemCount: _singlePlacements.length,
+                separatorBuilder: (_, __) => const SizedBox(height: 10),
+                itemBuilder: (context, index) {
+                  final item = _singlePlacements[index];
+                  return Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF0D1527),
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(color: const Color(0xFF1E293B)),
+                    ),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 44,
+                          height: 44,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF1E293B),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'DA\n${item['da']}',
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                fontSize: 11,
+                                fontWeight: FontWeight.w900,
+                                color: Color(0xFF00F2FE),
+                                height: 1.1,
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 14),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    item['name'],
+                                    style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 15, color: Colors.white),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 2),
+                              Text(
+                                '${item['type']} • ${item['badge']}',
+                                style: const TextStyle(color: Color(0xFF94A3B8), fontSize: 11),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                              '\$${(item['price'] as int).toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},')}',
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w900,
+                                color: Color(0xFFC9A84C),
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            InkWell(
+                              onTap: () {
+                                final msg = Uri.encodeComponent(
+                                  'Hello NexcoinPR! I want to order a single placement on ${item['name']} (\$${item['price']}).',
+                                );
+                                AppLauncher.open(context, 'https://t.me/Nexcoinpr?text=$msg');
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFF00F2FE).withOpacity(0.15),
+                                  borderRadius: BorderRadius.circular(8),
+                                  border: Border.all(color: const Color(0xFF00F2FE).withOpacity(0.4)),
+                                ),
+                                child: const Text(
+                                  'Book →',
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFF00F2FE),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+// ============================================================================
+// TAB 3: LIVE MARKETS & TRADING HUB (Binance Live Stream, Paper Simulator, Earn)
+// ============================================================================
+class MarketsAndTradingView extends StatefulWidget {
+  const MarketsAndTradingView({super.key});
+
+  @override
+  State<MarketsAndTradingView> createState() => _MarketsAndTradingViewState();
+}
+
+class _MarketsAndTradingViewState extends State<MarketsAndTradingView> with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+  bool _isLiveCrypto = false;
+
+  // Real-time Crypto from Binance
+  final List<Map<String, dynamic>> _cryptoList = [
+    {'name': 'Bitcoin', 'symbol': 'BTC', 'price': '\$84,120.00', 'change': '+1.42%', 'up': true},
+    {'name': 'Ethereum', 'symbol': 'ETH', 'price': '\$3,280.50', 'change': '+2.85%', 'up': true},
+    {'name': 'Solana', 'symbol': 'SOL', 'price': '\$198.40', 'change': '+4.20%', 'up': true},
+    {'name': 'Binance Coin', 'symbol': 'BNB', 'price': '\$612.30', 'change': '+0.88%', 'up': true},
+    {'name': 'Ripple', 'symbol': 'XRP', 'price': '\$1.14', 'change': '+3.15%', 'up': true},
+    {'name': 'Cardano', 'symbol': 'ADA', 'price': '\$0.72', 'change': '-0.65%', 'up': false},
+    {'name': 'Avalanche', 'symbol': 'AVAX', 'price': '\$34.80', 'change': '+2.10%', 'up': true},
+    {'name': 'Dogecoin', 'symbol': 'DOGE', 'price': '\$0.2450', 'change': '-8.12%', 'up': false},
+  ];
+
+  // Authentic Forex Rates
+  final List<Map<String, dynamic>> _forexList = [
+    {'pair': 'EUR / USD', 'rate': '1.0842', 'change': '+0.12%', 'up': true, 'name': 'Euro / US Dollar'},
+    {'pair': 'GBP / USD', 'rate': '1.2965', 'change': '+0.25%', 'up': true, 'name': 'British Pound / US Dollar'},
+    {'pair': 'USD / JPY', 'rate': '152.18', 'change': '-0.24%', 'up': false, 'name': 'US Dollar / Japanese Yen'},
+    {'pair': 'USD / CHF', 'rate': '0.8840', 'change': '+0.05%', 'up': true, 'name': 'US Dollar / Swiss Franc'},
+    {'pair': 'AUD / USD', 'rate': '0.6580', 'change': '+0.31%', 'up': true, 'name': 'Australian Dollar / USD'},
+    {'pair': 'USD / CAD', 'rate': '1.3850', 'change': '-0.15%', 'up': false, 'name': 'US Dollar / Canadian Dollar'},
+  ];
+
+  // $10,000 Demo Practice Paper Balance
+  double _paperBalance = 10000.00;
+  String _selectedCoinForDemo = 'BTC';
+  final TextEditingController _demoAmountCtrl = TextEditingController(text: '500');
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);
     _fetchLiveCrypto();
   }
 
@@ -1016,7 +1242,7 @@ class _MarketsAndNewsViewState extends State<MarketsAndNewsView> with SingleTick
       final client = HttpClient();
       client.connectionTimeout = const Duration(seconds: 4);
       final request = await client.getUrl(
-        Uri.parse('https://api.binance.com/api/v3/ticker/24hr?symbols=["BTCUSDT","ETHUSDT","SOLUSDT","BNBUSDT","XRPUSDT","ADAUSDT","AVAXUSDT"]'),
+        Uri.parse('https://api.binance.com/api/v3/ticker/24hr?symbols=["BTCUSDT","ETHUSDT","SOLUSDT","BNBUSDT","XRPUSDT","ADAUSDT","AVAXUSDT","DOGEUSDT"]'),
       );
       final response = await request.close();
       if (response.statusCode == 200) {
@@ -1055,9 +1281,43 @@ class _MarketsAndNewsViewState extends State<MarketsAndNewsView> with SingleTick
     } catch (_) {}
   }
 
+  void _executeDemoTrade(bool isBuy) {
+    final amt = double.tryParse(_demoAmountCtrl.text) ?? 0.0;
+    if (amt <= 0) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please enter a valid amount')),
+      );
+      return;
+    }
+    if (isBuy && amt > _paperBalance) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Insufficient paper balance')),
+      );
+      return;
+    }
+
+    setState(() {
+      if (isBuy) {
+        _paperBalance -= amt;
+      } else {
+        _paperBalance += amt;
+      }
+    });
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: isBuy ? const Color(0xFF10B981) : const Color(0xFFEF4444),
+        content: Text(
+          'Simulated ${isBuy ? 'BUY' : 'SELL'} \$${amt.toStringAsFixed(2)} on $_selectedCoinForDemo executed!',
+        ),
+      ),
+    );
+  }
+
   @override
   void dispose() {
     _tabController.dispose();
+    _demoAmountCtrl.dispose();
     super.dispose();
   }
 
@@ -1074,8 +1334,9 @@ class _MarketsAndNewsViewState extends State<MarketsAndNewsView> with SingleTick
             labelColor: const Color(0xFF00F2FE),
             unselectedLabelColor: const Color(0xFF94A3B8),
             tabs: const [
-              Tab(text: 'Crypto Assets'),
+              Tab(text: 'Crypto (Binance)'),
               Tab(text: 'Forex Pairs'),
+              Tab(text: '\$10K Demo Paper'),
             ],
           ),
         ),
@@ -1083,65 +1344,114 @@ class _MarketsAndNewsViewState extends State<MarketsAndNewsView> with SingleTick
           child: TabBarView(
             controller: _tabController,
             children: [
-              // Crypto Tab with Pull to Refresh
+              // CRYPTO TAB
               RefreshIndicator(
                 onRefresh: _fetchLiveCrypto,
                 color: const Color(0xFF00F2FE),
                 backgroundColor: const Color(0xFF0D1527),
-                child: ListView.separated(
-                  physics: const AlwaysScrollableScrollPhysics(),
+                child: ListView(
                   padding: const EdgeInsets.all(16),
-                  itemCount: _cryptoList.length,
-                  separatorBuilder: (_, __) => const SizedBox(height: 8),
-                  itemBuilder: (context, i) {
-                  final c = _cryptoList[i];
-                  return Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF0D1527),
-                      borderRadius: BorderRadius.circular(14),
-                      border: Border.all(color: const Color(0xFF1E293B)),
-                    ),
-                    child: Row(
-                      children: [
-                        CircleAvatar(
-                          backgroundColor: const Color(0xFF1E293B),
-                          child: Text(
-                            c['symbol'][0],
-                            style: const TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF00F2FE)),
+                  children: [
+                    // Official Binance Referral Card (20% Discount)
+                    Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                          colors: [Color(0xFF1E2329), Color(0xFF0F141C)],
+                        ),
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(color: const Color(0xFFF0B90B).withOpacity(0.5)),
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFF0B90B).withOpacity(0.15),
+                              shape: BoxShape.circle,
+                            ),
+                            child: const Icon(Icons.currency_bitcoin, color: Color(0xFFF0B90B), size: 24),
                           ),
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: const [
+                                Text(
+                                  'Binance Trading Hub',
+                                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: Colors.white),
+                                ),
+                                Text(
+                                  '20% Lifetime Fee Discount on Spot & Futures',
+                                  style: TextStyle(color: Color(0xFFF0B90B), fontSize: 11, fontWeight: FontWeight.w600),
+                                ),
+                              ],
+                            ),
+                          ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color(0xFFF0B90B),
+                              foregroundColor: Colors.black,
+                              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                            ),
+                            onPressed: () => AppLauncher.open(context, 'https://www.binance.com/activity/referral-entry/CPA?ref=CPA_CPA2SG0ILQN'),
+                            child: const Text('Trade', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 14),
+                    ..._cryptoList.map((c) {
+                      return Container(
+                        margin: const EdgeInsets.only(bottom: 8),
+                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF0D1527),
+                          borderRadius: BorderRadius.circular(14),
+                          border: Border.all(color: const Color(0xFF1E293B)),
                         ),
-                        const SizedBox(width: 14),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        child: Row(
                           children: [
-                            Text(c['name'], style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
-                            Text(c['symbol'], style: const TextStyle(color: Color(0xFF64748B), fontSize: 12)),
-                          ],
-                        ),
-                        const Spacer(),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Text(c['price'], style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
-                            Text(
-                              c['change'],
-                              style: TextStyle(
-                                color: c['up'] ? const Color(0xFF10B981) : const Color(0xFFEF4444),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12,
+                            CircleAvatar(
+                              backgroundColor: const Color(0xFF1E293B),
+                              child: Text(
+                                c['symbol'][0],
+                                style: const TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF00F2FE)),
                               ),
+                            ),
+                            const SizedBox(width: 14),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(c['name'], style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+                                Text(c['symbol'], style: const TextStyle(color: Color(0xFF64748B), fontSize: 12)),
+                              ],
+                            ),
+                            const Spacer(),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(c['price'], style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+                                Text(
+                                  c['change'],
+                                  style: TextStyle(
+                                    color: c['up'] ? const Color(0xFF10B981) : const Color(0xFFEF4444),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
-                      ],
-                    ),
-                  );
-                },
+                      );
+                    }).toList(),
+                  ],
+                ),
               ),
-            ),
 
-            // Forex Tab
+              // FOREX TAB
               ListView.separated(
                 padding: const EdgeInsets.all(16),
                 itemCount: _forexList.length,
@@ -1159,7 +1469,13 @@ class _MarketsAndNewsViewState extends State<MarketsAndNewsView> with SingleTick
                       children: [
                         const Icon(Icons.currency_exchange, color: Color(0xFFC9A84C), size: 24),
                         const SizedBox(width: 14),
-                        Text(f['pair'], style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(f['pair'], style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+                            Text(f['name'], style: const TextStyle(color: Color(0xFF64748B), fontSize: 11)),
+                          ],
+                        ),
                         const Spacer(),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
@@ -1180,6 +1496,117 @@ class _MarketsAndNewsViewState extends State<MarketsAndNewsView> with SingleTick
                   );
                 },
               ),
+
+              // DEMO PAPER TRADING SIMULATOR TAB
+              SingleChildScrollView(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                          colors: [Color(0xFF0F1E36), Color(0xFF091222)],
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: const Color(0xFF00F2FE).withOpacity(0.4)),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text('VIRTUAL PAPER BALANCE', style: TextStyle(color: Color(0xFF94A3B8), fontSize: 11, fontWeight: FontWeight.w700)),
+                          const SizedBox(height: 6),
+                          Text(
+                            '\$${_paperBalance.toStringAsFixed(2)} USDT',
+                            style: const TextStyle(fontSize: 28, fontWeight: FontWeight.w900, color: Color(0xFF00F2FE)),
+                          ),
+                          const SizedBox(height: 4),
+                          const Text('Risk-free paper trading practice terminal', style: TextStyle(color: Color(0xFF64748B), fontSize: 12)),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    const Text('Practice Trade Simulator', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)),
+                    const SizedBox(height: 12),
+                    DropdownButtonFormField<String>(
+                      value: _selectedCoinForDemo,
+                      dropdownColor: const Color(0xFF0D1527),
+                      decoration: InputDecoration(
+                        labelText: 'Select Asset',
+                        filled: true,
+                        fillColor: const Color(0xFF0D1527),
+                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                      ),
+                      items: const [
+                        DropdownMenuItem(value: 'BTC', child: Text('Bitcoin (BTC/USDT)')),
+                        DropdownMenuItem(value: 'ETH', child: Text('Ethereum (ETH/USDT)')),
+                        DropdownMenuItem(value: 'SOL', child: Text('Solana (SOL/USDT)')),
+                      ],
+                      onChanged: (v) {
+                        if (v != null) setState(() => _selectedCoinForDemo = v);
+                      },
+                    ),
+                    const SizedBox(height: 12),
+                    TextField(
+                      controller: _demoAmountCtrl,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        labelText: 'Trade Amount (USDT)',
+                        filled: true,
+                        fillColor: const Color(0xFF0D1527),
+                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                      ),
+                    ),
+                    const SizedBox(height: 18),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color(0xFF10B981),
+                              foregroundColor: Colors.white,
+                              padding: const EdgeInsets.symmetric(vertical: 14),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                            ),
+                            onPressed: () => _executeDemoTrade(true),
+                            child: const Text('Simulate BUY', style: TextStyle(fontWeight: FontWeight.bold)),
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color(0xFFEF4444),
+                              foregroundColor: Colors.white,
+                              padding: const EdgeInsets.symmetric(vertical: 14),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                            ),
+                            onPressed: () => _executeDemoTrade(false),
+                            child: const Text('Simulate SELL', style: TextStyle(fontWeight: FontWeight.bold)),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    OutlinedButton.icon(
+                      icon: const Icon(Icons.refresh, size: 16),
+                      label: const Text('Reset Paper Balance to \$10,000'),
+                      style: OutlinedButton.styleFrom(
+                        foregroundColor: const Color(0xFF94A3B8),
+                        side: const BorderSide(color: Color(0xFF1E293B)),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      ),
+                      onPressed: () {
+                        setState(() => _paperBalance = 10000.00);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Paper balance reset to \$10,000.00 USDT')),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
@@ -1188,9 +1615,274 @@ class _MarketsAndNewsViewState extends State<MarketsAndNewsView> with SingleTick
   }
 }
 
-// -------------------------------------------------------------
-// TAB 4: CAMPAIGN TRACKER & LIVE REPORTING
-// -------------------------------------------------------------
+// ============================================================================
+// TAB 4: ACCURATE NEWS & CASE STUDIES (Direct from news.html & case-studies.html)
+// ============================================================================
+class NewsAndCaseStudiesView extends StatefulWidget {
+  const NewsAndCaseStudiesView({super.key});
+
+  @override
+  State<NewsAndCaseStudiesView> createState() => _NewsAndCaseStudiesViewState();
+}
+
+class _NewsAndCaseStudiesViewState extends State<NewsAndCaseStudiesView> with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  // Exact Articles from news.html & data/imported_daily_news.json
+  final List<Map<String, String>> _newsArticles = [
+    {
+      'title': "Bitget's \$352M Hack Happened Via Spoofed Transfers, Not Private Keys, CEO Gray Chen Says",
+      'source': 'CoinDesk',
+      'date': '25 Sep 2026',
+      'category': 'Security • Crypto',
+      'url': 'https://www.coindesk.com/markets/2026/09/25/bitget-s-usd351-million-hack-happened-via-spoofed-transfers-not-private-keys-ceo-gray-chen-says',
+      'excerpt': 'Bitget CEO Gray Chen clarified that the recent \$352M capital incident occurred due to unauthorized address spoofing mechanisms rather than compromised institutional private keys.',
+    },
+    {
+      'title': 'Trump Administration Weighs Global Stablecoin Framework for US Dollar Dominance',
+      'source': 'CoinDesk',
+      'date': '24 Sep 2026',
+      'category': 'Macro • Policy',
+      'url': 'https://www.coindesk.com/markets/2026/09/24/trump-administration-weighs-a-global-stablecoin-plan-to-cement-dollar-s-dominance',
+      'excerpt': 'The administration evaluates global stablecoin initiatives to cement US dollar hegemony and boost demand for short-term Treasury bills across international digital asset markets.',
+    },
+    {
+      'title': 'Dogecoin Slides 8%, Bitcoin Drops Under \$84,000 as Treasury Yields Hit 2007 Highs',
+      'source': 'CoinDesk',
+      'date': '24 Sep 2026',
+      'category': 'Markets • Selloff',
+      'url': 'https://www.coindesk.com/markets/2026/09/24/dogecoin-down-8-bitcoin-under-usd84-000-as-treasury-yields-hit-highest-level-since-2007',
+      'excerpt': 'Surging US Treasury yields and \$104 crude oil ignited a broad crypto market selloff, with DOGE tumbling 8% and Bitcoin retreating under key psychological levels.',
+    },
+    {
+      'title': 'USD/JPY Outlook: Hawkish Federal Reserve Recalibration Mounts Pressure on the Japanese Yen',
+      'source': 'FOREX.com',
+      'date': '24 Sep 2026',
+      'category': 'Forex • FX Wire',
+      'url': 'https://www.forex.com/en/news-and-analysis/usd-jpy-outlook-hawkish-fed-recalibration-pressures-the-yen/',
+      'excerpt': 'Resilient US macroeconomic indicators and surging yields widened the interest rate differential between the US and Japan, pushing USD/JPY toward major multi-month resistance.',
+    },
+  ];
+
+  // Exact Case Studies from case-studies.html
+  final List<Map<String, String>> _caseStudies = [
+    {
+      'client': 'Aria Coin (\$ARIA)',
+      'bundle': 'Cointelegraph Premium PR Bundle',
+      'timeline': 'Dec 2024',
+      'metric': '+147% Price Surge in 2h',
+      'reach': '3M+ Readers in 1 Week',
+      'summary': 'Partnered with NexcoinPR for guaranteed Cointelegraph placement, yielding a 147% market price surge, 42% organic traffic increase, and exponential social community growth.',
+    },
+    {
+      'client': '\$BHAD Token',
+      'bundle': 'Cointelegraph PR Bundle',
+      'timeline': 'Feb 2025',
+      'metric': 'Top Performing Token in 1 Week',
+      'reach': '75+ Leading Media Outlets',
+      'summary': 'Guaranteed publication across Cointelegraph, Bitcoin.com, BeInCrypto, Business Insider, APNews, MarketWatch, and Binance transformed \$BHAD into an authoritative crypto token.',
+    },
+    {
+      'client': 'LBank Exchange',
+      'bundle': 'Tier-1 Liquidity PR',
+      'timeline': 'Sep 2026',
+      'metric': 'Ranked #1 for Crypto Liquidity',
+      'reach': 'BeInCrypto Special Report',
+      'summary': 'In-depth liquidity study published across crypto news outlets proved LBank maintained 4.4x average order book depth on top mainstream trading pairs.',
+    },
+    {
+      'client': 'BC.GAME',
+      'bundle': 'Global Ecosystem PR',
+      'timeline': 'Sep 2026',
+      'metric': '\$8.6M+ Rewards Distributed',
+      'reach': 'Global Web3 Syndicate',
+      'summary': 'Decentralized rewards milestone campaign published globally to showcase transparent community distribution and gaming token utility.',
+    },
+    {
+      'client': 'Cregis Foundation',
+      'bundle': 'Digital Asset Infra Wire',
+      'timeline': 'Sep 2026',
+      'metric': '2 Years of Middle East Growth',
+      'reach': 'Institutional FinTech News',
+      'summary': 'Showcasing institutional enterprise adoption of Web3 MPC wallet and treasury management platforms among traditional finance corporations.',
+    },
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 2, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          color: const Color(0xFF070A13),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: TabBar(
+            controller: _tabController,
+            indicatorColor: const Color(0xFF00F2FE),
+            labelColor: const Color(0xFF00F2FE),
+            unselectedLabelColor: const Color(0xFF94A3B8),
+            tabs: const [
+              Tab(text: 'Industry News'),
+              Tab(text: 'Case Studies'),
+            ],
+          ),
+        ),
+        Expanded(
+          child: TabBarView(
+            controller: _tabController,
+            children: [
+              // NEWS LIST
+              ListView.builder(
+                padding: const EdgeInsets.all(16),
+                itemCount: _newsArticles.length,
+                itemBuilder: (context, index) {
+                  final item = _newsArticles[index];
+                  return Container(
+                    margin: const EdgeInsets.only(bottom: 14),
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF0D1527),
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(color: const Color(0xFF1E293B)),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              item['source']!,
+                              style: const TextStyle(
+                                color: Color(0xFF00F2FE),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12,
+                              ),
+                            ),
+                            Text(
+                              '${item['category']} • ${item['date']}',
+                              style: const TextStyle(color: Color(0xFF64748B), fontSize: 11),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          item['title']!,
+                          style: const TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w800,
+                            color: Colors.white,
+                            height: 1.3,
+                          ),
+                        ),
+                        const SizedBox(height: 6),
+                        Text(
+                          item['excerpt']!,
+                          style: const TextStyle(fontSize: 12, color: Color(0xFF94A3B8), height: 1.4),
+                        ),
+                        const SizedBox(height: 12),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            TextButton.icon(
+                              icon: const Icon(Icons.open_in_new, size: 14, color: Color(0xFF00F2FE)),
+                              label: const Text('Read Source Article', style: TextStyle(color: Color(0xFF00F2FE), fontSize: 12)),
+                              onPressed: () => AppLauncher.open(context, item['url']!),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+
+              // CASE STUDIES LIST
+              ListView.builder(
+                padding: const EdgeInsets.all(16),
+                itemCount: _caseStudies.length,
+                itemBuilder: (context, index) {
+                  final cs = _caseStudies[index];
+                  return Container(
+                    margin: const EdgeInsets.only(bottom: 14),
+                    padding: const EdgeInsets.all(18),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF0D1527),
+                      borderRadius: BorderRadius.circular(18),
+                      border: Border.all(color: const Color(0xFF1E293B)),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFC9A84C).withOpacity(0.15),
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              child: Text(
+                                cs['client']!,
+                                style: const TextStyle(color: Color(0xFFC9A84C), fontWeight: FontWeight.bold, fontSize: 11),
+                              ),
+                            ),
+                            Text(cs['timeline']!, style: const TextStyle(color: Color(0xFF64748B), fontSize: 11)),
+                          ],
+                        ),
+                        const SizedBox(height: 10),
+                        Text(
+                          cs['metric']!,
+                          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w900, color: Color(0xFF10B981)),
+                        ),
+                        Text(
+                          cs['bundle']!,
+                          style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: Color(0xFF00F2FE)),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          cs['summary']!,
+                          style: const TextStyle(color: Color(0xFFCBD5E1), fontSize: 13, height: 1.45),
+                        ),
+                        const SizedBox(height: 10),
+                        Row(
+                          children: [
+                            const Icon(Icons.remove_red_eye_outlined, size: 14, color: Color(0xFF94A3B8)),
+                            const SizedBox(width: 6),
+                            Text(
+                              cs['reach']!,
+                              style: const TextStyle(color: Color(0xFF94A3B8), fontSize: 11, fontWeight: FontWeight.w600),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+// ============================================================================
+// TAB 5: CAMPAIGN TRACKER (Real IDs: NEX-ARIA, NEX-BHAD, NEX-LBANK, NEX-CREGIS)
+// ============================================================================
 class TrackerView extends StatefulWidget {
   const TrackerView({super.key});
 
@@ -1199,7 +1891,7 @@ class TrackerView extends StatefulWidget {
 }
 
 class _TrackerViewState extends State<TrackerView> {
-  final TextEditingController _trackerController = TextEditingController(text: 'NEX-8821');
+  final TextEditingController _trackerController = TextEditingController(text: 'NEX-ARIA');
   bool _searched = true;
 
   @override
@@ -1227,7 +1919,7 @@ class _TrackerViewState extends State<TrackerView> {
                 child: TextField(
                   controller: _trackerController,
                   decoration: InputDecoration(
-                    hintText: 'Enter Campaign Tracking ID (e.g. NEX-8821)',
+                    hintText: 'Enter Campaign ID (e.g. NEX-ARIA)',
                     filled: true,
                     fillColor: const Color(0xFF0D1527),
                     border: OutlineInputBorder(
@@ -1256,7 +1948,24 @@ class _TrackerViewState extends State<TrackerView> {
               ),
             ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 14),
+
+          // Quick Preset Campaign Chips
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                _buildQuickChip('NEX-ARIA', 'Aria Coin'),
+                const SizedBox(width: 6),
+                _buildQuickChip('NEX-BHAD', '\$BHAD Token'),
+                const SizedBox(width: 6),
+                _buildQuickChip('NEX-LBANK', 'LBank Study'),
+                const SizedBox(width: 6),
+                _buildQuickChip('NEX-CREGIS', 'Cregis PR'),
+              ],
+            ),
+          ),
+          const SizedBox(height: 18),
 
           if (_searched) ...[
             // Status Card
@@ -1291,9 +2000,9 @@ class _TrackerViewState extends State<TrackerView> {
                     ],
                   ),
                   const SizedBox(height: 8),
-                  const Text(
-                    'Global DeFi & Institutional Protocol Launch',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: Colors.white),
+                  Text(
+                    _getCampaignTitle(_trackerController.text.toUpperCase()),
+                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: Colors.white),
                   ),
                   const SizedBox(height: 16),
                   // Timeline steps
@@ -1315,7 +2024,7 @@ class _TrackerViewState extends State<TrackerView> {
                       onPressed: () {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
-                            content: Text('Downloading campaign PDF report...'),
+                            content: Text('Downloading official white-label campaign dossier...'),
                             backgroundColor: Color(0xFF10B981),
                           ),
                         );
@@ -1333,15 +2042,38 @@ class _TrackerViewState extends State<TrackerView> {
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
             ),
             const SizedBox(height: 10),
-            _buildLiveLinkTile('Bloomberg Terminal Wire', 'Terminal ID: BB-98234-PR', 'https://nexcoinpr.agency'),
-            _buildLiveLinkTile('Yahoo! Finance Portal', 'Syndicated Wire Index', 'https://nexcoinpr.agency'),
-            _buildLiveLinkTile('CoinDesk Media Desk', 'Direct Crypto Distribution', 'https://nexcoinpr.agency'),
-            _buildLiveLinkTile('MarketWatch Financials', 'Capital Markets Syndication', 'https://nexcoinpr.agency'),
-            _buildLiveLinkTile('Benzinga Wire Desk', 'Brokerage & Fintech News', 'https://nexcoinpr.agency'),
+            _buildLiveLinkTile('CoinTelegraph Wire', 'Premium Bundle Feature', 'https://cointelegraph.com'),
+            _buildLiveLinkTile('Bloomberg Terminal Wire', 'Terminal ID: BB-98234-PR', 'https://www.bloomberg.com'),
+            _buildLiveLinkTile('Yahoo! Finance Portal', 'Syndicated Wire Index', 'https://finance.yahoo.com'),
+            _buildLiveLinkTile('BeInCrypto Desk', 'Direct Institutional Release', 'https://beincrypto.com'),
+            _buildLiveLinkTile('MarketWatch Financials', 'Capital Markets Syndication', 'https://www.marketwatch.com'),
           ],
           const SizedBox(height: 20),
         ],
       ),
+    );
+  }
+
+  String _getCampaignTitle(String id) {
+    if (id.contains('ARIA')) return 'Aria Coin (\$ARIA) Global Cointelegraph Premium Campaign';
+    if (id.contains('BHAD')) return '\$BHAD Token 75-Media Syndication Blitz';
+    if (id.contains('LBANK')) return 'LBank Exchange Liquidity Ranking Wire Campaign';
+    if (id.contains('CREGIS')) return 'Cregis Foundation Middle East Expansion Wire';
+    return 'Institutional Cryptocurrency & Web3 PR Campaign';
+  }
+
+  Widget _buildQuickChip(String code, String label) {
+    return ActionChip(
+      label: Text('$code ($label)'),
+      backgroundColor: const Color(0xFF0D1527),
+      side: const BorderSide(color: Color(0xFF1E293B)),
+      labelStyle: const TextStyle(fontSize: 11, color: Color(0xFF00F2FE)),
+      onPressed: () {
+        setState(() {
+          _trackerController.text = code;
+          _searched = true;
+        });
+      },
     );
   }
 
@@ -1402,9 +2134,9 @@ class _TrackerViewState extends State<TrackerView> {
   }
 }
 
-// -------------------------------------------------------------
-// TAB 5: DIRECT DESK & PR SUBMISSION FORM
-// -------------------------------------------------------------
+// ============================================================================
+// TAB 6: DIRECT EDITORIAL DESK & SUBMISSION FORM
+// ============================================================================
 class ContactDeskView extends StatefulWidget {
   const ContactDeskView({super.key});
 
@@ -1423,6 +2155,16 @@ class _ContactDeskViewState extends State<ContactDeskView> {
   String _selectedIndustry = 'Cryptocurrency';
 
   @override
+  void dispose() {
+    _nameCtrl.dispose();
+    _companyCtrl.dispose();
+    _emailCtrl.dispose();
+    _titleCtrl.dispose();
+    _contentCtrl.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -1430,12 +2172,12 @@ class _ContactDeskViewState extends State<ContactDeskView> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            'Direct Editorial Desk',
+            'Editorial Desk & Direct Wire',
             style: TextStyle(fontSize: 22, fontWeight: FontWeight.w900, color: Colors.white),
           ),
           const SizedBox(height: 4),
           const Text(
-            'Reach our senior PR specialists instantly via Telegram or submit your announcement below.',
+            'Connect with senior PR account executives via Telegram or submit your draft below.',
             style: TextStyle(fontSize: 13, color: Color(0xFF94A3B8)),
           ),
           const SizedBox(height: 16),
@@ -1462,7 +2204,7 @@ class _ContactDeskViewState extends State<ContactDeskView> {
                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white),
                       ),
                       Text(
-                        'Instant replies for urgent announcements: @Nexcoinpr',
+                        'Instant wire review & quotes: @Nexcoinpr',
                         style: TextStyle(color: Colors.white70, fontSize: 12),
                       ),
                     ],
@@ -1482,6 +2224,32 @@ class _ContactDeskViewState extends State<ContactDeskView> {
           ),
           const SizedBox(height: 24),
 
+          // Official Contact Details
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: const Color(0xFF0D1527),
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: const Color(0xFF1E293B)),
+            ),
+            child: Column(
+              children: [
+                _buildContactRow(Icons.mail_outline, 'press@nexcoinpr.agency', () {
+                  AppLauncher.open(context, 'mailto:press@nexcoinpr.agency');
+                }),
+                const Divider(color: Color(0xFF1E293B)),
+                _buildContactRow(Icons.language, 'https://www.nexcoinpr.agency', () {
+                  AppLauncher.open(context, 'https://www.nexcoinpr.agency');
+                }),
+                const Divider(color: Color(0xFF1E293B)),
+                _buildContactRow(Icons.near_me_outlined, '@Nexcoinpr (Telegram Official)', () {
+                  AppLauncher.open(context, 'https://t.me/Nexcoinpr');
+                }),
+              ],
+            ),
+          ),
+          const SizedBox(height: 24),
+
           // PR Submission Form
           Container(
             padding: const EdgeInsets.all(20),
@@ -1496,7 +2264,7 @@ class _ContactDeskViewState extends State<ContactDeskView> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    'Submit Press Release for Review',
+                    'Submit Press Release Draft',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
                   ),
                   const SizedBox(height: 14),
@@ -1551,7 +2319,7 @@ class _ContactDeskViewState extends State<ContactDeskView> {
                     width: double.infinity,
                     child: ElevatedButton.icon(
                       icon: const Icon(Icons.check_circle_outline, size: 18),
-                      label: const Text('Submit for Review'),
+                      label: const Text('Submit Draft for Editorial Review'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF00F2FE),
                         foregroundColor: Colors.black,
@@ -1566,7 +2334,7 @@ class _ContactDeskViewState extends State<ContactDeskView> {
                               backgroundColor: const Color(0xFF0D1527),
                               title: const Text('Submission Received!'),
                               content: const Text(
-                                'Thank you! Our senior PR editorial desk will review your announcement draft and contact you shortly via email and Telegram.',
+                                'Thank you! The NexcoinPR editorial desk has received your draft and will contact you shortly.',
                               ),
                               actions: [
                                 TextButton(
@@ -1591,8 +2359,27 @@ class _ContactDeskViewState extends State<ContactDeskView> {
               ),
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 24),
         ],
+      ),
+    );
+  }
+
+  Widget _buildContactRow(IconData icon, String text, VoidCallback onTap) {
+    return InkWell(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        child: Row(
+          children: [
+            Icon(icon, color: const Color(0xFF00F2FE), size: 20),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Text(text, style: const TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w600)),
+            ),
+            const Icon(Icons.chevron_right, color: Color(0xFF64748B), size: 20),
+          ],
+        ),
       ),
     );
   }

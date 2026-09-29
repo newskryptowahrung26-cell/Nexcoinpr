@@ -72,11 +72,11 @@ jobs:
       - name: Upload Native Android App Bundle (.aab)
         uses: actions/upload-artifact@v4
         with:
-          name: NexcoinPR-Native-AppBundle-v1.3.1-API36
+          name: NexcoinPR-Native-AppBundle-v1.4.0-API36
           path: mobile_app/build/app/outputs/bundle/release/*.aab
 
       - name: Upload Native Android APK (.apk)
         uses: actions/upload-artifact@v4
         with:
-          name: NexcoinPR-Native-APK-v1.3.1-API36
+          name: NexcoinPR-Native-APK-v1.4.0-API36
           path: mobile_app/build/app/outputs/flutter-apk/*.apk
