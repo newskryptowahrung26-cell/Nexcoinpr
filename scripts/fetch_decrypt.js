@@ -1,6 +1,6 @@
-// AUTO-POSTING PAUSED: User requested all auto posting to be paused.
-if (process.env.RESUME_AUTO_POST !== 'true') {
-  console.log('[PAUSED] Auto-posting is currently PAUSED by user request. Exiting cleanly without fetching press releases.');
+// Automation is ACTIVE. Set PAUSE_AUTO_POST='true' if pause is ever needed.
+if (process.env.PAUSE_AUTO_POST === 'true') {
+  console.log('[PAUSED] Auto-posting is currently PAUSED via PAUSE_AUTO_POST.');
   process.exit(0);
 }
 
