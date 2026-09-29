@@ -920,7 +920,7 @@ class _PackagesViewState extends State<PackagesView> with SingleTickerProviderSt
                       scrollDirection: Axis.horizontal,
                       children: [
                         _buildPkgChip('All', 'All (13)'),
-                        _buildPkgChip('60-Media Mega', '60-Media Mega ($7k)'),
+                        _buildPkgChip('60-Media Mega', '60-Media Mega (\$7k)'),
                         _buildPkgChip('5-Media Packs', '5-Media Packs (6)'),
                         _buildPkgChip('10-Media Packs', '10-Media Packs (3)'),
                         _buildPkgChip('Specialized Niche', 'Specialized / Niche (3)'),
@@ -2083,12 +2083,6 @@ class _NewsAndCaseStudiesViewState extends State<NewsAndCaseStudiesView> with Si
   @override
   void dispose() {
     CloudSyncService.syncNotifier.removeListener(_onSyncChange);
-    _tabController.dispose();
-    super.dispose();
-  }
-
-  @override
-  void dispose() {
     _tabController.dispose();
     super.dispose();
   }
