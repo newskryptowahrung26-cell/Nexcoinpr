@@ -188,4 +188,15 @@
       <news:title>Bitcoin recovers to $84,000 while stocks fall on bond market pressure</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/live-updates-bitcoin-rebounds-above-84000-as-etfs-draw-in-30-million</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-29</news:publication_date>
+      <news:title>Live updates: Bitcoin rebounds above $84,000 as ETFs draw in $30 million</news:title>
+    </news:news>
+  </url>
 </urlset>
