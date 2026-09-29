@@ -116,6 +116,7 @@ if (fs.existsSync(manifestPath)) {
       '<application',
       `${permissionsAndQueries}\n    <application`
     );
+    manifest = manifest.replace(/android:label="[^"]*"/, 'android:label="NexcoinPR"');
     fs.writeFileSync(manifestPath, manifest, 'utf8');
     console.log('Successfully patched AndroidManifest.xml!');
   }
