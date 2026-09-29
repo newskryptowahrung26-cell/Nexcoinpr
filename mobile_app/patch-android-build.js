@@ -24,8 +24,8 @@ if (fs.existsSync(gradleKtsPath)) {
   content = content.replace(/compileSdk\s*=\s*(?:flutter\.compileSdkVersion|\d+)/, 'compileSdk = 36');
   content = content.replace(/targetSdk\s*=\s*(?:flutter\.targetSdkVersion|\d+)/, 'targetSdk = 36');
   content = content.replace(/minSdk\s*=\s*(?:flutter\.minSdkVersion|\d+)/, 'minSdk = 24');
-  content = content.replace(/versionCode\s*=\s*(?:flutter\.versionCode|\d+)/, 'versionCode = 7');
-  content = content.replace(/versionName\s*=\s*(?:flutter\.versionName|"[^"]*")/, 'versionName = "1.4.1"');
+  content = content.replace(/versionCode\s*=\s*(?:flutter\.versionCode|\d+)/, 'versionCode = 8');
+  content = content.replace(/versionName\s*=\s*(?:flutter\.versionName|"[^"]*")/, 'versionName = "1.4.2"');
 
   // Add signingConfigs block right before buildTypes {
   const signingConfigKts = `
@@ -65,8 +65,8 @@ if (fs.existsSync(gradleKtsPath)) {
   content = content.replace(/compileSdkVersion\s+(?:flutter\.compileSdkVersion|\d+)/, 'compileSdkVersion 36');
   content = content.replace(/targetSdkVersion\s+(?:flutter\.targetSdkVersion|\d+)/, 'targetSdkVersion 36');
   content = content.replace(/minSdkVersion\s+(?:flutter\.minSdkVersion|\d+)/, 'minSdkVersion 24');
-  content = content.replace(/versionCode\s+(?:flutterVersionCode\.toInteger\(\)|\d+)/, 'versionCode 7');
-  content = content.replace(/versionName\s+(?:flutterVersionName|"[^"]*")/, 'versionName "1.4.1"');
+  content = content.replace(/versionCode\s+(?:flutterVersionCode\.toInteger\(\)|\d+)/, 'versionCode 8');
+  content = content.replace(/versionName\s+(?:flutterVersionName|"[^"]*")/, 'versionName "1.4.2"');
 
   const signingConfigGroovy = `
     signingConfigs {

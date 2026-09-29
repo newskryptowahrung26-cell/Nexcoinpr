@@ -1,0 +1,163 @@
+[
+  {
+    "title": "The 60 Media Mega Package",
+    "shortTitle": "60 Media Mega",
+    "category": "Mega Syndication",
+    "price": 7000,
+    "badge": "MOST POWERFUL SYNDICATION",
+    "traffic": "Total 60 Indexed Publications",
+    "desc": "Flood the market with complete coverage across 60 specialized crypto, blockchain, and financial publications. Perfect for token generation events (TGE), major exchange listings, protocol mainnet launches, and institutional fund raises.",
+    "pubs": [
+      "Blockonomi.com", "Blockzeit.com", "Coinworldstory.com", "Coincentral.com", "Publish0x.com",
+      "Bitnewsbot.com", "Mpost.io", "Coinfea.com", "Cryptodirectories.com", "NullTx.com",
+      "Cryptosavingexpert.com", "Thebittimes.com", "CryptoNewsLand.com", "Daotimes.com", "36crypto.com",
+      "TheMerkle.com", "Btcpeers.com", "FxCryptoNews.com", "Thecryptoupdates.com", "TheNewsCrypto.com",
+      "Cryptoboom.com", "Cryptowisser.com", "Theblockopedia.com", "Techbullion", "Coinjournal.net",
+      "CaptainAltcoin.com", "Chainaffairs.com", "Invezz", "Crypto-reporter.com", "Blockchainaire.com",
+      "Blockcrux.com", "Cryptobrowser.io", "Btcnews.com", "Coinedition.com", "Livebitcoinnews.com",
+      "FintechMode.com", "Zycrypto.com", "Cryptomode.com", "Coinography.com", "Analyticsinsight.net",
+      "Bitcoin Insider", "Memecoinist.com", "Moneycheck.com", "Coinpaper.com", "Cryptofingers.com",
+      "Coinsprobe.com", "Timestabloid.com", "TechAnnouncer.com", "Coincu.com", "Cryptopress.site",
+      "Coinnewsspan.com", "kanalcoin.com", "Stelareum.io", "Namecoinnews.com", "Theccpress.com",
+      "Coingabbar.com", "Capitalbay.news", "Bitcoininfonews.com", "CoinRoop.com", "Cryptomoonpress.com"
+    ]
+  },
+  {
+    "title": "ELITE: A",
+    "shortTitle": "Elite A (5 Media)",
+    "category": "5-Media Packs (Series A)",
+    "price": 20000,
+    "badge": "Highest Authority",
+    "traffic": "22M+ Monthly Traffic",
+    "desc": "Top-tier Tier-1 global crypto media powerhouse package for major protocol launches, institutional milestones, and headline crypto news.",
+    "pubs": ["CoinTelegraph", "Coindesk.com", "TheBlock.co", "Beincrypto.com", "Watcher.guru"]
+  },
+  {
+    "title": "ELITE: B",
+    "shortTitle": "Elite B (5 Media)",
+    "category": "5-Media Packs (Series B)",
+    "price": 11000,
+    "badge": "Tier-1 Impact",
+    "traffic": "15M+ Monthly Traffic",
+    "desc": "Commanding reach pairing CoinTelegraph and Bitcoin.com with global financial syndication.",
+    "pubs": ["CoinTelegraph", "Beincrypto.com", "Bitcoin.com", "AMBCrypto.com", "Business Insider, AP, Benzinga, MarketWatch syndication"]
+  },
+  {
+    "title": "VIRAL (10 Media)",
+    "shortTitle": "Viral 10 Media",
+    "category": "10-Media Packs",
+    "price": 8300,
+    "badge": "Maximum Organic Reach",
+    "traffic": "15M+ Monthly Traffic",
+    "desc": "Comprehensive 10-outlet onslaught combining institutional crypto desks and mainstream financial giants.",
+    "pubs": [
+      "TheBlock.co", "Cryptopolitan", "Beincrypto", "Bitcoin.com", "Bitcoinist",
+      "Coingape.com", "AMB Crypto", "NewsBTC", "Investing.com", "Business Insider, AP, Benzinga, MarketWatch syndication"
+    ]
+  },
+  {
+    "title": "WEB3 GAMING (10 Media)",
+    "shortTitle": "Web3 Gaming",
+    "category": "Specialized Niche",
+    "price": 5299,
+    "badge": "Gaming & Metaverse",
+    "traffic": "10M+ Monthly Traffic",
+    "desc": "Bespoke distribution into Web3 gaming portals, play-to-earn communities, and gamer news outlets.",
+    "pubs": [
+      "Gam3s.gg", "Playtoearn.com", "Chainplay.gg", "Beanstalk.io", "Gurugamer.com",
+      "Gamejolt.com", "Gamespace.com", "Thenoobgamerz.com", "Investing.com", "Business Insider, AP, Benzinga, MarketWatch syndication"
+    ]
+  },
+  {
+    "title": "FINTECH & FOREX (10 Media)",
+    "shortTitle": "Fintech & Forex",
+    "category": "Specialized Niche",
+    "price": 3999,
+    "badge": "Brokers & Fintech",
+    "traffic": "10M+ Monthly Traffic",
+    "desc": "Specialized financial wire targeting forex brokers, trading desks, wealthtech apps, and institutional readers.",
+    "pubs": [
+      "Financemagnates.com", "Invezz.com", "WalletInvestor.com", "Tradingbeasts.com", "Moneycheck.com",
+      "Forexlive.com", "Gov.capital", "Financebuzz.net", "Investing.com", "Business Insider, AP, Benzinga, MarketWatch syndication"
+    ]
+  },
+  {
+    "title": "PREMIUM (10 Media)",
+    "shortTitle": "Premium 10 Media",
+    "category": "10-Media Packs",
+    "price": 3250,
+    "badge": "Popular Value",
+    "traffic": "5M+ Monthly Traffic",
+    "desc": "Deep tech, DeFi, and developer-centric distribution with global financial market presence.",
+    "pubs": [
+      "Hackernoon", "Thedefiant.io", "Coinedition.com", "Mpost.io", "Blockonomi",
+      "Bravenewcoin.com", "Publish0x", "Coincu", "Investing.com", "Business Insider, AP, Benzinga, MarketWatch syndication"
+    ]
+  },
+  {
+    "title": "TECH & INNOVATION (10 Media)",
+    "shortTitle": "Tech & Innovation",
+    "category": "Specialized Niche",
+    "price": 2899,
+    "badge": "Technology Desks",
+    "traffic": "10M+ Monthly Traffic",
+    "desc": "Reaching technology enthusiasts, software engineers, and digital innovation reporters.",
+    "pubs": [
+      "Techbullion", "TechAnnouncer", "Hackernoon", "Techpanga.com", "Techpoint.africa",
+      "Techiexpert.com", "Alltechmagazine.com", "99techpost.com", "Investing.com", "Business Insider, AP, Benzinga, MarketWatch syndication"
+    ]
+  },
+  {
+    "title": "SUPERIOR: A",
+    "shortTitle": "Superior A (5 Media)",
+    "category": "5-Media Packs (Series A)",
+    "price": 2800,
+    "badge": "High Growth",
+    "traffic": "8M+ Monthly Traffic",
+    "desc": "Targeted coverage across prominent crypto news websites and premier mainstream financial wire channels.",
+    "pubs": ["Cryptopolitan.com", "Crypto.news", "Bitcoinist.com", "Hackernoon", "Business Insider, AP, Benzinga, MarketWatch syndication"]
+  },
+  {
+    "title": "SUPERIOR: B",
+    "shortTitle": "Superior B (5 Media)",
+    "category": "5-Media Packs (Series B)",
+    "price": 2650,
+    "badge": "Ecosystem Builder",
+    "traffic": "7M+ Monthly Traffic",
+    "desc": "Solid mid-tier visibility focused on Web3 researchers, technical readers, and crypto market watchers.",
+    "pubs": ["Crypto.news", "Hackernoon", "CoinGape", "CoinCheckup", "Mpost.io"]
+  },
+  {
+    "title": "STARTER (10 Media)",
+    "shortTitle": "Starter 10 Media",
+    "category": "10-Media Packs",
+    "price": 2350,
+    "badge": "Multi-Outlet Starter",
+    "traffic": "2M+ Monthly Traffic",
+    "desc": "Broad multi-outlet coverage for startup funding rounds and community growth announcements.",
+    "pubs": [
+      "Coingabbar.com", "Invezz", "Bitcoin Insider", "Coinjournal", "Thebittimes.com",
+      "timestabloid.com", "CaptainAltcoin", "Theblockopedia.com", "Investing.com", "Business Insider"
+    ]
+  },
+  {
+    "title": "STANDARD: A",
+    "shortTitle": "Standard A (5 Media)",
+    "category": "5-Media Packs (Series A)",
+    "price": 1100,
+    "badge": "Budget Friendly",
+    "traffic": "1M+ Monthly Traffic",
+    "desc": "Essential starter visibility for token updates, feature enhancements, and early-stage blockchain announcements.",
+    "pubs": ["Blockonomi", "Techbullion", "Publish0x", "Coinjournal.net", "Bitcoin Insider"]
+  },
+  {
+    "title": "STANDARD: B",
+    "shortTitle": "Standard B (5 Media)",
+    "category": "5-Media Packs (Series B)",
+    "price": 800,
+    "badge": "Lowest Entry Cost",
+    "traffic": "600K+ Monthly Traffic",
+    "desc": "Cost-effective distribution for smaller announcements and persistent indexed search visibility.",
+    "pubs": ["Digital Journal", "CaptainAltcoin", "TechAnnouncer", "Bitcoin Insider", "Techbullion"]
+  }
+]

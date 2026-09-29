@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'pricing_data.dart';
+import 'cloud_sync.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -116,6 +117,13 @@ class MainHomeScreen extends StatefulWidget {
 
 class _MainHomeScreenState extends State<MainHomeScreen> {
   int _currentIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    // Auto-sync remote data from repository in background
+    CloudSyncService.syncAll();
+  }
 
   final List<Widget> _pages = const [
     DashboardView(),
@@ -759,10 +767,18 @@ class _PackagesViewState extends State<PackagesView> with SingleTickerProviderSt
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
+    CloudSyncService.syncNotifier.addListener(_onSyncUpdated);
+    // Background cloud sync from website
+    CloudSyncService.syncAll();
+  }
+
+  void _onSyncUpdated() {
+    if (mounted) setState(() {});
   }
 
   @override
   void dispose() {
+    CloudSyncService.syncNotifier.removeListener(_onSyncUpdated);
     _tabController.dispose();
     _searchCtrl.dispose();
     super.dispose();
@@ -776,24 +792,25 @@ class _PackagesViewState extends State<PackagesView> with SingleTickerProviderSt
   }
 
   List<NexcoinPackage> get _filteredPackages {
-    if (_selectedPkgCategory == 'All') return kOfficialPackages;
+    final all = CloudSyncService.packages;
+    if (_selectedPkgCategory == 'All') return all;
     if (_selectedPkgCategory == '60-Media Mega') {
-      return kOfficialPackages.where((p) => p.category.contains('Mega')).toList();
+      return all.where((p) => p.category.contains('Mega')).toList();
     }
     if (_selectedPkgCategory == '5-Media Packs') {
-      return kOfficialPackages.where((p) => p.category.contains('5-Media')).toList();
+      return all.where((p) => p.category.contains('5-Media')).toList();
     }
     if (_selectedPkgCategory == '10-Media Packs') {
-      return kOfficialPackages.where((p) => p.category.contains('10-Media')).toList();
+      return all.where((p) => p.category.contains('10-Media')).toList();
     }
     if (_selectedPkgCategory == 'Specialized Niche') {
-      return kOfficialPackages.where((p) => p.category.contains('Specialized')).toList();
+      return all.where((p) => p.category.contains('Specialized')).toList();
     }
-    return kOfficialPackages;
+    return all;
   }
 
   List<NexcoinSingleOutlet> get _filteredSingleOutlets {
-    List<NexcoinSingleOutlet> list = kOfficialSingleOutlets;
+    List<NexcoinSingleOutlet> list = CloudSyncService.singleOutlets;
 
     if (_selectedSingleCategory != 'All') {
       list = list.where((o) => o.categoryLabel == _selectedSingleCategory).toList();
@@ -825,19 +842,25 @@ class _PackagesViewState extends State<PackagesView> with SingleTickerProviderSt
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // Top Matrix Notice Banner
+        // Top Matrix Notice Banner with Live Cloud Sync Status
         Container(
           width: double.infinity,
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           color: const Color(0xFF0F1E36),
           child: Row(
             children: [
-              const Icon(Icons.verified_rounded, color: Color(0xFF00F2FE), size: 14),
+              Icon(
+                CloudSyncService.isSyncing ? Icons.sync_rounded : Icons.cloud_done_rounded,
+                color: const Color(0xFF00F2FE),
+                size: 14,
+              ),
               const SizedBox(width: 8),
-              const Expanded(
+              Expanded(
                 child: Text(
-                  'Official Site Pricing: 13 Packages & 144 Single Outlets Synced',
-                  style: TextStyle(
+                  CloudSyncService.isSyncing
+                      ? 'Live Cloud Syncing from website...'
+                      : 'Live Cloud Sync Active: ${_filteredPackages.length} Packages & ${_filteredSingleOutlets.length} Outlets',
+                  style: const TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.w700,
                     color: Color(0xFFE2E8F0),
@@ -845,10 +868,18 @@ class _PackagesViewState extends State<PackagesView> with SingleTickerProviderSt
                 ),
               ),
               InkWell(
-                onTap: () => AppLauncher.open(context, 'https://www.nexcoinpr.agency/pricing.html'),
-                child: const Text(
-                  'pricing.html ↗',
-                  style: TextStyle(fontSize: 11, color: Color(0xFF00F2FE), fontWeight: FontWeight.bold),
+                onTap: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Checking website for pricing updates...'),
+                      duration: Duration(seconds: 1),
+                    ),
+                  );
+                  CloudSyncService.syncAll();
+                },
+                child: Text(
+                  CloudSyncService.isSyncing ? 'Syncing...' : 'Sync Now ↻',
+                  style: const TextStyle(fontSize: 11, color: Color(0xFF00F2FE), fontWeight: FontWeight.bold),
                 ),
               ),
             ],
@@ -889,7 +920,7 @@ class _PackagesViewState extends State<PackagesView> with SingleTickerProviderSt
                       scrollDirection: Axis.horizontal,
                       children: [
                         _buildPkgChip('All', 'All (13)'),
-                        _buildPkgChip('60-Media Mega', '60-Media Mega (\$7k)'),
+                        _buildPkgChip('60-Media Mega', '60-Media Mega ($7k)'),
                         _buildPkgChip('5-Media Packs', '5-Media Packs (6)'),
                         _buildPkgChip('10-Media Packs', '10-Media Packs (3)'),
                         _buildPkgChip('Specialized Niche', 'Specialized / Niche (3)'),
@@ -897,253 +928,258 @@ class _PackagesViewState extends State<PackagesView> with SingleTickerProviderSt
                     ),
                   ),
 
-                  // Packages List
+                  // Packages List with Pull-To-Refresh
                   Expanded(
-                    child: ListView.builder(
-                      padding: const EdgeInsets.all(16),
-                      itemCount: _filteredPackages.length,
-                      itemBuilder: (context, index) {
-                        final pkg = _filteredPackages[index];
-                        final isMega = pkg.pubs.length > 10;
-                        final isExpanded = _expandedMega.contains(pkg.title);
+                    child: RefreshIndicator(
+                      onRefresh: () => CloudSyncService.syncAll(),
+                      color: const Color(0xFF00F2FE),
+                      backgroundColor: const Color(0xFF0D1527),
+                      child: ListView.builder(
+                        padding: const EdgeInsets.all(16),
+                        itemCount: _filteredPackages.length,
+                        itemBuilder: (context, index) {
+                          final pkg = _filteredPackages[index];
+                          final isMega = pkg.pubs.length > 10;
+                          final isExpanded = _expandedMega.contains(pkg.title);
 
-                        return Container(
-                          margin: const EdgeInsets.only(bottom: 18),
-                          padding: const EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                            color: const Color(0xFF0D1527),
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(
-                              color: pkg.price >= 10000
-                                  ? const Color(0xFF00F2FE).withOpacity(0.6)
-                                  : pkg.category.contains('Mega')
-                                      ? const Color(0xFFC9A84C).withOpacity(0.6)
-                                      : const Color(0xFF1E293B),
-                              width: (pkg.price >= 10000 || pkg.category.contains('Mega')) ? 1.5 : 1.0,
+                          return Container(
+                            margin: const EdgeInsets.only(bottom: 18),
+                            padding: const EdgeInsets.all(20),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFF0D1527),
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(
+                                color: pkg.price >= 10000
+                                    ? const Color(0xFF00F2FE).withOpacity(0.6)
+                                    : pkg.category.contains('Mega')
+                                        ? const Color(0xFFC9A84C).withOpacity(0.6)
+                                        : const Color(0xFF1E293B),
+                                width: (pkg.price >= 10000 || pkg.category.contains('Mega')) ? 1.5 : 1.0,
+                              ),
                             ),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              // Badge & Price Row
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                                    decoration: BoxDecoration(
-                                      color: pkg.category.contains('Mega')
-                                          ? const Color(0xFFC9A84C).withOpacity(0.18)
-                                          : const Color(0xFF00F2FE).withOpacity(0.14),
-                                      borderRadius: BorderRadius.circular(8),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                // Badge & Price Row
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                                      decoration: BoxDecoration(
+                                        color: pkg.category.contains('Mega')
+                                            ? const Color(0xFFC9A84C).withOpacity(0.18)
+                                            : const Color(0xFF00F2FE).withOpacity(0.14),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: Text(
+                                        pkg.badge.toUpperCase(),
+                                        style: TextStyle(
+                                          color: pkg.category.contains('Mega')
+                                              ? const Color(0xFFC9A84C)
+                                              : const Color(0xFF00F2FE),
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.w800,
+                                          letterSpacing: 0.8,
+                                        ),
+                                      ),
                                     ),
-                                    child: Text(
-                                      pkg.badge.toUpperCase(),
+                                    Text(
+                                      '\$${_formatPrice(pkg.price)} USD',
                                       style: TextStyle(
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.w900,
                                         color: pkg.category.contains('Mega')
                                             ? const Color(0xFFC9A84C)
                                             : const Color(0xFF00F2FE),
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w800,
-                                        letterSpacing: 0.8,
                                       ),
                                     ),
-                                  ),
-                                  Text(
-                                    '\$${_formatPrice(pkg.price)} USD',
-                                    style: TextStyle(
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.w900,
-                                      color: pkg.category.contains('Mega')
-                                          ? const Color(0xFFC9A84C)
-                                          : const Color(0xFF00F2FE),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 12),
-
-                              // Title
-                              Text(
-                                pkg.title,
-                                style: const TextStyle(
-                                  fontSize: 19,
-                                  fontWeight: FontWeight.w900,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              const SizedBox(height: 4),
-
-                              // Traffic & Category Subtitle
-                              Row(
-                                children: [
-                                  const Icon(Icons.show_chart_rounded, size: 14, color: Color(0xFFC9A84C)),
-                                  const SizedBox(width: 4),
-                                  Text(
-                                    pkg.traffic,
-                                    style: const TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w700,
-                                      color: Color(0xFFC9A84C),
-                                    ),
-                                  ),
-                                  const SizedBox(width: 8),
-                                  Text(
-                                    '• ${pkg.category}',
-                                    style: const TextStyle(fontSize: 11, color: Color(0xFF64748B)),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 10),
-
-                              // Description
-                              Text(
-                                pkg.desc,
-                                style: const TextStyle(
-                                  fontSize: 13,
-                                  color: Color(0xFF94A3B8),
-                                  height: 1.45,
-                                ),
-                              ),
-                              const SizedBox(height: 16),
-
-                              // Publications Section
-                              Container(
-                                width: double.infinity,
-                                padding: const EdgeInsets.all(14),
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFF080E1B),
-                                  borderRadius: BorderRadius.circular(14),
-                                  border: Border.all(color: const Color(0xFF1E293B)),
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          'INCLUDED PUBLICATIONS (${pkg.pubs.length}):',
-                                          style: const TextStyle(
-                                            fontSize: 11,
-                                            fontWeight: FontWeight.w800,
-                                            color: Color(0xFFC9A84C),
-                                            letterSpacing: 0.8,
-                                          ),
-                                        ),
-                                        if (isMega)
-                                          InkWell(
-                                            onTap: () {
-                                              setState(() {
-                                                if (isExpanded) {
-                                                  _expandedMega.remove(pkg.title);
-                                                } else {
-                                                  _expandedMega.add(pkg.title);
-                                                }
-                                              });
-                                            },
-                                            child: Text(
-                                              isExpanded ? 'Collapse ▲' : 'View All 60 ▼',
-                                              style: const TextStyle(
-                                                fontSize: 11,
-                                                fontWeight: FontWeight.bold,
-                                                color: Color(0xFF00F2FE),
-                                              ),
-                                            ),
-                                          ),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 10),
-
-                                    // If Mega Package & not expanded, show preview
-                                    if (isMega && !isExpanded) ...[
-                                      Wrap(
-                                        spacing: 6,
-                                        runSpacing: 6,
-                                        children: pkg.pubs.take(8).map((pub) {
-                                          return Container(
-                                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                                            decoration: BoxDecoration(
-                                              color: const Color(0xFF131D33),
-                                              borderRadius: BorderRadius.circular(6),
-                                            ),
-                                            child: Text(
-                                              pub,
-                                              style: const TextStyle(fontSize: 11, color: Color(0xFFCBD5E1)),
-                                            ),
-                                          );
-                                        }).toList(),
-                                      ),
-                                      const SizedBox(height: 8),
-                                      Text(
-                                        '+ 52 additional verified crypto newsrooms & financial portals',
-                                        style: const TextStyle(fontSize: 11, color: Color(0xFF64748B), fontStyle: FontStyle.italic),
-                                      ),
-                                    ] else ...[
-                                      // Render all publications
-                                      Wrap(
-                                        spacing: 6,
-                                        runSpacing: 6,
-                                        children: pkg.pubs.map((pub) {
-                                          return Container(
-                                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                                            decoration: BoxDecoration(
-                                              color: const Color(0xFF131D33),
-                                              borderRadius: BorderRadius.circular(6),
-                                            ),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                const Icon(Icons.check_circle_rounded, color: Color(0xFF10B981), size: 12),
-                                                const SizedBox(width: 4),
-                                                Text(
-                                                  pub,
-                                                  style: const TextStyle(fontSize: 11, color: Color(0xFFCBD5E1)),
-                                                ),
-                                              ],
-                                            ),
-                                          );
-                                        }).toList(),
-                                      ),
-                                    ],
                                   ],
                                 ),
-                              ),
-                              const SizedBox(height: 16),
+                                const SizedBox(height: 12),
 
-                              // CTA Buttons
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: ElevatedButton.icon(
-                                      icon: const Icon(Icons.send_rounded, size: 15),
-                                      label: Text('Book ${pkg.shortTitle} via Telegram'),
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: const Color(0xFF2AABEE),
-                                        foregroundColor: Colors.white,
-                                        padding: const EdgeInsets.symmetric(vertical: 12),
-                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                // Title
+                                Text(
+                                  pkg.title,
+                                  style: const TextStyle(
+                                    fontSize: 19,
+                                    fontWeight: FontWeight.w900,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+
+                                // Traffic & Category Subtitle
+                                Row(
+                                  children: [
+                                    const Icon(Icons.show_chart_rounded, size: 14, color: Color(0xFFC9A84C)),
+                                    const SizedBox(width: 4),
+                                    Text(
+                                      pkg.traffic,
+                                      style: const TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w700,
+                                        color: Color(0xFFC9A84C),
                                       ),
-                                      onPressed: () {
-                                        final msg = Uri.encodeComponent(
-                                          'Hello NexcoinPR! I want to book ${pkg.title} (\$${_formatPrice(pkg.price)} USD). Please share submission requirements.',
-                                        );
-                                        AppLauncher.open(context, 'https://t.me/Nexcoinpr?text=$msg');
-                                      },
                                     ),
+                                    const SizedBox(width: 8),
+                                    Text(
+                                      '• ${pkg.category}',
+                                      style: const TextStyle(fontSize: 11, color: Color(0xFF64748B)),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 10),
+
+                                // Description
+                                Text(
+                                  pkg.desc,
+                                  style: const TextStyle(
+                                    fontSize: 13,
+                                    color: Color(0xFF94A3B8),
+                                    height: 1.45,
                                   ),
-                                  const SizedBox(width: 8),
-                                  IconButton(
-                                    tooltip: 'View on website',
-                                    icon: const Icon(Icons.open_in_browser_rounded, color: Color(0xFF94A3B8)),
-                                    onPressed: () => AppLauncher.open(context, 'https://www.nexcoinpr.agency/pricing.html'),
+                                ),
+                                const SizedBox(height: 16),
+
+                                // Publications Section
+                                Container(
+                                  width: double.infinity,
+                                  padding: const EdgeInsets.all(14),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFF080E1B),
+                                    borderRadius: BorderRadius.circular(14),
+                                    border: Border.all(color: const Color(0xFF1E293B)),
                                   ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        );
-                      },
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            'INCLUDED PUBLICATIONS (${pkg.pubs.length}):',
+                                            style: const TextStyle(
+                                              fontSize: 11,
+                                              fontWeight: FontWeight.w800,
+                                              color: Color(0xFFC9A84C),
+                                              letterSpacing: 0.8,
+                                            ),
+                                          ),
+                                          if (isMega)
+                                            InkWell(
+                                              onTap: () {
+                                                setState(() {
+                                                  if (isExpanded) {
+                                                    _expandedMega.remove(pkg.title);
+                                                  } else {
+                                                    _expandedMega.add(pkg.title);
+                                                  }
+                                                });
+                                              },
+                                              child: Text(
+                                                isExpanded ? 'Collapse ▲' : 'View All 60 ▼',
+                                                style: const TextStyle(
+                                                  fontSize: 11,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Color(0xFF00F2FE),
+                                                ),
+                                              ),
+                                            ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 10),
+
+                                      // If Mega Package & not expanded, show preview
+                                      if (isMega && !isExpanded) ...[
+                                        Wrap(
+                                          spacing: 6,
+                                          runSpacing: 6,
+                                          children: pkg.pubs.take(8).map((pub) {
+                                            return Container(
+                                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                              decoration: BoxDecoration(
+                                                color: const Color(0xFF131D33),
+                                                borderRadius: BorderRadius.circular(6),
+                                              ),
+                                              child: Text(
+                                                pub,
+                                                style: const TextStyle(fontSize: 11, color: Color(0xFFCBD5E1)),
+                                              ),
+                                            );
+                                          }).toList(),
+                                        ),
+                                        const SizedBox(height: 8),
+                                        const Text(
+                                          '+ 52 additional verified crypto newsrooms & financial portals',
+                                          style: TextStyle(fontSize: 11, color: Color(0xFF64748B), fontStyle: FontStyle.italic),
+                                        ),
+                                      ] else ...[
+                                        // Render all publications
+                                        Wrap(
+                                          spacing: 6,
+                                          runSpacing: 6,
+                                          children: pkg.pubs.map((pub) {
+                                            return Container(
+                                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                              decoration: BoxDecoration(
+                                                color: const Color(0xFF131D33),
+                                                borderRadius: BorderRadius.circular(6),
+                                              ),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  const Icon(Icons.check_circle_rounded, color: Color(0xFF10B981), size: 12),
+                                                  const SizedBox(width: 4),
+                                                  Text(
+                                                    pub,
+                                                    style: const TextStyle(fontSize: 11, color: Color(0xFFCBD5E1)),
+                                                  ),
+                                                ],
+                                              ),
+                                            );
+                                          }).toList(),
+                                        ),
+                                      ],
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(height: 16),
+
+                                // CTA Buttons
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: ElevatedButton.icon(
+                                        icon: const Icon(Icons.send_rounded, size: 15),
+                                        label: Text('Book ${pkg.shortTitle} via Telegram'),
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: const Color(0xFF2AABEE),
+                                          foregroundColor: Colors.white,
+                                          padding: const EdgeInsets.symmetric(vertical: 12),
+                                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                        ),
+                                        onPressed: () {
+                                          final msg = Uri.encodeComponent(
+                                            'Hello NexcoinPR! I want to book ${pkg.title} (\$${_formatPrice(pkg.price)} USD). Please share submission requirements.',
+                                          );
+                                          AppLauncher.open(context, 'https://t.me/Nexcoinpr?text=$msg');
+                                        },
+                                      ),
+                                    ),
+                                    const SizedBox(width: 8),
+                                    IconButton(
+                                      tooltip: 'View on website',
+                                      icon: const Icon(Icons.open_in_browser_rounded, color: Color(0xFF94A3B8)),
+                                      onPressed: () => AppLauncher.open(context, 'https://www.nexcoinpr.agency/pricing.html'),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
                     ),
                   ),
                 ],
@@ -1255,190 +1291,200 @@ class _PackagesViewState extends State<PackagesView> with SingleTickerProviderSt
                     ),
                   ),
 
-                  // Outlets List
+                  // Outlets List with Pull-To-Refresh
                   Expanded(
-                    child: _filteredSingleOutlets.isEmpty
-                        ? Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                    child: RefreshIndicator(
+                      onRefresh: () => CloudSyncService.syncAll(),
+                      color: const Color(0xFF00F2FE),
+                      backgroundColor: const Color(0xFF0D1527),
+                      child: _filteredSingleOutlets.isEmpty
+                          ? ListView(
                               children: [
-                                const Icon(Icons.search_off_rounded, size: 48, color: Color(0xFF64748B)),
-                                const SizedBox(height: 12),
-                                Text(
-                                  'No outlets match "$_searchQuery"',
-                                  style: const TextStyle(color: Colors.white70, fontSize: 14),
-                                ),
-                                const SizedBox(height: 6),
-                                const Text(
-                                  'Try searching another publication or reset category filter.',
-                                  style: TextStyle(color: Color(0xFF64748B), fontSize: 12),
-                                ),
-                              ],
-                            ),
-                          )
-                        : ListView.separated(
-                            padding: const EdgeInsets.all(16),
-                            itemCount: _filteredSingleOutlets.length,
-                            separatorBuilder: (_, __) => const SizedBox(height: 10),
-                            itemBuilder: (context, index) {
-                              final outlet = _filteredSingleOutlets[index];
-
-                              return Container(
-                                padding: const EdgeInsets.all(16),
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFF0D1527),
-                                  borderRadius: BorderRadius.circular(16),
-                                  border: Border.all(
-                                    color: outlet.price >= 5000
-                                        ? const Color(0xFF00F2FE).withOpacity(0.4)
-                                        : const Color(0xFF1E293B),
-                                  ),
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    // Row 1: Name & Price
-                                    Row(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Expanded(
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                outlet.name,
-                                                style: const TextStyle(
-                                                  fontWeight: FontWeight.w800,
-                                                  fontSize: 16,
-                                                  color: Colors.white,
-                                                ),
-                                              ),
-                                              if (outlet.domain.isNotEmpty)
-                                                Text(
-                                                  outlet.domain,
-                                                  style: const TextStyle(
-                                                    color: Color(0xFF00F2FE),
-                                                    fontSize: 11,
-                                                    fontWeight: FontWeight.w600,
-                                                  ),
-                                                ),
-                                            ],
-                                          ),
-                                        ),
-                                        Column(
-                                          crossAxisAlignment: CrossAxisAlignment.end,
-                                          children: [
-                                            Text(
-                                              '\$${_formatPrice(outlet.price)}',
-                                              style: TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.w900,
-                                                color: outlet.price >= 5000
-                                                    ? const Color(0xFF00F2FE)
-                                                    : const Color(0xFFC9A84C),
-                                              ),
-                                            ),
-                                            const Text(
-                                              'USD Flat',
-                                              style: TextStyle(fontSize: 10, color: Color(0xFF64748B)),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 8),
-
-                                    // Row 2: Badges & Metrics
-                                    Wrap(
-                                      spacing: 6,
-                                      runSpacing: 4,
-                                      children: [
-                                        Container(
-                                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                                          decoration: BoxDecoration(
-                                            color: const Color(0xFF1E293B),
-                                            borderRadius: BorderRadius.circular(6),
-                                          ),
-                                          child: Text(
-                                            outlet.categoryLabel,
-                                            style: const TextStyle(color: Color(0xFFCBD5E1), fontSize: 10, fontWeight: FontWeight.bold),
-                                          ),
-                                        ),
-                                        if (outlet.badge.isNotEmpty)
-                                          Container(
-                                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                                            decoration: BoxDecoration(
-                                              color: const Color(0xFFC9A84C).withOpacity(0.15),
-                                              borderRadius: BorderRadius.circular(6),
-                                            ),
-                                            child: Text(
-                                              outlet.badge,
-                                              style: const TextStyle(color: Color(0xFFC9A84C), fontSize: 10, fontWeight: FontWeight.bold),
-                                            ),
-                                          ),
-                                        Container(
-                                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                                          decoration: BoxDecoration(
-                                            color: const Color(0xFF10B981).withOpacity(0.12),
-                                            borderRadius: BorderRadius.circular(6),
-                                          ),
-                                          child: Text(
-                                            '⚡ ${outlet.turnaround}',
-                                            style: const TextStyle(color: Color(0xFF10B981), fontSize: 10, fontWeight: FontWeight.bold),
-                                          ),
-                                        ),
-                                        if (outlet.traffic.isNotEmpty)
-                                          Container(
-                                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                                            decoration: BoxDecoration(
-                                              color: const Color(0xFF3B82F6).withOpacity(0.12),
-                                              borderRadius: BorderRadius.circular(6),
-                                            ),
-                                            child: Text(
-                                              '👁 ${outlet.traffic}',
-                                              style: const TextStyle(color: Color(0xFF60A5FA), fontSize: 10, fontWeight: FontWeight.bold),
-                                            ),
-                                          ),
-                                      ],
-                                    ),
-                                    if (outlet.focus.isNotEmpty) ...[
-                                      const SizedBox(height: 8),
+                                const SizedBox(height: 80),
+                                Center(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const Icon(Icons.search_off_rounded, size: 48, color: Color(0xFF64748B)),
+                                      const SizedBox(height: 12),
                                       Text(
-                                        outlet.focus,
-                                        style: const TextStyle(fontSize: 12, color: Color(0xFF94A3B8), height: 1.3),
+                                        'No outlets match "$_searchQuery"',
+                                        style: const TextStyle(color: Colors.white70, fontSize: 14),
+                                      ),
+                                      const SizedBox(height: 6),
+                                      const Text(
+                                        'Try searching another publication or reset category filter.',
+                                        style: TextStyle(color: Color(0xFF64748B), fontSize: 12),
                                       ),
                                     ],
-                                    const SizedBox(height: 12),
+                                  ),
+                                ),
+                              ],
+                            )
+                          : ListView.separated(
+                              padding: const EdgeInsets.all(16),
+                              itemCount: _filteredSingleOutlets.length,
+                              separatorBuilder: (_, __) => const SizedBox(height: 10),
+                              itemBuilder: (context, index) {
+                                final outlet = _filteredSingleOutlets[index];
 
-                                    // Row 3: Action Buttons
-                                    Row(
-                                      children: [
-                                        Expanded(
-                                          child: ElevatedButton.icon(
-                                            icon: const Icon(Icons.send_rounded, size: 14),
-                                            label: Text('Order ${outlet.name} Placement'),
-                                            style: ElevatedButton.styleFrom(
-                                              backgroundColor: const Color(0xFF1E293B),
-                                              foregroundColor: const Color(0xFF00F2FE),
-                                              side: BorderSide(color: const Color(0xFF00F2FE).withOpacity(0.3)),
-                                              padding: const EdgeInsets.symmetric(vertical: 10),
-                                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                return Container(
+                                  padding: const EdgeInsets.all(16),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFF0D1527),
+                                    borderRadius: BorderRadius.circular(16),
+                                    border: Border.all(
+                                      color: outlet.price >= 5000
+                                          ? const Color(0xFF00F2FE).withOpacity(0.4)
+                                          : const Color(0xFF1E293B),
+                                    ),
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      // Row 1: Name & Price
+                                      Row(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Expanded(
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  outlet.name,
+                                                  style: const TextStyle(
+                                                    fontWeight: FontWeight.w800,
+                                                    fontSize: 16,
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                                if (outlet.domain.isNotEmpty)
+                                                  Text(
+                                                    outlet.domain,
+                                                    style: const TextStyle(
+                                                      color: Color(0xFF00F2FE),
+                                                      fontSize: 11,
+                                                      fontWeight: FontWeight.w600,
+                                                    ),
+                                                  ),
+                                              ],
                                             ),
-                                            onPressed: () {
-                                              final msg = Uri.encodeComponent(
-                                                'Hello NexcoinPR! I want to order a single placement on ${outlet.name} (\$${_formatPrice(outlet.price)} USD).',
-                                              );
-                                              AppLauncher.open(context, 'https://t.me/Nexcoinpr?text=$msg');
-                                            },
                                           ),
+                                          Column(
+                                            crossAxisAlignment: CrossAxisAlignment.end,
+                                            children: [
+                                              Text(
+                                                '\$${_formatPrice(outlet.price)}',
+                                                style: TextStyle(
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.w900,
+                                                  color: outlet.price >= 5000
+                                                      ? const Color(0xFF00F2FE)
+                                                      : const Color(0xFFC9A84C),
+                                                ),
+                                              ),
+                                              const Text(
+                                                'USD Flat',
+                                                style: TextStyle(fontSize: 10, color: Color(0xFF64748B)),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 8),
+
+                                      // Row 2: Badges & Metrics
+                                      Wrap(
+                                        spacing: 6,
+                                        runSpacing: 4,
+                                        children: [
+                                          Container(
+                                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                                            decoration: BoxDecoration(
+                                              color: const Color(0xFF1E293B),
+                                              borderRadius: BorderRadius.circular(6),
+                                            ),
+                                            child: Text(
+                                              outlet.categoryLabel,
+                                              style: const TextStyle(color: Color(0xFFCBD5E1), fontSize: 10, fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                          if (outlet.badge.isNotEmpty)
+                                            Container(
+                                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                                              decoration: BoxDecoration(
+                                                color: const Color(0xFFC9A84C).withOpacity(0.15),
+                                                borderRadius: BorderRadius.circular(6),
+                                              ),
+                                              child: Text(
+                                                outlet.badge,
+                                                style: const TextStyle(color: Color(0xFFC9A84C), fontSize: 10, fontWeight: FontWeight.bold),
+                                              ),
+                                            ),
+                                          Container(
+                                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                                            decoration: BoxDecoration(
+                                              color: const Color(0xFF10B981).withOpacity(0.12),
+                                              borderRadius: BorderRadius.circular(6),
+                                            ),
+                                            child: Text(
+                                              '⚡ ${outlet.turnaround}',
+                                              style: const TextStyle(color: Color(0xFF10B981), fontSize: 10, fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                          if (outlet.traffic.isNotEmpty)
+                                            Container(
+                                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                                              decoration: BoxDecoration(
+                                                color: const Color(0xFF3B82F6).withOpacity(0.12),
+                                                borderRadius: BorderRadius.circular(6),
+                                              ),
+                                              child: Text(
+                                                '👁 ${outlet.traffic}',
+                                                style: const TextStyle(color: Color(0xFF60A5FA), fontSize: 10, fontWeight: FontWeight.bold),
+                                              ),
+                                            ),
+                                        ],
+                                      ),
+                                      if (outlet.focus.isNotEmpty) ...[
+                                        const SizedBox(height: 8),
+                                        Text(
+                                          outlet.focus,
+                                          style: const TextStyle(fontSize: 12, color: Color(0xFF94A3B8), height: 1.3),
                                         ),
                                       ],
-                                    ),
-                                  ],
-                                ),
-                              );
-                            },
-                          ),
+                                      const SizedBox(height: 12),
+
+                                      // Row 3: Action Buttons
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: ElevatedButton.icon(
+                                              icon: const Icon(Icons.send_rounded, size: 14),
+                                              label: Text('Order ${outlet.name} Placement'),
+                                              style: ElevatedButton.styleFrom(
+                                                backgroundColor: const Color(0xFF1E293B),
+                                                foregroundColor: const Color(0xFF00F2FE),
+                                                side: BorderSide(color: const Color(0xFF00F2FE).withOpacity(0.3)),
+                                                padding: const EdgeInsets.symmetric(vertical: 10),
+                                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                              ),
+                                              onPressed: () {
+                                                final msg = Uri.encodeComponent(
+                                                  'Hello NexcoinPR! I want to order a single placement on ${outlet.name} (\$${_formatPrice(outlet.price)} USD).',
+                                                );
+                                                AppLauncher.open(context, 'https://t.me/Nexcoinpr?text=$msg');
+                                              },
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
+                            ),
+                    ),
                   ),
                 ],
               ),
@@ -1503,7 +1549,6 @@ class _PackagesViewState extends State<PackagesView> with SingleTickerProviderSt
     );
   }
 }
-
 
 // ============================================================================
 // TAB 3: LIVE MARKETS & TRADING HUB (Binance Live Stream, Paper Simulator, Earn)
@@ -2028,6 +2073,18 @@ class _NewsAndCaseStudiesViewState extends State<NewsAndCaseStudiesView> with Si
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
+    CloudSyncService.syncNotifier.addListener(_onSyncChange);
+  }
+
+  void _onSyncChange() {
+    if (mounted) setState(() {});
+  }
+
+  @override
+  void dispose() {
+    CloudSyncService.syncNotifier.removeListener(_onSyncChange);
+    _tabController.dispose();
+    super.dispose();
   }
 
   @override
@@ -2061,9 +2118,9 @@ class _NewsAndCaseStudiesViewState extends State<NewsAndCaseStudiesView> with Si
               // NEWS LIST
               ListView.builder(
                 padding: const EdgeInsets.all(16),
-                itemCount: _newsArticles.length,
+                itemCount: CloudSyncService.newsArticles.length,
                 itemBuilder: (context, index) {
-                  final item = _newsArticles[index];
+                  final item = CloudSyncService.newsArticles[index];
                   return Container(
                     margin: const EdgeInsets.only(bottom: 14),
                     padding: const EdgeInsets.all(16),
