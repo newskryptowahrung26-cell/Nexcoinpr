@@ -80,3 +80,11 @@ jobs:
         with:
           name: NexcoinPR-Native-APK-v1.4.0-API36
           path: mobile_app/build/app/outputs/flutter-apk/*.apk
+
+      - name: Attach Binaries to GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cp mobile_app/build/app/outputs/flutter-apk/*.apk ./NexcoinPR-v1.4.0-API36.apk
+          cp mobile_app/build/app/outputs/bundle/release/*.aab ./NexcoinPR-v1.4.0-API36.aab
+          gh release upload v1.3.0 NexcoinPR-v1.4.0-API36.apk NexcoinPR-v1.4.0-API36.aab --repo newskryptowahrung26-cell/Nexcoinpr --clobber || true
