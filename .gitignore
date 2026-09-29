@@ -5,3 +5,10 @@ Thumbs.db
 *.wav
 .vscode/
 .idea/
+*.apk
+*.aab
+*.keystore
+*.zip
+job_log*.txt
+native-builds*/
+

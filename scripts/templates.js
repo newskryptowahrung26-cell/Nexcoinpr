@@ -49,6 +49,7 @@ function getHeader(activePage = '') {
           <li><a href="/media.html" class="nav-link ${activePage === 'media' ? 'active' : ''}">Media</a></li>
           <li><a href="/about.html" class="nav-link ${activePage === 'about' ? 'active' : ''}">About</a></li>
           <li><a href="/contact.html" class="nav-link ${activePage === 'contact' ? 'active' : ''}">Contact</a></li>
+          <li><a href="/app.html" class="nav-link ${activePage === 'app' ? 'active' : ''}" style="color: #F3D785; font-weight: 700;"><span style="margin-right: 4px;">📱</span>App</a></li>
         </ul>
         <a href="/press-release-distribution.html" class="btn-primary nav-cta">Submit Press Release</a>
         <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
@@ -77,6 +78,7 @@ function getFooter() {
             <li><a href="/case-studies.html">Case Studies</a></li>
             <li><a href="/media.html">Media</a></li>
             <li><a href="/authors.html">Authors</a></li>
+            <li><a href="/app.html" style="color: #F3D785; font-weight: 600;">📱 Android App (APK)</a></li>
           </ul>
         </div>
         <div class="footer-col">
