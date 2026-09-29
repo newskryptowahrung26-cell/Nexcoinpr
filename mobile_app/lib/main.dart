@@ -535,8 +535,9 @@ class _DashboardViewState extends State<DashboardView> {
           const SizedBox(height: 20),
         ],
       ),
-    );
-  }
+    ),
+  );
+}
 
   Widget _buildMetricCard(String val, String label, IconData icon, Color color) {
     return Expanded(
