@@ -944,6 +944,30 @@ function generateForexBody(cand) {
     // Save tracking
     saveImportedUrl(cand.url);
     console.log(`Successfully recorded ${cand.url} into tracking file.`);
+
+    // Update mobile app live sync feed
+    try {
+      const liveNewsFile = path.join(ROOT_DIR, 'data', 'live_news.json');
+      let liveList = [];
+      if (fs.existsSync(liveNewsFile)) {
+        liveList = JSON.parse(fs.readFileSync(liveNewsFile, 'utf8'));
+      }
+      // Remove duplicate if exists
+      liveList = liveList.filter(item => item.url !== `https://www.nexcoinpr.agency/news/${articleData.slug}`);
+      liveList.unshift({
+        title: articleData.title,
+        source: articleData.sourceName,
+        date: articleData.dateString,
+        category: articleData.category === 'Crypto' ? 'Markets • Crypto' : 'Forex • FX Desk',
+        url: `https://www.nexcoinpr.agency/news/${articleData.slug}`,
+        excerpt: articleData.metaDescription
+      });
+      if (liveList.length > 20) liveList = liveList.slice(0, 20);
+      fs.writeFileSync(liveNewsFile, JSON.stringify(liveList, null, 2), 'utf8');
+      console.log('Updated data/live_news.json for mobile app Live Cloud Sync.');
+    } catch (e) {
+      console.warn('Could not update live_news.json:', e.message);
+    }
   }
 
   console.log('\nDaily news automation completed successfully.');

@@ -199,4 +199,10 @@
       <news:title>Live updates: Bitcoin rebounds above $84,000 as ETFs draw in $30 million</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/eur-usd-dollar-index-outlook-fed-yields-inflation</loc>
+    <lastmod>2026-09-29T09:00:00Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
