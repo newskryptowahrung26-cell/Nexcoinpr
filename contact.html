@@ -192,7 +192,13 @@
 
 
 
-          <form class="contact-form" action="#" method="POST">
+          <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+            <!-- Web3Forms Access Key for free static delivery -->
+            <input type="hidden" name="access_key" id="web3forms-access-key" value="f984a1e5-8025-4c07-920f-07e112d8a0c2">
+            <input type="hidden" name="subject" value="New Client Inquiry from NexcoinPR Website">
+            <input type="hidden" name="from_name" value="NexcoinPR Web Portal">
+            <input type="hidden" name="to" value="nexcoinpr@gmail.com">
+
             <div class="grid-2">
               <div class="form-group">
                 <label class="form-label" for="contact-name">Full Name *</label>
@@ -266,7 +272,18 @@
               <label for="contact-consent" class="small text-muted">I agree to NexcoinPR's <a href="/privacy-policy">Privacy Policy</a> and understand that submitted announcements are subject to editorial and regulatory rules review.</label>
             </div>
 
-            <button type="submit" class="btn-primary mt-3">Talk to NexcoinPR</button>
+            <!-- Dual Action Submit Buttons -->
+            <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-top: 18px;">
+              <button type="submit" id="btn-submit-email" class="btn-primary" style="flex: 1; min-width: 200px; padding: 14px 22px; font-weight: 700; cursor: pointer;">
+                ✉️ Send to NexcoinPR via Email
+              </button>
+              <button type="button" id="btn-submit-whatsapp" class="btn-primary" style="flex: 1; min-width: 200px; padding: 14px 22px; font-weight: 700; background: #25D366; border-color: #25D366; color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2Z" fill="#FFFFFF"/><path d="M9.34 7.62C9.17 7.62 8.89 7.68 8.66 7.93C8.42 8.18 7.76 8.8 7.76 10.05C7.76 11.3 8.67 12.51 8.8 12.68C8.93 12.85 10.56 15.35 13.06 16.43C15.14 17.33 15.56 17.15 16.02 17.11C16.48 17.07 17.5 16.5 17.71 15.92C17.92 15.34 17.92 14.84 17.85 14.74C17.78 14.64 17.59 14.58 17.31 14.44C17.03 14.3 15.68 13.63 15.43 13.54C15.18 13.45 15 13.4 14.82 13.68C14.64 13.96 14.12 14.58 13.96 14.76C13.8 14.94 13.64 14.96 13.36 14.82C13.08 14.68 12.18 14.38 11.11 13.43C10.28 12.69 9.72 11.78 9.56 11.5C9.4 11.22 9.54 11.07 9.68 10.93C9.81 10.8 9.97 10.58 10.11 10.42C10.25 10.26 10.3 10.14 10.39 9.96C10.48 9.78 10.43 9.62 10.36 9.48C10.29 9.34 9.73 7.97 9.5 7.42C9.28 6.89 9.05 6.96 8.88 6.95C8.72 6.95 8.53 6.95 8.34 6.95L9.34 7.62Z" fill="#25D366"/></svg>
+                <span>Instant Send on WhatsApp</span>
+              </button>
+            </div>
+
+            <div id="contact-status-box" style="display:none; margin-top: 16px; padding: 14px 18px; border-radius: 8px; font-size: 0.92rem; font-weight: 600;"></div>
           </form>
         </div>
 
@@ -428,11 +445,181 @@
 </script>
 
 
-<!-- Permanent Floating WhatsApp Direct Contact -->
-<a href="https://wa.me/971582021752" id="site-floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp (+971-582021752)" style="position:fixed;bottom:24px;right:24px;z-index:999999;display:flex;align-items:center;gap:10px;background:#25D366;color:#FFFFFF;padding:12px 20px;border-radius:50px;box-shadow:0 6px 25px rgba(37,211,102,0.5);text-decoration:none;font-family:system-ui,-apple-system,sans-serif;font-size:0.92rem;font-weight:700;transition:transform 0.2s ease,box-shadow 0.2s ease;cursor:pointer;">
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2Z" fill="#FFFFFF"/><path d="M9.34 7.62C9.17 7.62 8.89 7.68 8.66 7.93C8.42 8.18 7.76 8.8 7.76 10.05C7.76 11.3 8.67 12.51 8.8 12.68C8.93 12.85 10.56 15.35 13.06 16.43C15.14 17.33 15.56 17.15 16.02 17.11C16.48 17.07 17.5 16.5 17.71 15.92C17.92 15.34 17.92 14.84 17.85 14.74C17.78 14.64 17.59 14.58 17.31 14.44C17.03 14.3 15.68 13.63 15.43 13.54C15.18 13.45 15 13.4 14.82 13.68C14.64 13.96 14.12 14.58 13.96 14.76C13.8 14.94 13.64 14.96 13.36 14.82C13.08 14.68 12.18 14.38 11.11 13.43C10.28 12.69 9.72 11.78 9.56 11.5C9.4 11.22 9.54 11.07 9.68 10.93C9.81 10.8 9.97 10.58 10.11 10.42C10.25 10.26 10.3 10.14 10.39 9.96C10.48 9.78 10.43 9.62 10.36 9.48C10.29 9.34 9.73 7.97 9.5 7.42C9.28 6.89 9.05 6.96 8.88 6.95C8.72 6.95 8.53 6.95 8.34 6.95L9.34 7.62Z" fill="#25D366"/></svg>
-  <span>WhatsApp (+971-582021752)</span>
-</a>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("contact-form");
+  const btnEmail = document.getElementById("btn-submit-email");
+  const btnWa = document.getElementById("btn-submit-whatsapp");
+  const statusBox = document.getElementById("contact-status-box");
+
+  function getFormValues() {
+    return {
+      name: (document.getElementById("contact-name").value || "").trim(),
+      company: (document.getElementById("contact-company").value || "").trim(),
+      email: (document.getElementById("contact-email").value || "").trim(),
+      website: (document.getElementById("contact-website").value || "").trim(),
+      industry: (document.getElementById("contact-industry").value || "").trim(),
+      service: (document.getElementById("contact-service").value || "").trim(),
+      budget: (document.getElementById("contact-budget").value || "").trim(),
+      message: (document.getElementById("contact-message").value || "").trim(),
+      consent: document.getElementById("contact-consent").checked
+    };
+  }
+
+  function validate(d) {
+    if (!d.name || !d.company || !d.email || !d.website || !d.industry || !d.service || !d.message) {
+      showStatus("⚠️ Please fill in all required fields marked with * before submitting.", "error");
+      return false;
+    }
+    if (!d.consent) {
+      showStatus("⚠️ Please agree to NexcoinPR's Privacy Policy to proceed.", "error");
+      return false;
+    }
+    return true;
+  }
+
+  function showStatus(htmlContent, type) {
+    if (!statusBox) return;
+    statusBox.style.display = "block";
+    if (type === "success") {
+      statusBox.style.background = "rgba(16, 185, 129, 0.12)";
+      statusBox.style.border = "1.5px solid #10B981";
+      statusBox.style.color = "#047857";
+    } else if (type === "loading") {
+      statusBox.style.background = "rgba(42, 171, 238, 0.12)";
+      statusBox.style.border = "1.5px solid #2AABEE";
+      statusBox.style.color = "#0284C7";
+    } else {
+      statusBox.style.background = "rgba(239, 68, 68, 0.12)";
+      statusBox.style.border = "1.5px solid #EF4444";
+      statusBox.style.color = "#B91C1C";
+    }
+    statusBox.innerHTML = htmlContent;
+  }
+
+  function buildInquiryText(d) {
+    return (
+      "🔥 NexcoinPR Client Campaign Inquiry\n\n" +
+      "• Name: " + d.name + "\n" +
+      "• Company: " + d.company + "\n" +
+      "• Business Email: " + d.email + "\n" +
+      "• Website: " + d.website + "\n" +
+      "• Industry: " + d.industry + "\n" +
+      "• Service Required: " + d.service + "\n" +
+      "• Budget Range: " + d.budget + "\n\n" +
+      "• Project Timeline & Details:\n" + d.message
+    );
+  }
+
+  // 1. WhatsApp Instant Direct Send
+  if (btnWa) {
+    btnWa.addEventListener("click", function () {
+      const d = getFormValues();
+      if (!validate(d)) return;
+
+      const waText = buildInquiryText(d);
+      const waLink = "https://wa.me/971582021752?text=" + encodeURIComponent(waText);
+      showStatus("✅ <strong>Opening WhatsApp...</strong> Your full campaign brief is pre-filled and ready to send to our senior PR desk (+971-582021752).", "success");
+      window.open(waLink, "_blank");
+    });
+  }
+
+  // 2. Direct Email Submission with Instant Fallback & Copy
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const d = getFormValues();
+      if (!validate(d)) return;
+
+      btnEmail.disabled = true;
+      btnEmail.textContent = "Processing...";
+      showStatus("⏳ Sending inquiry to NexcoinPR media desk...", "loading");
+
+      const plainText = buildInquiryText(d);
+      const subject = encodeURIComponent("New PR Campaign Inquiry: " + d.company + " (" + d.service + ")");
+      const body = encodeURIComponent(
+        "Hello NexcoinPR Team,\n\n" +
+        "I would like to submit a new campaign inquiry:\n\n" +
+        "Name: " + d.name + "\n" +
+        "Company: " + d.company + "\n" +
+        "Email: " + d.email + "\n" +
+        "Website: " + d.website + "\n" +
+        "Industry: " + d.industry + "\n" +
+        "Service Required: " + d.service + "\n" +
+        "Budget Range: " + d.budget + "\n\n" +
+        "Project Launch Timeline & Details:\n" + d.message + "\n\n" +
+        "Best regards,\n" + d.name
+      );
+
+      const mailtoUrl = "mailto:nexcoinpr@gmail.com?subject=" + subject + "&body=" + body;
+      const waUrl = "https://wa.me/971582021752?text=" + encodeURIComponent(plainText);
+
+      function renderFallback(msg) {
+        showStatus(
+          '<div style="margin-bottom: 8px;">📩 ' + msg + '</div>' +
+          '<div style="font-size: 0.85rem; color: #475569; margin-bottom: 12px;">If your email application did not launch automatically, choose an option below:</div>' +
+          '<div style="display: flex; gap: 10px; flex-wrap: wrap;">' +
+            '<a href="' + mailtoUrl + '" style="background: #0A1628; color: #F3D785; padding: 8px 14px; border-radius: 6px; text-decoration: none; font-size: 0.82rem; font-weight: 700;">Open Email App</a>' +
+            '<button type="button" id="btn-copy-details" style="background: #E2E8F0; color: #0F172A; border: 1px solid #CBD5E1; padding: 8px 14px; border-radius: 6px; font-size: 0.82rem; font-weight: 700; cursor: pointer;">📋 Copy Details</button>' +
+            '<a href="' + waUrl + '" target="_blank" rel="noopener noreferrer" style="background: #25D366; color: #FFFFFF; padding: 8px 14px; border-radius: 6px; text-decoration: none; font-size: 0.82rem; font-weight: 700;">Send via WhatsApp</a>' +
+          '</div>',
+          "loading"
+        );
+
+        const copyBtn = document.getElementById("btn-copy-details");
+        if (copyBtn) {
+          copyBtn.addEventListener("click", function () {
+            navigator.clipboard.writeText(plainText).then(function () {
+              copyBtn.textContent = "✅ Copied to Clipboard!";
+              setTimeout(function () { copyBtn.textContent = "📋 Copy Details"; }, 3000);
+            }).catch(function () {
+              alert("Inquiry copied to clipboard!");
+            });
+          });
+        }
+      }
+
+      // Try web3forms API first
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          access_key: document.getElementById("web3forms-access-key").value,
+          name: d.name,
+          company: d.company,
+          email: d.email,
+          website: d.website,
+          industry: d.industry,
+          service: d.service,
+          budget: d.budget,
+          message: d.message
+        })
+      })
+      .then(function(res) {
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        return res.json();
+      })
+      .then(function(data) {
+        if (data.success) {
+          showStatus("🎉 <strong>Inquiry Received!</strong> Your details have been delivered to <strong>nexcoinpr@gmail.com</strong>. Our team will review and reply within 24 business hours.", "success");
+          form.reset();
+        } else {
+          window.location.href = mailtoUrl;
+          renderFallback("Inquiry prepared for <strong>nexcoinpr@gmail.com</strong>.");
+        }
+      })
+      .catch(function() {
+        window.location.href = mailtoUrl;
+        renderFallback("Inquiry prepared for <strong>nexcoinpr@gmail.com</strong>.");
+      })
+      .finally(function() {
+        btnEmail.disabled = false;
+        btnEmail.textContent = "✉️ Send to NexcoinPR via Email";
+      });
+    });
+  }
+});
+</script>
 
 </body>
 </html>
