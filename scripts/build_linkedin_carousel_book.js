@@ -14,15 +14,11 @@ const EDGE_PATH = 'C:\\\\Program Files (x86)\\\\Microsoft\\\\Edge\\\\Application
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 });
 
-// Common Logo SVG Icon
-const LOGO_SVG = `
-<svg width="26" height="26" viewBox="0 0 40 40" fill="none" style="display:inline-block;vertical-align:middle;margin-right:8px;">
-  <rect width="40" height="40" rx="8" fill="#0A1628"/>
-  <path d="M20 6L32 13V27L20 34L8 27V13L20 6Z" stroke="#C9A84C" stroke-width="2" fill="none"/>
-  <path d="M20 12L27 16V24L20 28L13 24V16L20 12Z" fill="#C9A84C" fill-opacity="0.25" stroke="#C9A84C" stroke-width="1.5"/>
-  <circle cx="20" cy="20" r="3" fill="#F3D785"/>
-</svg>
-`;
+// Official NexcoinPR Logo Emblem (circular globe, gold crescent & blue bezel)
+const FAVICON_PATH = path.join(ROOT_DIR, 'favicon.svg');
+const FAVICON_B64 = fs.readFileSync(FAVICON_PATH).toString('base64');
+const OFFICIAL_LOGO = `<img src="data:image/svg+xml;base64,${FAVICON_B64}" width="36" height="36" style="border-radius:50%;display:inline-block;vertical-align:middle;margin-right:10px;box-shadow:0 2px 10px rgba(0,0,0,0.5), 0 0 12px rgba(201,168,76,0.35);" alt="NexcoinPR">`;
+
 
 function renderProgressBars(activeIdx, total = 8) {
   let bars = '';
@@ -156,7 +152,14 @@ const slidesData = [
       <div><strong>2. Download the Official Mobile App:</strong><br><span style="color:#C9A84C;font-size:18px;">nexcoinpr.agency/app</span></div>
       <div><strong>3. Submit Your Campaign:</strong><br><span style="color:#94A3B8;font-size:18px;">Fast 24-48h distribution across 140+ Tier-1 financial and Web3 outlets.</span></div>
     </div>`,
-    callout: `<strong>NexcoinPR Agency</strong><br><span style="font-size:18px;color:#94A3B8;">The Premier Web3, Crypto & Forex PR Partner</span><br><span style="font-size:16px;color:#C9A84C;">https://www.nexcoinpr.agency</span>`,
+    callout: `<div style="display:flex;align-items:center;gap:18px;">
+      <img src="data:image/svg+xml;base64,${FAVICON_B64}" width="54" height="54" style="border-radius:50%;box-shadow:0 0 16px rgba(201,168,76,0.45);flex-shrink:0;" alt="NexcoinPR">
+      <div>
+        <strong style="font-size:22px;color:#FFFFFF;display:block;margin-bottom:4px;">NexcoinPR Agency</strong>
+        <div style="font-size:16px;color:#94A3B8;margin-bottom:4px;">The Premier Web3, Crypto &amp; Forex PR Partner</div>
+        <div style="font-size:15px;color:#C9A84C;font-weight:600;">https://www.nexcoinpr.agency</div>
+      </div>
+    </div>`,
     footerNote: 'Save this post or share it with your marketing team.'
   }
 ];
@@ -201,7 +204,7 @@ function generateSlideHtml(slide) {
         ${renderProgressBars(slide.page, 8)}
       </div>
       <div class="brand-container">
-        ${LOGO_SVG}
+        ${OFFICIAL_LOGO}
         <span class="brand-text">Nexcoin<span class="brand-gold">PR</span></span>
       </div>
     </div>
@@ -470,6 +473,7 @@ slidesData.forEach(slide => {
 // Compile Master PDF using Edge
 const targetPdfPath = path.join(ASSETS_DOCS_DIR, 'NexcoinPR-LinkedIn-Carousel-Book.pdf');
 const downloadsPdfPath = path.join(DOWNLOADS_DIR, 'NexcoinPR-LinkedIn-Carousel-Book.pdf');
+const ARTIFACT_DIR = 'C:\\Users\\NDCOM\\.gemini\\antigravity\\brain\\45d74118-1c97-4e28-8316-86cea5814901';
 
 console.log('Rendering 8-page PDF via Edge headless...');
 try {
@@ -477,6 +481,10 @@ try {
   console.log('Successfully generated PDF:', targetPdfPath);
   fs.copyFileSync(targetPdfPath, downloadsPdfPath);
   console.log('Copied PDF to Downloads:', downloadsPdfPath);
+  if (fs.existsSync(ARTIFACT_DIR)) {
+    fs.copyFileSync(targetPdfPath, path.join(ARTIFACT_DIR, 'NexcoinPR-LinkedIn-Carousel-Book.pdf'));
+    console.log('Copied PDF to Artifacts directory');
+  }
 } catch (e) {
   console.error('Error generating PDF:', e.message);
 }
@@ -490,6 +498,9 @@ slidesData.forEach(slide => {
   try {
     execSync(`"${EDGE_PATH}" --headless=new --disable-gpu --screenshot="${targetPngPath}" --window-size=1080,1350 --hide-scrollbars "file:///${singleHtmlPath.replace(/\\\\/g, '/')}"`, { stdio: 'inherit' });
     fs.copyFileSync(targetPngPath, downloadsPngPath);
+    if (fs.existsSync(ARTIFACT_DIR)) {
+      fs.copyFileSync(targetPngPath, path.join(ARTIFACT_DIR, `nexcoinpr-slide-${slide.page}.png`));
+    }
     console.log(`Rendered slide ${slide.page}: ${targetPngPath}`);
   } catch (err) {
     console.warn(`Error rendering slide ${slide.page}:`, err.message);
@@ -497,3 +508,4 @@ slidesData.forEach(slide => {
 });
 
 console.log('All PDF and slide PNG generation complete!');
+
