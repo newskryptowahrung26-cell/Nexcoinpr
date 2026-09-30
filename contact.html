@@ -196,10 +196,11 @@
 
           <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
             <!-- Web3Forms Access Key for free static delivery -->
-            <input type="hidden" name="access_key" id="web3forms-access-key" value="f984a1e5-8025-4c07-920f-07e112d8a0c2">
+            <input type="hidden" name="access_key" id="web3forms-access-key" value="4446fa2e-f5a1-4cbc-b096-76fab27d4b43">
             <input type="hidden" name="subject" value="New Client Inquiry from NexcoinPR Website">
             <input type="hidden" name="from_name" value="NexcoinPR Web Portal">
             <input type="hidden" name="to" value="nexcoinpr@gmail.com">
+            <input type="hidden" name="redirect" value="https://www.nexcoinpr.agency/contact?success=true">
 
             <div class="grid-2">
               <div class="form-group">
@@ -453,6 +454,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const btnEmail = document.getElementById("btn-submit-email");
   const btnWa = document.getElementById("btn-submit-whatsapp");
   const statusBox = document.getElementById("contact-status-box");
+
+  if (window.location.search.includes("success=true")) {
+    showStatus("🎉 <strong>Inquiry Received!</strong> Your details have been delivered to <strong>nexcoinpr@gmail.com</strong>. Our team will review and reply within 24 business hours.", "success");
+  }
 
   function getFormValues() {
     return {
