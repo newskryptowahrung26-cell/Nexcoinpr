@@ -31,136 +31,254 @@ function renderProgressBars(activeIdx, total = 8) {
   return `<div style="display: flex; gap: 8px; align-items: center;">${bars}</div>`;
 }
 
-// 8 Slides Data
+// 8 High-Converting Advertising & Media Kit Slides
 const slidesData = [
-  // Slide 1
+  // Slide 1: High-Impact Hook & Media Showcase
   {
     page: 1,
-    series: 'THE PR PLAYBOOK',
-    eyebrow: 'THE UNTOLD REALITY',
-    quoteMark: true,
-    headline: '“We spent $5,000 on a wire distribution. Nobody covered us.”',
-    bodyText: 'Logged as poor marketing ROI by executive teams.<br><br>Reported as an unfortunate quarter by the agency.<br><br>In reality, it was a distribution trap that 90% of Web3 and Forex founders walk into every single launch.',
-    callout: null,
+    series: 'AGENCY MEDIA KIT',
+    eyebrow: 'GUARANTEED COVERAGE',
+    quoteMark: false,
+    headline: 'Get Guaranteed Tier-1 Editorial Coverage for Your Web3 & Forex Brand.',
+    bodyText: `<div style="font-size:23px;line-height:1.6;color:#CBD5E1;margin-bottom:28px;">
+      Stop pitching busy journalists who ignore your emails. We bypass the pitch inbox and publish your announcement directly on the world's most authoritative crypto and financial publications.
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px;">
+      <span style="background:#131B29;border:1px solid rgba(201,168,76,0.35);color:#F3D785;font-weight:700;font-size:17px;padding:8px 18px;border-radius:20px;">Cointelegraph</span>
+      <span style="background:#131B29;border:1px solid rgba(201,168,76,0.35);color:#F3D785;font-weight:700;font-size:17px;padding:8px 18px;border-radius:20px;">CoinDesk</span>
+      <span style="background:#131B29;border:1px solid rgba(201,168,76,0.35);color:#F3D785;font-weight:700;font-size:17px;padding:8px 18px;border-radius:20px;">Forbes</span>
+      <span style="background:#131B29;border:1px solid rgba(201,168,76,0.35);color:#F3D785;font-weight:700;font-size:17px;padding:8px 18px;border-radius:20px;">Bloomberg</span>
+      <span style="background:#131B29;border:1px solid rgba(201,168,76,0.35);color:#F3D785;font-weight:700;font-size:17px;padding:8px 18px;border-radius:20px;">Yahoo Finance</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div style="background:#0F172A;border:1px solid rgba(201,168,76,0.25);padding:16px 20px;border-radius:10px;">
+        <div style="color:#C9A84C;font-size:26px;font-weight:800;margin-bottom:4px;">100%</div>
+        <div style="color:#E2E8F0;font-size:16px;font-weight:600;">Guaranteed Live Link or Full Refund</div>
+      </div>
+      <div style="background:#0F172A;border:1px solid rgba(201,168,76,0.25);padding:16px 20px;border-radius:10px;">
+        <div style="color:#C9A84C;font-size:26px;font-weight:800;margin-bottom:4px;">24–48h</div>
+        <div style="color:#E2E8F0;font-size:16px;font-weight:600;">Rapid Editorial Turnaround</div>
+      </div>
+    </div>`,
+    callout: 'Swipe to see our live pricing matrix, strategic packages, and verified client results →',
     footerNote: null
   },
-  // Slide 2
+  // Slide 2: Traditional PR vs NexcoinPR
   {
     page: 2,
-    series: 'THE PR PLAYBOOK',
-    eyebrow: 'THE CORE PROBLEM',
+    series: 'AGENCY COMPARISON',
+    eyebrow: 'STOP BURNING BUDGET',
     quoteMark: false,
-    headline: 'Syndication is not Coverage.',
-    bodyText: 'Most legacy PR wires do not pitch active journalists or senior editors. Instead, they blast your release across automated RSS scrapers, empty affiliate blogs, and hidden corporate subdomains that receive zero human traffic.',
-    callout: 'An empty subdomain with a no-index tag is not media presence. It is an expensive digital ghost town.',
+    headline: 'Traditional PR Retainers vs. The NexcoinPR Model',
+    bodyText: `<div style="display:flex;flex-direction:column;gap:18px;">
+      <div style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.28);border-radius:10px;padding:22px 24px;">
+        <div style="color:#F87171;font-weight:800;font-size:18px;margin-bottom:10px;letter-spacing:0.04em;">❌ TRADITIONAL PR AGENCIES</div>
+        <div style="color:#CBD5E1;font-size:17px;line-height:1.6;">
+          • <strong>$5,000 to $10,000/mo</strong> non-refundable retainers<br>
+          • <strong>Zero guarantees</strong> — you pay even if nobody covers you<br>
+          • <strong>6-week delays</strong> and endless discovery meetings<br>
+          • Releases blasted to automated scrapers &amp; no-index subdomains
+        </div>
+      </div>
+      <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.35);border-radius:10px;padding:22px 24px;">
+        <div style="color:#F3D785;font-weight:800;font-size:18px;margin-bottom:10px;letter-spacing:0.04em;"> THE NEXCOINPR ADVANTAGE</div>
+        <div style="color:#E2E8F0;font-size:17px;line-height:1.6;">
+          • <strong>Fixed Pay-Per-Placement:</strong> 100% transparent pricing<br>
+          • <strong>100% Publication Guarantee:</strong> Live link or full refund<br>
+          • <strong>24 to 48 Hour Turnaround:</strong> Direct editorial desk access<br>
+          • <strong>Permanent Dofollow Backlinks:</strong> Verified Google News indexing
+        </div>
+      </div>
+    </div>`,
+    callout: 'Pay only for verified results. Zero monthly retainers. Zero guesswork.',
     footerNote: null
   },
-  // Slide 3
+  // Slide 3: Single Media Placements & Transparent Costs
   {
     page: 3,
-    series: 'THE PR PLAYBOOK',
-    eyebrow: 'INSIDE THE NEWSROOM',
+    series: 'FLAGSHIP OUTLETS',
+    eyebrow: 'TRANSPARENT PRICING MATRIX',
     quoteMark: false,
-    headline: 'Crypto and financial editors receive 400+ pitches every morning.',
-    bodyText: '95% of them are deleted within 3 seconds because they share the exact same fatal flaws:<br><br>• Corporate jargon with zero real market tension<br>• Empty claims unsupported by verified onchain data<br>• Self-congratulatory announcements that offer no reader value',
-    callout: 'If your release reads like an internal company memo, an editor will not read past your first sentence.',
+    headline: 'Direct Access to Global Crypto & Financial Powerhouses.',
+    bodyText: `<div style="display:flex;flex-direction:column;gap:14px;">
+      <div style="background:#111827;border:1px solid rgba(201,168,76,0.25);border-radius:10px;padding:16px 22px;display:flex;justify-content:space-between;align-items:center;">
+        <div>
+          <div style="color:#FFFFFF;font-weight:800;font-size:20px;">Cointelegraph</div>
+          <div style="color:#94A3B8;font-size:15px;">DA 90 • Organic Editorial • 8M+ Monthly Web3 Readers</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="color:#F3D785;font-weight:800;font-size:24px;">$6,999</div>
+          <div style="color:#22C55E;font-size:13px;font-weight:700;">Guaranteed Link</div>
+        </div>
+      </div>
+      <div style="background:#111827;border:1px solid rgba(201,168,76,0.25);border-radius:10px;padding:16px 22px;display:flex;justify-content:space-between;align-items:center;">
+        <div>
+          <div style="color:#FFFFFF;font-weight:800;font-size:20px;">CoinDesk</div>
+          <div style="color:#94A3B8;font-size:15px;">The Gold Standard in Crypto Institutional Journalism</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="color:#F3D785;font-weight:800;font-size:24px;">$8,000</div>
+          <div style="color:#22C55E;font-size:13px;font-weight:700;">Guaranteed Link</div>
+        </div>
+      </div>
+      <div style="background:#111827;border:1px solid rgba(201,168,76,0.25);border-radius:10px;padding:16px 22px;display:flex;justify-content:space-between;align-items:center;">
+        <div>
+          <div style="color:#FFFFFF;font-weight:800;font-size:20px;">Forbes</div>
+          <div style="color:#94A3B8;font-size:15px;">Global Business Prestige &amp; Executive Authority</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="color:#F3D785;font-weight:800;font-size:24px;">$7,500</div>
+          <div style="color:#22C55E;font-size:13px;font-weight:700;">Guaranteed Link</div>
+        </div>
+      </div>
+      <div style="background:#111827;border:1px solid rgba(201,168,76,0.25);border-radius:10px;padding:16px 22px;display:flex;justify-content:space-between;align-items:center;">
+        <div>
+          <div style="color:#FFFFFF;font-weight:800;font-size:20px;">Entrepreneur</div>
+          <div style="color:#94A3B8;font-size:15px;">Full Editorial Feature • High Founder Credibility</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="color:#F3D785;font-weight:800;font-size:24px;">$8,500</div>
+          <div style="color:#22C55E;font-size:13px;font-weight:700;">Guaranteed Link</div>
+        </div>
+      </div>
+    </div>`,
+    callout: 'Browse all 144 single media outlets live at nexcoinpr.agency/pricing',
     footerNote: null
   },
-  // Slide 4
+  // Slide 4: All-In-One Strategic Packages
   {
     page: 4,
-    series: 'THE PR PLAYBOOK',
-    eyebrow: 'THE STRATEGIC BLUEPRINT',
+    series: 'ALL-IN-ONE PACKAGES',
+    eyebrow: 'MAXIMUM BUNDLED VALUE',
     quoteMark: false,
-    headline: 'The 3 Laws of High-Impact Financial PR:',
-    bodyText: `<div style="display:flex;flex-direction:column;gap:20px;">
-      <div><strong style="color:#F3D785;font-size:22px;">01 / Anchor to Macro Market Tension</strong><br><span style="font-size:18px;color:#94A3B8;">Tie your product or token announcement to active macro narratives: regulatory shifts, yield dynamics, or institutional adoption.</span></div>
-      <div><strong style="color:#F3D785;font-size:22px;">02 / Proprietary Data Commands Authority</strong><br><span style="font-size:18px;color:#94A3B8;">Editors do not quote promises. They quote proprietary research, liquidity depth benchmarks, and verified volume metrics.</span></div>
-      <div><strong style="color:#F3D785;font-size:22px;">03 / Direct Desk Relationships Win</strong><br><span style="font-size:18px;color:#94A3B8;">Direct editorial desks guarantee high-tier syndication on CoinDesk, Bloomberg, Forbes & Cointelegraph.</span></div>
+    headline: 'Pre-Engineered PR Packages for Explosive Growth.',
+    bodyText: `<div style="display:flex;flex-direction:column;gap:16px;">
+      <div style="background:#111827;border:1px solid rgba(201,168,76,0.25);border-radius:10px;padding:18px 22px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+          <span style="color:#FFFFFF;font-weight:800;font-size:19px;">Web3 &amp; Crypto Starter</span>
+          <span style="color:#F3D785;font-weight:800;font-size:20px;">$700 – $1,400</span>
+        </div>
+        <div style="color:#94A3B8;font-size:15px;line-height:1.5;">Targeted 5-to-10 outlet crypto distribution. Perfect for token presales, DEX listings, and rapid community momentum.</div>
+      </div>
+      <div style="background:#111827;border:1px solid rgba(201,168,76,0.25);border-radius:10px;padding:18px 22px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+          <span style="color:#FFFFFF;font-weight:800;font-size:19px;">Financial Growth Surge</span>
+          <span style="color:#F3D785;font-weight:800;font-size:20px;">$4,500</span>
+        </div>
+        <div style="color:#94A3B8;font-size:15px;line-height:1.5;">Multi-wire financial syndication across Yahoo Finance, Benzinga, AP News, MarketWatch, and high-DA fintech portals.</div>
+      </div>
+      <div style="background:linear-gradient(135deg,#131F33 0%,#0E1726 100%);border:1px solid rgba(201,168,76,0.4);border-radius:10px;padding:18px 22px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+          <span style="color:#FBE285;font-weight:800;font-size:19px;">Global Authority Elite</span>
+          <span style="color:#F3D785;font-weight:800;font-size:20px;">$12,000 – $20,000</span>
+        </div>
+        <div style="color:#CBD5E1;font-size:15px;line-height:1.5;">The ultimate Tier-1 market blitz. Direct organic editorial across Bloomberg, Cointelegraph, CoinDesk, Forbes, and global financial wires.</div>
+      </div>
     </div>`,
-    callout: null,
+    callout: 'Save up to 40% with bundled packages compared to individual single placements.',
     footerNote: null
   },
-  // Slide 5
+  // Slide 5: The 4 Ironclad Guarantees
   {
     page: 5,
-    series: 'THE PR PLAYBOOK',
-    eyebrow: 'PROVEN CASE STUDIES',
+    series: 'CLIENT PROTECTION',
+    eyebrow: 'ZERO FINANCIAL RISK',
     quoteMark: false,
-    headline: 'What Authentic Tier-1 Distribution Delivers:',
-    bodyText: `<div style="display:flex;flex-direction:column;gap:18px;">
-      <div style="background:#131B29;border:1px solid rgba(201,168,76,0.2);padding:18px 22px;border-radius:8px;">
-        <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span style="color:#F3D785;font-weight:700;font-size:18px;">LBank Exchange Study</span><span style="color:#C9A84C;font-weight:800;font-size:18px;">4.4x Liquidity Depth</span></div>
-        <div style="font-size:16px;color:#94A3B8;">Order-book depth report syndicated across leading crypto publications, cementing institutional liquidity dominance.</div>
+    headline: '4 Ironclad Guarantees Behind Every Single Campaign.',
+    bodyText: `<div style="display:flex;flex-direction:column;gap:18px;color:#CBD5E1;">
+      <div style="display:flex;align-items:flex-start;gap:14px;">
+        <div style="background:#C9A84C;color:#0A1628;font-weight:800;font-size:15px;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div>
+        <div><strong style="color:#FFFFFF;font-size:19px;">100% Publication Guarantee</strong><br><span style="font-size:16px;color:#94A3B8;">If your editorial does not go live on the agreed outlet, you receive an immediate 100% refund. Zero risk.</span></div>
       </div>
-      <div style="background:#131B29;border:1px solid rgba(201,168,76,0.2);padding:18px 22px;border-radius:8px;">
-        <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span style="color:#F3D785;font-weight:700;font-size:18px;">\$BHAD Meme Token</span><span style="color:#C9A84C;font-weight:800;font-size:18px;">14.2M Impressions</span></div>
-        <div style="font-size:16px;color:#94A3B8;">Tier-1 placements across Bloomberg, Cointelegraph and Yahoo Finance driving top-tier exchange listings and community surge.</div>
+      <div style="display:flex;align-items:flex-start;gap:14px;">
+        <div style="background:#C9A84C;color:#0A1628;font-weight:800;font-size:15px;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div>
+        <div><strong style="color:#FFFFFF;font-size:19px;">Permanent Dofollow Backlinks</strong><br><span style="font-size:16px;color:#94A3B8;">Articles remain live indefinitely, channeling high-DA link equity directly to your website to boost your Google search rank.</span></div>
       </div>
-      <div style="background:#131B29;border:1px solid rgba(201,168,76,0.2);padding:18px 22px;border-radius:8px;">
-        <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span style="color:#F3D785;font-weight:700;font-size:18px;">Cregis Enterprise Growth</span><span style="color:#C9A84C;font-weight:800;font-size:18px;">\$4.2B Settlement</span></div>
-        <div style="font-size:16px;color:#94A3B8;">Showcasing institutional Web3 MPC treasury adoption to traditional banking allocators across the Middle East.</div>
+      <div style="display:flex;align-items:flex-start;gap:14px;">
+        <div style="background:#C9A84C;color:#0A1628;font-weight:800;font-size:15px;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div>
+        <div><strong style="color:#FFFFFF;font-size:19px;">Rapid 24 to 48 Hour Turnaround</strong><br><span style="font-size:16px;color:#94A3B8;">Crypto and financial markets move by the minute. Our established desks ensure swift turnaround without red tape.</span></div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:14px;">
+        <div style="background:#C9A84C;color:#0A1628;font-weight:800;font-size:15px;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div>
+        <div><strong style="color:#FFFFFF;font-size:19px;">Financial Ghostwriting Included</strong><br><span style="font-size:16px;color:#94A3B8;">Don't have an article ready? Our experienced financial journalists draft, structure, and polish your narrative at no extra charge.</span></div>
       </div>
     </div>`,
-    callout: null,
+    callout: 'Real PR accountability: You only invest when guaranteed publication is delivered.',
     footerNote: null
   },
-  // Slide 6
+  // Slide 6: Real Proven Case Studies
   {
     page: 6,
-    series: 'THE PR PLAYBOOK',
-    eyebrow: 'THE MEDIA NETWORK',
+    series: 'PROVEN ROI',
+    eyebrow: 'REAL CAMPAIGN RESULTS',
     quoteMark: false,
-    headline: '140+ Direct Tier-1 Media Outlets. Zero Guesswork.',
-    bodyText: `<div style="display:flex;flex-direction:column;gap:18px;font-size:20px;color:#CBD5E1;">
-      <div style="display:flex;align-items:flex-start;gap:12px;">
-        <span style="color:#C9A84C;font-size:24px;">✓</span>
-        <div><strong style="color:#FFFFFF;">Guaranteed Placements:</strong> Direct publishing across Bloomberg, CoinDesk, Forbes, Cointelegraph, Benzinga, Decrypt, and 140+ crypto & forex outlets.</div>
+    headline: 'How Market Leaders Scaled With NexcoinPR.',
+    bodyText: `<div style="display:flex;flex-direction:column;gap:16px;">
+      <div style="background:#131B29;border:1px solid rgba(201,168,76,0.25);padding:18px 22px;border-radius:10px;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span style="color:#F3D785;font-weight:800;font-size:18px;">DeFi Liquidity Protocol</span><span style="color:#22C55E;font-weight:800;font-size:18px;">+240% Volume Surge</span></div>
+        <div style="font-size:15px;color:#CBD5E1;line-height:1.5;">Cointelegraph Feature + 8 Syndicated Crypto Portals drove $18M+ new TVL and top organic Google ranking within 72 hours of launch.</div>
       </div>
-      <div style="display:flex;align-items:flex-start;gap:12px;">
-        <span style="color:#C9A84C;font-size:24px;">✓</span>
-        <div><strong style="color:#FFFFFF;">24 to 48 Hour Turnaround:</strong> High-velocity editorial review, formatting, and live distribution without bureaucratic delays.</div>
+      <div style="background:#131B29;border:1px solid rgba(201,168,76,0.25);padding:18px 22px;border-radius:10px;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span style="color:#F3D785;font-weight:800;font-size:18px;">Regulated Forex Brokerage</span><span style="color:#22C55E;font-weight:800;font-size:18px;">38 Institutional Leads</span></div>
+        <div style="font-size:15px;color:#CBD5E1;line-height:1.5;">Forbes Council Editorial + Tier-1 Financial Wire generated 38 institutional partner inquiries and solidified European regulatory trust.</div>
       </div>
-      <div style="display:flex;align-items:flex-start;gap:12px;">
-        <span style="color:#C9A84C;font-size:24px;">✓</span>
-        <div><strong style="color:#FFFFFF;">Permanent Dofollow Authority:</strong> High-DA organic backlink equity and Google News indexing that cements multi-year search visibility.</div>
+      <div style="background:#131B29;border:1px solid rgba(201,168,76,0.25);padding:18px 22px;border-radius:10px;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span style="color:#F3D785;font-weight:800;font-size:18px;">\$BHAD Community Token</span><span style="color:#22C55E;font-weight:800;font-size:18px;">14.2M Impressions</span></div>
+        <div style="font-size:15px;color:#CBD5E1;line-height:1.5;">Bloomberg, Cointelegraph &amp; Yahoo Finance distribution catalyzed global social viral pickup and secured Tier-1 CEX exchange listings.</div>
       </div>
     </div>`,
-    callout: 'Real PR is not an expense. It is permanent enterprise equity.',
+    callout: 'From viral token momentum to institutional broker credibility, we deliver measurable market authority.',
     footerNote: null
   },
-  // Slide 7
+  // Slide 7: Mobile App & Live Cloud Sync
   {
     page: 7,
-    series: 'THE PR PLAYBOOK',
-    eyebrow: 'COMPLETE TRANSPARENCY',
+    series: 'EXCLUSIVE TECH',
+    eyebrow: 'TRANSPARENCY IN YOUR POCKET',
     quoteMark: false,
-    headline: 'The Entire PR Media Matrix Inside a Mobile App.',
-    bodyText: 'We believe PR pricing should be 100% transparent. No sales interrogation calls. No arbitrary markups.<br><br>• <strong>Browse 144 Single Media Placements</strong> with exact costs<br>• <strong>Compare 13 Authentic Packages</strong> ($700 to $20,000)<br>• <strong>Live Cloud Sync</strong> connects app directly to website data<br>• <strong>Official Android APK</strong> available for immediate direct download',
-    callout: 'Know your exact publication costs and deliverables before spending a single dollar.',
+    headline: '144 Media Outlets & Live Pricing Inside Our Mobile App.',
+    bodyText: `<div style="font-size:21px;line-height:1.6;color:#CBD5E1;margin-bottom:20px;">
+      We eliminated the PR industry's closed-door pricing games with our official Android mobile application:
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:24px;color:#E2E8F0;font-size:18px;">
+      <div style="display:flex;align-items:center;gap:10px;"><span style="color:#C9A84C;font-size:22px;">▸</span> <strong>Browse 144 Single Media Placements</strong> with exact costs</div>
+      <div style="display:flex;align-items:center;gap:10px;"><span style="color:#C9A84C;font-size:22px;">▸</span> <strong>Compare 13 Strategic Packages</strong> ($700 to $20,000)</div>
+      <div style="display:flex;align-items:center;gap:10px;"><span style="color:#C9A84C;font-size:22px;">▸</span> <strong>Live Cloud Sync:</strong> App updates live from site database</div>
+      <div style="display:flex;align-items:center;gap:10px;"><span style="color:#C9A84C;font-size:22px;">▸</span> <strong>Official Android APK:</strong> Direct instant download</div>
+    </div>
+    <div style="background:#0F172A;border:1px solid rgba(201,168,76,0.3);padding:14px 20px;border-radius:8px;font-size:16px;color:#F3D785;">
+      Download the APK free today: <strong>https://www.nexcoinpr.agency/app</strong>
+    </div>`,
+    callout: 'Check prices, plan budgets, and submit campaigns directly from your phone.',
     footerNote: null
   },
-  // Slide 8
+  // Slide 8: Closing Offer & Direct Call To Action
   {
     page: 8,
-    series: 'THE PR PLAYBOOK',
-    eyebrow: 'YOUR NEXT MOVE',
+    series: 'CLAIM YOUR EDITORIAL',
+    eyebrow: 'SPECIAL LINKEDIN OFFER',
     quoteMark: false,
-    headline: 'Ready to Turn Your Announcement into Real Authority?',
-    bodyText: `<div style="display:flex;flex-direction:column;gap:20px;font-size:21px;color:#E2E8F0;">
-      <div><strong>1. Explore our Live Pricing Matrix:</strong><br><span style="color:#C9A84C;font-size:18px;">nexcoinpr.agency/pricing</span></div>
-      <div><strong>2. Download the Official Mobile App:</strong><br><span style="color:#C9A84C;font-size:18px;">nexcoinpr.agency/app</span></div>
-      <div><strong>3. Submit Your Campaign:</strong><br><span style="color:#94A3B8;font-size:18px;">Fast 24-48h distribution across 140+ Tier-1 financial and Web3 outlets.</span></div>
+    headline: 'Ready to Put Your Brand on the Front Page?',
+    bodyText: `<div style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.35);border-radius:10px;padding:20px 24px;margin-bottom:22px;">
+      <div style="color:#FBE285;font-weight:800;font-size:18px;margin-bottom:4px;letter-spacing:0.04em;">🎁 SPECIAL LINKEDIN ADVERTISER OFFER</div>
+      <div style="color:#E2E8F0;font-size:16px;line-height:1.5;">
+        Mention this <strong>LinkedIn Playbook</strong> to receive a <strong>Complimentary Editorial Narrative Review</strong> + <strong>Priority 24-Hour Drafting</strong> on your first campaign.
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px;font-size:20px;color:#E2E8F0;margin-bottom:20px;">
+      <div><strong>1. Explore Live Media Matrix:</strong><br><span style="color:#C9A84C;font-size:17px;">https://www.nexcoinpr.agency/pricing</span></div>
+      <div><strong>2. Download Official Android App:</strong><br><span style="color:#C9A84C;font-size:17px;">https://www.nexcoinpr.agency/app</span></div>
+      <div><strong>3. Direct VIP Telegram Desk:</strong><br><span style="color:#C9A84C;font-size:17px;">@nexcoinpr (Instant Quote &amp; Editorial Consultation)</span></div>
     </div>`,
     callout: `<div style="display:flex;align-items:center;gap:18px;">
-      <img src="data:image/svg+xml;base64,${FAVICON_B64}" width="54" height="54" style="border-radius:50%;box-shadow:0 0 16px rgba(201,168,76,0.45);flex-shrink:0;" alt="NexcoinPR">
+      <img src="data:image/svg+xml;base64,${FAVICON_B64}" width="56" height="56" style="border-radius:50%;box-shadow:0 0 16px rgba(201,168,76,0.45);flex-shrink:0;" alt="NexcoinPR">
       <div>
         <strong style="font-size:22px;color:#FFFFFF;display:block;margin-bottom:4px;">NexcoinPR Agency</strong>
         <div style="font-size:16px;color:#94A3B8;margin-bottom:4px;">The Premier Web3, Crypto &amp; Forex PR Partner</div>
         <div style="font-size:15px;color:#C9A84C;font-weight:600;">https://www.nexcoinpr.agency</div>
       </div>
     </div>`,
-    footerNote: 'Save this post or share it with your marketing team.'
+    footerNote: 'DM us on LinkedIn or email contact@nexcoinpr.agency to lock in your editorial slot.'
   }
 ];
 
@@ -336,17 +454,17 @@ const masterHtml = `<!DOCTYPE html>
     }
 
     .headline {
-      font-size: 46px;
+      font-size: 42px;
       font-weight: 800;
       line-height: 1.25;
       color: #FFFFFF;
       letter-spacing: -0.025em;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
 
     .body-text {
-      font-size: 23px;
-      line-height: 1.6;
+      font-size: 21px;
+      line-height: 1.55;
       color: #94A3B8;
       font-weight: 400;
     }
@@ -358,27 +476,27 @@ const masterHtml = `<!DOCTYPE html>
 
     /* Callout Box */
     .callout-box {
-      margin-top: 36px;
+      margin-top: 24px;
       background: #111724;
       border: 1px solid rgba(201, 168, 76, 0.22);
       border-radius: 10px;
-      padding: 24px 28px;
+      padding: 18px 24px;
       display: flex;
       align-items: flex-start;
-      gap: 18px;
+      gap: 16px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
 
     .callout-bar {
       width: 4px;
-      min-height: 48px;
+      min-height: 44px;
       background: #C9A84C;
       border-radius: 2px;
       flex-shrink: 0;
     }
 
     .callout-text {
-      font-size: 20px;
+      font-size: 18px;
       line-height: 1.5;
       color: #E2E8F0;
       font-style: italic;
@@ -450,12 +568,12 @@ slidesData.forEach(slide => {
     .eyebrow-dash { width: 32px; height: 3px; background: #C9A84C; border-radius: 2px; }
     .eyebrow-text { font-size: 14px; font-weight: 800; letter-spacing: 0.15em; color: #C9A84C; text-transform: uppercase; }
     .quote-mark { font-size: 110px; line-height: 0.7; color: rgba(201, 168, 76, 0.28); font-family: Georgia, serif; margin-bottom: 20px; }
-    .headline { font-size: 46px; font-weight: 800; line-height: 1.25; color: #FFFFFF; letter-spacing: -0.025em; margin-bottom: 28px; }
-    .body-text { font-size: 23px; line-height: 1.6; color: #94A3B8; font-weight: 400; }
+    .headline { font-size: 42px; font-weight: 800; line-height: 1.25; color: #FFFFFF; letter-spacing: -0.025em; margin-bottom: 24px; }
+    .body-text { font-size: 21px; line-height: 1.55; color: #94A3B8; font-weight: 400; }
     .body-text strong { color: #FFFFFF; font-weight: 600; }
-    .callout-box { margin-top: 36px; background: #111724; border: 1px solid rgba(201, 168, 76, 0.22); border-radius: 10px; padding: 24px 28px; display: flex; align-items: flex-start; gap: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-    .callout-bar { width: 4px; min-height: 48px; background: #C9A84C; border-radius: 2px; flex-shrink: 0; }
-    .callout-text { font-size: 20px; line-height: 1.5; color: #E2E8F0; font-style: italic; }
+    .callout-box { margin-top: 24px; background: #111724; border: 1px solid rgba(201, 168, 76, 0.22); border-radius: 10px; padding: 18px 24px; display: flex; align-items: flex-start; gap: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+    .callout-bar { width: 4px; min-height: 44px; background: #C9A84C; border-radius: 2px; flex-shrink: 0; }
+    .callout-text { font-size: 18px; line-height: 1.5; color: #E2E8F0; font-style: italic; }
     .slide-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.06); }
     .progress-container { display: flex; align-items: center; }
     .brand-container { display: flex; align-items: center; font-size: 20px; font-weight: 800; letter-spacing: -0.02em; }
