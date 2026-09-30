@@ -78,4 +78,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/press-releases/revamphealth-to-host-ceo-and-cfo-webinar-on-healthcare-cost-reduction-with.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/press-releases/amaze-holdings-nyse-amze-executes-binding-loi-to-acquire-bullionfx-alchemy.html</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
