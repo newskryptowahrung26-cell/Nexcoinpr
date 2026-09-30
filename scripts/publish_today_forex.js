@@ -263,6 +263,7 @@ const articleHtml = `<!DOCTYPE html>
             <li><a href="/news/crypto">Crypto News</a></li>
             <li><a href="/news/forex">Forex News</a></li>
             <li><a href="/press-releases">Press Releases</a></li>
+            <li><a href="/book">PR Playbook</a></li>
           </ul>
         </div>
         <div>
@@ -271,7 +272,7 @@ const articleHtml = `<!DOCTYPE html>
             <li><a href="/about">About Us</a></li>
             <li><a href="/media">Media Network</a></li>
             <li><a href="/contact">Contact</a></li>
-            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
           </ul>
         </div>
       </div>

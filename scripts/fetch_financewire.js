@@ -245,9 +245,10 @@ async function run() {
   const formattedDate = formatDate(dateObj);
   const isoDate = dateObj.toISOString();
 
-  const slug = `${slugify(cleanTitle)}.html`;
-  const articleUrl = `/press-releases/${slug}`;
-  const fullArticleUrl = `https://www.nexcoinpr.agency/press-releases/${slug}`;
+  const cleanSlug = slugify(cleanTitle);
+  const slug = `${cleanSlug}.html`;
+  const articleUrl = `/press-releases/${cleanSlug}`;
+  const fullArticleUrl = `https://www.nexcoinpr.agency/press-releases/${cleanSlug}`;
 
   // SEO Summary (strictly locked to max 140 characters)
   const excerpt = createSummary(bodyContent, 140);
