@@ -205,4 +205,15 @@
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/robinhoods-new-ai-agent-will-trade-for-you-even-while-you-sleep</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-30</news:publication_date>
+      <news:title>Robinhood's new AI agent will trade for you even while you sleep</news:title>
+    </news:news>
+  </url>
 </urlset>
