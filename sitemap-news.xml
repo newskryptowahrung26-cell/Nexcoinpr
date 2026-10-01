@@ -2,179 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://www.nexcoinpr.agency/news</loc>
+    <loc>https://www.nexcoinpr.agency/news/robinhoods-new-ai-agent-will-trade-for-you-even-while-you-sleep</loc>
     <news:news>
       <news:publication>
         <news:name>NexcoinPR</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-24</news:publication_date>
-      <news:title>Crypto, Forex &amp; Financial Markets News Hub</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.nexcoinpr.agency/news/bitcoin-slips-under-84k-us-treasury-yields-surge</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-24</news:publication_date>
-      <news:title>Dogecoin Slides 8%, Bitcoin Drops Under $84,000 as Treasury Yields Hit 2007 Highs</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.nexcoinpr.agency/news/usd-jpy-outlook-fed-recalibration-pressures-yen</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-24</news:publication_date>
-      <news:title>USD/JPY Outlook: Hawkish Federal Reserve Recalibration Mounts Pressure on the Japanese Yen</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.nexcoinpr.agency/news/crypto</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-22</news:publication_date>
-      <news:title>Cryptocurrency Industry News &amp; Protocol Developments</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.nexcoinpr.agency/news/forex</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-22</news:publication_date>
-      <news:title>Forex Markets, Central Banks and Currency News</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.nexcoinpr.agency/news/blockchain</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-22</news:publication_date>
-      <news:title>Blockchain Infrastructure and Consensus Technology News</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.nexcoinpr.agency/news/web3</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-24</news:publication_date>
-      <news:title>Web3, DeFi and Decentralized Protocol News</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.nexcoinpr.agency/news/fintech</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-24</news:publication_date>
-      <news:title>Fintech, Digital Banking and Payment Network News</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.nexcoinpr.agency/news/financial-markets</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-24</news:publication_date>
-      <news:title>Financial Markets, Central Banks and Macro Economic News</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.nexcoinpr.agency/news/guides</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-22</news:publication_date>
-      <news:title>Crypto &amp; Forex Public Relations Guides and Explainers</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.nexcoinpr.agency/news/guides/what-is-crypto-pr</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-22</news:publication_date>
-      <news:title>What Is Crypto PR? Complete Guide to Cryptocurrency Public Relations</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.nexcoinpr.agency/news/guides/how-to-write-a-crypto-press-release</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-22</news:publication_date>
-      <news:title>How to Write a Crypto Press Release: Step-by-Step Structure &amp; Template</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.nexcoinpr.agency/news/guides/what-is-forex-pr</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-22</news:publication_date>
-      <news:title>What Is Forex PR? A Guide to Foreign Exchange Public Relations</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.nexcoinpr.agency/news/guides/how-press-release-distribution-works</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-22</news:publication_date>
-      <news:title>How Press Release Distribution Works: Wire Networks &amp; Syndication</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.nexcoinpr.agency/news/trump-administration-weighs-a-global-stablecoin-plan-to-cement-dollar-s-dom</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-24</news:publication_date>
-      <news:title>Trump Administration Weighs A Global Stablecoin Plan To Cement Dollar S Dominance</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.nexcoinpr.agency/news/bitgets-352-million-hack-happened-via-spoofed-transfers-not-private-keys-ce</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-09-25</news:publication_date>
-      <news:title>Bitget's $352 million hack happened via spoofed transfers, not private keys, CEO Gray Chen says</news:title>
+      <news:publication_date>2026-09-30T09:00:00.000Z</news:publication_date>
+      <news:title>Robinhood's new AI agent will trade for you even while you sleep</news:title>
     </news:news>
   </url>
   <url>
@@ -184,8 +19,19 @@
         <news:name>NexcoinPR</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-29</news:publication_date>
+      <news:publication_date>2026-09-29T09:00:00.000Z</news:publication_date>
       <news:title>Bitcoin recovers to $84,000 while stocks fall on bond market pressure</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/eur-usd-dollar-index-outlook-fed-yields-inflation</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-29T09:00:00.000Z</news:publication_date>
+      <news:title>EUR/USD &amp; US Dollar Outlook: Fed Rate Cut Expectations Face Pressure from Sticky Inflation and Treasury Yields</news:title>
     </news:news>
   </url>
   <url>
@@ -195,25 +41,52 @@
         <news:name>NexcoinPR</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-29</news:publication_date>
+      <news:publication_date>2026-09-29T09:00:00.000Z</news:publication_date>
       <news:title>Live updates: Bitcoin rebounds above $84,000 as ETFs draw in $30 million</news:title>
     </news:news>
   </url>
   <url>
-    <loc>https://www.nexcoinpr.agency/news/eur-usd-dollar-index-outlook-fed-yields-inflation</loc>
-    <lastmod>2026-09-29T09:00:00Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.nexcoinpr.agency/news/robinhoods-new-ai-agent-will-trade-for-you-even-while-you-sleep</loc>
+    <loc>https://www.nexcoinpr.agency/news/bitgets-352-million-hack-happened-via-spoofed-transfers-not-private-keys-ce</loc>
     <news:news>
       <news:publication>
         <news:name>NexcoinPR</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-09-30</news:publication_date>
-      <news:title>Robinhood's new AI agent will trade for you even while you sleep</news:title>
+      <news:publication_date>2026-09-25T09:00:00.000Z</news:publication_date>
+      <news:title>Bitget's $352 million hack happened via spoofed transfers, not private keys, CEO Gray Chen says</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/usd-jpy-outlook-fed-recalibration-pressures-yen</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-24T09:30:00.000Z</news:publication_date>
+      <news:title>USD/JPY Outlook: Hawkish Federal Reserve Recalibration Mounts Pressure on the Japanese Yen</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/bitcoin-slips-under-84k-us-treasury-yields-surge</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-24T09:00:00.000Z</news:publication_date>
+      <news:title>Dogecoin Slides 8%, Bitcoin Drops Under $84,000 as Treasury Yields Hit 2007 Highs in Crypto Market Selloff</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/trump-administration-weighs-a-global-stablecoin-plan-to-cement-dollar-s-dom</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-09-24T09:00:00.000Z</news:publication_date>
+      <news:title>Trump Administration Weighs Global Stablecoin Framework to Cement US Dollar Dominance</news:title>
     </news:news>
   </url>
   <url>

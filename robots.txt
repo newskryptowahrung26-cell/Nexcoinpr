@@ -3,8 +3,6 @@ Allow: /
 Disallow: /admin/
 Disallow: /private/
 
-Sitemap: https://www.nexcoinpr.agency/sitemap.xml
-
 User-agent: GPTBot
 Allow: /
 
@@ -17,8 +15,11 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-User-agent: Bingbot
-Allow: /
-
 User-agent: Googlebot
 Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+Sitemap: https://www.nexcoinpr.agency/sitemap.xml
+Sitemap: https://www.nexcoinpr.agency/sitemap-news.xml

@@ -1,27 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" 
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
-    <title>NexcoinPR — Forex & Currency News Feed</title>
+    <title>NexcoinPR — Forex & Global Macro Markets</title>
     <link>https://www.nexcoinpr.agency</link>
-    <description>Foreign exchange markets, currency trading technology, and macroeconomic policy.</description>
+    <description>Interbank foreign exchange analysis, central bank monetary policy shifts, sovereign yields, and currency forecasts.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 Sep 2026 08:00:00 GMT</lastBuildDate>
-    <atom:link href="https://www.nexcoinpr.agency/feed-forex.xml" rel="self" type="application/rss+xml" />
+    <copyright>© 2026 NexcoinPR. All rights reserved.</copyright>
+    <lastBuildDate>Tue, 29 Sep 2026 09:00:00 GMT</lastBuildDate>
+    <atom:link href="https://www.nexcoinpr.agency/feed/forex.xml" rel="self" type="application/rss+xml" />
+    <image>
+      <url>https://www.nexcoinpr.agency/assets/images/google-news-square-512.png</url>
+      <title>NexcoinPR — Forex & Global Macro Markets</title>
+      <link>https://www.nexcoinpr.agency</link>
+    </image>
     <item>
-      <title><![CDATA[Central Banks Evaluate Real-Time FX Liquidity Buffers]]></title>
-      <link>https://www.nexcoinpr.agency/news/forex</link>
-      <guid isPermaLink="true">https://www.nexcoinpr.agency/news/forex</guid>
-      <pubDate>Mon, 21 Sep 2026 14:00:00 GMT</pubDate>
-      <description><![CDATA[Macro analysis of central bank interest rate projections and cross-border currency settlement channels.]]></description>
-      <category>Forex</category>
+      <title><![CDATA[EUR/USD & US Dollar Outlook: Fed Rate Cut Expectations Face Pressure from Sticky Inflation and Treasury Yields]]></title>
+      <link>https://www.nexcoinpr.agency/news/eur-usd-dollar-index-outlook-fed-yields-inflation</link>
+      <guid isPermaLink="true">https://www.nexcoinpr.agency/news/eur-usd-dollar-index-outlook-fed-yields-inflation</guid>
+      <pubDate>Tue, 29 Sep 2026 09:00:00 GMT</pubDate>
+      <dc:creator><![CDATA[NexcoinPR Market Editorial Desk]]></dc:creator>
+      <category><![CDATA[Forex]]></category>
+      <description><![CDATA[EUR/USD consolidates near key technical thresholds as sticky US inflation prints and elevated 10-year Treasury yields reinforce US dollar dominance across global FX sessions.]]></description>
+      <content:encoded><![CDATA[<p>EUR/USD consolidates near key technical thresholds as sticky US inflation prints and elevated 10-year Treasury yields reinforce US dollar dominance across global FX sessions.</p><p>Read the complete verified coverage on <a href="https://www.nexcoinpr.agency/news/eur-usd-dollar-index-outlook-fed-yields-inflation">NexcoinPR</a>.</p>]]></content:encoded>
+      <media:content url="https://www.nexcoinpr.agency/assets/images/news/usdjpy-forex-outlook.jpg" medium="image" type="image/png">
+        <media:title><![CDATA[EUR/USD & US Dollar Outlook: Fed Rate Cut Expectations Face Pressure from Sticky Inflation and Treasury Yields]]></media:title>
+      </media:content>
+      <enclosure url="https://www.nexcoinpr.agency/assets/images/news/usdjpy-forex-outlook.jpg" length="150000" type="image/png" />
     </item>
     <item>
-      <title><![CDATA[Retail Brokers Expand Algorithmic Risk Management Integrations]]></title>
-      <link>https://www.nexcoinpr.agency/news/forex</link>
-      <guid isPermaLink="true">https://www.nexcoinpr.agency/news/forex</guid>
-      <pubDate>Fri, 18 Sep 2026 10:00:00 GMT</pubDate>
-      <description><![CDATA[Multi-asset currency platforms deploy real-time slippage monitoring tools for retail traders.]]></description>
-      <category>Forex</category>
+      <title><![CDATA[USD/JPY Outlook: Hawkish Federal Reserve Recalibration Mounts Pressure on the Japanese Yen]]></title>
+      <link>https://www.nexcoinpr.agency/news/usd-jpy-outlook-fed-recalibration-pressures-yen</link>
+      <guid isPermaLink="true">https://www.nexcoinpr.agency/news/usd-jpy-outlook-fed-recalibration-pressures-yen</guid>
+      <pubDate>Thu, 24 Sep 2026 09:30:00 GMT</pubDate>
+      <dc:creator><![CDATA[NexcoinPR Market Editorial Desk]]></dc:creator>
+      <category><![CDATA[Forex]]></category>
+      <description><![CDATA[USD/JPY pushed higher toward key resistance zones as resilient US growth data and surging Treasury yields widened the US-Japan rate gap.]]></description>
+      <content:encoded><![CDATA[<p>USD/JPY pushed higher toward key resistance zones as resilient US growth data and surging Treasury yields widened the US-Japan rate gap.</p><p>Read the complete verified coverage on <a href="https://www.nexcoinpr.agency/news/usd-jpy-outlook-fed-recalibration-pressures-yen">NexcoinPR</a>.</p>]]></content:encoded>
+      <media:content url="https://www.nexcoinpr.agency/assets/images/news/usdjpy-forex-outlook.jpg" medium="image" type="image/png">
+        <media:title><![CDATA[USD/JPY Outlook: Hawkish Federal Reserve Recalibration Mounts Pressure on the Japanese Yen]]></media:title>
+      </media:content>
+      <enclosure url="https://www.nexcoinpr.agency/assets/images/news/usdjpy-forex-outlook.jpg" length="150000" type="image/png" />
     </item>
   </channel>
 </rss>

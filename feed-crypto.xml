@@ -1,27 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" 
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
-    <title>NexcoinPR — Crypto News Feed</title>
+    <title>NexcoinPR — Cryptocurrency & Web3 Intelligence</title>
     <link>https://www.nexcoinpr.agency</link>
-    <description>Cryptocurrency market developments, Web3 dApps, and blockchain protocol news.</description>
+    <description>Institutional cryptocurrency market analysis, DeFi trends, blockchain protocols, and regulatory developments.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 Sep 2026 08:00:00 GMT</lastBuildDate>
+    <copyright>© 2026 NexcoinPR. All rights reserved.</copyright>
+    <lastBuildDate>Wed, 30 Sep 2026 09:00:00 GMT</lastBuildDate>
     <atom:link href="https://www.nexcoinpr.agency/feed-crypto.xml" rel="self" type="application/rss+xml" />
+    <image>
+      <url>https://www.nexcoinpr.agency/assets/images/google-news-square-512.png</url>
+      <title>NexcoinPR — Cryptocurrency & Web3 Intelligence</title>
+      <link>https://www.nexcoinpr.agency</link>
+    </image>
     <item>
-      <title><![CDATA[Zero-Knowledge Prover Latency Drops 40% Across Major Testnets]]></title>
-      <link>https://www.nexcoinpr.agency/news/blockchain.html</link>
-      <guid isPermaLink="true">https://www.nexcoinpr.agency/news/blockchain.html</guid>
-      <pubDate>Tue, 22 Sep 2026 08:00:00 GMT</pubDate>
-      <description><![CDATA[Hardware acceleration optimizations compress state verification overhead for Ethereum Layer 2 rollups.]]></description>
-      <category>Crypto</category>
+      <title><![CDATA[Robinhood's new AI agent will trade for you even while you sleep]]></title>
+      <link>https://www.nexcoinpr.agency/news/robinhoods-new-ai-agent-will-trade-for-you-even-while-you-sleep</link>
+      <guid isPermaLink="true">https://www.nexcoinpr.agency/news/robinhoods-new-ai-agent-will-trade-for-you-even-while-you-sleep</guid>
+      <pubDate>Wed, 30 Sep 2026 09:00:00 GMT</pubDate>
+      <dc:creator><![CDATA[NexcoinPR Editorial Desk]]></dc:creator>
+      <category><![CDATA[Fintech]]></category>
+      <description><![CDATA[Robinhood]]></description>
+      <content:encoded><![CDATA[<p>Robinhood</p><p>Read the complete verified coverage on <a href="https://www.nexcoinpr.agency/news/robinhoods-new-ai-agent-will-trade-for-you-even-while-you-sleep">NexcoinPR</a>.</p>]]></content:encoded>
+      <media:content url="https://www.nexcoinpr.agency/assets/images/news/robinhood-is-giving-customers-an-ai-agent-that-trades-for-them-plus-10x-crypto-bets.jpg" medium="image" type="image/png">
+        <media:title><![CDATA[Robinhood's new AI agent will trade for you even while you sleep]]></media:title>
+      </media:content>
+      <enclosure url="https://www.nexcoinpr.agency/assets/images/news/robinhood-is-giving-customers-an-ai-agent-that-trades-for-them-plus-10x-crypto-bets.jpg" length="150000" type="image/png" />
     </item>
     <item>
-      <title><![CDATA[Decentralized Physical Infrastructure Networks Reach Compute Milestones]]></title>
-      <link>https://www.nexcoinpr.agency/news/crypto.html</link>
-      <guid isPermaLink="true">https://www.nexcoinpr.agency/news/crypto.html</guid>
-      <pubDate>Mon, 21 Sep 2026 12:00:00 GMT</pubDate>
-      <description><![CDATA[Distributed GPU grids demonstrate real-world utility for open-source AI model inference.]]></description>
-      <category>Crypto</category>
+      <title><![CDATA[Bitcoin recovers to $84,000 while stocks fall on bond market pressure]]></title>
+      <link>https://www.nexcoinpr.agency/news/bitcoin-recovers-to-84000-while-stocks-fall-on-bond-market-pressure</link>
+      <guid isPermaLink="true">https://www.nexcoinpr.agency/news/bitcoin-recovers-to-84000-while-stocks-fall-on-bond-market-pressure</guid>
+      <pubDate>Tue, 29 Sep 2026 09:00:00 GMT</pubDate>
+      <dc:creator><![CDATA[NexcoinPR Editorial Desk]]></dc:creator>
+      <category><![CDATA[Crypto]]></category>
+      <description><![CDATA[Bitcoin recovers to $84,000 while stocks fall on bond market pressure. Comprehensive institutional analysis, technical price levels, and.]]></description>
+      <content:encoded><![CDATA[<p>Bitcoin recovers to $84,000 while stocks fall on bond market pressure. Comprehensive institutional analysis, technical price levels, and.</p><p>Read the complete verified coverage on <a href="https://www.nexcoinpr.agency/news/bitcoin-recovers-to-84000-while-stocks-fall-on-bond-market-pressure">NexcoinPR</a>.</p>]]></content:encoded>
+      <media:content url="https://www.nexcoinpr.agency/assets/images/news/aave-leads-defi-higher-as-crypto-shrugs-off-surging-treasury-yields.png" medium="image" type="image/png">
+        <media:title><![CDATA[Bitcoin recovers to $84,000 while stocks fall on bond market pressure]]></media:title>
+      </media:content>
+      <enclosure url="https://www.nexcoinpr.agency/assets/images/news/aave-leads-defi-higher-as-crypto-shrugs-off-surging-treasury-yields.png" length="150000" type="image/png" />
+    </item>
+    <item>
+      <title><![CDATA[Live updates: Bitcoin rebounds above $84,000 as ETFs draw in $30 million]]></title>
+      <link>https://www.nexcoinpr.agency/news/live-updates-bitcoin-rebounds-above-84000-as-etfs-draw-in-30-million</link>
+      <guid isPermaLink="true">https://www.nexcoinpr.agency/news/live-updates-bitcoin-rebounds-above-84000-as-etfs-draw-in-30-million</guid>
+      <pubDate>Tue, 29 Sep 2026 09:00:00 GMT</pubDate>
+      <dc:creator><![CDATA[NexcoinPR Editorial Desk]]></dc:creator>
+      <category><![CDATA[Crypto]]></category>
+      <description><![CDATA[Live updates: Bitcoin rebounds above $84,000 as ETFs draw in $30 million. Comprehensive institutional analysis, technical price levels.]]></description>
+      <content:encoded><![CDATA[<p>Live updates: Bitcoin rebounds above $84,000 as ETFs draw in $30 million. Comprehensive institutional analysis, technical price levels.</p><p>Read the complete verified coverage on <a href="https://www.nexcoinpr.agency/news/live-updates-bitcoin-rebounds-above-84000-as-etfs-draw-in-30-million">NexcoinPR</a>.</p>]]></content:encoded>
+      <media:content url="https://www.nexcoinpr.agency/assets/images/news/live-updates-bitcoin-rebounds-above-usd84-000-as-treasury-yields-steady.png" medium="image" type="image/png">
+        <media:title><![CDATA[Live updates: Bitcoin rebounds above $84,000 as ETFs draw in $30 million]]></media:title>
+      </media:content>
+      <enclosure url="https://www.nexcoinpr.agency/assets/images/news/live-updates-bitcoin-rebounds-above-usd84-000-as-treasury-yields-steady.png" length="150000" type="image/png" />
+    </item>
+    <item>
+      <title><![CDATA[Bitget's $352 million hack happened via spoofed transfers, not private keys, CEO Gray Chen says]]></title>
+      <link>https://www.nexcoinpr.agency/news/bitgets-352-million-hack-happened-via-spoofed-transfers-not-private-keys-ce</link>
+      <guid isPermaLink="true">https://www.nexcoinpr.agency/news/bitgets-352-million-hack-happened-via-spoofed-transfers-not-private-keys-ce</guid>
+      <pubDate>Fri, 25 Sep 2026 09:00:00 GMT</pubDate>
+      <dc:creator><![CDATA[NexcoinPR Editorial Desk]]></dc:creator>
+      <category><![CDATA[Crypto]]></category>
+      <description><![CDATA[Bitget]]></description>
+      <content:encoded><![CDATA[<p>Bitget</p><p>Read the complete verified coverage on <a href="https://www.nexcoinpr.agency/news/bitgets-352-million-hack-happened-via-spoofed-transfers-not-private-keys-ce">NexcoinPR</a>.</p>]]></content:encoded>
+      <media:content url="https://www.nexcoinpr.agency/assets/images/news/bitget-s-usd351-million-hack-happened-via-spoofed-transfers-not-private-keys-ceo-gray-chen-says.jpg" medium="image" type="image/png">
+        <media:title><![CDATA[Bitget's $352 million hack happened via spoofed transfers, not private keys, CEO Gray Chen says]]></media:title>
+      </media:content>
+      <enclosure url="https://www.nexcoinpr.agency/assets/images/news/bitget-s-usd351-million-hack-happened-via-spoofed-transfers-not-private-keys-ceo-gray-chen-says.jpg" length="150000" type="image/png" />
+    </item>
+    <item>
+      <title><![CDATA[Dogecoin Slides 8%, Bitcoin Drops Under $84,000 as Treasury Yields Hit 2007 Highs in Crypto Market Selloff]]></title>
+      <link>https://www.nexcoinpr.agency/news/bitcoin-slips-under-84k-us-treasury-yields-surge</link>
+      <guid isPermaLink="true">https://www.nexcoinpr.agency/news/bitcoin-slips-under-84k-us-treasury-yields-surge</guid>
+      <pubDate>Thu, 24 Sep 2026 09:00:00 GMT</pubDate>
+      <dc:creator><![CDATA[NexcoinPR Market Editorial Desk]]></dc:creator>
+      <category><![CDATA[Crypto]]></category>
+      <description><![CDATA[Dogecoin fell 8% and Bitcoin slid under $84,000 as surging US Treasury yields and $104 crude oil ignited a broad crypto market selloff.]]></description>
+      <content:encoded><![CDATA[<p>Dogecoin fell 8% and Bitcoin slid under $84,000 as surging US Treasury yields and $104 crude oil ignited a broad crypto market selloff.</p><p>Read the complete verified coverage on <a href="https://www.nexcoinpr.agency/news/bitcoin-slips-under-84k-us-treasury-yields-surge">NexcoinPR</a>.</p>]]></content:encoded>
+      <media:content url="https://www.nexcoinpr.agency/assets/images/news/bitcoin-dogecoin-selloff.png" medium="image" type="image/png">
+        <media:title><![CDATA[Dogecoin Slides 8%, Bitcoin Drops Under $84,000 as Treasury Yields Hit 2007 Highs in Crypto Market Selloff]]></media:title>
+      </media:content>
+      <enclosure url="https://www.nexcoinpr.agency/assets/images/news/bitcoin-dogecoin-selloff.png" length="150000" type="image/png" />
+    </item>
+    <item>
+      <title><![CDATA[Trump Administration Weighs Global Stablecoin Framework to Cement US Dollar Dominance]]></title>
+      <link>https://www.nexcoinpr.agency/news/trump-administration-weighs-a-global-stablecoin-plan-to-cement-dollar-s-dom</link>
+      <guid isPermaLink="true">https://www.nexcoinpr.agency/news/trump-administration-weighs-a-global-stablecoin-plan-to-cement-dollar-s-dom</guid>
+      <pubDate>Thu, 24 Sep 2026 09:00:00 GMT</pubDate>
+      <dc:creator><![CDATA[NexcoinPR Market Editorial Desk]]></dc:creator>
+      <category><![CDATA[Crypto]]></category>
+      <description><![CDATA[The Trump administration evaluates global stablecoin initiatives to cement US dollar dominance and expand treasury absorption.]]></description>
+      <content:encoded><![CDATA[<p>The Trump administration evaluates global stablecoin initiatives to cement US dollar dominance and expand treasury absorption.</p><p>Read the complete verified coverage on <a href="https://www.nexcoinpr.agency/news/trump-administration-weighs-a-global-stablecoin-plan-to-cement-dollar-s-dom">NexcoinPR</a>.</p>]]></content:encoded>
+      <media:content url="https://www.nexcoinpr.agency/assets/images/news/trump-stablecoin-dollar-dominance.jpg" medium="image" type="image/png">
+        <media:title><![CDATA[Trump Administration Weighs Global Stablecoin Framework to Cement US Dollar Dominance]]></media:title>
+      </media:content>
+      <enclosure url="https://www.nexcoinpr.agency/assets/images/news/trump-stablecoin-dollar-dominance.jpg" length="150000" type="image/png" />
     </item>
   </channel>
 </rss>
