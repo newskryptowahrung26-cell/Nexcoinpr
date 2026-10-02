@@ -100,4 +100,15 @@
       <news:title>BTC price: Bitcoin's soft-inflation pop to $85,500 fades as bond yields refuse to fall</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/bitcoin-kicks-off-new-quarter-in-the-old-82000-85000-price-range</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-02</news:publication_date>
+      <news:title>Bitcoin kicks off new quarter in the old $82,000-$85,000 price range</news:title>
+    </news:news>
+  </url>
 </urlset>
