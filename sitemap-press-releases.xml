@@ -102,4 +102,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/press-releases/mamas-mansion-announces-live-10000-treasure-hunt-in-richmond-british-columb</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/press-releases/lowest-fee-bitcoin-atms-announces-launch-of-more-than-400-atms-nationwide</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
