@@ -612,6 +612,15 @@ async function run() {
   imported.push(candidateUrl);
   fs.writeFileSync(TRACKING_FILE, JSON.stringify(imported, null, 2), 'utf8');
   console.log('Recorded imported URL in tracking manifest.');
+
+  // 5. Ensure all articles across the site remain strictly date-sorted
+  try {
+    const { sortAllArticles } = require('./sort_all_articles');
+    sortAllArticles();
+  } catch (err) {
+    console.warn('Could not run sortAllArticles:', err.message);
+  }
+
   console.log('Done fetching press release from Decrypt.');
 }
 

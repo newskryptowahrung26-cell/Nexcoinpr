@@ -2,6 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://www.nexcoinpr.agency/news/bitcoin-kicks-off-new-quarter-in-the-old-82000-85000-price-range</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-02T09:00:00.000Z</news:publication_date>
+      <news:title>Bitcoin kicks off new quarter in the old $82,000-$85,000 price range</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/btc-price-bitcoins-soft-inflation-pop-to-85500-fades-as-bond-yields-refuse</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-01T09:00:00.000Z</news:publication_date>
+      <news:title>BTC price: Bitcoin's soft-inflation pop to $85,500 fades as bond yields refuse to fall</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://www.nexcoinpr.agency/news/robinhoods-new-ai-agent-will-trade-for-you-even-while-you-sleep</loc>
     <news:news>
       <news:publication>
@@ -87,28 +109,6 @@
       </news:publication>
       <news:publication_date>2026-09-24T09:00:00.000Z</news:publication_date>
       <news:title>Trump Administration Weighs Global Stablecoin Framework to Cement US Dollar Dominance</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.nexcoinpr.agency/news/btc-price-bitcoins-soft-inflation-pop-to-85500-fades-as-bond-yields-refuse</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-01</news:publication_date>
-      <news:title>BTC price: Bitcoin's soft-inflation pop to $85,500 fades as bond yields refuse to fall</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.nexcoinpr.agency/news/bitcoin-kicks-off-new-quarter-in-the-old-82000-85000-price-range</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-10-02</news:publication_date>
-      <news:title>Bitcoin kicks off new quarter in the old $82,000-$85,000 price range</news:title>
     </news:news>
   </url>
 </urlset>

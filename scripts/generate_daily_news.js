@@ -968,6 +968,12 @@ function generateForexBody(cand) {
     } catch (e) {
       console.warn('Could not update live_news.json:', e.message);
     }
+  // Ensure all news hubs and cards remain strictly date-sorted descending
+  try {
+    const { sortAllArticles } = require('./sort_all_articles');
+    sortAllArticles();
+  } catch (err) {
+    console.warn('Could not run sortAllArticles:', err.message);
   }
 
   console.log('\nDaily news automation completed successfully.');
