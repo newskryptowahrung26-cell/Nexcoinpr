@@ -11,4 +11,14 @@ Thumbs.db
 *.zip
 job_log*.txt
 native-builds*/
-
+download*.js
+upload*.js
+watch*.js
+keystore*.txt
+check-schema.js
+generate-logo-assets.js
+NexcoinPR-App-Ready/
+NexcoinPR-MATCHING-DIR/
+google-business-photos/
+play-store-assets/
+scratch/
