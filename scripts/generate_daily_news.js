@@ -128,6 +128,7 @@ function fetchUrl(url, timeoutMs = 12000) {
     const isHttps = url.startsWith('https://');
     const client = isHttps ? https : http;
     const req = client.get(url, {
+      agent: false,
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
@@ -139,7 +140,8 @@ function fetchUrl(url, timeoutMs = 12000) {
         'Sec-Fetch-Mode': 'navigate',
         'Sec-Fetch-Site': 'none',
         'Sec-Fetch-User': '?1',
-        'Upgrade-Insecure-Requests': '1'
+        'Upgrade-Insecure-Requests': '1',
+        'Connection': 'close'
       },
       timeout: timeoutMs
     }, (res) => {
@@ -268,9 +270,10 @@ function cleanDashesAndAi(text) {
   str = str.replace(/—|&mdash;/g, ', ');
   str = str.replace(/–|&ndash;/g, ', ');
   str = str.replace(/\s+-\s+/g, ', ');
+  str = str.replace(/\s+,\s*/g, ', ');
   str = str.replace(/,\s*,/g, ',');
-  str = str.replace(/:\s*,/g, ':');
-  str = str.replace(/,\s*:/g, ':');
+  str = str.replace(/:\s*,/g, ': ');
+  str = str.replace(/,\s*:/g, ': ');
 
   // 2. Replace known AI phrases
   for (const [key, replacement] of Object.entries(REPLACEMENTS)) {
@@ -289,6 +292,8 @@ function cleanDashesAndAi(text) {
   // 4. Double check dashes again
   str = str.replace(/—|–/g, ', ');
   str = str.replace(/\s+-\s+/g, ', ');
+  str = str.replace(/\s+,\s*/g, ', ');
+  str = str.replace(/\s{2,}/g, ' ');
 
   return str.trim();
 }
@@ -335,9 +340,49 @@ function saveImportedUrl(url) {
   }
 }
 
-// Scrape CoinDesk topics
+// Fetch CoinDesk market candidate
 async function fetchCoinDeskCandidate(importedUrls) {
   console.log('Fetching CoinDesk market news...');
+  // 1. Try CoinDesk RSS feed
+  try {
+    const xml = await fetchUrl('https://www.coindesk.com/arc/outboundfeeds/rss/');
+    const items = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/gi)];
+    for (const item of items) {
+      const itemContent = item[1];
+      const titleMatch = itemContent.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/i) || itemContent.match(/<title>(.*?)<\/title>/i);
+      const linkMatch = itemContent.match(/<link>(.*?)<\/link>/i);
+      const descMatch = itemContent.match(/<description><!\[CDATA\[([\s\S]*?)\]\]><\/description>/i) || itemContent.match(/<description>([\s\S]*?)<\/description>/i);
+
+      if (!titleMatch || !linkMatch) continue;
+
+      const rawTitle = decodeHtmlEntities(titleMatch[1].trim());
+      const fullUrl = linkMatch[1].trim();
+      const rawDesc = descMatch ? decodeHtmlEntities(descMatch[1].replace(/<[^>]+>/g, '').trim()) : '';
+
+      if (importedUrls.includes(fullUrl)) continue;
+
+      const cleanTitle = cleanDashesAndAi(rawTitle);
+      const slug = makeSlug(cleanTitle);
+      if (slug.length < 8) continue;
+
+      const meta = await fetchArticleMetadataAndImage(fullUrl, 'Crypto', slug);
+
+      return {
+        source: 'CoinDesk',
+        url: fullUrl,
+        slug: slug,
+        title: meta.title || cleanTitle,
+        description: rawDesc,
+        imageUrl: meta.imageUrl,
+        category: 'Crypto',
+        badgeClass: 'badge-crypto'
+      };
+    }
+  } catch (err) {
+    console.warn('CoinDesk RSS fetch encountered issue:', err.message);
+  }
+
+  // 2. Fallback to HTML scrape
   try {
     const html = await fetchUrl('https://www.coindesk.com/markets/');
     const linkMatches = [...html.matchAll(/href="(\/(?:markets|business|policy)\/2026\/\d{2}\/\d{2}\/([a-z0-9-]+)\/?)"/gi)];
@@ -346,11 +391,8 @@ async function fetchCoinDeskCandidate(importedUrls) {
       const fullUrl = 'https://www.coindesk.com' + match[1];
       const slug = match[2];
       if (!importedUrls.includes(fullUrl) && slug.length > 10) {
-        // Humanize title from slug as fallback
         const words = slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1));
         const estimatedTitle = words.join(' ');
-
-        // Fetch real metadata and image
         const meta = await fetchArticleMetadataAndImage(fullUrl, 'Crypto', slug);
 
         return {
@@ -365,42 +407,107 @@ async function fetchCoinDeskCandidate(importedUrls) {
       }
     }
   } catch (err) {
-    console.warn('CoinDesk live fetch encountered issue:', err.message);
+    console.warn('CoinDesk HTML live fetch encountered issue:', err.message);
   }
   return null;
 }
 
-// Scrape Forex.com topics
+// Fetch Forex candidate from FXStreet RSS (institutional FX analysis)
 async function fetchForexCandidate(importedUrls) {
-  console.log('Fetching Forex.com news and analysis...');
+  console.log('Fetching Forex market news from FXStreet RSS...');
   try {
-    const html = await fetchUrl('https://www.forex.com/en/news-and-analysis/');
-    const linkMatches = [...html.matchAll(/href="(\/en\/news-and-analysis\/([a-z0-9-]+)\/?)"/gi)];
-    
-    for (const match of linkMatches) {
-      const fullUrl = 'https://www.forex.com' + match[1];
-      const slug = match[2];
-      if (!importedUrls.includes(fullUrl) && slug.length > 10 && !slug.includes('market-insights-')) {
-        const words = slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1));
-        const estimatedTitle = words.join(' ');
+    const xml = await fetchUrl('https://www.fxstreet.com/rss/news');
+    const items = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/gi)];
 
-        // Fetch real metadata and image
-        const meta = await fetchArticleMetadataAndImage(fullUrl, 'Forex', slug);
+    for (const item of items) {
+      const itemContent = item[1];
+      const titleMatch = itemContent.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/i) || itemContent.match(/<title>(.*?)<\/title>/i);
+      const linkMatch = itemContent.match(/<link>(.*?)<\/link>/i);
+      const descMatch = itemContent.match(/<description><!\[CDATA\[([\s\S]*?)\]\]><\/description>/i) || itemContent.match(/<description>([\s\S]*?)<\/description>/i);
+      const mediaMatch = itemContent.match(/<enclosure[^>]*url=["']([^"']+)["']/i) || itemContent.match(/<media:content[^>]*url=["']([^"']+)["']/i);
 
-        return {
-          source: 'FOREX.com',
-          url: fullUrl,
-          slug: slug,
-          title: meta.title || estimatedTitle,
-          imageUrl: meta.imageUrl,
-          category: 'Forex',
-          badgeClass: 'badge-forex'
-        };
+      if (!titleMatch || !linkMatch) continue;
+
+      const rawTitle = decodeHtmlEntities(titleMatch[1].trim());
+      const fullUrl = linkMatch[1].trim();
+      const rawDesc = descMatch ? decodeHtmlEntities(descMatch[1].replace(/<[^>]+>/g, '').trim()) : '';
+
+      if (importedUrls.includes(fullUrl)) continue;
+
+      const cleanTitle = cleanDashesAndAi(rawTitle);
+      const slug = makeSlug(cleanTitle);
+      if (slug.length < 8) continue;
+
+      let imageUrl = '/assets/images/news/default-forex.jpg';
+      if (mediaMatch && mediaMatch[1]) {
+        const remoteImgUrl = mediaMatch[1].trim();
+        const extMatch = remoteImgUrl.match(/\.(png|jpg|jpeg|webp)/i);
+        const ext = extMatch ? extMatch[1].toLowerCase() : 'jpg';
+        const localFileName = `${slug}.${ext}`;
+        const localFilePath = path.join(NEWS_IMAGES_DIR, localFileName);
+        try {
+          console.log(`Downloading forex article image from ${remoteImgUrl}...`);
+          await downloadImage(remoteImgUrl, localFilePath);
+          imageUrl = `/assets/images/news/${localFileName}`;
+          console.log(`Successfully saved featured forex image to ${imageUrl}`);
+        } catch (dlErr) {
+          console.warn(`Failed to download remote forex image (${remoteImgUrl}):`, dlErr.message);
+        }
       }
+
+      return {
+        source: 'FXStreet',
+        url: fullUrl,
+        slug: slug,
+        title: cleanTitle,
+        description: rawDesc,
+        imageUrl: imageUrl,
+        category: 'Forex',
+        badgeClass: 'badge-forex'
+      };
     }
   } catch (err) {
-    console.warn('Forex.com live fetch encountered issue:', err.message);
+    console.warn('FXStreet RSS fetch encountered issue:', err.message);
   }
+
+  // Secondary fallback: Investing.com Forex RSS
+  console.log('Falling back to Investing.com Forex RSS...');
+  try {
+    const xml = await fetchUrl('https://www.investing.com/rss/news_1.rss');
+    const items = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/gi)];
+    for (const item of items) {
+      const itemContent = item[1];
+      const titleMatch = itemContent.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/i) || itemContent.match(/<title>(.*?)<\/title>/i);
+      const linkMatch = itemContent.match(/<link>(.*?)<\/link>/i);
+      const descMatch = itemContent.match(/<description><!\[CDATA\[([\s\S]*?)\]\]><\/description>/i) || itemContent.match(/<description>([\s\S]*?)<\/description>/i);
+
+      if (!titleMatch || !linkMatch) continue;
+
+      const rawTitle = decodeHtmlEntities(titleMatch[1].trim());
+      const fullUrl = linkMatch[1].trim();
+      const rawDesc = descMatch ? decodeHtmlEntities(descMatch[1].replace(/<[^>]+>/g, '').trim()) : '';
+
+      if (importedUrls.includes(fullUrl)) continue;
+
+      const cleanTitle = cleanDashesAndAi(rawTitle);
+      const slug = makeSlug(cleanTitle);
+      if (slug.length < 8) continue;
+
+      return {
+        source: 'Investing.com',
+        url: fullUrl,
+        slug: slug,
+        title: cleanTitle,
+        description: rawDesc,
+        imageUrl: '/assets/images/news/default-forex.jpg',
+        category: 'Forex',
+        badgeClass: 'badge-forex'
+      };
+    }
+  } catch (err) {
+    console.warn('Investing.com RSS fetch encountered issue:', err.message);
+  }
+
   return null;
 }
 
@@ -774,42 +881,6 @@ function updateSitemaps(article) {
   }
 }
 
-// Main execution routine
-async function main() {
-  console.log('Starting Daily News Automation...');
-  const importedUrls = getImportedUrls();
-  console.log(`Found ${importedUrls.length} previously imported source URLs.`);
-
-  const now = new Date();
-  const ymdDate = now.toISOString().split('T')[0];
-  const isoDate = `${ymdDate}T09:00:00+00:00`;
-  const dateString = now.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
-
-  // 1. Fetch Candidate from CoinDesk
-  let coinDeskCandidate = await fetchCoinDeskCandidate(importedUrls);
-  // 2. Fetch Candidate from Forex.com
-  let forexCandidate = await fetchForexCandidate(importedUrls);
-
-  console.log('CoinDesk Candidate:', coinDeskCandidate ? coinDeskCandidate.url : 'None');
-  console.log('Forex Candidate:', forexCandidate ? forexCandidate.url : 'None');
-
-  const candidates = [];
-  if (coinDeskCandidate) candidates.push(coinDeskCandidate);
-  if (forexCandidate) candidates.push(forexCandidate);
-
-  if (candidates.length === 0) {
-    console.log('No new articles required today or sources already up to date.');
-    return;
-  }
-
-  for (const cand of candidates) {
-    console.log(`\nProcessing article for: ${cand.source} (${cand.title})`);
-    
-    // Create rich deep-dive content
-    const cleanTitle = cleanDashesAndAi(cand.title);
-    const slug = makeSlug(cleanTitle);
-    const metaDesc = formatMetaDesc(`${cleanTitle}. Comprehensive institutional analysis, technical price levels, and market sentiment breakdown.`, 138);
-
 function generateCryptoBody(cand) {
   return `
     <h2>Macro Drivers and Market Catalyst Evaluation</h2>
@@ -894,9 +965,49 @@ function generateForexBody(cand) {
   `;
 }
 
+// Main execution routine
+async function main() {
+  console.log('Starting Daily News Automation...');
+  const importedUrls = getImportedUrls();
+  console.log(`Found ${importedUrls.length} previously imported source URLs.`);
+
+  const now = new Date();
+  const ymdDate = now.toISOString().split('T')[0];
+  const isoDate = `${ymdDate}T09:00:00+00:00`;
+  const dateString = now.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+
+  // 1. Fetch Candidate from CoinDesk
+  let coinDeskCandidate = await fetchCoinDeskCandidate(importedUrls);
+  // 2. Fetch Candidate from Forex.com / FXStreet
+  let forexCandidate = await fetchForexCandidate(importedUrls);
+
+  console.log('CoinDesk Candidate:', coinDeskCandidate ? coinDeskCandidate.url : 'None');
+  console.log('Forex Candidate:', forexCandidate ? forexCandidate.url : 'None');
+
+  const candidates = [];
+  if (coinDeskCandidate) candidates.push(coinDeskCandidate);
+  if (forexCandidate) candidates.push(forexCandidate);
+
+  if (candidates.length === 0) {
+    console.log('No new articles required today or sources already up to date.');
+    return;
+  }
+
+  for (const cand of candidates) {
+    console.log(`\nProcessing article for: ${cand.source} (${cand.title})`);
+    
+    // Create rich deep-dive content
+    const cleanTitle = cleanDashesAndAi(cand.title);
+    const slug = makeSlug(cleanTitle);
+    const metaDesc = formatMetaDesc(`${cleanTitle}. Comprehensive institutional analysis, technical price levels, and market sentiment breakdown.`, 138);
+
     const snippetText = cand.category === 'Crypto'
-      ? `Digital asset markets experienced notable price recalibrations as rising sovereign bond yields and shifting macroeconomic expectations prompted institutional desks to rebalance speculative portfolios and adjust duration risk across global exchanges.`
-      : `Foreign exchange markets experienced notable exchange rate recalibrations as widening sovereign yield differentials and divergent central bank policy expectations prompted institutional trading desks to rebalance currency portfolios across global markets.`;
+      ? (cand.description && cand.description.length > 40
+          ? cand.description
+          : `Digital asset markets experienced notable price recalibrations as rising sovereign bond yields and shifting macroeconomic expectations prompted institutional desks to rebalance speculative portfolios and adjust duration risk across global exchanges.`)
+      : (cand.description && cand.description.length > 40
+          ? cand.description
+          : `Foreign exchange markets experienced notable exchange rate recalibrations as widening sovereign yield differentials and divergent central bank policy expectations prompted institutional trading desks to rebalance currency portfolios across global markets.`);
 
     const rawBody = cand.category === 'Crypto'
       ? generateCryptoBody(cand)
@@ -910,6 +1021,12 @@ function generateForexBody(cand) {
       ? finalImageUrl
       : `https://www.nexcoinpr.agency${finalImageUrl}`;
 
+    const introLead = cleanDashesAndAi(
+      cand.description && cand.description.length > 30
+        ? cand.description
+        : `Institutional positioning and macro factors dictate market direction as ${cand.source} reports fresh volatility and structural shifts across global trading desks.`
+    );
+
     const articleData = {
       sourceName: cand.source,
       sourceUrl: cand.url,
@@ -920,7 +1037,7 @@ function generateForexBody(cand) {
       seoTitle: cleanTitle.substring(0, 60),
       headlineJson: cleanTitle.replace(/"/g, '\\"'),
       metaDescription: metaDesc,
-      introLead: cleanDashesAndAi(`Institutional positioning and macro factors dictate market direction as ${cand.source} reports fresh volatility and structural shifts across global trading desks.`),
+      introLead: introLead,
       featuredSnippet: cleanDashesAndAi(snippetText),
       imageUrl: finalImageUrl,
       absoluteImageUrl: absImageUrl,
@@ -968,6 +1085,8 @@ function generateForexBody(cand) {
     } catch (e) {
       console.warn('Could not update live_news.json:', e.message);
     }
+  }
+
   // Ensure all news hubs and cards remain strictly date-sorted descending
   try {
     const { sortAllArticles } = require('./sort_all_articles');

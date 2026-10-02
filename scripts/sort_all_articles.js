@@ -93,8 +93,8 @@ function sortAllArticles() {
     }
 
     let excerpt = '';
-    const descMatch = content.match(/<meta\s+name=["']description["']\s+content=["'](.*?)["']/i);
-    if (descMatch) excerpt = descMatch[1].trim();
+    const descMatch = content.match(/<meta\s+name=["']description["']\s+content=(["'])([\s\S]*?)\1/i);
+    if (descMatch) excerpt = descMatch[2].trim();
 
     let sourceUrl = '';
     let sourceName = 'Source Link';
@@ -156,7 +156,7 @@ function sortAllArticles() {
   const prGridMatch = prHtml.match(prGridRegex);
 
   if (prGridMatch) {
-    prHtml = prHtml.replace(prGridRegex, `$1\n${prCardsHtml}\n          $3`);
+    prHtml = prHtml.replace(prGridRegex, () => `${prGridMatch[1]}\n${prCardsHtml}\n          ${prGridMatch[3]}`);
   }
 
   const itemListSchema = {
@@ -231,8 +231,8 @@ function sortAllArticles() {
     }
 
     let excerpt = '';
-    const descMatch = content.match(/<meta\s+name=["']description["']\s+content=["'](.*?)["']/i);
-    if (descMatch) excerpt = descMatch[1].trim();
+    const descMatch = content.match(/<meta\s+name=["']description["']\s+content=(["'])([\s\S]*?)\1/i);
+    if (descMatch) excerpt = descMatch[2].trim();
 
     let category = 'Crypto';
     let badgeClass = 'badge-crypto';
@@ -321,7 +321,7 @@ function sortAllArticles() {
 
   const featuredRegex = /<!-- Featured News Card -->[\s\S]*?<\/article>\s*<\/div>/i;
   if (newsHtml.match(featuredRegex)) {
-    newsHtml = newsHtml.replace(featuredRegex, featuredCardHtml);
+    newsHtml = newsHtml.replace(featuredRegex, () => featuredCardHtml);
   }
 
   const newsGridCardsHtml = gridArticles.map(article => {
@@ -347,7 +347,7 @@ function sortAllArticles() {
   const newsGridMatch = newsHtml.match(newsGridRegex);
 
   if (newsGridMatch) {
-    newsHtml = newsHtml.replace(newsGridRegex, `$1\n${newsGridCardsHtml}\n            $3`);
+    newsHtml = newsHtml.replace(newsGridRegex, () => `${newsGridMatch[1]}\n${newsGridCardsHtml}\n            ${newsGridMatch[3]}`);
   }
 
   fs.writeFileSync(newsHtmlPath, newsHtml, 'utf8');
@@ -372,10 +372,12 @@ function sortAllArticles() {
                 </div>
               </article>`).join('\n');
 
-    const cryptoGridRegex = /(<div class=["']grid-2["'][^>]*>)([\s\S]*?)(<\/div>\s*<\/div>\s*<\/section>)/i;
-    if (cryptoHtml.match(cryptoGridRegex)) {
-      cryptoHtml = cryptoHtml.replace(cryptoGridRegex, `$1\n${cryptoCardsHtml}\n            $3`);
+    const cryptoGridRegex = /(<div class=["'](?:grid-3|grid-2)["'][^>]*data-news-container>)([\s\S]*?)(<\/div>\s*<div style="margin-top)/i;
+    const cryptoGridMatch = cryptoHtml.match(cryptoGridRegex);
+    if (cryptoGridMatch) {
+      cryptoHtml = cryptoHtml.replace(cryptoGridRegex, () => `${cryptoGridMatch[1]}\n${cryptoCardsHtml}\n            ${cryptoGridMatch[3]}`);
       fs.writeFileSync(cryptoHtmlPath, cryptoHtml, 'utf8');
+      console.log(`Saved news/crypto.html with ${cryptoArticles.length} sorted articles.`);
     }
   }
 
@@ -397,10 +399,12 @@ function sortAllArticles() {
                 </div>
               </article>`).join('\n');
 
-    const forexGridRegex = /(<div class=["']grid-2["'][^>]*>)([\s\S]*?)(<\/div>\s*<\/div>\s*<\/section>)/i;
-    if (forexHtml.match(forexGridRegex)) {
-      forexHtml = forexHtml.replace(forexGridRegex, `$1\n${forexCardsHtml}\n            $3`);
+    const forexGridRegex = /(<div class=["'](?:grid-3|grid-2)["'][^>]*data-news-container>)([\s\S]*?)(<\/div>\s*<div style="margin-top)/i;
+    const forexGridMatch = forexHtml.match(forexGridRegex);
+    if (forexGridMatch) {
+      forexHtml = forexHtml.replace(forexGridRegex, () => `${forexGridMatch[1]}\n${forexCardsHtml}\n            ${forexGridMatch[3]}`);
       fs.writeFileSync(forexHtmlPath, forexHtml, 'utf8');
+      console.log(`Saved news/forex.html with ${forexArticles.length} sorted articles.`);
     }
   }
 
@@ -430,8 +434,9 @@ function sortAllArticles() {
         </article>`).join('\n\n');
 
     const indexPrRegex = /(<div class=["']pr-grid["']>)([\s\S]*?)(<\/div>\s*<div class=["']section-cta["']>)/i;
-    if (indexHtml.match(indexPrRegex)) {
-      indexHtml = indexHtml.replace(indexPrRegex, `$1\n\n${top3Html}\n\n      $3`);
+    const indexPrMatch = indexHtml.match(indexPrRegex);
+    if (indexPrMatch) {
+      indexHtml = indexHtml.replace(indexPrRegex, () => `${indexPrMatch[1]}\n\n${top3Html}\n\n      ${indexPrMatch[3]}`);
       fs.writeFileSync(indexPath, indexHtml, 'utf8');
       console.log('Updated index.html with latest 3 press releases.');
     }
