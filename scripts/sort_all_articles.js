@@ -237,22 +237,23 @@ function sortAllArticles() {
     let category = 'Crypto';
     let badgeClass = 'badge-crypto';
     let categoryFilter = 'crypto';
-    if (/forex|usd|eur|jpy|currency|central bank/i.test(slug + ' ' + title)) {
+
+    const isForex = content.includes('class="breadcrumb-item">Forex</a>') || 
+                    content.includes('class="badge badge-forex">Forex</span>') ||
+                    /FXStreet|Forex\.com/i.test(content) ||
+                    /forex|fx|usd|eur|jpy|gbp|aud|cad|chf|currency|currencies|silver|gold|xau|xag/i.test(slug);
+
+    const isFintech = content.includes('class="badge badge-fintech">Fintech</span>') ||
+                      /fintech|ai agent/i.test(slug);
+
+    if (isForex) {
       category = 'Forex';
       badgeClass = 'badge-forex';
       categoryFilter = 'forex currencies';
-    } else if (/fintech|ai|agent/i.test(slug + ' ' + title)) {
+    } else if (isFintech) {
       category = 'Fintech';
       badgeClass = 'badge-fintech';
       categoryFilter = 'fintech ai';
-    } else if (/stablecoin|trump|dollar/i.test(slug + ' ' + title)) {
-      category = 'Crypto';
-      badgeClass = 'badge-crypto';
-      categoryFilter = 'crypto web3 fintech financial';
-    } else if (/etf|bitcoin/i.test(slug + ' ' + title)) {
-      category = 'Crypto';
-      badgeClass = 'badge-crypto';
-      categoryFilter = 'crypto bitcoin etf markets';
     }
 
     let sourceUrl = '';
@@ -343,7 +344,7 @@ function sortAllArticles() {
               </article>`;
   }).join('\n');
 
-  const newsGridRegex = /(<div class=["']grid-2["'][^>]*data-news-container>)([\s\S]*?)(<\/div>\s*<!-- Guides Section Preview)/i;
+  const newsGridRegex = /(<div class=["']grid-2["'][^>]*data-news-container>)([\s\S]*?)(<\/div>\s*<!-- Guides Section Preview -->)/i;
   const newsGridMatch = newsHtml.match(newsGridRegex);
 
   if (newsGridMatch) {
@@ -372,7 +373,7 @@ function sortAllArticles() {
                 </div>
               </article>`).join('\n');
 
-    const cryptoGridRegex = /(<div class=["'](?:grid-3|grid-2)["'][^>]*data-news-container>)([\s\S]*?)(<\/div>\s*<div style="margin-top)/i;
+    const cryptoGridRegex = /(<div class=["'](?:grid-3|grid-2)["'][^>]*data-news-container>)([\s\S]*?)(<\/div>\s*<div style=["']margin-top:\s*2\.5rem;["']>)/i;
     const cryptoGridMatch = cryptoHtml.match(cryptoGridRegex);
     if (cryptoGridMatch) {
       cryptoHtml = cryptoHtml.replace(cryptoGridRegex, () => `${cryptoGridMatch[1]}\n${cryptoCardsHtml}\n            ${cryptoGridMatch[3]}`);
@@ -399,7 +400,7 @@ function sortAllArticles() {
                 </div>
               </article>`).join('\n');
 
-    const forexGridRegex = /(<div class=["'](?:grid-3|grid-2)["'][^>]*data-news-container>)([\s\S]*?)(<\/div>\s*<div style="margin-top)/i;
+    const forexGridRegex = /(<div class=["'](?:grid-3|grid-2)["'][^>]*data-news-container>)([\s\S]*?)(<\/div>\s*<div style=["']margin-top:\s*2\.5rem;["']>)/i;
     const forexGridMatch = forexHtml.match(forexGridRegex);
     if (forexGridMatch) {
       forexHtml = forexHtml.replace(forexGridRegex, () => `${forexGridMatch[1]}\n${forexCardsHtml}\n            ${forexGridMatch[3]}`);
