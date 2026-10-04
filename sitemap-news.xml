@@ -155,4 +155,26 @@
       <news:title>Silver Price Forecast: Bears crowd $60 after six-percent weekly rout</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/crypto-built-the-products-now-the-race-is-to-get-people-to-actually-use-the</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-04</news:publication_date>
+      <news:title>Crypto built the products. Now the race is to get people to actually use them</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/mexican-peso-rebounds-but-carry-trade-exodus-still-bites</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-04</news:publication_date>
+      <news:title>Mexican Peso rebounds but carry trade exodus still bites</news:title>
+    </news:news>
+  </url>
 </urlset>
