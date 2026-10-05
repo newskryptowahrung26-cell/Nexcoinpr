@@ -150,4 +150,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/press-releases/dopamint-announces-intent-based-agent-layer-on-base-for-the-emerging-agenti</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/press-releases/bitcoin-up-or-down-in-5-minutes-1win-markets-launches-crypto-live</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
