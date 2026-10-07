@@ -221,4 +221,26 @@
       <news:title>AUD/USD Price Forecast: Struggles to return to 0.7000 amid firm US Dollar</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/us-government-moves-over-100-million-in-bitcoin-btc-and-bnb</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07</news:publication_date>
+      <news:title>U.S. government moves over $100 million in bitcoin (BTC) and BNB.</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/equities-valuation-reset-underpins-new-highs-danske-bank</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07</news:publication_date>
+      <news:title>Equities: Valuation reset underpins new highs, Danske Bank</news:title>
+    </news:news>
+  </url>
 </urlset>
