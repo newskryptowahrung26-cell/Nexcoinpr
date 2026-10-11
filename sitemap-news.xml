@@ -309,4 +309,26 @@
       <news:title>Aussie extends weekly gains as Fed pause bets offset hawkish rhetoric</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/bitcoin-btc-and-ether-eth-liquidity-rebounds-a-year-after-19-billion-crypto</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-11</news:publication_date>
+      <news:title>Bitcoin (BTC) and ether (ETH) liquidity rebounds a year after $19 billion crypto flash crash</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/chinese-yuan-pboc-defends-yuan-narrative-commerzbank</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-11</news:publication_date>
+      <news:title>Chinese Yuan: PBoC defends yuan narrative, Commerzbank</news:title>
+    </news:news>
+  </url>
 </urlset>
