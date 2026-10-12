@@ -331,4 +331,26 @@
       <news:title>Chinese Yuan: PBoC defends yuan narrative, Commerzbank</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/bitcoin-shrugs-off-etf-outflows-to-trade-above-84000-as-oil-falls</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-12</news:publication_date>
+      <news:title>Bitcoin shrugs off ETF outflows to trade above $84,000 as oil falls</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/euro-downside-risks-toward-11145-against-us-dollar-uob</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-12</news:publication_date>
+      <news:title>Euro: Downside risks toward 1.1145 against US Dollar, UOB</news:title>
+    </news:news>
+  </url>
 </urlset>
