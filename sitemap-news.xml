@@ -353,4 +353,26 @@
       <news:title>Euro: Downside risks toward 1.1145 against US Dollar, UOB</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/bitcoin-whale-that-sat-through-the-march-2020-crash-moves-378-million</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-13</news:publication_date>
+      <news:title>Bitcoin whale that sat through the March 2020 crash moves $378 million</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/usdjpy-price-forecast-bulls-fail-to-break-the-200-day-sma-around-15850</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-13</news:publication_date>
+      <news:title>USD/JPY Price Forecast: Bulls fail to break the 200-day SMA around 158.50</news:title>
+    </news:news>
+  </url>
 </urlset>
