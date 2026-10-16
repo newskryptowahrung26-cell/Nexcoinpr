@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HMMECBZZ9B"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HMMECBZZ9B');
+  </script>
+  <!-- Ahrefs Analytics -->
+  <script src="https://analytics.ahrefs.com/analytics.js" data-key="YKjnkq7ke14m4zBRrmbBzw" async></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Crypto & Forex Press Release Grader | NexcoinPR</title>
+  <meta name="keywords" content="crypto press release grader, free press release audit, press release review tool, web3 pr checker, crypto news score, press release readability, tier 1 media compliance">
+  <meta name="description" content="Audit and score your crypto, forex, and fintech press release draft for free. Check headline power, Tier-1 media guidelines, SEO density, and word count.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.nexcoinpr.agency/free-pr-grader">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Free Crypto & Forex Press Release Grader | NexcoinPR">
+  <meta property="og:description" content="Audit and score your crypto, forex, and fintech press release draft in seconds before submission.">
+  <meta property="og:url" content="https://www.nexcoinpr.agency/free-pr-grader">
+  <meta property="og:site_name" content="NexcoinPR">
+  <meta property="og:image" content="https://www.nexcoinpr.agency/assets/images/app-feature-graphic.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Crypto & Forex Press Release Grader | NexcoinPR">
+  <meta name="twitter:description" content="Instant editorial and SEO quality audit for crypto and forex press releases.">
+  <meta name="twitter:image" content="https://www.nexcoinpr.agency/assets/images/app-feature-graphic.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.min.css?v=8.0">
+  <link rel="stylesheet" href="/assets/css/components.min.css?v=8.0">
+  <link rel="stylesheet" href="/assets/css/pages.min.css?v=8.0">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://www.nexcoinpr.agency/free-pr-grader#tool",
+        "name": "NexcoinPR Free Press Release Grader & Audit Tool",
+        "url": "https://www.nexcoinpr.agency/free-pr-grader",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "description": "Interactive quality and compliance checker for Web3, cryptocurrency, forex, and fintech press releases.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "NexcoinPR",
+          "url": "https://www.nexcoinpr.agency"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.nexcoinpr.agency/free-pr-grader#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the optimal word count for a crypto press release?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The industry standard for crypto and financial press releases is between 400 and 700 words. Anything under 300 words lacks editorial substance for Tier-1 journalists, while over 900 words causes reader fatigue."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What key components do Bloomberg and CoinDesk look for?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tier-1 editors look for a clear factual headline, a standardized city/dateline, a newsworthy angle in the first paragraph, at least one executive quotation, an 'About' company boilerplate, and verified media contact details."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can NexcoinPR refine my release if it has a low score?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. NexcoinPR provides professional copywriting and editorial rewrites that align your story with strict Tier-1 financial media standards before global distribution."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    .grader-container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .grader-card {
+      background: #0D1F3C;
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 16px;
+      padding: 36px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      margin-top: -30px;
+      position: relative;
+      z-index: 10;
+    }
+    .form-group {
+      margin-bottom: 24px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #F8F9FA;
+      margin-bottom: 8px;
+    }
+    .form-group label span {
+      color: #94A3B8;
+      font-weight: 400;
+      font-size: 0.82rem;
+    }
+    .form-input, .form-textarea, .form-select {
+      width: 100%;
+      background: #081325;
+      border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      padding: 14px 16px;
+      color: #FFFFFF;
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      box-sizing: border-box;
+    }
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      outline: none;
+      border-color: #C9A84C;
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.2);
+    }
+    .form-textarea {
+      min-height: 220px;
+      line-height: 1.6;
+      resize: vertical;
+    }
+    .grade-btn {
+      width: 100%;
+      background: #C9A84C;
+      color: #0A1628;
+      font-size: 1.1rem;
+      font-weight: 800;
+      padding: 16px 28px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(201,168,76,0.3);
+    }
+    .grade-btn:hover {
+      background: #e2c97e;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(201,168,76,0.5);
+    }
+    /* Results Dashboard */
+    .results-panel {
+      display: none;
+      margin-top: 40px;
+      background: #081325;
+      border: 1px solid rgba(201,168,76,0.35);
+      border-radius: 14px;
+      padding: 32px;
+      animation: fadeIn 0.4s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .score-summary-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 28px;
+    }
+    .score-circle-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .score-circle {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      box-shadow: 0 0 25px rgba(201,168,76,0.3);
+      flex-shrink: 0;
+    }
+    .score-verdict h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin: 0 0 6px;
+      color: #FFFFFF;
+    }
+    .score-verdict p {
+      font-size: 0.92rem;
+      color: #CBD5E1;
+      margin: 0;
+    }
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+    .metric-card {
+      background: #0D1F3C;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .metric-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #94A3B8;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .metric-status-badge {
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+    .status-pass { background: rgba(16,185,129,0.15); color: #10B981; }
+    .status-warning { background: rgba(245,158,11,0.15); color: #F59E0B; }
+    .status-fail { background: rgba(239,68,68,0.15); color: #EF4444; }
+    .metric-val {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin-bottom: 6px;
+    }
+    .metric-note {
+      font-size: 0.84rem;
+      color: #CBD5E1;
+      line-height: 1.5;
+      margin: 0;
+    }
+    .recommendations-box {
+      background: rgba(201,168,76,0.08);
+      border-left: 4px solid #C9A84C;
+      border-radius: 6px;
+      padding: 20px 24px;
+      margin-bottom: 32px;
+    }
+    .recommendations-box h4 {
+      margin: 0 0 12px;
+      font-size: 1.05rem;
+      color: #F3D785;
+      font-weight: 700;
+    }
+    .recommendations-list {
+      margin: 0;
+      padding-left: 20px;
+      color: #CBD5E1;
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+    .action-cta-card {
+      background: linear-gradient(135deg, #102A54 0%, #0A1628 100%);
+      border: 1px solid rgba(201,168,76,0.4);
+      border-radius: 12px;
+      padding: 28px;
+      text-align: center;
+    }
+    .action-cta-card h3 {
+      font-size: 1.35rem;
+      color: #FFFFFF;
+      margin: 0 0 10px;
+    }
+    .action-cta-card p {
+      font-size: 0.95rem;
+      color: #CBD5E1;
+      margin: 0 0 24px;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-actions-flex {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .cta-whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #25D366;
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 14px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(37,211,102,0.4);
+      transition: transform 0.2s;
+    }
+    .cta-whatsapp-btn:hover {
+      transform: translateY(-2px);
+    }
+    .top-promo-banner {
+      background: linear-gradient(90deg, #0A1628 0%, #1e3a66 50%, #0A1628 100%);
+      border-bottom: 1px solid rgba(201,168,76,0.4);
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 0.88rem;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .promo-badge {
+      background: #C9A84C;
+      color: #0A1628;
+      font-weight: 800;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .promo-link {
+      color: #F3D785;
+      font-weight: 700;
+      text-decoration: underline;
+      margin-left: 6px;
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body>
+
+<!-- Announcement Bar -->
+<aside class="top-promo-banner" aria-label="Special promotion">
+  <span class="promo-badge">Limited Offer</span>
+  <span>Get <strong>20% Off</strong> Press Release Distribution with code <strong>NEXCOIN20</strong>. Guaranteed Bloomberg &amp; CoinDesk placements.</span>
+  <a href="https://wa.me/971582021752?text=Hi%20NexcoinPR%20team%2C%20I%20would%20like%20to%20claim%20the%2020%25%20discount%20offer%20(Code%3A%20NEXCOIN20)%20for%20my%20press%20release." target="_blank" rel="noopener noreferrer" class="promo-link">Claim Offer &rarr;</a>
+</aside>
+
+<!-- SHARED HEADER -->
+<header class="site-header" id="site-header">
+  <div class="container">
+    <nav class="nav-bar" aria-label="Main navigation">
+      <a href="/" class="nav-logo" aria-label="NexcoinPR home">
+        <img src="/favicon.svg" alt="NexcoinPR" width="32" height="32" class="nav-logo-icon">
+        <span class="logo-text">Nexcoin<span class="logo-accent">PR</span></span>
+      </a>
+      <ul class="nav-menu" id="nav-menu" role="list">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li class="nav-item-dropdown">
+          <button class="nav-link nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">Services <span class="dropdown-arrow">▾</span></button>
+          <ul class="dropdown-menu" role="list">
+            <li><a href="/crypto-pr" class="dropdown-link">Crypto PR</a></li>
+            <li><a href="/forex-pr" class="dropdown-link">Forex PR</a></li>
+            <li><a href="/blockchain-pr" class="dropdown-link">Blockchain PR</a></li>
+            <li><a href="/web3-pr" class="dropdown-link">Web3 PR</a></li>
+            <li><a href="/fintech-pr" class="dropdown-link">Fintech PR</a></li>
+            <li><a href="/financial-pr" class="dropdown-link">Financial PR</a></li>
+            <li><a href="/press-release-distribution" class="dropdown-link">Press Release Distribution</a></li>
+            <li><a href="/free-pr-grader.html" class="dropdown-link" style="color:#F3D785; font-weight:700;">★ Free PR Grader Tool</a></li>
+          </ul>
+        </li>
+        <li><a href="/press-releases" class="nav-link">Press Releases</a></li>
+        <li class="nav-item-dropdown">
+          <button class="nav-link nav-dropdown-btn" aria-expanded="false" aria-haspopup="true">News <span class="dropdown-arrow">▾</span></button>
+          <ul class="dropdown-menu" role="list">
+            <li><a href="/news" class="dropdown-link">All News</a></li>
+            <li><a href="/news/crypto" class="dropdown-link">Crypto</a></li>
+            <li><a href="/news/forex" class="dropdown-link">Forex</a></li>
+            <li><a href="/news/blockchain" class="dropdown-link">Blockchain</a></li>
+            <li><a href="/news/web3" class="dropdown-link">Web3</a></li>
+            <li><a href="/news/fintech" class="dropdown-link">Fintech</a></li>
+            <li><a href="/news/financial-markets" class="dropdown-link">Financial Markets</a></li>
+            <li><a href="/news/guides" class="dropdown-link">Guides</a></li>
+          </ul>
+        </li>
+        <li><a href="/pricing" class="nav-link">Pricing</a></li>
+        <li><a href="/markets" class="nav-link">Markets</a></li>
+        <li><a href="/media" class="nav-link">Media</a></li>
+        <li><a href="/about" class="nav-link">About</a></li>
+        <li><a href="/contact" class="nav-link">Contact</a></li>
+        <li><a href="/app.html" class="nav-link" style="color: #F3D785; font-weight: 700;"><span style="margin-right:4px;">📱</span>App</a></li>
+      </ul>
+      <a href="/press-release-distribution" class="btn-primary nav-cta">Submit Press Release</a>
+      <a href="https://wa.me/971582021752?text=Hi%20NexcoinPR%20team%2C%20I%20am%20interested%20in%20Press%20Release%20Distribution%20for%20my%20project.%20Please%20share%20details%20and%20pricing." target="_blank" rel="noopener noreferrer" class="nav-whatsapp-btn" style="display:inline-flex;align-items:center;gap:6px;background:#25D366;color:#FFFFFF;font-size:0.84rem;font-weight:700;padding:8px 14px;border-radius:6px;text-decoration:none;margin-left:8px;box-shadow:0 2px 8px rgba(37,211,102,0.3);flex-shrink:0;" title="Direct WhatsApp Chat (+971-582021752)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2Z" fill="#FFFFFF"/><path d="M9.34 7.62C9.17 7.62 8.89 7.68 8.66 7.93C8.42 8.18 7.76 8.8 7.76 10.05C7.76 11.3 8.67 12.51 8.8 12.68C8.93 12.85 10.56 15.35 13.06 16.43C15.14 17.33 15.56 17.15 16.02 17.11C16.48 17.07 17.5 16.5 17.71 15.92C17.92 15.34 17.92 14.84 17.85 14.74C17.78 14.64 17.59 14.58 17.31 14.44C17.03 14.3 15.68 13.63 15.43 13.54C15.18 13.45 15 13.4 14.82 13.68C14.64 13.96 14.12 14.58 13.96 14.76C13.8 14.94 13.64 14.96 13.36 14.82C13.08 14.68 12.18 14.38 11.11 13.43C10.28 12.69 9.72 11.78 9.56 11.5C9.4 11.22 9.54 11.07 9.68 10.93C9.81 10.8 9.97 10.58 10.11 10.42C10.25 10.26 10.3 10.14 10.39 9.96C10.48 9.78 10.43 9.62 10.36 9.48C10.29 9.34 9.73 7.97 9.5 7.42C9.28 6.89 9.05 6.96 8.88 6.95C8.72 6.95 8.53 6.95 8.34 6.95L9.34 7.62Z" fill="#25D366"/></svg><span>WhatsApp</span></a>
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content">
+
+  <!-- HERO -->
+  <section class="hero" style="padding-bottom: 5rem;">
+    <div class="hero-gradient"></div>
+    <div class="container" style="text-align: center; max-width: 860px;">
+      <p class="hero-eyebrow" style="justify-content: center;">
+        <span class="hero-eyebrow-dot"></span>
+        Interactive PR Audit Tool
+      </p>
+      <h1>Free Crypto &amp; Forex <span class="hero-highlight">Press Release Grader</span></h1>
+      <p class="hero-sub" style="margin: 0 auto 30px;">
+        Test your draft against strict Tier-1 guidelines (Bloomberg, CoinDesk, Cointelegraph, Yahoo Finance). Get instant feedback on headline impact, word count, structural compliance, and SEO discoverability before you distribute.
+      </p>
+    </div>
+  </section>
+
+  <!-- GRADER TOOL CONTAINER -->
+  <section class="section" style="padding-top: 0; background: #0A1628;">
+    <div class="grader-container">
+      <div class="grader-card">
+        <form id="pr-grader-form">
+          <div class="form-group">
+            <label for="pr-title">Press Release Headline / Title <span>(Recommended: 60–95 characters)</span></label>
+            <input type="text" id="pr-title" class="form-input" placeholder="e.g. Nexcoin Protocol Launches Multi-Chain Liquidity Engine with $15M Ecosystem Grant" required>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;" class="form-group">
+            <div>
+              <label for="pr-category">Industry Sector</label>
+              <select id="pr-category" class="form-select">
+                <option value="crypto">Cryptocurrency / Blockchain / DeFi</option>
+                <option value="web3">Web3 / NFTs / Metaverse</option>
+                <option value="forex">Forex / Trading Platform / CFD Broker</option>
+                <option value="fintech">Fintech / Neobanking / Payments</option>
+              </select>
+            </div>
+            <div>
+              <label for="pr-target">Target Media Outlets</label>
+              <select id="pr-target" class="form-select">
+                <option value="tier1">Tier-1 (CoinDesk, Bloomberg, Cointelegraph, Yahoo)</option>
+                <option value="standard">Standard Global Wire (AP News, MarketWatch)</option>
+                <option value="niche">Targeted Digital Asset Outlets</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="pr-content">Press Release Body Text <span>(Include dateline, quotes, and boilerplate)</span></label>
+            <textarea id="pr-content" class="form-textarea" placeholder="DUBAI, UAE — October 9, 2026 — Nexcoin Protocol today announced the launch of its next-generation liquidity engine..." required></textarea>
+            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #94A3B8; margin-top: 6px;">
+              <span id="char-count">Characters: 0</span>
+              <span id="word-count">Words: 0</span>
+            </div>
+          </div>
+
+          <button type="submit" class="grade-btn" id="audit-btn">
+            <span>⚡ Audit &amp; Grade Press Release</span>
+          </button>
+        </form>
+
+        <!-- Dynamic Results Panel -->
+        <div id="results-panel" class="results-panel">
+          <div class="score-summary-header">
+            <div class="score-circle-wrapper">
+              <div id="score-circle" class="score-circle" style="background: radial-gradient(circle, #C9A84C, #0A1628); border: 3px solid #C9A84C;">
+                <span id="score-number">--</span>
+              </div>
+              <div class="score-verdict">
+                <h3 id="verdict-title">Analysis Completed</h3>
+                <p id="verdict-sub">Review your detailed media audit and editorial recommendations below.</p>
+              </div>
+            </div>
+            <div>
+              <a href="#action-box" class="btn-supporting" style="font-size: 0.85rem; padding: 10px 18px;">Jump to Next Steps &darr;</a>
+            </div>
+          </div>
+
+          <!-- 4 Detailed Metric Cards -->
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <div class="metric-title">
+                <span>Headline Power</span>
+                <span id="badge-headline" class="metric-status-badge status-pass">Pass</span>
+              </div>
+              <div class="metric-val" id="val-headline">-- Chars</div>
+              <p class="metric-note" id="note-headline">Optimal length is 50-95 characters with high-intent action verbs.</p>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-title">
+                <span>Article Length</span>
+                <span id="badge-length" class="metric-status-badge status-pass">Pass</span>
+              </div>
+              <div class="metric-val" id="val-length">-- Words</div>
+              <p class="metric-note" id="note-length">Tier-1 newsrooms reject articles under 350 words or over 900 words.</p>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-title">
+                <span>Editorial Structure</span>
+                <span id="badge-structure" class="metric-status-badge status-pass">Pass</span>
+              </div>
+              <div class="metric-val" id="val-structure">Checks Passed</div>
+              <p class="metric-note" id="note-structure">Audits dateline, executive quotations, and corporate boilerplate.</p>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-title">
+                <span>Web3 &amp; SEO Quality</span>
+                <span id="badge-seo" class="metric-status-badge status-pass">Pass</span>
+              </div>
+              <div class="metric-val" id="val-seo">Audited</div>
+              <p class="metric-note" id="note-seo">Checks keyword frequency, anchor link density, and contact disclosure.</p>
+            </div>
+          </div>
+
+          <!-- Recommendations Box -->
+          <div class="recommendations-box">
+            <h4>💡 Editorial Improvement Suggestions:</h4>
+            <ul id="recommendations-list" class="recommendations-list">
+              <li>Review the points above.</li>
+            </ul>
+          </div>
+
+          <!-- Conversion CTA Box -->
+          <div class="action-cta-card" id="action-box">
+            <h3>Ready to Distribute on Bloomberg, CoinDesk &amp; Yahoo Finance?</h3>
+            <p>Our senior financial editors review your release free of charge, fix any editorial flags, and guarantee permanent publication across 140+ global media outlets.</p>
+            <div class="cta-actions-flex">
+              <a href="#" id="whatsapp-submit-btn" target="_blank" rel="noopener noreferrer" class="cta-whatsapp-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2Z" fill="#FFFFFF"/><path d="M9.34 7.62C9.17 7.62 8.89 7.68 8.66 7.93C8.42 8.18 7.76 8.8 7.76 10.05C7.76 11.3 8.67 12.51 8.8 12.68C8.93 12.85 10.56 15.35 13.06 16.43C15.14 17.33 15.56 17.15 16.02 17.11C16.48 17.07 17.5 16.5 17.71 15.92C17.92 15.34 17.92 14.84 17.85 14.74C17.78 14.64 17.59 14.58 17.31 14.44C17.03 14.3 15.68 13.63 15.43 13.54C15.18 13.45 15 13.4 14.82 13.68C14.64 13.96 14.12 14.58 13.96 14.76C13.8 14.94 13.64 14.96 13.36 14.82C13.08 14.68 12.18 14.38 11.11 13.43C10.28 12.69 9.72 11.78 9.56 11.5C9.4 11.22 9.54 11.07 9.68 10.93C9.81 10.8 9.97 10.58 10.11 10.42C10.25 10.26 10.3 10.14 10.39 9.96C10.48 9.78 10.43 9.62 10.36 9.48C10.29 9.34 9.73 7.97 9.5 7.42C9.28 6.89 9.05 6.96 8.88 6.95C8.72 6.95 8.53 6.95 8.34 6.95L9.34 7.62Z" fill="#25D366"/></svg>
+                <span>Send Draft to Editorial Team (WhatsApp)</span>
+              </a>
+              <a href="/press-release-distribution" class="btn-primary" style="padding: 14px 24px; font-size: 0.95rem;">
+                <span>View Distribution Packages &rarr;</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="section section-dark" style="border-top: 1px solid rgba(201,168,76,0.2);">
+    <div class="container">
+      <div class="section-header" style="text-align: center; color: #fff;">
+        <span class="section-eyebrow">Frequently Asked Questions</span>
+        <h2>Mastering Crypto &amp; Forex Press Release Standards</h2>
+      </div>
+
+      <div class="faq-list">
+        <article class="faq-item">
+          <button class="faq-question">
+            <span>What makes a crypto press release get accepted by top media?</span>
+            <span class="faq-chevron">▾</span>
+          </button>
+          <div class="faq-answer">
+            <p>Tier-1 media outlets like CoinDesk, Cointelegraph, and Decrypt filter out aggressive promotional hype. Releases must contain verifiable news (product launch, funding, partnership, audit completion), neutral third-person language, executive quotes providing strategic rationale, and explicit company contact information.</p>
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <button class="faq-question">
+            <span>What is the difference between a wire release and organic coverage?</span>
+            <span class="faq-chevron">▾</span>
+          </button>
+          <div class="faq-answer">
+            <p>A wire distribution guarantees exact text syndication across high Domain Authority publications with verified do-follow backlinks and Google News indexing. Organic PR pitches aim for journalists to write dedicated editorial features about your company.</p>
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <button class="faq-question">
+            <span>Can NexcoinPR write or rewrite my release?</span>
+            <span class="faq-chevron">▾</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. In addition to distribution, our team of veteran financial journalists writes and polishes releases from scratch to ensure full compliance with editorial standards across Bloomberg, Yahoo Finance, and crypto media networks.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo">
+          <img src="/favicon.svg" alt="NexcoinPR" width="28" height="28" class="footer-logo-icon">
+          <span>Nexcoin<span style="color:#C9A84C;">PR</span></span>
+        </a>
+        <p class="footer-tagline">The trusted PR agency and distribution wire for crypto, blockchain, Web3, forex, and fintech brands worldwide.</p>
+        <p class="footer-disclaimer-mini">NexcoinPR is an independent media agency and distribution wire. All press releases are client-sponsored content.</p>
+      </div>
+      <div>
+        <h4 class="footer-heading">Services</h4>
+        <ul class="footer-links">
+          <li><a href="/crypto-pr">Crypto PR</a></li>
+          <li><a href="/forex-pr">Forex PR</a></li>
+          <li><a href="/blockchain-pr">Blockchain PR</a></li>
+          <li><a href="/web3-pr">Web3 PR</a></li>
+          <li><a href="/press-release-distribution">PR Distribution</a></li>
+          <li><a href="/free-pr-grader.html" style="color:#F3D785;">PR Grader Tool</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">News &amp; Media</h4>
+        <ul class="footer-links">
+          <li><a href="/news">All News</a></li>
+          <li><a href="/news/crypto">Crypto News</a></li>
+          <li><a href="/news/forex">Forex News</a></li>
+          <li><a href="/press-releases">Press Releases</a></li>
+          <li><a href="/media">Media Network</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Company</h4>
+        <ul class="footer-links">
+          <li><a href="/about">About NexcoinPR</a></li>
+          <li><a href="/pricing">Pricing &amp; Plans</a></li>
+          <li><a href="/markets">Markets Data</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+          <li><a href="/app.html">Mobile App</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Legal &amp; Policy</h4>
+        <ul class="footer-links">
+          <li><a href="/editorial-policy">Editorial Policy</a></li>
+          <li><a href="/corrections-policy">Corrections Policy</a></li>
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
+          <li><a href="/terms">Terms of Service</a></li>
+          <li><a href="/disclaimer">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; <span id="footer-year">2026</span> NexcoinPR. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Interactive Grader Script -->
+<script>
+(function() {
+  const form = document.getElementById('pr-grader-form');
+  const titleInput = document.getElementById('pr-title');
+  const contentInput = document.getElementById('pr-content');
+  const charCountEl = document.getElementById('char-count');
+  const wordCountEl = document.getElementById('word-count');
+  const resultsPanel = document.getElementById('results-panel');
+  const scoreNumber = document.getElementById('score-number');
+  const scoreCircle = document.getElementById('score-circle');
+  const verdictTitle = document.getElementById('verdict-title');
+  const verdictSub = document.getElementById('verdict-sub');
+
+  const valHeadline = document.getElementById('val-headline');
+  const badgeHeadline = document.getElementById('badge-headline');
+  const noteHeadline = document.getElementById('note-headline');
+
+  const valLength = document.getElementById('val-length');
+  const badgeLength = document.getElementById('badge-length');
+  const noteLength = document.getElementById('note-length');
+
+  const valStructure = document.getElementById('val-structure');
+  const badgeStructure = document.getElementById('badge-structure');
+  const noteStructure = document.getElementById('note-structure');
+
+  const valSeo = document.getElementById('val-seo');
+  const badgeSeo = document.getElementById('badge-seo');
+  const noteSeo = document.getElementById('note-seo');
+
+  const recList = document.getElementById('recommendations-list');
+  const waBtn = document.getElementById('whatsapp-submit-btn');
+
+  // Real-time counter
+  contentInput.addEventListener('input', function() {
+    const text = contentInput.value.trim();
+    const words = text ? text.split(/\s+/).filter(Boolean).length : 0;
+    wordCountEl.textContent = 'Words: ' + words;
+    charCountEl.textContent = 'Characters: ' + text.length;
+  });
+
+  titleInput.addEventListener('input', function() {
+    const t = titleInput.value.trim();
+    valHeadline.textContent = t.length + ' Chars';
+  });
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const title = titleInput.value.trim();
+    const body = contentInput.value.trim();
+    const words = body ? body.split(/\s+/).filter(Boolean).length : 0;
+    const titleLength = title.length;
+
+    let score = 100;
+    const recs = [];
+
+    // 1. Headline Check
+    if (titleLength < 40) {
+      score -= 15;
+      badgeHeadline.textContent = 'Too Short';
+      badgeHeadline.className = 'metric-status-badge status-warning';
+      noteHeadline.textContent = 'Headline is too brief. Expand with specific news details or metric.';
+      recs.push('Expand your headline to at least 50 characters to provide clear context for journalists.');
+    } else if (titleLength > 110) {
+      score -= 10;
+      badgeHeadline.textContent = 'Too Long';
+      badgeHeadline.className = 'metric-status-badge status-warning';
+      noteHeadline.textContent = 'Headline exceeds 110 characters and may be truncated on Google News.';
+      recs.push('Shorten your headline to under 100 characters so it fits search snippets and Twitter cards.');
+    } else {
+      badgeHeadline.textContent = 'Optimal';
+      badgeHeadline.className = 'metric-status-badge status-pass';
+      noteHeadline.textContent = 'Headline length is ideal for high CTR on financial aggregators.';
+    }
+    valHeadline.textContent = titleLength + ' Chars';
+
+    // Check action verbs in title
+    const actionVerbs = /launches|announces|partners|unveils|expands|introduces|reports|closes|raises|secures|releases/i;
+    if (!actionVerbs.test(title)) {
+      score -= 10;
+      recs.push('Add an impactful news verb in your headline (e.g. "Announces", "Launches", "Secures", "Partners").');
+    }
+
+    // 2. Body Word Count
+    valLength.textContent = words + ' Words';
+    if (words < 350) {
+      score -= 25;
+      badgeLength.textContent = 'Too Short';
+      badgeLength.className = 'metric-status-badge status-fail';
+      noteLength.textContent = 'Under 350 words: Major wires (Bloomberg/Yahoo) will reject this as incomplete.';
+      recs.push('Add at least ' + (400 - words) + ' more words detailing the problem, solution, technology, or roadmap.');
+    } else if (words > 950) {
+      score -= 10;
+      badgeLength.textContent = 'Long';
+      badgeLength.className = 'metric-status-badge status-warning';
+      noteLength.textContent = 'Over 950 words: Reader attention drops and editorial review may take longer.';
+      recs.push('Consider trimming secondary paragraphs to keep the release punchy under 800 words.');
+    } else {
+      badgeLength.textContent = 'Optimal';
+      badgeLength.className = 'metric-status-badge status-pass';
+      noteLength.textContent = 'Perfect length for syndication and journalist pickup (400–850 words).';
+    }
+
+    // 3. Editorial Structure Checks
+    let structIssues = 0;
+    // Check dateline
+    const hasDateline = /(new york|london|dubai|singapore|tokyo|hong kong|berlin|paris|miami|san francisco|chicago|\b[A-Z\s]{2,15},\s*[A-Z\s]{2,15}\b|—|--)/i.test(body.slice(0, 200));
+    if (!hasDateline) {
+      structIssues++;
+      score -= 8;
+      recs.push('Add a standardized Dateline at the very beginning (e.g. "DUBAI, UAE — October 9, 2026 —").');
+    }
+
+    // Check quotes
+    const hasQuotes = /"[^"]{15,}"|“[^”]{15,}”/i.test(body) && /(said|commented|stated|explained|added|noted|expressed)/i.test(body);
+    if (!hasQuotes) {
+      structIssues++;
+      score -= 12;
+      recs.push('Include at least one executive quotation from your CEO, Founder, or Lead Developer providing human perspective.');
+    }
+
+    // Check boilerplate / about
+    const hasBoilerplate = /about\s+[a-z0-9\s]{2,30}/i.test(body);
+    if (!hasBoilerplate) {
+      structIssues++;
+      score -= 10;
+      recs.push('Add an "About [Your Project]" section at the end explaining your core mission, website, and history.');
+    }
+
+    if (structIssues === 0) {
+      badgeStructure.textContent = 'Flawless';
+      badgeStructure.className = 'metric-status-badge status-pass';
+      valStructure.textContent = '3/3 Standards Met';
+      noteStructure.textContent = 'Dateline, executive quote, and corporate boilerplate detected.';
+    } else {
+      badgeStructure.textContent = structIssues + ' Missing';
+      badgeStructure.className = 'metric-status-badge status-warning';
+      valStructure.textContent = (3 - structIssues) + '/3 Standards Met';
+      noteStructure.textContent = 'Editorial elements missing. Check the recommendations below.';
+    }
+
+    // 4. SEO & Contact Check
+    let seoIssues = 0;
+    const hasUrlOrHandle = /(https?:\/\/|www\.|t\.me|twitter\.com|x\.com|@)/i.test(body);
+    if (!hasUrlOrHandle) {
+      seoIssues++;
+      score -= 8;
+      recs.push('Include your official website URL or Telegram community link for dofollow SEO value.');
+    }
+
+    const hasMediaContact = /(media contact|press contact|contact:|email:|telegram:)/i.test(body);
+    if (!hasMediaContact) {
+      seoIssues++;
+      score -= 7;
+      recs.push('Provide a dedicated Media Contact email/handle at the very end of your release.');
+    }
+
+    if (seoIssues === 0) {
+      badgeSeo.textContent = 'Ready';
+      badgeSeo.className = 'metric-status-badge status-pass';
+      valSeo.textContent = '100% Backlink Ready';
+      noteSeo.textContent = 'Media contact details and web links detected properly.';
+    } else {
+      badgeSeo.textContent = 'Needs Review';
+      badgeSeo.className = 'metric-status-badge status-warning';
+      valSeo.textContent = 'Incomplete';
+      noteSeo.textContent = 'Missing media contact or destination backlinks.';
+    }
+
+    // Ensure score bounds
+    score = Math.max(30, Math.min(98, score));
+    scoreNumber.textContent = score;
+
+    // Verdict styling
+    if (score >= 85) {
+      scoreCircle.style.background = 'radial-gradient(circle, #10B981, #064E3B)';
+      scoreCircle.style.borderColor = '#10B981';
+      verdictTitle.textContent = 'Grade A: Publication Ready!';
+      verdictSub.textContent = 'Your draft meets stringent Tier-1 standards. Minor polish will guarantee immediate syndicate pickup.';
+      if (recs.length === 0) {
+        recs.push('Draft looks exceptional! Ready for syndication across Bloomberg, CoinDesk, and Yahoo Finance.');
+      }
+    } else if (score >= 65) {
+      scoreCircle.style.background = 'radial-gradient(circle, #F59E0B, #78350F)';
+      scoreCircle.style.borderColor = '#F59E0B';
+      verdictTitle.textContent = 'Grade B: Promising Draft (Needs Adjustments)';
+      verdictSub.textContent = 'Good core content, but missing key structural elements that Tier-1 editorial desks require.';
+    } else {
+      scoreCircle.style.background = 'radial-gradient(circle, #EF4444, #7F1D1D)';
+      scoreCircle.style.borderColor = '#EF4444';
+      verdictTitle.textContent = 'Grade C: High Risk of Rejection';
+      verdictSub.textContent = 'This draft lacks critical formatting required by wire services. Review the checklist below.';
+    }
+
+    // Render Recommendations
+    recList.innerHTML = '';
+    recs.forEach(function(r) {
+      const li = document.createElement('li');
+      li.textContent = r;
+      recList.appendChild(li);
+    });
+
+    // Setup WhatsApp Button with pre-filled summary
+    const cleanTitle = encodeURIComponent(title.slice(0, 50));
+    const waText = encodeURIComponent('Hi NexcoinPR team, I just used your Free PR Grader tool. My draft scored ' + score + '/100 (Title: "' + title.slice(0, 50) + '..."). I would like a free editorial review and package quote for distribution.');
+    waBtn.href = 'https://wa.me/971582021752?text=' + waText;
+
+    // Show Results & Smooth Scroll
+    resultsPanel.style.display = 'block';
+    resultsPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  // Mobile menu toggle
+  var btn = document.getElementById('mobile-menu-btn');
+  var menu = document.getElementById('nav-menu');
+  if (btn && menu) {
+    btn.addEventListener('click', function() {
+      var exp = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!exp));
+      menu.style.display = exp ? '' : 'flex';
+      menu.style.flexDirection = 'column';
+      menu.style.position = 'absolute';
+      menu.style.top = '72px';
+      menu.style.left = '0';
+      menu.style.right = '0';
+      menu.style.background = '#0A1628';
+      menu.style.padding = '16px 24px 24px';
+      menu.style.borderBottom = '1px solid rgba(201,168,76,0.15)';
+      menu.style.zIndex = '200';
+      if (exp) menu.removeAttribute('style');
+    });
+  }
+
+  // FAQ Accordion
+  var faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(function(item) {
+    var qBtn = item.querySelector('.faq-question');
+    if (qBtn) {
+      qBtn.addEventListener('click', function() {
+        var isOpen = item.classList.contains('open');
+        faqItems.forEach(function(i) { i.classList.remove('open'); });
+        if (!isOpen) item.classList.add('open');
+      });
+    }
+  });
+
+  // Dropdown hover accessibility
+  var dBtns = document.querySelectorAll('.nav-dropdown-btn');
+  dBtns.forEach(function(b) {
+    b.addEventListener('mouseenter', function() { b.setAttribute('aria-expanded', 'true'); });
+    b.parentElement.addEventListener('mouseleave', function() { b.setAttribute('aria-expanded', 'false'); });
+  });
+
+  // Year
+  var yEl = document.getElementById('footer-year');
+  if (yEl) yEl.textContent = new Date().getFullYear();
+})();
+</script>
+
+</body>
+</html>

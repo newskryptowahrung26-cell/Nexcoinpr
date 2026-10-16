@@ -33,6 +33,17 @@ jobs:
           LINKEDIN_ORG_ID: ${{ secrets.LINKEDIN_ORG_ID || '106105732' }}
         run: node scripts/post_to_linkedin.js
 
+      - name: Auto-post to Telegram
+        continue-on-error: true
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+        run: node scripts/post_to_telegram.js
+
+      - name: Ping Search Engines for Instant Indexing
+        continue-on-error: true
+        run: node scripts/ping_search_engines.js
+
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"

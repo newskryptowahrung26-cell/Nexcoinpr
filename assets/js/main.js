@@ -6,7 +6,7 @@
     if (document.getElementById('floating-whatsapp-btn')) return;
     const btn = document.createElement('a');
     btn.id = 'floating-whatsapp-btn';
-    btn.href = 'https://wa.me/971582021752';
+    btn.href = 'https://wa.me/971582021752?text=Hi%20NexcoinPR%20team%2C%20I%20am%20interested%20in%20Press%20Release%20Distribution%20for%20my%20project.%20Please%20share%20details%20and%20pricing.';
     btn.target = '_blank';
     btn.rel = 'noopener noreferrer';
     btn.setAttribute('aria-label', 'Chat on WhatsApp with NexcoinPR');
