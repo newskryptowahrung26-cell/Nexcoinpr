@@ -1,0 +1,55 @@
+name: Automated B2B Outbound Pitches
+
+on:
+  workflow_dispatch:
+    inputs:
+      batch_size:
+        description: 'Number of prospective clients to pitch in this run'
+        required: true
+        default: '15'
+      test_mode:
+        description: 'Send test email to nexcoinpr@gmail.com only (true/false)'
+        required: false
+        default: 'false'
+
+permissions:
+  contents: write
+
+jobs:
+  outreach:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install nodemailer
+
+      - name: Execute Outbound Pitches
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER || 'nexcoinpr@gmail.com' }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+        run: |
+          if [ "${{ inputs.test_mode }}" = "true" ]; then
+            node scripts/send_outbound_pitches.js --test-me
+          else
+            node scripts/send_outbound_pitches.js --batch=${{ inputs.batch_size || 15 }}
+          fi
+
+      - name: Commit contacted leads history
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add scripts/contacted_leads.json
+          if git diff --staged --quiet; then
+            echo "No new leads contacted in this run."
+          else
+            git commit -m "Update contacted leads log [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+          fi
