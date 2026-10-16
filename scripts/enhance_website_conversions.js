@@ -75,7 +75,10 @@ const TRUST_SECTION = `
 `;
 
 if (!indexHtml.includes('Guaranteed Tier-1 Syndication Network')) {
-  indexHtml = indexHtml.replace('</section>\n\n  <!-- ============================================================\n       SECTION 2, WHAT NEXCOINPR DOES', '</section>\n' + TRUST_SECTION + '\n  <!-- ============================================================\n       SECTION 2, WHAT NEXCOINPR DOES');
+  indexHtml = indexHtml.replace(
+    /<\/section>\s*<!--\s*=+\s*SECTION 2, WHAT NEXCOINPR DOES/i,
+    '</section>\n' + TRUST_SECTION + '\n  <!-- ============================================================\n       SECTION 2, WHAT NEXCOINPR DOES'
+  );
   console.log('[index.html] Added Verified Media Trust Section.');
 }
 
