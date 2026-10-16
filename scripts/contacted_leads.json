@@ -1,0 +1,107 @@
+[
+  {
+    "id": "1",
+    "name": "Binance",
+    "email": "pr@binance.com",
+    "cat": "Crypto Exchange",
+    "sentAt": "2026-10-16T10:40:28.686Z"
+  },
+  {
+    "id": "2",
+    "name": "OKX",
+    "email": "media@okx.com",
+    "cat": "Crypto Exchange",
+    "sentAt": "2026-10-16T10:40:28.692Z"
+  },
+  {
+    "id": "3",
+    "name": "Bybit",
+    "email": "media@bybit.com",
+    "cat": "Crypto Exchange",
+    "sentAt": "2026-10-16T10:40:28.692Z"
+  },
+  {
+    "id": "4",
+    "name": "Coinbase",
+    "email": "press@coinbase.com",
+    "cat": "Crypto Exchange",
+    "sentAt": "2026-10-16T10:40:28.692Z"
+  },
+  {
+    "id": "5",
+    "name": "Kraken",
+    "email": "press@kraken.com",
+    "cat": "Crypto Exchange",
+    "sentAt": "2026-10-16T10:40:28.692Z"
+  },
+  {
+    "id": "6",
+    "name": "KuCoin",
+    "email": "media@kucoin.com",
+    "cat": "Crypto Exchange",
+    "sentAt": "2026-10-16T10:40:28.692Z"
+  },
+  {
+    "id": "7",
+    "name": "Gate.io",
+    "email": "business@gate.com",
+    "cat": "Crypto Exchange",
+    "sentAt": "2026-10-16T10:40:28.692Z"
+  },
+  {
+    "id": "8",
+    "name": "Bitget",
+    "email": "media@bitget.com",
+    "cat": "Crypto Exchange",
+    "sentAt": "2026-10-16T10:40:28.692Z"
+  },
+  {
+    "id": "9",
+    "name": "MEXC Global",
+    "email": "media@mexc.com",
+    "cat": "Crypto Exchange",
+    "sentAt": "2026-10-16T10:40:28.692Z"
+  },
+  {
+    "id": "10",
+    "name": "HTX (Huobi)",
+    "email": "media@htx.com",
+    "cat": "Crypto Exchange",
+    "sentAt": "2026-10-16T10:40:28.692Z"
+  },
+  {
+    "id": "11",
+    "name": "BingX",
+    "email": "media@bingx.com",
+    "cat": "Crypto Exchange",
+    "sentAt": "2026-10-16T10:40:28.692Z"
+  },
+  {
+    "id": "12",
+    "name": "BingX Partnerships",
+    "email": "partnership@bingx.com",
+    "cat": "Crypto Exchange",
+    "sentAt": "2026-10-16T10:40:28.692Z"
+  },
+  {
+    "id": "13",
+    "name": "LBank",
+    "email": "press@lbank.com",
+    "cat": "Crypto Exchange",
+    "sentAt": "2026-10-16T10:40:28.692Z"
+  },
+  {
+    "id": "14",
+    "name": "BitMart",
+    "email": "marketing@bitmart.com",
+    "cat": "Crypto Exchange",
+    "sentAt": "2026-10-16T10:40:28.692Z"
+  },
+  {
+    "id": "15",
+    "name": "Coinstore",
+    "email": "marketing@coinstore.com",
+    "cat": "Crypto Exchange",
+    "sentAt": "2026-10-16T10:40:28.692Z"
+  }
+]
