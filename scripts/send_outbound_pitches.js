@@ -30,13 +30,64 @@ if (fs.existsSync(HISTORY_FILE)) {
 }
 const contactedEmails = new Set(history.map(h => (h.email || '').toLowerCase()));
 
-// Load Leads
-if (!fs.existsSync(DATA_FILE)) {
-  console.error('[Error] Curated leads file not found at:', DATA_FILE);
-  console.log('Run `node scripts/curate_hot_leads.js` first.');
-  process.exit(1);
+// Load Leads from both Curated list and Master 10,000+ CSV
+function loadAllLeads() {
+  const leads = [];
+  const seen = new Set();
+
+  // 1. Curated Hot Leads
+  if (fs.existsSync(DATA_FILE)) {
+    try {
+      const hot = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
+      hot.forEach(h => {
+        if (h.email && h.email.includes('@')) {
+          const em = h.email.toLowerCase().trim();
+          if (!seen.has(em)) {
+            seen.add(em);
+            leads.push(h);
+          }
+        }
+      });
+    } catch(e) {}
+  }
+
+  // 2. Master 10,000+ Database
+  const csvFile = path.join(__dirname, '..', 'assets', 'docs', 'Crypto_Forex_Trading_10000_B2B_Master_Leads.csv');
+  if (fs.existsSync(csvFile)) {
+    try {
+      const content = fs.readFileSync(csvFile, 'utf8');
+      const lines = content.split(/\r?\n/);
+      for (let i = 1; i < lines.length; i++) {
+        const line = lines[i].trim();
+        if (!line) continue;
+        const matches = line.match(/(?:^|,)("(?:[^"]|"")*"|[^,]*)/g);
+        if (!matches) continue;
+        const clean = matches.map(m => m.replace(/^,?"?|"$/g, '').trim());
+        const id = clean[0];
+        const name = clean[1];
+        const cat = clean[2];
+        const site = clean[4];
+        const email = clean[6];
+        const dept = clean[7];
+        const scale = clean[9];
+        const packageRec = clean[10];
+        const hook = clean[11];
+
+        if (email && email.includes('@') && !email.includes('example.com')) {
+          const em = email.toLowerCase().trim();
+          if (!seen.has(em)) {
+            seen.add(em);
+            leads.push({ id, name, cat, site, email: em, dept, scale, packageRec, hook });
+          }
+        }
+      }
+    } catch(e) {}
+  }
+
+  return leads;
 }
-const allLeads = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
+
+const allLeads = loadAllLeads();
 
 // Filter Uncontacted Leads
 const queue = allLeads.filter(lead => {
