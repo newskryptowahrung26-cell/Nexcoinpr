@@ -419,4 +419,26 @@
       <news:title>Dollar slips despite hot U.S. CPI; yen firms on intervention warnings</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/xrp-has-failed-to-make-holders-rich-like-bitcoin-and-ether-heres-why</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-16</news:publication_date>
+      <news:title>XRP has failed to make holders rich like bitcoin and ether. Here’s why</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/asia-fx-subdued-dollar-weakens-after-bond-rally-rupee-set-for-2-weekly-jump</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-16</news:publication_date>
+      <news:title>Asia FX subdued, dollar weakens after bond rally; rupee set for 2% weekly jump</news:title>
+    </news:news>
+  </url>
 </urlset>
