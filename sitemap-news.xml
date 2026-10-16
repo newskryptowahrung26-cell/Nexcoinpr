@@ -441,4 +441,26 @@
       <news:title>Asia FX subdued, dollar weakens after bond rally; rupee set for 2% weekly jump</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/traders-will-soon-have-us-binary-options-on-whether-coin-hood-mara-can-hit</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-16</news:publication_date>
+      <news:title>Traders will soon have U.S. binary options on whether COIN, HOOD, MARA can hit their targets: Crypto Daily</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/indian-rupee-policy-support-and-yield-reversal-societe-generale</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-16</news:publication_date>
+      <news:title>Indian Rupee: Policy support and yield reversal, Societe Generale</news:title>
+    </news:news>
+  </url>
 </urlset>

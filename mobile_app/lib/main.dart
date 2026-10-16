@@ -302,6 +302,17 @@ class _DashboardViewState extends State<DashboardView> {
   void initState() {
     super.initState();
     _fetchLiveRates();
+    CloudSyncService.syncNotifier.addListener(_onSyncUpdate);
+  }
+
+  void _onSyncUpdate() {
+    if (mounted) setState(() {});
+  }
+
+  @override
+  void dispose() {
+    CloudSyncService.syncNotifier.removeListener(_onSyncUpdate);
+    super.dispose();
   }
 
   Future<void> _fetchLiveRates() async {
@@ -342,7 +353,12 @@ class _DashboardViewState extends State<DashboardView> {
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
-      onRefresh: _fetchLiveRates,
+      onRefresh: () async {
+        await Future.wait([
+          _fetchLiveRates(),
+          CloudSyncService.syncAll(),
+        ]);
+      },
       color: const Color(0xFF00F2FE),
       backgroundColor: const Color(0xFF0D1527),
       child: SingleChildScrollView(
@@ -555,43 +571,142 @@ class _DashboardViewState extends State<DashboardView> {
             ),
             const SizedBox(height: 24),
 
-            // Recent Wire Releases (From Live Site news.html & case-studies.html)
+            // Today's Live Wire & Breaking News (Direct from Live Cloud Stream)
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'Verified Client Highlights',
-                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white),
+                Row(
+                  children: [
+                    const Text(
+                      'Live Wire & News',
+                      style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white),
+                    ),
+                    const SizedBox(width: 8),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF10B981).withOpacity(0.15),
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(color: const Color(0xFF10B981), width: 0.8),
+                      ),
+                      child: Text(
+                        CloudSyncService.newsArticles.isNotEmpty
+                            ? '● ${CloudSyncService.newsArticles[0]['date'] ?? 'TODAY'}'
+                            : '● TODAY',
+                        style: const TextStyle(
+                          color: Color(0xFF10B981),
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 InkWell(
-                  onTap: () {},
-                  child: const Text('View All →', style: TextStyle(color: Color(0xFF00F2FE), fontSize: 13, fontWeight: FontWeight.bold)),
+                  onTap: () {
+                    CloudSyncService.syncAll();
+                  },
+                  child: Row(
+                    children: [
+                      Icon(
+                        CloudSyncService.isSyncing ? Icons.sync_rounded : Icons.refresh_rounded,
+                        size: 14,
+                        color: const Color(0xFF00F2FE),
+                      ),
+                      const SizedBox(width: 4),
+                      Text(
+                        CloudSyncService.isSyncing ? 'Syncing...' : 'Sync Feed',
+                        style: const TextStyle(color: Color(0xFF00F2FE), fontSize: 13, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
             const SizedBox(height: 12),
+            ...CloudSyncService.newsArticles.take(3).map((item) {
+              return Container(
+                margin: const EdgeInsets.only(bottom: 10),
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF0D1527),
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(color: const Color(0xFF1E293B)),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          item['source'] ?? 'Wire',
+                          style: const TextStyle(color: Color(0xFF00F2FE), fontWeight: FontWeight.bold, fontSize: 12),
+                        ),
+                        Text(
+                          '${item['category']} • ${item['date']}',
+                          style: const TextStyle(color: Color(0xFF64748B), fontSize: 11),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      item['title'] ?? '',
+                      style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w800, color: Colors.white, height: 1.3),
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
+                      item['excerpt'] ?? '',
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(fontSize: 12, color: Color(0xFF94A3B8), height: 1.4),
+                    ),
+                    const SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF1E293B),
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                          child: const Text('Verified Wire', style: TextStyle(color: Color(0xFFCBD5E1), fontSize: 10)),
+                        ),
+                        TextButton.icon(
+                          style: TextButton.styleFrom(visualDensity: VisualDensity.compact),
+                          icon: const Icon(Icons.arrow_forward_rounded, size: 14, color: Color(0xFF00F2FE)),
+                          label: const Text('Read Wire Analysis', style: TextStyle(color: Color(0xFF00F2FE), fontSize: 12, fontWeight: FontWeight.bold)),
+                          onPressed: () => AppLauncher.open(context, item['url'] ?? 'https://www.nexcoinpr.agency/news.html'),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              );
+            }).toList(),
+            const SizedBox(height: 14),
+
+            // Verified Client Case Studies
+            const Text(
+              'Verified Client Case Studies',
+              style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white),
+            ),
+            const SizedBox(height: 12),
             _buildReleaseCard(
               context,
-              'Aria Coin (\$ARIA) Breakthrough: 147% Price Jump in 2 Hours',
+              'Aria Coin (\$ARIA) Milestone: 147% Surge Post-Syndication',
               'Aria Coin • Case Study',
-              'Dec 2024 • 3M+ Global Reach',
+              'Proven Milestone • 3M+ Reach',
               'Cointelegraph Premium PR Bundle transformed token into top trending asset with 42% organic traffic surge.',
             ),
             const SizedBox(height: 10),
             _buildReleaseCard(
               context,
-              'LBank Ranks #1 for Mainstream Crypto Liquidity in BeInCrypto Study',
-              'LBank Exchange • Wire',
-              'Sep 2026 • 4.4x Depth',
+              'LBank Mainstream Liquidity Verification Report',
+              'LBank Exchange • Case Study',
+              'BeInCrypto Institutional Study',
               'BeInCrypto comprehensive institutional liquidity analysis ranks LBank highest depth across top trading pairs.',
-            ),
-            const SizedBox(height: 10),
-            _buildReleaseCard(
-              context,
-              'Cregis Marks 2 Years of Middle East Institutional Growth',
-              'Cregis Foundation • PR',
-              'Sep 2026 • Digital Asset Infra',
-              'Leading Web3 MPC wallet and treasury platform achieves massive adoption among traditional finance firms.',
             ),
             const SizedBox(height: 24),
           ],
@@ -1992,36 +2107,36 @@ class _NewsAndCaseStudiesViewState extends State<NewsAndCaseStudiesView> with Si
   // Exact Articles from news.html & data/imported_daily_news.json
   final List<Map<String, String>> _newsArticles = [
     {
-      'title': "Bitget's \$352M Hack Happened Via Spoofed Transfers, Not Private Keys, CEO Gray Chen Says",
-      'source': 'CoinDesk',
-      'date': '25 Sep 2026',
-      'category': 'Security • Crypto',
-      'url': 'https://www.coindesk.com/markets/2026/09/25/bitget-s-usd351-million-hack-happened-via-spoofed-transfers-not-private-keys-ceo-gray-chen-says',
-      'excerpt': 'Bitget CEO Gray Chen clarified that the recent \$352M capital incident occurred due to unauthorized address spoofing mechanisms rather than compromised institutional private keys.',
+      'title': "Indian Rupee: Policy support and yield reversal, Societe Generale",
+      'source': 'FXStreet',
+      'date': '16 Oct 2026',
+      'category': 'Forex • FX Desk',
+      'url': 'https://www.nexcoinpr.agency/news/indian-rupee-policy-support-and-yield-reversal-societe-generale',
+      'excerpt': 'Indian Rupee: Policy support and yield reversal, Societe Generale. Comprehensive institutional analysis, technical price levels, and market order flow.',
     },
     {
-      'title': 'Trump Administration Weighs Global Stablecoin Framework for US Dollar Dominance',
+      'title': 'Traders will soon have U.S. binary options on whether COIN, HOOD, MARA can hit their targets: Crypto Daily',
       'source': 'CoinDesk',
-      'date': '24 Sep 2026',
-      'category': 'Macro • Policy',
-      'url': 'https://www.coindesk.com/markets/2026/09/24/trump-administration-weighs-a-global-stablecoin-plan-to-cement-dollar-s-dominance',
-      'excerpt': 'The administration evaluates global stablecoin initiatives to cement US dollar hegemony and boost demand for short-term Treasury bills across international digital asset markets.',
+      'date': '16 Oct 2026',
+      'category': 'Markets • Crypto',
+      'url': 'https://www.nexcoinpr.agency/news/traders-will-soon-have-us-binary-options-on-whether-coin-hood-mara-can-hit',
+      'excerpt': 'Traders will soon have U.S. binary options on whether COIN, HOOD, MARA can hit their targets: Crypto Daily. Comprehensive institutional market intelligence.',
     },
     {
-      'title': 'Dogecoin Slides 8%, Bitcoin Drops Under \$84,000 as Treasury Yields Hit 2007 Highs',
-      'source': 'CoinDesk',
-      'date': '24 Sep 2026',
-      'category': 'Markets • Selloff',
-      'url': 'https://www.coindesk.com/markets/2026/09/24/dogecoin-down-8-bitcoin-under-usd84-000-as-treasury-yields-hit-highest-level-since-2007',
-      'excerpt': 'Surging US Treasury yields and \$104 crude oil ignited a broad crypto market selloff, with DOGE tumbling 8% and Bitcoin retreating under key psychological levels.',
+      'title': 'Asia FX subdued, dollar weakens after bond rally; rupee set for 2% weekly jump',
+      'source': 'Investing.com',
+      'date': '16 Oct 2026',
+      'category': 'Forex • FX Desk',
+      'url': 'https://www.nexcoinpr.agency/news/asia-fx-subdued-dollar-weakens-after-bond-rally-rupee-set-for-2-weekly-jump',
+      'excerpt': 'Asia FX subdued, dollar weakens after bond rally; rupee set for 2% weekly jump. Comprehensive institutional analysis, technical price action.',
     },
     {
-      'title': 'USD/JPY Outlook: Hawkish Federal Reserve Recalibration Mounts Pressure on the Japanese Yen',
-      'source': 'FOREX.com',
-      'date': '24 Sep 2026',
-      'category': 'Forex • FX Wire',
-      'url': 'https://www.forex.com/en/news-and-analysis/usd-jpy-outlook-hawkish-fed-recalibration-pressures-the-yen/',
-      'excerpt': 'Resilient US macroeconomic indicators and surging yields widened the interest rate differential between the US and Japan, pushing USD/JPY toward major multi-month resistance.',
+      'title': 'XRP has failed to make holders rich like bitcoin and ether. Here’s why',
+      'source': 'CoinDesk',
+      'date': '16 Oct 2026',
+      'category': 'Markets • Crypto',
+      'url': 'https://www.nexcoinpr.agency/news/xrp-has-failed-to-make-holders-rich-like-bitcoin-and-ether-heres-why',
+      'excerpt': 'XRP has failed to make holders rich like bitcoin and ether. Here’s why. Comprehensive institutional analysis and technical price levels.',
     },
   ];
 
@@ -2110,69 +2225,75 @@ class _NewsAndCaseStudiesViewState extends State<NewsAndCaseStudiesView> with Si
             controller: _tabController,
             children: [
               // NEWS LIST
-              ListView.builder(
-                padding: const EdgeInsets.all(16),
-                itemCount: CloudSyncService.newsArticles.length,
-                itemBuilder: (context, index) {
-                  final item = CloudSyncService.newsArticles[index];
-                  return Container(
-                    margin: const EdgeInsets.only(bottom: 14),
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF0D1527),
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: const Color(0xFF1E293B)),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              item['source']!,
-                              style: const TextStyle(
-                                color: Color(0xFF00F2FE),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12,
+              RefreshIndicator(
+                onRefresh: () => CloudSyncService.syncAll(),
+                color: const Color(0xFF00F2FE),
+                backgroundColor: const Color(0xFF0D1527),
+                child: ListView.builder(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  padding: const EdgeInsets.all(16),
+                  itemCount: CloudSyncService.newsArticles.length,
+                  itemBuilder: (context, index) {
+                    final item = CloudSyncService.newsArticles[index];
+                    return Container(
+                      margin: const EdgeInsets.only(bottom: 14),
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF0D1527),
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(color: const Color(0xFF1E293B)),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                item['source']!,
+                                style: const TextStyle(
+                                  color: Color(0xFF00F2FE),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 12,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '${item['category']} • ${item['date']}',
-                              style: const TextStyle(color: Color(0xFF64748B), fontSize: 11),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          item['title']!,
-                          style: const TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w800,
-                            color: Colors.white,
-                            height: 1.3,
+                              Text(
+                                '${item['category']} • ${item['date']}',
+                                style: const TextStyle(color: Color(0xFF64748B), fontSize: 11),
+                              ),
+                            ],
                           ),
-                        ),
-                        const SizedBox(height: 6),
-                        Text(
-                          item['excerpt']!,
-                          style: const TextStyle(fontSize: 12, color: Color(0xFF94A3B8), height: 1.4),
-                        ),
-                        const SizedBox(height: 12),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            TextButton.icon(
-                              icon: const Icon(Icons.open_in_new, size: 14, color: Color(0xFF00F2FE)),
-                              label: const Text('Read Source Article', style: TextStyle(color: Color(0xFF00F2FE), fontSize: 12)),
-                              onPressed: () => AppLauncher.open(context, item['url']!),
+                          const SizedBox(height: 8),
+                          Text(
+                            item['title']!,
+                            style: const TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.white,
+                              height: 1.3,
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  );
-                },
+                          ),
+                          const SizedBox(height: 6),
+                          Text(
+                            item['excerpt']!,
+                            style: const TextStyle(fontSize: 12, color: Color(0xFF94A3B8), height: 1.4),
+                          ),
+                          const SizedBox(height: 12),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              TextButton.icon(
+                                icon: const Icon(Icons.open_in_new, size: 14, color: Color(0xFF00F2FE)),
+                                label: const Text('Read Source Article', style: TextStyle(color: Color(0xFF00F2FE), fontSize: 12)),
+                                onPressed: () => AppLauncher.open(context, item['url']!),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
               ),
 
               // CASE STUDIES LIST
