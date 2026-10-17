@@ -2,7 +2,7 @@ name: Automated B2B Outbound Pitches
 
 on:
   schedule:
-    - cron: '0 8 * * 1-5' # Automatically runs Mon-Fri at 08:00 AM UTC (12:00 PM UAE time)
+    - cron: '0 8 * * *' # Automatically runs daily 7 days a week at 08:00 AM UTC (12:00 PM UAE time)
   workflow_dispatch:
     inputs:
       batch_size:
@@ -52,5 +52,6 @@ jobs:
             echo "No new leads contacted in this run."
           else
             git commit -m "Update contacted leads log [skip ci]"
+            git pull --rebase origin main
             git push origin main
           fi
