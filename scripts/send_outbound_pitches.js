@@ -7,6 +7,8 @@ const args = process.argv.slice(2);
 const isDryRun = args.includes('--dry-run') || !process.env.GMAIL_APP_PASSWORD;
 const isTestMe = args.includes('--test-me');
 const batchSizeArg = args.find(a => a.startsWith('--batch='));
+const categoryArg = args.find(a => a.startsWith('--category='));
+const TARGET_CATEGORY = categoryArg ? categoryArg.split('=')[1].toLowerCase().trim() : 'priority';
 const BATCH_SIZE = batchSizeArg ? parseInt(batchSizeArg.split('=')[1], 10) : 10;
 const DELAY_SEC = 10; // 10 seconds between emails to maintain 100% clean sender score
 
@@ -28,7 +30,7 @@ if (fs.existsSync(HISTORY_FILE)) {
     history = [];
   }
 }
-const contactedEmails = new Set(history.map(h => (h.email || '').toLowerCase()));
+const contactedEmails = new Set(history.map(h => (h.email || '').toLowerCase().trim()));
 
 // Load Leads from both Curated list and Master 10,000+ CSV
 function loadAllLeads() {
@@ -89,17 +91,53 @@ function loadAllLeads() {
 
 const allLeads = loadAllLeads();
 
+// Calculate High-Conversion Priority Score
+function getLeadPriorityScore(lead) {
+  const c = (lead.cat || '').toLowerCase();
+  const n = (lead.name || '').toLowerCase();
+
+  // Avoid mega exchanges for cold emails (low response rate)
+  if (n.includes('binance') || n.includes('coinbase') || n.includes('okx') || n.includes('kraken') || n.includes('bybit') || n.includes('kucoin')) {
+    return 10;
+  }
+
+  // Tier 1 High Intent: Crypto Tokens, Memes, Launchpads, DEXs (Urgent need for CMC/CG PR)
+  if (c.includes('token') || c.includes('coin') || c.includes('meme')) return 100;
+  if (c.includes('launchpad')) return 95;
+  if (c.includes('dex')) return 90;
+  if (c.includes('prop')) return 85;
+  if (c.includes('yield') || c.includes('lending') || c.includes('defi')) return 80;
+  if (c.includes('forex') || c.includes('broker')) return 75;
+
+  return 50;
+}
+
 // Filter Uncontacted Leads
-const queue = allLeads.filter(lead => {
-  return lead.email && lead.email.includes('@') && !contactedEmails.has(lead.email.toLowerCase());
+let filteredQueue = allLeads.filter(lead => {
+  return lead.email && lead.email.includes('@') && !contactedEmails.has(lead.email.toLowerCase().trim());
 });
 
+// Category filtering if requested
+if (TARGET_CATEGORY === 'tokens') {
+  filteredQueue = filteredQueue.filter(l => (l.cat || '').toLowerCase().includes('token') || (l.cat || '').toLowerCase().includes('coin'));
+} else if (TARGET_CATEGORY === 'defi') {
+  filteredQueue = filteredQueue.filter(l => (l.cat || '').toLowerCase().includes('dex') || (l.cat || '').toLowerCase().includes('defi') || (l.cat || '').toLowerCase().includes('yield'));
+} else if (TARGET_CATEGORY === 'prop') {
+  filteredQueue = filteredQueue.filter(l => (l.cat || '').toLowerCase().includes('prop'));
+} else if (TARGET_CATEGORY === 'forex') {
+  filteredQueue = filteredQueue.filter(l => (l.cat || '').toLowerCase().includes('forex') || (l.cat || '').toLowerCase().includes('broker'));
+}
+
+// Sort by Priority Score (Highest first)
+filteredQueue.sort((a, b) => getLeadPriorityScore(b) - getLeadPriorityScore(a));
+
 console.log('===========================================================');
-console.log('🚀 NexcoinPR Automated B2B Media Pitch Sender');
+console.log('🚀 NexcoinPR High-Conversion B2B Media Pitch Sender');
 console.log('===========================================================');
 console.log(`Total Leads in Database : ${allLeads.length}`);
 console.log(`Already Contacted       : ${contactedEmails.size}`);
-console.log(`Remaining in Queue      : ${queue.length}`);
+console.log(`Remaining in Queue      : ${filteredQueue.length}`);
+console.log(`Target Category Filter  : ${TARGET_CATEGORY.toUpperCase()}`);
 console.log(`Current Batch Size      : ${BATCH_SIZE}`);
 console.log(`Execution Mode          : ${isDryRun ? 'DRY-RUN (Simulated - No real emails sent)' : 'LIVE OUTBOUND'}`);
 console.log('===========================================================\n');
@@ -113,29 +151,34 @@ if (isDryRun && !isTestMe) {
   console.log('     $env:GMAIL_APP_PASSWORD="your_16_char_password"; node scripts/send_outbound_pitches.js --batch=10\n');
 }
 
-// Generate Personalized Pitch Content
+// Generate Personalized Pitch Content with $199 Tripwire & 50/50 Risk Reversal
 function generateEmail(lead) {
-  const isForex = (lead.cat || '').toLowerCase().includes('forex') || (lead.cat || '').toLowerCase().includes('broker');
-  const nicheName = isForex ? 'Forex & financial trading' : 'Web3 & digital asset';
+  const cat = (lead.cat || '').toLowerCase();
+  const isForex = cat.includes('forex') || cat.includes('broker') || cat.includes('prop');
+  const isToken = cat.includes('token') || cat.includes('coin') || cat.includes('meme') || cat.includes('launchpad');
+  
+  const nicheName = isForex ? 'Forex & financial trading' : (isToken ? 'Web3 & token ecosystem' : 'DeFi & blockchain');
   const targetMedia = isForex ? 'Bloomberg, Yahoo Finance, Benzinga, and MarketWatch' : 'CoinDesk, Cointelegraph, Bloomberg, and Yahoo Finance';
 
-  const subject = `Media Syndication Proposal for ${lead.name} | Guaranteed Tier-1 Distribution`;
+  // High-open subject lines
+  const subject = isToken 
+    ? `Media syndication for ${lead.name} | Guaranteed CoinMarketCap & Google News ($199 Starter Wire)`
+    : `Editorial Syndication Proposal for ${lead.name} | Guaranteed 24h Placement`;
   
   const textBody = `Hi ${lead.name} Team,
 
-I came across ${lead.name} and noticed your active presence in the ${nicheName} sector.
+I came across ${lead.name} and noticed your active momentum in the ${nicheName} space.
 
-Most PR agencies charge upwards of $5,000+ per month on open retainers with zero placement guarantees. At NexcoinPR (https://www.nexcoinpr.agency), we provide 100% guaranteed editorial syndication across Tier-1 financial media — including ${targetMedia} — with live publication within 24 to 48 hours.
+Most PR agencies charge upwards of $3,000–$5,000+ per month on open retainers with zero placement guarantees. At NexcoinPR (https://www.nexcoinpr.agency), we provide 100% guaranteed editorial syndication across Tier-1 financial and crypto media — including ${targetMedia} — with live publication delivered within 24 to 48 hours.
 
-What we provide for ${lead.name}:
-• 100% Guaranteed Publication across 140+ global financial & crypto newsrooms
-• High Domain Authority (DA 80–94) Permanent Do-Follow Backlinks
-• Fast 24–48 Hour Editorial Turnaround & Live Syndication Report
-• Guaranteed Google News and search engine indexing
+⚡ Special Founder Launch Offer — $199 Starter Flash Wire:
+To help emerging projects pass CoinMarketCap / CoinGecko media verification and secure Google News search authority, we offer a dedicated $199 Web3 Starter Syndicate (https://www.nexcoinpr.agency/pricing#section-starter-wire):
+• 25+ Guaranteed Outlets (Google News indexed)
+• Permanent Do-Follow Backlinks (DA 60–85) for SEO ranking
+• 24-Hour Guaranteed Turnaround + Live Spreadsheet Proof Report
+• 🛡️ 100% Risk-Free Guarantee: Pay 50% ($99.50) upfront. Pay the remaining 50% only after live published URLs are delivered in your hand.
 
-🎁 Launch Offer: We are currently offering a 20% discount on initial syndication packages for new partners with promo code NEXCOIN20.
-
-Would you be open to reviewing our distribution deck, sample live coverage links, and package options for your upcoming announcement?
+Would you be open to reviewing our live distribution clipping samples for ${lead.name}?
 
 Best regards,
 
@@ -149,27 +192,27 @@ Email: nexcoinpr@gmail.com`;
   <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #1E293B; max-width: 600px;">
     <p>Hi <strong>${lead.name}</strong> Team,</p>
     
-    <p>I came across <strong>${lead.name}</strong> and noticed your active presence in the ${nicheName} sector.</p>
+    <p>I came across <strong>${lead.name}</strong> and noticed your active momentum in the ${nicheName} space.</p>
     
-    <p>Most traditional PR agencies charge upwards of $5,000+ per month on open retainers with zero placement guarantees. At <a href="https://www.nexcoinpr.agency" style="color: #0284C7; font-weight: 700; text-decoration: none;">NexcoinPR</a>, we provide <strong>100% guaranteed editorial syndication</strong> across Tier-1 financial media — including <strong>${targetMedia}</strong> — with live publication within 24 to 48 hours.</p>
+    <p>Most traditional PR agencies charge upwards of $3,000–$5,000+ per month on open retainers with zero placement guarantees. At <a href="https://www.nexcoinpr.agency" style="color: #0284C7; font-weight: 700; text-decoration: none;">NexcoinPR</a>, we provide <strong>100% guaranteed editorial syndication</strong> across Tier-1 media — including <strong>${targetMedia}</strong> — with live publication within 24 to 48 hours.</p>
     
-    <div style="background: #F8FAFC; border-left: 4px solid #C9A84C; padding: 14px 18px; margin: 18px 0; border-radius: 4px;">
-      <p style="margin: 0 0 8px; font-weight: 700; color: #0F172A;">What we provide for ${lead.name}:</p>
-      <ul style="margin: 0; padding-left: 20px; color: #334155; font-size: 0.95rem;">
-        <li><strong>100% Guaranteed Publication</strong> across 140+ global financial &amp; crypto outlets</li>
-        <li><strong>High Domain Authority (DA 80–94)</strong> Permanent Do-Follow SEO Backlinks</li>
-        <li><strong>24–48h Fast Turnaround</strong> with full live syndication clipping report</li>
-        <li><strong>Google News &amp; Terminal Indexing</strong> for maximum investor reach</li>
+    <div style="background: #F8FAFC; border-left: 4px solid #C9A84C; padding: 16px 20px; margin: 20px 0; border-radius: 6px;">
+      <p style="margin: 0 0 8px; font-weight: 800; color: #0F172A; font-size: 1.05rem;">⚡ $199 Web3 Starter Flash Wire (Special Founder Offer):</p>
+      <p style="margin: 0 0 10px; font-size: 0.92rem; color: #475569;">Engineered for token launches, DeFi protocols, and trading firms seeking rapid CoinMarketCap / CoinGecko media verification:</p>
+      <ul style="margin: 0; padding-left: 20px; color: #334155; font-size: 0.93rem;">
+        <li><strong>25+ Guaranteed Outlets</strong> (Google News indexed)</li>
+        <li><strong>Permanent Do-Follow Backlinks (DA 60–85)</strong> for search authority</li>
+        <li><strong>24-Hour Guaranteed Turnaround</strong> with full live spreadsheet clipping report</li>
+        <li>🛡️ <strong>Zero-Risk Payment:</strong> Pay 50% ($99.50) upfront. Pay the remaining 50% only after live URLs are in your hand.</li>
       </ul>
     </div>
     
-    <p>🎁 <strong>Launch Promotion:</strong> We are offering <strong>20% off</strong> on all initial media distribution packages with promo code <strong style="color: #B45309;">NEXCOIN20</strong>.</p>
+    <p>Would you be open to reviewing our live distribution clipping samples for ${lead.name}?</p>
     
-    <p>Would you be open to reviewing our distribution deck, sample live coverage links, and package options for your upcoming announcement?</p>
-    
-    <p style="margin-top: 24px;">
-      <a href="https://wa.me/971582021752?text=Hi%20NexcoinPR%20team%2C%20I%20received%20your%20email%20regarding%20media%20syndication%20for%20${encodeURIComponent(lead.name)}.%20Please%20share%20details." style="background: #25D366; color: #FFFFFF; font-weight: 700; text-decoration: none; padding: 10px 18px; border-radius: 6px; display: inline-block; font-size: 0.9rem;">Chat on WhatsApp (+971-582021752) &rarr;</a>
-    </p>
+    <div style="margin: 26px 0; display: flex; gap: 12px; flex-wrap: wrap;">
+      <a href="https://wa.me/971582021752?text=Hi%20NexcoinPR!%20I%20received%20your%20email%20regarding%20media%20syndication%20for%20${encodeURIComponent(lead.name)}.%20Please%20share%20details." style="background: #25D366; color: #FFFFFF; font-weight: 700; text-decoration: none; padding: 11px 20px; border-radius: 6px; display: inline-block; font-size: 0.92rem;">Chat on WhatsApp (+971-582021752) &rarr;</a>
+      <a href="https://t.me/Nexcoinpr" style="background: #229ED9; color: #FFFFFF; font-weight: 700; text-decoration: none; padding: 11px 20px; border-radius: 6px; display: inline-block; font-size: 0.92rem;">Direct Telegram (@Nexcoinpr) &rarr;</a>
+    </div>
     
     <hr style="border: none; border-top: 1px solid #E2E8F0; margin: 28px 0;" />
     
@@ -209,7 +252,7 @@ async function main() {
   // Handle test email to self
   if (isTestMe) {
     console.log(`[TEST MODE] Sending test sample to yourself: ${SENDER_EMAIL}`);
-    const sampleLead = { name: "Sample Protocol", cat: "DeFi Platform", site: "https://example.com" };
+    const sampleLead = { name: "Sample Web3 Protocol", cat: "Crypto Token / Coin", site: "https://example.com" };
     const { subject, textBody, htmlBody } = generateEmail(sampleLead);
 
     if (isDryRun) {
@@ -230,7 +273,7 @@ async function main() {
   }
 
   // Process Batch
-  const batch = queue.slice(0, BATCH_SIZE);
+  const batch = filteredQueue.slice(0, BATCH_SIZE);
   if (batch.length === 0) {
     console.log('🎉 All leads in the queue have been contacted!');
     return;
