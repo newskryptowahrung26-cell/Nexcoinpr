@@ -103,5 +103,75 @@
     "email": "marketing@coinstore.com",
     "cat": "Crypto Exchange",
     "sentAt": "2026-10-16T10:40:28.692Z"
+  },
+  {
+    "id": "231",
+    "name": "Base",
+    "email": "press@base.org",
+    "cat": "Coinbase L2",
+    "sentAt": "2026-10-17T07:05:06.022Z"
+  },
+  {
+    "id": "238",
+    "name": "Floki",
+    "email": "media@floki.com",
+    "cat": "Ecosystem Token",
+    "sentAt": "2026-10-17T07:05:18.238Z"
+  },
+  {
+    "id": "239",
+    "name": "Bonk",
+    "email": "media@bonkcoin.com",
+    "cat": "Solana Meme / Eco",
+    "sentAt": "2026-10-17T07:05:30.595Z"
+  },
+  {
+    "id": "240",
+    "name": "Pepe",
+    "email": "contact@pepe.vip",
+    "cat": "Memecoin Ecosystem",
+    "sentAt": "2026-10-17T07:05:42.743Z"
+  },
+  {
+    "id": "430",
+    "name": "M0",
+    "email": "contact@m0.org",
+    "cat": "Web3 Stablecoin Issuer",
+    "sentAt": "2026-10-17T07:05:55.071Z"
+  },
+  {
+    "id": "457",
+    "name": "UNCX Network V2",
+    "email": "contact@uncx.network",
+    "cat": "Web3 Token Locker",
+    "sentAt": "2026-10-17T07:06:07.129Z"
+  },
+  {
+    "id": "459",
+    "name": "Saturn",
+    "email": "contact@saturn.credit",
+    "cat": "Web3 Stablecoin Wrapper",
+    "sentAt": "2026-10-17T07:06:20.594Z"
+  },
+  {
+    "id": "475",
+    "name": "fx Protocol",
+    "email": "contact@fx.aladdin.club",
+    "cat": "Web3 Dual-Token Stablecoin",
+    "sentAt": "2026-10-17T07:06:33.686Z"
+  },
+  {
+    "id": "569",
+    "name": "Team Finance",
+    "email": "contact@team.finance",
+    "cat": "Web3 Token Locker",
+    "sentAt": "2026-10-17T07:06:45.951Z"
+  },
+  {
+    "id": "629",
+    "name": "Hylo Protocol",
+    "email": "contact@hylo.so",
+    "cat": "Web3 Dual-Token Stablecoin",
+    "sentAt": "2026-10-17T07:06:58.091Z"
   }
 ]

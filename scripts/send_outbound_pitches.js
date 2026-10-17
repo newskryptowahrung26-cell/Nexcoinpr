@@ -2,6 +2,22 @@ const fs = require('fs');
 const path = require('path');
 const nodemailer = require('nodemailer');
 
+// Automatically load .env if present
+const envPath = path.join(__dirname, '..', '.env');
+if (fs.existsSync(envPath)) {
+  const envContent = fs.readFileSync(envPath, 'utf8');
+  envContent.split(/\r?\n/).forEach(line => {
+    const match = line.match(/^([^=]+)=(.*)$/);
+    if (match) {
+      const key = match[1].trim();
+      const val = match[2].trim().replace(/^["']|["']$/g, '');
+      if (!process.env[key]) {
+        process.env[key] = val;
+      }
+    }
+  });
+}
+
 // Parse CLI Arguments
 const args = process.argv.slice(2);
 const isDryRun = args.includes('--dry-run') || !process.env.GMAIL_APP_PASSWORD;

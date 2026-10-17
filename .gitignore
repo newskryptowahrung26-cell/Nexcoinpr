@@ -23,3 +23,5 @@ google-business-photos/
 play-store-assets/
 scratch/
 *.ps1
+.env
+.env.*
