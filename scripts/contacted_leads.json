@@ -173,5 +173,110 @@
     "email": "contact@hylo.so",
     "cat": "Web3 Dual-Token Stablecoin",
     "sentAt": "2026-10-17T07:06:58.091Z"
+  },
+  {
+    "id": "669",
+    "name": "GoPlus Locker V3",
+    "email": "contact@gopluslabs.io",
+    "cat": "Web3 Token Locker",
+    "sentAt": "2026-10-17T11:49:29.696Z"
+  },
+  {
+    "id": "726",
+    "name": "RIF ON CHAIN",
+    "email": "contact@rifonchain.com",
+    "cat": "Web3 Dual-Token Stablecoin",
+    "sentAt": "2026-10-17T11:49:40.705Z"
+  },
+  {
+    "id": "749",
+    "name": "MoneyOnChain",
+    "email": "contact@moneyonchain.com",
+    "cat": "Web3 Dual-Token Stablecoin",
+    "sentAt": "2026-10-17T11:49:51.603Z"
+  },
+  {
+    "id": "850",
+    "name": "FlokiFi Locker",
+    "email": "contact@flokifi.com",
+    "cat": "Web3 Token Locker",
+    "sentAt": "2026-10-17T11:50:02.955Z"
+  },
+  {
+    "id": "886",
+    "name": "XGLD",
+    "email": "contact@evm.unitas.so",
+    "cat": "Web3 Stablecoin Wrapper",
+    "sentAt": "2026-10-17T11:50:14.027Z"
+  },
+  {
+    "id": "1054",
+    "name": "Djed Stablecoin",
+    "email": "contact@djedalliance.io",
+    "cat": "Web3 Dual-Token Stablecoin",
+    "sentAt": "2026-10-17T11:50:24.922Z"
+  },
+  {
+    "id": "1087",
+    "name": "StakePoint",
+    "email": "contact@stakepoint.app",
+    "cat": "Web3 Token Locker",
+    "sentAt": "2026-10-17T11:50:35.892Z"
+  },
+  {
+    "id": "1148",
+    "name": "USDR",
+    "email": "contact@risechain.com",
+    "cat": "Web3 Stablecoin Wrapper",
+    "sentAt": "2026-10-17T11:50:47.401Z"
+  },
+  {
+    "id": "1291",
+    "name": "HoodLock",
+    "email": "contact@hoodlock.tech",
+    "cat": "Web3 Token Locker",
+    "sentAt": "2026-10-17T11:50:58.303Z"
+  },
+  {
+    "id": "1393",
+    "name": "DaVinciGraph",
+    "email": "contact@davincigraph.io",
+    "cat": "Web3 Token Locker",
+    "sentAt": "2026-10-17T11:51:09.215Z"
+  },
+  {
+    "id": "1488",
+    "name": "StonkBrokers Safety Deposit Box",
+    "email": "contact@stonkbrokers.cash",
+    "cat": "Web3 Token Locker",
+    "sentAt": "2026-10-17T11:51:20.143Z"
+  },
+  {
+    "id": "1498",
+    "name": "dTRINITY dUSD",
+    "email": "contact@dtrinity.org",
+    "cat": "Web3 Partially Algorithmic Stablecoin",
+    "sentAt": "2026-10-17T11:51:31.780Z"
+  },
+  {
+    "id": "1555",
+    "name": "Flat Money V2",
+    "email": "contact@flat.money",
+    "cat": "Web3 Partially Algorithmic Stablecoin",
+    "sentAt": "2026-10-17T11:51:42.736Z"
+  },
+  {
+    "id": "1723",
+    "name": "USX.Capital",
+    "email": "contact@usx.capital",
+    "cat": "Web3 Stablecoin Wrapper",
+    "sentAt": "2026-10-17T11:51:53.630Z"
+  },
+  {
+    "id": "2119",
+    "name": "Bitbond Lockers",
+    "email": "contact@tokentool.bitbond.com",
+    "cat": "Web3 Token Locker",
+    "sentAt": "2026-10-17T11:52:05.083Z"
   }
 ]
