@@ -463,4 +463,26 @@
       <news:title>Indian Rupee: Policy support and yield reversal, Societe Generale</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/anthropics-claude-cracks-a-25-year-nsa-curve-mystery-what-it-means-for-bitc</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-17</news:publication_date>
+      <news:title>Anthropic’s Claude cracks a 25-year NSA curve mystery, what it means for bitcoin</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/whats-the-likelihood-of-yen-carry-trade-reversing</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-17</news:publication_date>
+      <news:title>What’s the likelihood of Yen carry trade reversing?</news:title>
+    </news:news>
+  </url>
 </urlset>
