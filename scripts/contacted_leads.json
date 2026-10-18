@@ -278,5 +278,110 @@
     "email": "contact@tokentool.bitbond.com",
     "cat": "Web3 Token Locker",
     "sentAt": "2026-10-17T11:52:05.083Z"
+  },
+  {
+    "id": "2130",
+    "name": "UXD",
+    "email": "contact@uxd.fi",
+    "cat": "Web3 Partially Algorithmic Stablecoin",
+    "sentAt": "2026-10-18T12:15:02.147Z"
+  },
+  {
+    "id": "2957",
+    "name": "JustLock",
+    "email": "contact@justlock.io",
+    "cat": "Web3 Token Locker",
+    "sentAt": "2026-10-18T12:15:14.373Z"
+  },
+  {
+    "id": "3618",
+    "name": "Coinscope",
+    "email": "contact@coinscope.co",
+    "cat": "Web3 Token Locker",
+    "sentAt": "2026-10-18T12:15:25.883Z"
+  },
+  {
+    "id": "3852",
+    "name": "RadLock",
+    "email": "contact@radlock.io",
+    "cat": "Web3 Token Locker",
+    "sentAt": "2026-10-18T12:15:38.034Z"
+  },
+  {
+    "id": "4529",
+    "name": "TrustSwap",
+    "email": "contact@trustswap.com",
+    "cat": "Web3 Token Locker",
+    "sentAt": "2026-10-18T12:15:50.274Z"
+  },
+  {
+    "id": "5408",
+    "name": "MOKEE",
+    "email": "contact@mokee.app",
+    "cat": "Web3 Token Locker",
+    "sentAt": "2026-10-18T12:16:02.609Z"
+  },
+  {
+    "id": "5769",
+    "name": "Aurevaz",
+    "email": "contact@aurevaz.com",
+    "cat": "Web3 Token Locker",
+    "sentAt": "2026-10-18T12:16:14.458Z"
+  },
+  {
+    "id": "5780",
+    "name": "Rotera",
+    "email": "contact@rotera.fi",
+    "cat": "Web3 Stablecoin Wrapper",
+    "sentAt": "2026-10-18T12:16:26.737Z"
+  },
+  {
+    "id": "5790",
+    "name": "Chi Protocol",
+    "email": "contact@chiprotocol.io",
+    "cat": "Web3 Partially Algorithmic Stablecoin",
+    "sentAt": "2026-10-18T12:16:38.414Z"
+  },
+  {
+    "id": "6409",
+    "name": "CryptEx Locker",
+    "email": "contact@cryptexlock.me",
+    "cat": "Web3 Token Locker",
+    "sentAt": "2026-10-18T12:16:50.618Z"
+  },
+  {
+    "id": "6900",
+    "name": "DogeDollar",
+    "email": "contact@0xnethergames.io",
+    "cat": "Web3 Dual-Token Stablecoin",
+    "sentAt": "2026-10-18T12:17:02.340Z"
+  },
+  {
+    "id": "7272",
+    "name": "DEX Screener",
+    "email": "contact@dexscreener.com",
+    "cat": "Web3 Coins Tracker",
+    "sentAt": "2026-10-18T12:17:14.297Z"
+  },
+  {
+    "id": "7277",
+    "name": "DEXTools",
+    "email": "contact@dextools.io",
+    "cat": "Web3 Coins Tracker",
+    "sentAt": "2026-10-18T12:17:25.711Z"
+  },
+  {
+    "id": "7280",
+    "name": "Tether",
+    "email": "contact@tether.to",
+    "cat": "Web3 Stablecoin Issuer",
+    "sentAt": "2026-10-18T12:17:37.460Z"
+  },
+  {
+    "id": "7358",
+    "name": "FxDAO",
+    "email": "contact@fxdao.io",
+    "cat": "Web3 Partially Algorithmic Stablecoin",
+    "sentAt": "2026-10-18T12:17:48.780Z"
   }
 ]
