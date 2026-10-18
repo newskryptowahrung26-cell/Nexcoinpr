@@ -485,4 +485,26 @@
       <news:title>What’s the likelihood of Yen carry trade reversing?</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/chip-stock-bets-lost-52-million-in-10-minutes-with-wall-street-shut</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-18</news:publication_date>
+      <news:title>Chip-stock bets lost $52 million in 10 minutes with Wall Street shut</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/us-yields-fall-for-the-week-as-ai-debt-jitters-drive-traders-to-safe-haven</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-18</news:publication_date>
+      <news:title>U.S. yields fall for the week as AI debt jitters drive traders to safe-haven bonds</news:title>
+    </news:news>
+  </url>
 </urlset>
