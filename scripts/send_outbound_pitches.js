@@ -48,10 +48,37 @@ if (fs.existsSync(HISTORY_FILE)) {
 }
 const contactedEmails = new Set(history.map(h => (h.email || '').toLowerCase().trim()));
 
-// Load Leads from both Curated list and Master 10,000+ CSV
+// Load Leads from Fresh Scraped, Curated list, and Master 10,000+ CSV
 function loadAllLeads() {
   const leads = [];
   const seen = new Set();
+
+  // 0. Fresh Live Scraped Leads (DexScreener, CoinMarketCap, CoinGecko)
+  const freshFile = path.join(__dirname, '..', 'data', 'fresh_live_scraped_leads.json');
+  if (fs.existsSync(freshFile)) {
+    try {
+      const fresh = JSON.parse(fs.readFileSync(freshFile, 'utf8'));
+      fresh.forEach(f => {
+        if (f.email && f.email.includes('@')) {
+          const em = f.email.toLowerCase().trim();
+          if (!seen.has(em)) {
+            seen.add(em);
+            leads.push({
+              id: f.id,
+              name: f.name,
+              cat: f.cat || 'Crypto Token / Coin',
+              site: f.site || '',
+              email: em,
+              dept: 'Founder / Marketing',
+              scale: 'Trending Market Project',
+              packageRec: '$199 Web3 Starter Wire',
+              hook: `Pitching guaranteed CoinMarketCap / Google News syndication for newly listed ${f.name}.`
+            });
+          }
+        }
+      });
+    } catch(e) {}
+  }
 
   // 1. Curated Hot Leads
   if (fs.existsSync(DATA_FILE)) {
@@ -111,6 +138,12 @@ const allLeads = loadAllLeads();
 function getLeadPriorityScore(lead) {
   const c = (lead.cat || '').toLowerCase();
   const n = (lead.name || '').toLowerCase();
+  const id = (lead.id || '');
+
+  // Highest Priority: Freshly scraped live projects from DexScreener/CMC/CoinGecko
+  if (id.startsWith('LIVE-')) {
+    return 150;
+  }
 
   // Avoid mega exchanges for cold emails (low response rate)
   if (n.includes('binance') || n.includes('coinbase') || n.includes('okx') || n.includes('kraken') || n.includes('bybit') || n.includes('kucoin')) {
