@@ -161,36 +161,121 @@ function loadAllLeads() {
 
 const allLeads = loadAllLeads();
 
+const EXCLUDE_DOMAINS = new Set([
+  'americankratom.org',
+  'nutra-harmony.com',
+  'omeristanbul.com',
+  'topships.org',
+  'worldimpactmedia.org'
+]);
+
+function cleanBrandName(lead) {
+  // First check domain if known
+  if (lead.email && lead.email.includes('@')) {
+    const domain = lead.email.split('@')[1].split('.')[0].toLowerCase();
+    const domainMap = {
+      'stakerx': 'StakerX',
+      'dachain': 'DAC',
+      'changenow': 'ChangeNOW',
+      'pixarex': 'Pixagram',
+      'bybit': 'Bybit',
+      '1win': '1win',
+      'trustlinq': 'TrustLinq',
+      'biggerz': 'BiggerZ',
+      '150bond': '150Bond',
+      'sui': 'Sui Foundation',
+      'piplabs': 'Pip Labs',
+      'nowpayments': 'NOWPayments',
+      'lbank': 'LBank',
+      'pressboxpr': 'Pressbox PR',
+      'liquidmercury': 'Liquid Mercury',
+      'vanafoundation': 'Vana Foundation',
+      'lowestfeebitcoinatms': 'Lowest Fee Bitcoin ATMs',
+      'colb': 'Colb Finance',
+      'changer': 'Changer+',
+      'asicid': 'ASICID',
+      'whitebit': 'WhiteBIT',
+      'nextlm': 'NextLM',
+      'useflip': 'Flip',
+      'concrete': 'Concrete',
+      'aerodrome': 'Aerodrome Finance',
+      'solana': 'Solana Foundation',
+      'near': 'NEAR Protocol',
+      'arbitrum': 'Arbitrum'
+    };
+    if (domainMap[domain]) return domainMap[domain];
+  }
+
+  let raw = (lead.name || '')
+    .replace(/&#x27;|&apos;|&#039;/g, "'")
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&nbsp;/g, ' ')
+    .trim();
+
+  // Pattern matching for typical PR headlines: '[Brand] Announces...', '[Brand] Launches...', '[Brand]\'s...', etc.
+  const verbMatch = raw.match(/^([A-Za-z0-9\.\-\s]+?)(?:'s|\s+(?:Announces|Highlights|Expands|Launches|to\s+unveil|joins|Completes|Brings|Introduces|Ranks|Calls|Converts|Executes|Selects|Unveils|Partners|Receives|Secures|Integrates|Reports|Files|Debuts|Reveals|Releases|Wins|Opens|Rolls))\b/i);
+  if (verbMatch && verbMatch[1] && verbMatch[1].trim().length > 1 && verbMatch[1].trim().length < 30) {
+    const extracted = verbMatch[1].trim();
+    if (extracted.toLowerCase() === 'data network') return 'DATA Network';
+    return extracted;
+  }
+
+  // Fallback to domain name if email exists
+  if (lead.email && lead.email.includes('@')) {
+    const domain = lead.email.split('@')[1].split('.')[0].toLowerCase();
+    if (domain.length > 2 && !['gmail','yahoo','hotmail','outlook','proton','protonmail','icloud'].includes(domain)) {
+      return domain.charAt(0).toUpperCase() + domain.slice(1);
+    }
+  }
+
+  return raw.length > 30 ? raw.slice(0, 30) : raw;
+}
+
 // Calculate High-Conversion Priority Score
 function getLeadPriorityScore(lead) {
   const c = (lead.cat || '').toLowerCase();
   const n = (lead.name || '').toLowerCase();
   const id = (lead.id || '');
+  const em = (lead.email || '').toLowerCase();
+  const domain = em.split('@')[1] || '';
+
+  if (EXCLUDE_DOMAINS.has(domain)) {
+    return 0; // Filter out non-crypto/non-finance domains
+  }
+
+  let score = 50;
 
   // Absolute #1 Priority: Confirmed Paying PR Buyers from Decrypt/FinanceWire
   if (id.startsWith('PR-BUYER-')) {
-    return 200;
+    score = 200;
+  } else if (id.startsWith('LIVE-')) {
+    score = 150;
+  } else if (c.includes('token') || c.includes('coin') || c.includes('meme')) {
+    score = 100;
+  } else if (c.includes('launchpad')) {
+    score = 95;
+  } else if (c.includes('dex')) {
+    score = 90;
+  } else if (c.includes('prop')) {
+    score = 85;
+  } else if (c.includes('yield') || c.includes('lending') || c.includes('defi')) {
+    score = 80;
+  } else if (c.includes('forex') || c.includes('broker')) {
+    score = 75;
   }
 
-  // Highest Priority: Freshly scraped live projects from DexScreener/CMC/CoinGecko
-  if (id.startsWith('LIVE-')) {
-    return 150;
+  // Bonus for targeted press/media desks
+  if (em.startsWith('press@') || em.startsWith('pr@') || em.startsWith('media@') || em.startsWith('comms@')) {
+    score += 15;
   }
 
-  // Avoid mega exchanges for cold emails (low response rate)
-  if (n.includes('binance') || n.includes('coinbase') || n.includes('okx') || n.includes('kraken') || n.includes('bybit') || n.includes('kucoin')) {
-    return 10;
+  // Avoid mega exchanges and open-source foundations for commercial pitches
+  if (n.includes('binance') || n.includes('coinbase') || n.includes('okx') || n.includes('kraken') || n.includes('bybit') || n.includes('kucoin') || domain === 'ethereum.org' || domain === 'bitcoin.org') {
+    score = Math.min(score, 10);
   }
 
-  // Tier 1 High Intent: Crypto Tokens, Memes, Launchpads, DEXs (Urgent need for CMC/CG PR)
-  if (c.includes('token') || c.includes('coin') || c.includes('meme')) return 100;
-  if (c.includes('launchpad')) return 95;
-  if (c.includes('dex')) return 90;
-  if (c.includes('prop')) return 85;
-  if (c.includes('yield') || c.includes('lending') || c.includes('defi')) return 80;
-  if (c.includes('forex') || c.includes('broker')) return 75;
-
-  return 50;
+  return score;
 }
 
 // Filter Uncontacted Leads
@@ -234,7 +319,9 @@ if (isDryRun && !isTestMe) {
 
 // Generate Personalized Pitch Content with $199 Tripwire & 50/50 Risk Reversal
 function generateEmail(lead) {
+  const brand = cleanBrandName(lead);
   const cat = (lead.cat || '').toLowerCase();
+  const isPaidBuyer = cat.includes('paid pr advertiser') || (lead.id && lead.id.startsWith('PR-BUYER-'));
   const isForex = cat.includes('forex') || cat.includes('broker') || cat.includes('prop');
   const isToken = cat.includes('token') || cat.includes('coin') || cat.includes('meme') || cat.includes('launchpad');
   
@@ -242,24 +329,35 @@ function generateEmail(lead) {
   const targetMedia = isForex ? 'Bloomberg, Yahoo Finance, Benzinga, and MarketWatch' : 'CoinDesk, Cointelegraph, Bloomberg, and Yahoo Finance';
 
   // High-open subject lines
-  const subject = isToken 
-    ? `Media syndication for ${lead.name} | Guaranteed CoinMarketCap & Google News ($199 Starter Wire)`
-    : `Editorial Syndication Proposal for ${lead.name} | Guaranteed 24h Placement`;
+  let subject = `Editorial Syndication Proposal for ${brand} | Guaranteed 24h Placement`;
+  if (isPaidBuyer) {
+    subject = `Media syndication for ${brand} | Guaranteed 25–140+ Outlets ($199 Entry Wire)`;
+  } else if (isToken) {
+    subject = `Media syndication for ${brand} | Guaranteed CoinMarketCap & Google News ($199 Starter Wire)`;
+  }
   
-  const textBody = `Hi ${lead.name} Team,
+  const introHook = isPaidBuyer
+    ? `I came across your recent media announcement regarding ${brand} and wanted to congratulate your team on your active publicity in the Web3 space!`
+    : `I came across ${brand} and noticed your active momentum in the ${nicheName} space.`;
 
-I came across ${lead.name} and noticed your active momentum in the ${nicheName} space.
+  const comparisonHook = isPaidBuyer
+    ? `When publishing announcements, single-outlet sponsored placements typically charge upwards of $2,000–$4,000+ for just one website. At <a href="https://www.nexcoinpr.agency" style="color: #0284C7; font-weight: 700; text-decoration: none;">NexcoinPR</a>, we syndicate across <strong>25 to 140+ Tier-1 financial &amp; crypto outlets</strong> — including <strong>${targetMedia}</strong> — with guaranteed live indexing within 24 to 48 hours starting at just $199.`
+    : `Most traditional PR agencies charge upwards of $3,000–$5,000+ per month on open retainers with zero placement guarantees. At <a href="https://www.nexcoinpr.agency" style="color: #0284C7; font-weight: 700; text-decoration: none;">NexcoinPR</a>, we provide <strong>100% guaranteed editorial syndication</strong> across Tier-1 media — including <strong>${targetMedia}</strong> — with live publication within 24 to 48 hours.`;
 
-Most PR agencies charge upwards of $3,000–$5,000+ per month on open retainers with zero placement guarantees. At NexcoinPR (https://www.nexcoinpr.agency), we provide 100% guaranteed editorial syndication across Tier-1 financial and crypto media — including ${targetMedia} — with live publication delivered within 24 to 48 hours.
+  const textBody = `Hi ${brand} Team,
+
+${introHook}
+
+${isPaidBuyer ? 'When publishing announcements, single-outlet sponsored placements typically charge upwards of $2,000–$4,000+ for just one website. At NexcoinPR (https://www.nexcoinpr.agency), we syndicate across 25 to 140+ Tier-1 financial & crypto outlets — including ' + targetMedia + ' — with guaranteed live indexing within 24 to 48 hours starting at just $199.' : 'Most PR agencies charge upwards of $3,000–$5,000+ per month on open retainers with zero placement guarantees. At NexcoinPR (https://www.nexcoinpr.agency), we provide 100% guaranteed editorial syndication across Tier-1 financial and crypto media — including ' + targetMedia + ' — with live publication delivered within 24 to 48 hours.'}
 
 ⚡ Special Founder Launch Offer — $199 Starter Flash Wire:
-To help emerging projects pass CoinMarketCap / CoinGecko media verification and secure Google News search authority, we offer a dedicated $199 Web3 Starter Syndicate (https://www.nexcoinpr.agency/pricing#section-starter-wire):
+To help projects secure mass distribution, pass CoinMarketCap/CoinGecko media criteria, and maximize search authority, we offer a dedicated $199 Web3 Starter Syndicate (https://www.nexcoinpr.agency/pricing#section-starter-wire):
 • 25+ Guaranteed Outlets (Google News indexed)
 • Permanent Do-Follow Backlinks (DA 60–85) for SEO ranking
 • 24-Hour Guaranteed Turnaround + Live Spreadsheet Proof Report
 • 🛡️ 100% Risk-Free Guarantee: Pay 50% ($99.50) upfront. Pay the remaining 50% only after live published URLs are delivered in your hand.
 
-Would you be open to reviewing our live distribution clipping samples for ${lead.name}?
+Would you be open to reviewing our live distribution clipping samples for ${brand}?
 
 Best regards,
 
@@ -271,11 +369,11 @@ Email: nexcoinpr@gmail.com`;
 
   const htmlBody = `
   <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #1E293B; max-width: 600px;">
-    <p>Hi <strong>${lead.name}</strong> Team,</p>
+    <p>Hi <strong>${brand}</strong> Team,</p>
     
-    <p>I came across <strong>${lead.name}</strong> and noticed your active momentum in the ${nicheName} space.</p>
+    <p>${introHook}</p>
     
-    <p>Most traditional PR agencies charge upwards of $3,000–$5,000+ per month on open retainers with zero placement guarantees. At <a href="https://www.nexcoinpr.agency" style="color: #0284C7; font-weight: 700; text-decoration: none;">NexcoinPR</a>, we provide <strong>100% guaranteed editorial syndication</strong> across Tier-1 media — including <strong>${targetMedia}</strong> — with live publication within 24 to 48 hours.</p>
+    <p>${comparisonHook}</p>
     
     <div style="background: #F8FAFC; border-left: 4px solid #C9A84C; padding: 16px 20px; margin: 20px 0; border-radius: 6px;">
       <p style="margin: 0 0 8px; font-weight: 800; color: #0F172A; font-size: 1.05rem;">⚡ $199 Web3 Starter Flash Wire (Special Founder Offer):</p>
@@ -288,10 +386,10 @@ Email: nexcoinpr@gmail.com`;
       </ul>
     </div>
     
-    <p>Would you be open to reviewing our live distribution clipping samples for ${lead.name}?</p>
+    <p>Would you be open to reviewing our live distribution clipping samples for ${brand}?</p>
     
     <div style="margin: 26px 0; display: flex; gap: 12px; flex-wrap: wrap;">
-      <a href="https://wa.me/971582021752?text=Hi%20NexcoinPR!%20I%20received%20your%20email%20regarding%20media%20syndication%20for%20${encodeURIComponent(lead.name)}.%20Please%20share%20details." style="background: #25D366; color: #FFFFFF; font-weight: 700; text-decoration: none; padding: 11px 20px; border-radius: 6px; display: inline-block; font-size: 0.92rem;">Chat on WhatsApp (+971-582021752) &rarr;</a>
+      <a href="https://wa.me/971582021752?text=Hi%20NexcoinPR!%20I%20received%20your%20email%20regarding%20media%20syndication%20for%20${encodeURIComponent(brand)}.%20Please%20share%20details." style="background: #25D366; color: #FFFFFF; font-weight: 700; text-decoration: none; padding: 11px 20px; border-radius: 6px; display: inline-block; font-size: 0.92rem;">Chat on WhatsApp (+971-582021752) &rarr;</a>
       <a href="https://t.me/Nexcoinpr" style="background: #229ED9; color: #FFFFFF; font-weight: 700; text-decoration: none; padding: 11px 20px; border-radius: 6px; display: inline-block; font-size: 0.92rem;">Direct Telegram (@Nexcoinpr) &rarr;</a>
     </div>
     
@@ -304,7 +402,7 @@ Email: nexcoinpr@gmail.com`;
     </p>
   </div>`;
 
-  return { subject, textBody, htmlBody };
+  return { subject, textBody, htmlBody, brand };
 }
 
 async function main() {
@@ -353,8 +451,23 @@ async function main() {
     return;
   }
 
-  // Process Batch
-  const batch = filteredQueue.slice(0, BATCH_SIZE);
+  // Process Batch with domain-level deduplication
+  const batch = [];
+  const domainInBatch = new Set();
+
+  for (const lead of filteredQueue) {
+    if (batch.length >= BATCH_SIZE) break;
+    const domain = (lead.email.split('@')[1] || '').toLowerCase();
+    const isGenericHost = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'proton.me', 'protonmail.com'].includes(domain);
+    if (!isGenericHost && domainInBatch.has(domain)) {
+      continue; // Skip duplicate company in this batch
+    }
+    batch.push(lead);
+    if (!isGenericHost) {
+      domainInBatch.add(domain);
+    }
+  }
+
   if (batch.length === 0) {
     console.log('🎉 All leads in the queue have been contacted!');
     return;
@@ -364,9 +477,9 @@ async function main() {
 
   for (let i = 0; i < batch.length; i++) {
     const lead = batch[i];
-    const { subject, textBody, htmlBody } = generateEmail(lead);
+    const { subject, textBody, htmlBody, brand } = generateEmail(lead);
 
-    console.log(`[${i + 1}/${batch.length}] Targeting: ${lead.name} (${lead.cat}) -> ${lead.email}`);
+    console.log(`[${i + 1}/${batch.length}] Targeting: ${brand} (${lead.email}) [Cat: ${lead.cat}]`);
 
     if (isDryRun) {
       console.log(`   Simulated Subject: "${subject}"`);
@@ -387,6 +500,7 @@ async function main() {
         // Record in history
         history.push({
           id: lead.id,
+          brand: brand,
           name: lead.name,
           email: lead.email,
           cat: lead.cat,
