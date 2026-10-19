@@ -507,4 +507,26 @@
       <news:title>U.S. yields fall for the week as AI debt jitters drive traders to safe-haven bonds</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/ada-news-charles-hoskinson-is-personally-building-a-new-programming-languag</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-19</news:publication_date>
+      <news:title>ADA news: Charles Hoskinson is personally building a new programming language for Cardano</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/us-treasury-yields-ease-near-1-month-lows-euro-spreads-widen-amid-french-un</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-19</news:publication_date>
+      <news:title>U.S. treasury yields ease near 1-month lows; Euro spreads widen amid French unrest</news:title>
+    </news:news>
+  </url>
 </urlset>
