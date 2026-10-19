@@ -48,10 +48,37 @@ if (fs.existsSync(HISTORY_FILE)) {
 }
 const contactedEmails = new Set(history.map(h => (h.email || '').toLowerCase().trim()));
 
-// Load Leads from Fresh Scraped, Curated list, and Master 10,000+ CSV
+// Load Leads from Mega PR Buyers, Fresh Scraped, Curated list, and Master 10,000+ CSV
 function loadAllLeads() {
   const leads = [];
   const seen = new Set();
+
+  // 0. Verified Real PR Buyers (Decrypt, FinanceWire, etc.)
+  const megaFile = path.join(__dirname, '..', 'data', 'mega_verified_pr_buyers.json');
+  if (fs.existsSync(megaFile)) {
+    try {
+      const mega = JSON.parse(fs.readFileSync(megaFile, 'utf8'));
+      mega.forEach(m => {
+        if (m.email && m.email.includes('@')) {
+          const em = m.email.toLowerCase().trim();
+          if (!seen.has(em)) {
+            seen.add(em);
+            leads.push({
+              id: m.id,
+              name: m.name,
+              cat: m.cat || 'Paid PR Advertiser',
+              site: m.site || '',
+              email: em,
+              dept: 'Media & Marketing Desk',
+              scale: 'Confirmed PR Budget Buyer',
+              packageRec: '$199 Web3 Starter Wire or 10-Media Syndicate',
+              hook: `Pitching guaranteed syndication across 140+ outlets vs single-site publication.`
+            });
+          }
+        }
+      });
+    } catch(e) {}
+  }
 
   // 0. Fresh Live Scraped Leads (DexScreener, CoinMarketCap, CoinGecko)
   const freshFile = path.join(__dirname, '..', 'data', 'fresh_live_scraped_leads.json');
@@ -139,6 +166,11 @@ function getLeadPriorityScore(lead) {
   const c = (lead.cat || '').toLowerCase();
   const n = (lead.name || '').toLowerCase();
   const id = (lead.id || '');
+
+  // Absolute #1 Priority: Confirmed Paying PR Buyers from Decrypt/FinanceWire
+  if (id.startsWith('PR-BUYER-')) {
+    return 200;
+  }
 
   // Highest Priority: Freshly scraped live projects from DexScreener/CMC/CoinGecko
   if (id.startsWith('LIVE-')) {
