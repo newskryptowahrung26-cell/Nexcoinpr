@@ -529,4 +529,26 @@
       <news:title>U.S. treasury yields ease near 1-month lows; Euro spreads widen amid French unrest</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/frances-parliament-approves-vote-to-hit-crypto-to-stablecoin-trades-with-31</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-20</news:publication_date>
+      <news:title>France's parliament approves vote to hit crypto-to-stablecoin trades with 31% levy</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/dollar-surrenders-gains-as-record-japanese-bond-auction-sparks-yen-rally</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-20</news:publication_date>
+      <news:title>Dollar surrenders gains as record Japanese bond auction sparks Yen rally</news:title>
+    </news:news>
+  </url>
 </urlset>
