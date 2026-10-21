@@ -551,4 +551,26 @@
       <news:title>Dollar surrenders gains as record Japanese bond auction sparks Yen rally</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/japanese-visitors-could-soon-pay-with-yen-stablecoins-in-south-korea-under</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-21</news:publication_date>
+      <news:title>Japanese visitors could soon pay with yen stablecoins in South Korea under Shinhan-SBI pact</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/indias-10-year-bond-yield-climbs-above-745-to-multi-year-high</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-21</news:publication_date>
+      <news:title>India’s 10-year bond yield climbs above 7.45% to multi-year high</news:title>
+    </news:news>
+  </url>
 </urlset>
