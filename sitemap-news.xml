@@ -573,4 +573,26 @@
       <news:title>India’s 10-year bond yield climbs above 7.45% to multi-year high</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/eth-news-ethereums-four-minute-settlement-plan-could-lower-the-cost-of-movi</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-22</news:publication_date>
+      <news:title>ETH news: Ethereum’s four-minute settlement plan could lower the cost of moving crypto</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/us-treasury-yields-drop-to-1-month-lows-on-safe-haven-flows</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-22</news:publication_date>
+      <news:title>U.S. Treasury yields drop to 1-month lows on safe-haven flows</news:title>
+    </news:news>
+  </url>
 </urlset>
