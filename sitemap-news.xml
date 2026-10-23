@@ -595,4 +595,26 @@
       <news:title>U.S. Treasury yields drop to 1-month lows on safe-haven flows</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/bitcoin-btc-price-volatility-is-well-above-euro-dollars-though-it-has-calme</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-23</news:publication_date>
+      <news:title>Bitcoin (BTC) price volatility is well above euro-dollar's, though it has calmed down: Crypto Daily</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/india-40-year-bond-yield-hits-highest-level-since-2018</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-23</news:publication_date>
+      <news:title>India 40-year bond yield hits highest level since 2018</news:title>
+    </news:news>
+  </url>
 </urlset>
