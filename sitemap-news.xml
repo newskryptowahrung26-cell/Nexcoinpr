@@ -617,4 +617,26 @@
       <news:title>India 40-year bond yield hits highest level since 2018</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/ripple-news-franklin-templeton-adds-150-million-of-money-market-shares-to-x</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-24</news:publication_date>
+      <news:title>Ripple news: Franklin Templeton adds $150 million of money-market shares to XRP Ledger</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/dollar-steadies-as-ai-jitters-spur-yen-gains-and-weigh-on-euro</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-24</news:publication_date>
+      <news:title>Dollar steadies as AI jitters spur yen gains and weigh on euro</news:title>
+    </news:news>
+  </url>
 </urlset>
