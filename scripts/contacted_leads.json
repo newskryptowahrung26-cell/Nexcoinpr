@@ -1103,5 +1103,125 @@
     "email": "press@zcash.org",
     "cat": "Crypto Token / Coin",
     "sentAt": "2026-10-23T12:59:25.954Z"
+  },
+  {
+    "id": "8650",
+    "brand": "Hyperliquid",
+    "name": "Hyperliquid (HYPE)",
+    "email": "press@hyperliquid.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-24T12:19:00.890Z"
+  },
+  {
+    "id": "8651",
+    "brand": "Wrapped",
+    "name": "Wrapped Liquid Staked Ether 2.0 (WSTETH)",
+    "email": "press@wrapped.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-24T12:19:12.631Z"
+  },
+  {
+    "id": "8652",
+    "brand": "Chainlink",
+    "name": "Chainlink (LINK)",
+    "email": "press@chainlink.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-24T12:19:24.372Z"
+  },
+  {
+    "id": "8653",
+    "brand": "Monero",
+    "name": "Monero (XMR)",
+    "email": "press@monero.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-24T12:19:36.392Z"
+  },
+  {
+    "id": "8654",
+    "brand": "Usds",
+    "name": "Usds (USDS)",
+    "email": "press@usds.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-24T12:19:48.463Z"
+  },
+  {
+    "id": "8655",
+    "brand": "WhiteBIT",
+    "name": "WhiteBIT Coin (WBT)",
+    "email": "press@whitebit.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-24T12:20:00.514Z"
+  },
+  {
+    "id": "8657",
+    "brand": "Rain",
+    "name": "Rain Protocol (RAIN)",
+    "email": "press@rain.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-24T12:20:12.002Z"
+  },
+  {
+    "id": "8658",
+    "brand": "Leo",
+    "name": "LEO Token (LEO)",
+    "email": "press@leo.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-24T12:20:23.762Z"
+  },
+  {
+    "id": "8660",
+    "brand": "Stellar",
+    "name": "Stellar (XLM)",
+    "email": "press@stellar.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-24T12:20:35.493Z"
+  },
+  {
+    "id": "8661",
+    "brand": "NEAR Protocol",
+    "name": "Near Protocol (NEAR)",
+    "email": "press@near.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-24T12:20:47.446Z"
+  },
+  {
+    "id": "8664",
+    "brand": "Weth",
+    "name": "WETH (WETH)",
+    "email": "press@weth.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-24T12:20:59.521Z"
+  },
+  {
+    "id": "8666",
+    "brand": "Canton",
+    "name": "Canton Network (CC)",
+    "email": "press@canton.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-24T12:21:11.592Z"
+  },
+  {
+    "id": "8667",
+    "brand": "Sui Foundation",
+    "name": "Sui (SUI)",
+    "email": "press@sui.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-24T12:21:23.520Z"
+  },
+  {
+    "id": "8668",
+    "brand": "Susds",
+    "name": "sUSDS (sUSDS)",
+    "email": "press@susds.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-24T12:21:34.969Z"
+  },
+  {
+    "id": "8669",
+    "brand": "Hedera",
+    "name": "Hedera Hashgraph (HBAR)",
+    "email": "press@hedera.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-24T12:21:46.488Z"
   }
 ]
