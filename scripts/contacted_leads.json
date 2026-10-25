@@ -1223,5 +1223,125 @@
     "email": "press@hedera.org",
     "cat": "Crypto Token / Coin",
     "sentAt": "2026-10-24T12:21:46.488Z"
+  },
+  {
+    "id": "8670",
+    "brand": "Dai",
+    "name": "Dai (DAI)",
+    "email": "press@dai.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-25T12:50:34.987Z"
+  },
+  {
+    "id": "8671",
+    "brand": "Usd1",
+    "name": "USD1 (USD1)",
+    "email": "press@usd1.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-25T12:50:45.907Z"
+  },
+  {
+    "id": "8672",
+    "brand": "The",
+    "name": "Gram (prev. Toncoin) (GRAM)",
+    "email": "press@the.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-25T12:50:56.787Z"
+  },
+  {
+    "id": "8673",
+    "brand": "Quant",
+    "name": "Quant (QNT)",
+    "email": "press@quant.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-25T12:51:07.681Z"
+  },
+  {
+    "id": "8674",
+    "brand": "Cryptocom",
+    "name": "Cronos (CRO)",
+    "email": "press@cryptocom.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-25T12:51:18.556Z"
+  },
+  {
+    "id": "8675",
+    "brand": "Global",
+    "name": "Global Dollar (USDG)",
+    "email": "press@global.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-25T12:51:29.823Z"
+  },
+  {
+    "id": "8676",
+    "brand": "Paypal",
+    "name": "PayPal USD (PYUSD)",
+    "email": "press@paypal.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-25T12:51:40.722Z"
+  },
+  {
+    "id": "8677",
+    "brand": "Ethena",
+    "name": "Ethena (ENA)",
+    "email": "press@ethena.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-25T12:51:51.653Z"
+  },
+  {
+    "id": "8678",
+    "brand": "Okb",
+    "name": "OKB (OKB)",
+    "email": "press@okb.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-25T12:52:02.538Z"
+  },
+  {
+    "id": "8679",
+    "brand": "Ondo",
+    "name": "Ondo (ONDO)",
+    "email": "press@ondo.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-25T12:52:13.799Z"
+  },
+  {
+    "id": "8680",
+    "brand": "Bitway",
+    "name": "Bitway (BTW)",
+    "email": "press@bitway.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-25T12:52:25.050Z"
+  },
+  {
+    "id": "8681",
+    "brand": "Mantle",
+    "name": "Mantle (MNT)",
+    "email": "press@mantle.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-25T12:52:36.004Z"
+  },
+  {
+    "id": "8682",
+    "brand": "Sky",
+    "name": "Sky (SKY)",
+    "email": "press@sky.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-25T12:52:46.866Z"
+  },
+  {
+    "id": "8683",
+    "brand": "Pax",
+    "name": "PAX Gold (PAXG)",
+    "email": "press@pax.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-25T12:52:57.838Z"
+  },
+  {
+    "id": "8684",
+    "brand": "Official",
+    "name": "Official World Liberty Financial (WLFI)",
+    "email": "press@official.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-25T12:53:09.298Z"
   }
 ]
