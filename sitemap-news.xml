@@ -661,4 +661,15 @@
       <news:title>Treasury yields set for third weekly drop as AI worries fuel haven bid</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/ai-giant-anthropic-files-for-blockbuster-ipo</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-26</news:publication_date>
+      <news:title>AI giant Anthropic files for blockbuster IPO</news:title>
+    </news:news>
+  </url>
 </urlset>
