@@ -1343,5 +1343,125 @@
     "email": "press@official.org",
     "cat": "Crypto Token / Coin",
     "sentAt": "2026-10-25T12:53:09.298Z"
+  },
+  {
+    "id": "8686",
+    "brand": "Jito",
+    "name": "Jito Staked SOL (JITOSOL)",
+    "email": "press@jito.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-26T14:40:06.673Z"
+  },
+  {
+    "id": "8688",
+    "brand": "Arbitrum",
+    "name": "Arbitrum (ARB)",
+    "email": "press@arbitrum.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-26T14:40:17.871Z"
+  },
+  {
+    "id": "8689",
+    "brand": "Bitget",
+    "name": "Bitget Token (BGB)",
+    "email": "press@bitget.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-26T14:40:29.137Z"
+  },
+  {
+    "id": "8690",
+    "brand": "Falcon",
+    "name": "Falcon USD (USDF)",
+    "email": "press@falcon.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-26T14:40:40.992Z"
+  },
+  {
+    "id": "8691",
+    "brand": "Rocket",
+    "name": "Rocket Pool ETH (RETH)",
+    "email": "press@rocket.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-26T14:40:52.176Z"
+  },
+  {
+    "id": "8692",
+    "brand": "Bfusd",
+    "name": "BFUSD (BFUSD)",
+    "email": "press@bfusd.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-26T14:41:03.180Z"
+  },
+  {
+    "id": "8693",
+    "brand": "Venice",
+    "name": "Venice Token (VVV)",
+    "email": "press@venice.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-26T14:41:14.382Z"
+  },
+  {
+    "id": "8695",
+    "brand": "Gatechain",
+    "name": "GateToken (GT)",
+    "email": "press@gatechain.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-26T14:41:25.772Z"
+  },
+  {
+    "id": "8696",
+    "brand": "Just",
+    "name": "JUST (JST)",
+    "email": "press@just.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-26T14:41:37.007Z"
+  },
+  {
+    "id": "8697",
+    "brand": "Aster",
+    "name": "Aster (ASTER)",
+    "email": "press@aster.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-26T14:41:48.128Z"
+  },
+  {
+    "id": "8698",
+    "brand": "Polygon",
+    "name": "Polygon Ecosystem Token (POL)",
+    "email": "press@polygon.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-26T14:41:59.319Z"
+  },
+  {
+    "id": "8699",
+    "brand": "Syrupusdc",
+    "name": "SyrupUSDC (SYRUPUSDC)",
+    "email": "press@syrupusdc.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-26T14:42:11.164Z"
+  },
+  {
+    "id": "8700",
+    "brand": "Kinetiq",
+    "name": "Kinetiq Staked HYPE (KHYPE)",
+    "email": "press@kinetiq.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-26T14:42:22.456Z"
+  },
+  {
+    "id": "8701",
+    "brand": "Singularitynet",
+    "name": "Singularity NET (AGIX)",
+    "email": "press@singularitynet.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-26T14:42:33.806Z"
+  },
+  {
+    "id": "8702",
+    "brand": "Rseth",
+    "name": "Kelp DAO Restaked ETH (RSETH)",
+    "email": "press@rseth.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-26T14:42:44.968Z"
   }
 ]
