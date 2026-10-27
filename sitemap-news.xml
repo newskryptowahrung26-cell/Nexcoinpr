@@ -672,4 +672,26 @@
       <news:title>AI giant Anthropic files for blockbuster IPO</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/bitcoin-btc-price-shows-signs-of-weakness-while-ripples-bank-win-fails-to-b</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-27</news:publication_date>
+      <news:title>Bitcoin (BTC) price shows signs of weakness while Ripple's bank win fails to bolster XRP</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/us-treasury-yields-hover-near-multi-week-lows-ahead-of-fed-decision</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-27</news:publication_date>
+      <news:title>U.S. Treasury yields hover near multi-week lows ahead of Fed decision</news:title>
+    </news:news>
+  </url>
 </urlset>
