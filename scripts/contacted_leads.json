@@ -1463,5 +1463,125 @@
     "email": "press@rseth.org",
     "cat": "Crypto Token / Coin",
     "sentAt": "2026-10-26T14:42:44.968Z"
+  },
+  {
+    "id": "8703",
+    "brand": "Kaspa",
+    "name": "Kaspa (KAS)",
+    "email": "press@kaspa.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-27T13:43:52.576Z"
+  },
+  {
+    "id": "8704",
+    "brand": "Algorand",
+    "name": "Algorand (ALGO)",
+    "email": "press@algorand.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-27T13:44:04.414Z"
+  },
+  {
+    "id": "8705",
+    "brand": "Meth",
+    "name": "mETH (METH)",
+    "email": "press@meth.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-27T13:44:16.161Z"
+  },
+  {
+    "id": "8706",
+    "brand": "Jupiter",
+    "name": "Jupiter Exchange Token (JUP)",
+    "email": "press@jupiter.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-27T13:44:28.160Z"
+  },
+  {
+    "id": "8708",
+    "brand": "Pi Network (PI)",
+    "name": "Pi Network (PI)",
+    "email": "press@pi.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-27T13:44:40.970Z"
+  },
+  {
+    "id": "8710",
+    "brand": "Render",
+    "name": "Render (RENDER)",
+    "email": "press@render.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-27T13:44:52.648Z"
+  },
+  {
+    "id": "8711",
+    "brand": "Lombard",
+    "name": "Lombard Staked BTC (LBTC)",
+    "email": "press@lombard.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-27T13:45:04.442Z"
+  },
+  {
+    "id": "8712",
+    "brand": "Lighter",
+    "name": "Lighter (LIT)",
+    "email": "press@lighter.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-27T13:45:18.044Z"
+  },
+  {
+    "id": "8713",
+    "brand": "Liquid",
+    "name": "Liquid Staked Ethereum (LSETH)",
+    "email": "press@liquid.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-27T13:45:31.214Z"
+  },
+  {
+    "id": "8714",
+    "brand": "Akedo",
+    "name": "Akedo (AKE)",
+    "email": "press@akedo.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-27T13:45:44.227Z"
+  },
+  {
+    "id": "8715",
+    "brand": "Dash",
+    "name": "Dash (DASH)",
+    "email": "press@dash.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-27T13:45:57.822Z"
+  },
+  {
+    "id": "8716",
+    "brand": "Vechain",
+    "name": "VeChain (VET)",
+    "email": "press@vechain.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-27T13:46:10.430Z"
+  },
+  {
+    "id": "8717",
+    "brand": "Injective",
+    "name": "Injective Protocol (INJ)",
+    "email": "press@injective.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-27T13:46:22.994Z"
+  },
+  {
+    "id": "8718",
+    "brand": "Etherfi",
+    "name": "Ether.fi (ETHFI)",
+    "email": "press@etherfi.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-27T13:46:36.313Z"
+  },
+  {
+    "id": "8719",
+    "brand": "Cloudchat",
+    "name": "CloudChat (CC)",
+    "email": "press@cloudchat.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-27T13:46:49.641Z"
   }
 ]
