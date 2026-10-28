@@ -694,4 +694,26 @@
       <news:title>U.S. Treasury yields hover near multi-week lows ahead of Fed decision</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/wall-street-giant-dtcc-launches-tokenization-for-stocks-etfs-and-us-treasur</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-28</news:publication_date>
+      <news:title>Wall Street giant DTCC launches tokenization for stocks, ETFs and U.S. Treasuries</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/treasury-yields-nudge-toward-one-week-highs-fed-decision-big-tech-earnings</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-28</news:publication_date>
+      <news:title>Treasury yields nudge toward one-week highs; Fed decision, Big Tech earnings loom</news:title>
+    </news:news>
+  </url>
 </urlset>
