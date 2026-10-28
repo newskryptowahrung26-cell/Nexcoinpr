@@ -1583,5 +1583,125 @@
     "email": "press@cloudchat.org",
     "cat": "Crypto Token / Coin",
     "sentAt": "2026-10-27T13:46:49.641Z"
+  },
+  {
+    "id": "8720",
+    "brand": "Cosmos",
+    "name": "Cosmos (ATOM)",
+    "email": "press@cosmos.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-28T14:40:06.375Z"
+  },
+  {
+    "id": "8722",
+    "brand": "Marinade",
+    "name": "Marinade Staked Sol (MSOL)",
+    "email": "press@marinade.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-28T14:40:17.859Z"
+  },
+  {
+    "id": "8723",
+    "brand": "Flare",
+    "name": "Flare Network (FLR)",
+    "email": "press@flare.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-28T14:40:35.175Z"
+  },
+  {
+    "id": "8724",
+    "brand": "Curve",
+    "name": "Curve DAO Token (CRV)",
+    "email": "press@curve.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-28T14:40:46.019Z"
+  },
+  {
+    "id": "8725",
+    "brand": "Gho",
+    "name": "GHO (GHO)",
+    "email": "press@gho.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-28T14:41:11.878Z"
+  },
+  {
+    "id": "8726",
+    "brand": "Beldex",
+    "name": "Beldex (BDX)",
+    "email": "press@beldex.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-28T14:41:23.517Z"
+  },
+  {
+    "id": "8727",
+    "brand": "Stacks",
+    "name": "Stacks (STX)",
+    "email": "press@stacks.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-28T14:41:49.373Z"
+  },
+  {
+    "id": "8728",
+    "brand": "Artificial Superintelligence A",
+    "name": "Artificial Superintelligence Alliance (FET)",
+    "email": "press@ai.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-28T14:42:00.315Z"
+  },
+  {
+    "id": "8729",
+    "brand": "Usual",
+    "name": "Usual USD (USD0)",
+    "email": "press@usual.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-28T14:42:11.998Z"
+  },
+  {
+    "id": "8730",
+    "brand": "Midnight2",
+    "name": "Midnight (NIGHT)",
+    "email": "press@midnight2.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-28T14:42:23.173Z"
+  },
+  {
+    "id": "8731",
+    "brand": "Solv",
+    "name": "Solv Protocol solvBTC (SOLVBTC)",
+    "email": "press@solv.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-28T14:42:35.055Z"
+  },
+  {
+    "id": "8733",
+    "brand": "Trueusd",
+    "name": "TrueUSD (TUSD)",
+    "email": "press@trueusd.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-28T14:42:46.402Z"
+  },
+  {
+    "id": "8734",
+    "brand": "Staked",
+    "name": "Staked Aave (STKAAVE)",
+    "email": "press@staked.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-28T14:42:57.957Z"
+  },
+  {
+    "id": "8736",
+    "brand": "Decimal",
+    "name": "Decimal (DEL)",
+    "email": "press@decimal.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-28T14:43:09.472Z"
+  },
+  {
+    "id": "8737",
+    "brand": "Tontoken",
+    "name": "TONToken (TON)",
+    "email": "press@tontoken.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-28T14:43:35.385Z"
   }
 ]
