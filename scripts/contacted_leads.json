@@ -1703,5 +1703,125 @@
     "email": "press@tontoken.org",
     "cat": "Crypto Token / Coin",
     "sentAt": "2026-10-28T14:43:35.385Z"
+  },
+  {
+    "id": "8740",
+    "brand": "Spx6900",
+    "name": "SPX6900 (SPX)",
+    "email": "press@spx6900.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-29T14:44:15.388Z"
+  },
+  {
+    "id": "8741",
+    "brand": "Pendle",
+    "name": "Pendle (PENDLE)",
+    "email": "press@pendle.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-29T14:44:26.474Z"
+  },
+  {
+    "id": "8743",
+    "brand": "Unibase",
+    "name": "Unibase (UB)",
+    "email": "press@unibase.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-29T14:44:37.649Z"
+  },
+  {
+    "id": "8744",
+    "brand": "Bittorrent",
+    "name": "BitTorrent (BTT)",
+    "email": "press@bittorrent.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-29T14:44:49.007Z"
+  },
+  {
+    "id": "8745",
+    "brand": "Terra",
+    "name": "Terra Classic (LUNC)",
+    "email": "press@terra.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-29T14:45:00.046Z"
+  },
+  {
+    "id": "8746",
+    "brand": "Usdtb",
+    "name": "USDtb (USDTB)",
+    "email": "press@usdtb.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-29T14:45:11.180Z"
+  },
+  {
+    "id": "8747",
+    "brand": "Eos",
+    "name": "EOS (EOS)",
+    "email": "press@eos.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-29T14:45:22.478Z"
+  },
+  {
+    "id": "8748",
+    "brand": "Sun",
+    "name": "SUN (SUN)",
+    "email": "press@sun.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-29T14:45:33.845Z"
+  },
+  {
+    "id": "8749",
+    "brand": "First",
+    "name": "First Digital USD (FDUSD)",
+    "email": "press@first.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-29T14:45:44.929Z"
+  },
+  {
+    "id": "8750",
+    "brand": "Decred",
+    "name": "Decred (DCR)",
+    "email": "press@decred.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-29T14:45:56.310Z"
+  },
+  {
+    "id": "8751",
+    "brand": "Ribbita",
+    "name": "Ribbita by Virtuals (TIBBIR)",
+    "email": "press@ribbita.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-29T14:46:07.513Z"
+  },
+  {
+    "id": "8752",
+    "brand": "Olympus",
+    "name": "Olympus V2 (OHMv2)",
+    "email": "press@olympus.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-29T14:46:18.724Z"
+  },
+  {
+    "id": "8753",
+    "brand": "Gnosis",
+    "name": "Gnosis (GNO)",
+    "email": "press@gnosis.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-29T14:46:29.853Z"
+  },
+  {
+    "id": "8754",
+    "brand": "Optimism",
+    "name": "Optimism (OP)",
+    "email": "press@optimism.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-29T14:46:40.880Z"
+  },
+  {
+    "id": "8755",
+    "brand": "Stader",
+    "name": "Stader ETHx (ETHX)",
+    "email": "press@stader.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-29T14:46:51.980Z"
   }
 ]
