@@ -738,4 +738,26 @@
       <news:title>Dollar edges higher as strong U.S. growth data offsets Fed uncertainty</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/binance-arranges-634-billion-to-cover-losses-from-record-crypto-hack</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-30</news:publication_date>
+      <news:title>Binance arranges $6.34 billion to cover losses from record crypto hack</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/us-treasuries-surge-to-wrap-october-in-biggest-rally-since-2024</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-30</news:publication_date>
+      <news:title>U.S. Treasuries surge to wrap October in biggest rally since 2024</news:title>
+    </news:news>
+  </url>
 </urlset>
