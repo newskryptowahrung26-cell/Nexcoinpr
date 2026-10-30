@@ -1823,5 +1823,125 @@
     "email": "press@stader.org",
     "cat": "Crypto Token / Coin",
     "sentAt": "2026-10-29T14:46:51.980Z"
+  },
+  {
+    "id": "8757",
+    "brand": "Arweave",
+    "name": "Arweave (AR)",
+    "email": "press@arweave.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-30T14:40:53.725Z"
+  },
+  {
+    "id": "8758",
+    "brand": "Syrup",
+    "name": "Syrup Token (SYRUP)",
+    "email": "press@syrup.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-30T14:41:04.857Z"
+  },
+  {
+    "id": "8759",
+    "brand": "Derive",
+    "name": "Derive (DRV)",
+    "email": "press@derive.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-30T14:41:16.059Z"
+  },
+  {
+    "id": "8761",
+    "brand": "Euro",
+    "name": "EURC (EURC)",
+    "email": "press@euro.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-30T14:41:27.691Z"
+  },
+  {
+    "id": "8762",
+    "brand": "Conflux",
+    "name": "Conflux Network (CFX)",
+    "email": "press@conflux.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-30T14:41:38.837Z"
+  },
+  {
+    "id": "8763",
+    "brand": "Shuffle",
+    "name": "Shuffle (SHFL)",
+    "email": "press@shuffle.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-30T14:41:50.987Z"
+  },
+  {
+    "id": "8764",
+    "brand": "Floki",
+    "name": "Floki Inu (FLOKI)",
+    "email": "press@floki.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-30T14:42:03.712Z"
+  },
+  {
+    "id": "8765",
+    "brand": "Jasmycoin",
+    "name": "JasmyCoin (JASMY)",
+    "email": "press@jasmycoin.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-30T14:42:15.849Z"
+  },
+  {
+    "id": "8766",
+    "brand": "Trust",
+    "name": "Trust Wallet Token (TWT)",
+    "email": "press@trust.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-30T14:42:27.683Z"
+  },
+  {
+    "id": "8767",
+    "brand": "Kite",
+    "name": "Kite (KITE)",
+    "email": "press@kite.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-30T14:42:39.135Z"
+  },
+  {
+    "id": "8768",
+    "brand": "Pieverse",
+    "name": "Pieverse (PIEVERSE)",
+    "email": "press@pieverse.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-30T14:42:50.233Z"
+  },
+  {
+    "id": "8769",
+    "brand": "Hex",
+    "name": "HEX (Pulsechain) (HEX)",
+    "email": "press@hex.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-30T14:43:01.296Z"
+  },
+  {
+    "id": "8771",
+    "brand": "Compoundd",
+    "name": "Compound (COMP)",
+    "email": "press@compoundd.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-30T14:43:12.352Z"
+  },
+  {
+    "id": "8772",
+    "brand": "Treehouse",
+    "name": "Treehouse ETH (TETH)",
+    "email": "press@treehouse.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-30T14:43:23.474Z"
+  },
+  {
+    "id": "8773",
+    "brand": "Alchemixusd",
+    "name": "Alchemix USD (ALUSD)",
+    "email": "press@alchemixusd.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-30T14:43:34.488Z"
   }
 ]
