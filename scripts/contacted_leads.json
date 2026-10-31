@@ -1943,5 +1943,125 @@
     "email": "press@alchemixusd.org",
     "cat": "Crypto Token / Coin",
     "sentAt": "2026-10-30T14:43:34.488Z"
+  },
+  {
+    "id": "8774",
+    "brand": "Apenft",
+    "name": "APENFT (NFT)",
+    "email": "press@apenft.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-31T13:59:28.465Z"
+  },
+  {
+    "id": "8775",
+    "brand": "Useless",
+    "name": "Useless Coin (USELESS)",
+    "email": "press@useless.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-31T13:59:39.381Z"
+  },
+  {
+    "id": "8776",
+    "brand": "Theta",
+    "name": "THETA (THETA)",
+    "email": "press@theta.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-31T13:59:50.346Z"
+  },
+  {
+    "id": "8778",
+    "brand": "Doublezero",
+    "name": "DoubleZero (2Z)",
+    "email": "press@doublezero.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-31T14:00:01.277Z"
+  },
+  {
+    "id": "8779",
+    "brand": "Kaia",
+    "name": "Kaia (KAIA)",
+    "email": "press@kaia.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-31T14:00:13.828Z"
+  },
+  {
+    "id": "8780",
+    "brand": "Frax",
+    "name": "Legacy Frax Dollar (FRAX)",
+    "email": "press@frax.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-31T14:00:25.329Z"
+  },
+  {
+    "id": "8782",
+    "brand": "Zebec",
+    "name": "Zebec Network (ZBCN )",
+    "email": "press@zebec.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-31T14:00:36.350Z"
+  },
+  {
+    "id": "8783",
+    "brand": "Akash",
+    "name": "Akash Network (AKT)",
+    "email": "press@akash.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-31T14:00:48.706Z"
+  },
+  {
+    "id": "8784",
+    "brand": "Layerzero",
+    "name": "LayerZero (ZRO)",
+    "email": "press@layerzero.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-31T14:00:59.684Z"
+  },
+  {
+    "id": "8785",
+    "brand": "Reserve",
+    "name": "Reserve Protocol ETH Plus (ETH+)",
+    "email": "press@reserve.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-31T14:01:10.754Z"
+  },
+  {
+    "id": "8786",
+    "brand": "Usdai",
+    "name": "USDAI (USDAI)",
+    "email": "press@usdai.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-31T14:01:22.420Z"
+  },
+  {
+    "id": "8787",
+    "brand": "Origintrail",
+    "name": "OriginTrail (TRAC)",
+    "email": "press@origintrail.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-31T14:01:33.450Z"
+  },
+  {
+    "id": "8788",
+    "brand": "Pulsex",
+    "name": "PulseX (PLSX)",
+    "email": "press@pulsex.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-31T14:01:44.865Z"
+  },
+  {
+    "id": "8789",
+    "brand": "Neo",
+    "name": "NEO (NEO)",
+    "email": "press@neo.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-31T14:01:55.863Z"
+  },
+  {
+    "id": "8790",
+    "brand": "Edgex",
+    "name": "edgeX (EDGE)",
+    "email": "press@edgex.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-10-31T14:02:07.153Z"
   }
 ]
