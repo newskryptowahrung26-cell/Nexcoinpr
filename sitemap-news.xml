@@ -760,4 +760,26 @@
       <news:title>U.S. Treasuries surge to wrap October in biggest rally since 2024</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/a-nasdaq-listed-company-may-sell-450-million-bitcoin-citing-binance-hack-an</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-31</news:publication_date>
+      <news:title>A Nasdaq-listed company may sell $450 million bitcoin, citing Binance hack and quantum fears</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/dollar-rises-for-october-as-rate-hike-bets-remain-elevated-euro-and-yen-sli</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-31</news:publication_date>
+      <news:title>Dollar rises for October as rate hike bets remain elevated, euro and yen slip</news:title>
+    </news:news>
+  </url>
 </urlset>
