@@ -782,4 +782,26 @@
       <news:title>Dollar rises for October as rate hike bets remain elevated, euro and yen slip</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/sherrod-browns-ohio-edge-threatens-a-rough-go-for-crypto-next-year</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-01</news:publication_date>
+      <news:title>Sherrod Brown's Ohio edge threatens a rough go for crypto next year</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/why-deutsche-bank-says-the-ai-dollar-is-here</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-01</news:publication_date>
+      <news:title>Why Deutsche Bank says the AI dollar is here</news:title>
+    </news:news>
+  </url>
 </urlset>
