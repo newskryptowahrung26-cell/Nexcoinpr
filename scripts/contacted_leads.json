@@ -2063,5 +2063,125 @@
     "email": "press@edgex.org",
     "cat": "Crypto Token / Coin",
     "sentAt": "2026-10-31T14:02:07.153Z"
+  },
+  {
+    "id": "8791",
+    "brand": "Chain",
+    "name": "Onyxcoin (XCN)",
+    "email": "press@chain.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-01T14:36:12.035Z"
+  },
+  {
+    "id": "8792",
+    "brand": "Fartcoin",
+    "name": "Fartcoin (FARTCOIN)",
+    "email": "press@fartcoin.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-01T14:36:22.957Z"
+  },
+  {
+    "id": "8793",
+    "brand": "Mina",
+    "name": "Mina Protocol (MINA)",
+    "email": "press@mina.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-01T14:36:33.871Z"
+  },
+  {
+    "id": "8794",
+    "brand": "Decentraland",
+    "name": "Decentraland (MANA)",
+    "email": "press@decentraland.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-01T14:36:44.794Z"
+  },
+  {
+    "id": "8795",
+    "brand": "MX Token (MX)",
+    "name": "MX Token (MX)",
+    "email": "press@mx.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-01T14:36:55.757Z"
+  },
+  {
+    "id": "8796",
+    "brand": "Chiliz",
+    "name": "Chiliz (CHZ)",
+    "email": "press@chiliz.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-01T14:37:06.667Z"
+  },
+  {
+    "id": "8797",
+    "brand": "Cash",
+    "name": "Cash Cat (CASHCAT)",
+    "email": "press@cash.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-01T14:37:17.704Z"
+  },
+  {
+    "id": "8798",
+    "brand": "Buildon",
+    "name": "BUILDon (B)",
+    "email": "press@buildon.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-01T14:37:28.722Z"
+  },
+  {
+    "id": "8801",
+    "brand": "Streamr",
+    "name": "Streamr DATAcoin (DATA)",
+    "email": "press@streamr.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-01T14:37:39.619Z"
+  },
+  {
+    "id": "8802",
+    "brand": "Ecash",
+    "name": "eCash (XEC)",
+    "email": "press@ecash.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-01T14:37:50.987Z"
+  },
+  {
+    "id": "8803",
+    "brand": "Socean",
+    "name": "Sanctum Staked SOL (SCNSOL)",
+    "email": "press@socean.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-01T14:38:01.966Z"
+  },
+  {
+    "id": "8804",
+    "brand": "Btse",
+    "name": "BTSE Token (BTSE)",
+    "email": "press@btse.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-01T14:38:12.838Z"
+  },
+  {
+    "id": "8805",
+    "brand": "Bedrock",
+    "name": "Bedrock DAO (BR)",
+    "email": "press@bedrock.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-01T14:38:23.710Z"
+  },
+  {
+    "id": "8806",
+    "brand": "Non",
+    "name": "Non-Playable Coin (NPC)",
+    "email": "press@non.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-01T14:38:34.610Z"
+  },
+  {
+    "id": "8807",
+    "brand": "Maker",
+    "name": "Maker (MKR)",
+    "email": "press@maker.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-01T14:38:45.480Z"
   }
 ]
