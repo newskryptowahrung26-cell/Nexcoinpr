@@ -2183,5 +2183,125 @@
     "email": "press@maker.org",
     "cat": "Crypto Token / Coin",
     "sentAt": "2026-11-01T14:38:45.480Z"
+  },
+  {
+    "id": "8808",
+    "brand": "Vision",
+    "name": "Vision (VSN)",
+    "email": "press@vision.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-02T17:32:48.149Z"
+  },
+  {
+    "id": "8809",
+    "brand": "Sentient",
+    "name": "Sentient (SENT)",
+    "email": "press@sentient.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-02T17:32:58.967Z"
+  },
+  {
+    "id": "8810",
+    "brand": "Safepal",
+    "name": "SafePal Token (SFP)",
+    "email": "press@safepal.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-02T17:33:09.853Z"
+  },
+  {
+    "id": "8812",
+    "brand": "Vaulta",
+    "name": "Vaulta (A)",
+    "email": "press@vaulta.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-02T17:33:20.785Z"
+  },
+  {
+    "id": "8813",
+    "brand": "1inch",
+    "name": "1INCH (1INCH)",
+    "email": "press@1inch.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-02T17:33:31.830Z"
+  },
+  {
+    "id": "8814",
+    "brand": "Gomining",
+    "name": "GoMining Token (GOMINING)",
+    "email": "press@gomining.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-02T17:33:42.651Z"
+  },
+  {
+    "id": "8815",
+    "brand": "Aioz",
+    "name": "AIOZ Network (AIOZ)",
+    "email": "press@aioz.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-02T17:33:53.554Z"
+  },
+  {
+    "id": "8816",
+    "brand": "Astherus",
+    "name": "Astherus Staked BNB (ASBNB)",
+    "email": "press@astherus.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-02T17:34:04.393Z"
+  },
+  {
+    "id": "8817",
+    "brand": "Immutable",
+    "name": "Immutable X (IMX)",
+    "email": "press@immutable.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-02T17:34:15.464Z"
+  },
+  {
+    "id": "8818",
+    "brand": "Dgrid",
+    "name": "DGrid AI (DGAI)",
+    "email": "press@dgrid.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-02T17:34:26.359Z"
+  },
+  {
+    "id": "8819",
+    "brand": "Awe",
+    "name": "AWE Network (AWE)",
+    "email": "press@awe.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-02T17:34:37.268Z"
+  },
+  {
+    "id": "8820",
+    "brand": "Elrond",
+    "name": "MultiversX (Elrond) (EGLD)",
+    "email": "press@elrond.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-02T17:34:48.115Z"
+  },
+  {
+    "id": "8821",
+    "brand": "Basic",
+    "name": "Basic Attention Token (BAT)",
+    "email": "press@basic.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-02T17:34:59.067Z"
+  },
+  {
+    "id": "8822",
+    "brand": "Rollbit",
+    "name": "Rollbit Coin (RLB)",
+    "email": "press@rollbit.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-02T17:35:10.006Z"
+  },
+  {
+    "id": "8824",
+    "brand": "Golem",
+    "name": "Golem (GLM)",
+    "email": "press@golem.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-02T17:35:24.115Z"
   }
 ]
