@@ -2423,5 +2423,125 @@
     "email": "press@doggotothemoon.org",
     "cat": "Crypto Token / Coin",
     "sentAt": "2026-11-03T15:38:11.075Z"
+  },
+  {
+    "id": "8843",
+    "brand": "Qtum",
+    "name": "Qtum (QTUM)",
+    "email": "press@qtum.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-04T15:50:53.540Z"
+  },
+  {
+    "id": "8844",
+    "brand": "Unity",
+    "name": "Unity USD (UUSD)",
+    "email": "press@unity.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-04T15:51:04.631Z"
+  },
+  {
+    "id": "8845",
+    "brand": "Super",
+    "name": "Super OETH (SUPEROETH)",
+    "email": "press@super.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-04T15:51:15.527Z"
+  },
+  {
+    "id": "8846",
+    "brand": "Ordinals",
+    "name": "Ordinals (ORDI)",
+    "email": "press@ordinals.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-04T15:51:26.947Z"
+  },
+  {
+    "id": "8847",
+    "brand": "Mag7ssi",
+    "name": "MAG7.ssi (MAG7.SSI)",
+    "email": "press@mag7ssi.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-04T15:51:37.743Z"
+  },
+  {
+    "id": "8848",
+    "brand": "Numeraire",
+    "name": "Numeraire (NMR)",
+    "email": "press@numeraire.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-04T15:51:48.606Z"
+  },
+  {
+    "id": "8849",
+    "brand": "Tagger",
+    "name": "Tagger (TAG)",
+    "email": "press@tagger.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-04T15:51:59.653Z"
+  },
+  {
+    "id": "8850",
+    "brand": "Pharos",
+    "name": "Pharos (PROS)",
+    "email": "press@pharos.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-04T15:52:10.599Z"
+  },
+  {
+    "id": "8851",
+    "brand": "Benqi",
+    "name": "BENQI Liquid Staked AVAX (SAVAX)",
+    "email": "press@benqi.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-04T15:52:21.492Z"
+  },
+  {
+    "id": "8852",
+    "brand": "O1exchange",
+    "name": "o1.exchange (O)",
+    "email": "press@o1exchange.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-04T15:52:32.365Z"
+  },
+  {
+    "id": "8854",
+    "brand": "Velo",
+    "name": "Velo (VELO)",
+    "email": "press@velo.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-04T15:52:43.382Z"
+  },
+  {
+    "id": "8855",
+    "brand": "Phantom",
+    "name": "Phantom Staked SOL (PSOL)",
+    "email": "press@phantom.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-04T15:52:54.271Z"
+  },
+  {
+    "id": "8856",
+    "brand": "Superfarm",
+    "name": "SuperVerse (SUPER)",
+    "email": "press@superfarm.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-04T15:53:05.456Z"
+  },
+  {
+    "id": "8857",
+    "brand": "Synthetix",
+    "name": "Synthetix Network (SNX)",
+    "email": "press@synthetix.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-04T15:53:18.805Z"
+  },
+  {
+    "id": "8858",
+    "brand": "Centrifuge",
+    "name": "Centrifuge (CFG)",
+    "email": "press@centrifuge.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-04T15:53:29.746Z"
   }
 ]
