@@ -848,4 +848,26 @@
       <news:title>Treasury yields edge up as Election Day meets JOLTS, refunding</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/the-election-changes-washington-the-work-on-crypto-continues</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-04</news:publication_date>
+      <news:title>The election changes Washington. The work on crypto continues</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/treasuries-rally-as-democrats-sweep-into-congress</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-04</news:publication_date>
+      <news:title>Treasuries rally as Democrats sweep into Congress</news:title>
+    </news:news>
+  </url>
 </urlset>
