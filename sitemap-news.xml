@@ -870,4 +870,26 @@
       <news:title>Treasuries rally as Democrats sweep into Congress</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/gate-ceo-says-crypto-exchanges-must-prove-they-can-survive-a-hack-like-bina</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-05</news:publication_date>
+      <news:title>Gate CEO says crypto exchanges must prove they can survive a hack like Binance’s</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/euro-edges-lower-as-oil-prices-rise</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-05</news:publication_date>
+      <news:title>Euro edges lower as oil prices rise</news:title>
+    </news:news>
+  </url>
 </urlset>
