@@ -892,4 +892,26 @@
       <news:title>Euro edges lower as oil prices rise</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/us-added-165000-jobs-in-october-blowing-past-65000-estimate</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-06</news:publication_date>
+      <news:title>U.S. added 165,000 jobs in October, blowing past 65,000 estimate</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/us-treasuries-fall-as-blowout-payrolls-lift-yields-across-the-curve</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-06</news:publication_date>
+      <news:title>U.S. Treasuries fall as blowout payrolls lift yields across the curve</news:title>
+    </news:news>
+  </url>
 </urlset>
