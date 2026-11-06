@@ -2663,5 +2663,125 @@
     "email": "press@qubic.org",
     "cat": "Crypto Token / Coin",
     "sentAt": "2026-11-05T15:56:52.768Z"
+  },
+  {
+    "id": "8876",
+    "brand": "Hay",
+    "name": "Lista USD (LISUSD)",
+    "email": "press@hay.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-06T15:27:44.510Z"
+  },
+  {
+    "id": "8877",
+    "brand": "Funfair",
+    "name": "FUNToken (FUN)",
+    "email": "press@funfair.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-06T15:27:56.040Z"
+  },
+  {
+    "id": "8878",
+    "brand": "Kava",
+    "name": "Kava (KAVA)",
+    "email": "press@kava.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-06T15:28:17.953Z"
+  },
+  {
+    "id": "8879",
+    "brand": "Zigcoin",
+    "name": "ZIGChain (ZIG)",
+    "email": "press@zigcoin.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-06T15:28:30.980Z"
+  },
+  {
+    "id": "8880",
+    "brand": "Zilliqa",
+    "name": "Zilliqa (ZIL)",
+    "email": "press@zilliqa.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-06T15:28:43.741Z"
+  },
+  {
+    "id": "8881",
+    "brand": "Gravity",
+    "name": "0G (0G)",
+    "email": "press@gravity.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-06T15:28:56.479Z"
+  },
+  {
+    "id": "8883",
+    "brand": "Cross",
+    "name": "ONEchain (ONE)",
+    "email": "press@cross.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-06T15:29:08.746Z"
+  },
+  {
+    "id": "8884",
+    "brand": "Cow",
+    "name": "CoW Protocol Token (COW)",
+    "email": "press@cow.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-06T15:29:21.639Z"
+  },
+  {
+    "id": "8885",
+    "brand": "Marscat",
+    "name": "MarsCat (MCAT)",
+    "email": "press@marscat.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-06T15:29:34.130Z"
+  },
+  {
+    "id": "8886",
+    "brand": "Phala",
+    "name": "Phala Network (PHA)",
+    "email": "press@phala.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-06T15:29:46.305Z"
+  },
+  {
+    "id": "8887",
+    "brand": "Book",
+    "name": "BOOK OF MEME (BOME)",
+    "email": "press@book.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-06T15:29:58.731Z"
+  },
+  {
+    "id": "8888",
+    "brand": "Baby",
+    "name": "Baby Doge Coin (BABYDOGE)",
+    "email": "press@baby.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-06T15:30:11.198Z"
+  },
+  {
+    "id": "8889",
+    "brand": "Unifai",
+    "name": "UnifAI Network (UAI)",
+    "email": "press@unifai.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-06T15:30:24.467Z"
+  },
+  {
+    "id": "8891",
+    "brand": "Lisk",
+    "name": "Lisk (LSK)",
+    "email": "press@lisk.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-06T15:30:37.639Z"
+  },
+  {
+    "id": "8892",
+    "brand": "Ecomi",
+    "name": "Ecomi (OMI)",
+    "email": "press@ecomi.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-06T15:30:49.818Z"
   }
 ]
