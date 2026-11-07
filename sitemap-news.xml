@@ -914,4 +914,26 @@
       <news:title>U.S. Treasuries fall as blowout payrolls lift yields across the curve</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/apple-meta-reject-okx-ice-tokenized-stock-plans-leaving-crypto-firms-as-the</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-07</news:publication_date>
+      <news:title>Apple, Meta reject OKX, ICE tokenized stock plans, leaving crypto firms as the ones to watch</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/us-treasury-sanctions-canadian-money-services-firms-over-iran-related-trans</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-07</news:publication_date>
+      <news:title>US Treasury sanctions Canadian money services firms over Iran-related transactions</news:title>
+    </news:news>
+  </url>
 </urlset>
