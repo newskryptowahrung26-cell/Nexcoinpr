@@ -2783,5 +2783,125 @@
     "email": "press@ecomi.org",
     "cat": "Crypto Token / Coin",
     "sentAt": "2026-11-06T15:30:49.818Z"
+  },
+  {
+    "id": "8893",
+    "brand": "Vethor",
+    "name": "VeThor Token (VTHO)",
+    "email": "press@vethor.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-07T14:29:20.953Z"
+  },
+  {
+    "id": "8894",
+    "brand": "Gemini",
+    "name": "Gemini Dollar (GUSD)",
+    "email": "press@gemini.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-07T14:29:31.954Z"
+  },
+  {
+    "id": "8895",
+    "brand": "Memusic",
+    "name": "MeMusic (MMT)",
+    "email": "press@memusic.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-07T14:29:42.883Z"
+  },
+  {
+    "id": "8896",
+    "brand": "Ionet",
+    "name": "io.net (IO)",
+    "email": "press@ionet.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-07T14:29:53.735Z"
+  },
+  {
+    "id": "8897",
+    "brand": "Astar",
+    "name": "Astar (ASTR)",
+    "email": "press@astar.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-07T14:30:05.297Z"
+  },
+  {
+    "id": "8898",
+    "brand": "Nervos",
+    "name": "Nervos Network (CKB)",
+    "email": "press@nervos.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-07T14:30:16.244Z"
+  },
+  {
+    "id": "8899",
+    "brand": "Proton (XPR)",
+    "name": "Proton (XPR)",
+    "email": "press@proton.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-07T14:30:27.760Z"
+  },
+  {
+    "id": "8900",
+    "brand": "Creditcoin",
+    "name": "Creditcoin (CTC)",
+    "email": "press@creditcoin.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-07T14:30:38.759Z"
+  },
+  {
+    "id": "8901",
+    "brand": "Bucket",
+    "name": "Bucket Protocol BUCK Stablecoin (BUCK)",
+    "email": "press@bucket.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-07T14:30:49.819Z"
+  },
+  {
+    "id": "8902",
+    "brand": "Comedian",
+    "name": "Comedian (BAN)",
+    "email": "press@comedian.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-07T14:31:00.715Z"
+  },
+  {
+    "id": "8903",
+    "brand": "Aelf",
+    "name": "aelf (ELF)",
+    "email": "press@aelf.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-07T14:31:11.785Z"
+  },
+  {
+    "id": "8904",
+    "brand": "Eur",
+    "name": "EUR CoinVertible (EURCV)",
+    "email": "press@eur.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-07T14:31:23.471Z"
+  },
+  {
+    "id": "8905",
+    "brand": "Megausd",
+    "name": "MegaUSD (USDM)",
+    "email": "press@megausd.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-07T14:31:34.465Z"
+  },
+  {
+    "id": "8906",
+    "brand": "Metal",
+    "name": "Metal Blockchain (METAL)",
+    "email": "press@metal.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-07T14:31:45.383Z"
+  },
+  {
+    "id": "8907",
+    "brand": "Ultimaecosystem",
+    "name": "UltimaEcosystem (ULTIMA)",
+    "email": "press@ultimaecosystem.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-07T14:31:56.436Z"
   }
 ]
