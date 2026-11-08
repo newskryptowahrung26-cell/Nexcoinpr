@@ -546,4 +546,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/press-releases/coupguard-limited-introduces-structured-investigation-approach-to-help-vict</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/press-releases/coinhub-funded-goes-live-crypto-prop-firm-offers-funded-trading-accounts-up</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
