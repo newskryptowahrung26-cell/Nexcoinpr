@@ -936,4 +936,26 @@
       <news:title>US Treasury sanctions Canadian money services firms over Iran-related transactions</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/these-finland-homes-get-free-heat-from-bitcoin-miners-as-long-as-btc-stays</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-08</news:publication_date>
+      <news:title>These Finland homes get free heat from bitcoin miners (as long as BTC stays above $70,000)</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/dollar-sees-best-day-since-june-after-stellar-jobs-report-set-for-weekly-ga</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-08</news:publication_date>
+      <news:title>Dollar sees best day since June after stellar jobs report, set for weekly gain</news:title>
+    </news:news>
+  </url>
 </urlset>
