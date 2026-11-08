@@ -2903,5 +2903,125 @@
     "email": "press@ultimaecosystem.org",
     "cat": "Crypto Token / Coin",
     "sentAt": "2026-11-07T14:31:56.436Z"
+  },
+  {
+    "id": "8908",
+    "brand": "Fidelity",
+    "name": "Fidelity Digital Dollar (FIDD)",
+    "email": "press@fidelity.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-08T14:37:41.717Z"
+  },
+  {
+    "id": "8910",
+    "brand": "Merlin",
+    "name": "Merlin Chain (MERL)",
+    "email": "press@merlin.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-08T14:37:52.717Z"
+  },
+  {
+    "id": "8911",
+    "brand": "Threshold",
+    "name": "Threshold Network (T)",
+    "email": "press@threshold.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-08T14:38:04.467Z"
+  },
+  {
+    "id": "8913",
+    "brand": "Mindwavedao",
+    "name": "MindWaveDAO (NILA)",
+    "email": "press@mindwavedao.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-08T14:38:16.512Z"
+  },
+  {
+    "id": "8914",
+    "brand": "Mines of Dalarnia (DAR)",
+    "name": "Mines of Dalarnia (DAR)",
+    "email": "press@of.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-08T14:38:28.311Z"
+  },
+  {
+    "id": "8915",
+    "brand": "Mubarak",
+    "name": "Mubarak (MUBARAK)",
+    "email": "press@mubarak.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-08T14:38:41.774Z"
+  },
+  {
+    "id": "8916",
+    "brand": "Blur",
+    "name": "Blur (BLUR)",
+    "email": "press@blur.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-08T14:38:54.131Z"
+  },
+  {
+    "id": "8917",
+    "brand": "Chainopera",
+    "name": "ChainOpera AI (COAI)",
+    "email": "press@chainopera.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-08T14:39:06.129Z"
+  },
+  {
+    "id": "8918",
+    "brand": "Ark",
+    "name": "Ark (ARK)",
+    "email": "press@ark.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-08T14:39:18.128Z"
+  },
+  {
+    "id": "8919",
+    "brand": "Enjin",
+    "name": "Enjin Coin (ENJ)",
+    "email": "press@enjin.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-08T14:39:30.091Z"
+  },
+  {
+    "id": "8920",
+    "brand": "AB (prev. Newton) (AB)",
+    "name": "AB (prev. Newton) (AB)",
+    "email": "press@ab.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-08T14:39:42.250Z"
+  },
+  {
+    "id": "8921",
+    "brand": "Siacoin",
+    "name": "Siacoin (SC)",
+    "email": "press@siacoin.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-08T14:39:54.198Z"
+  },
+  {
+    "id": "8923",
+    "brand": "Instadapp",
+    "name": "Fluid (FLUID)",
+    "email": "press@instadapp.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-08T14:40:06.209Z"
+  },
+  {
+    "id": "8924",
+    "brand": "Venus",
+    "name": "Venus (XVS)",
+    "email": "press@venus.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-08T14:40:17.151Z"
+  },
+  {
+    "id": "8925",
+    "brand": "Resupply",
+    "name": "Resupply USD (REUSD)",
+    "email": "press@resupply.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-08T14:40:28.821Z"
   }
 ]
