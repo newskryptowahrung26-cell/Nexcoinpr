@@ -3023,5 +3023,125 @@
     "email": "press@resupply.org",
     "cat": "Crypto Token / Coin",
     "sentAt": "2026-11-08T14:40:28.821Z"
+  },
+  {
+    "id": "8926",
+    "brand": "Brett",
+    "name": "Brett (Base) (BRETT)",
+    "email": "press@brett.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-09T17:56:22.278Z"
+  },
+  {
+    "id": "8927",
+    "brand": "Kamino",
+    "name": "Kamino (KMNO)",
+    "email": "press@kamino.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-09T17:56:33.436Z"
+  },
+  {
+    "id": "8928",
+    "brand": "Allora",
+    "name": "Allora (ALLO)",
+    "email": "press@allora.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-09T17:56:44.432Z"
+  },
+  {
+    "id": "8929",
+    "brand": "Deepbook",
+    "name": "DeepBook Protocol (DEEP)",
+    "email": "press@deepbook.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-09T17:56:55.384Z"
+  },
+  {
+    "id": "8930",
+    "brand": "Lobster",
+    "name": "龙虾 (Lobster) (龙虾)",
+    "email": "press@lobster.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-09T17:57:06.870Z"
+  },
+  {
+    "id": "8931",
+    "brand": "Bnb",
+    "name": "BNB Attestation Service (BAS)",
+    "email": "press@bnb.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-09T17:57:17.835Z"
+  },
+  {
+    "id": "8933",
+    "brand": "Jelly",
+    "name": "Jelly-My-Jelly (JELLYJELLY)",
+    "email": "press@jelly.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-09T17:57:28.743Z"
+  },
+  {
+    "id": "8934",
+    "brand": "Matrixdock",
+    "name": "Matrixdock Gold  (XAUM)",
+    "email": "press@matrixdock.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-09T17:57:39.678Z"
+  },
+  {
+    "id": "8935",
+    "brand": "Savings",
+    "name": "Savings crvUSD (SCRVUSD)",
+    "email": "press@savings.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-09T17:57:51.146Z"
+  },
+  {
+    "id": "8936",
+    "brand": "Peanut",
+    "name": "Peanut the Squirrel (PNUT)",
+    "email": "press@peanut.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-09T17:58:02.083Z"
+  },
+  {
+    "id": "8937",
+    "brand": "Toshi",
+    "name": "Toshi (TOSHI)",
+    "email": "press@toshi.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-09T17:58:13.053Z"
+  },
+  {
+    "id": "8938",
+    "brand": "Tellor",
+    "name": "Tellor (TRB)",
+    "email": "press@tellor.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-09T17:58:24.351Z"
+  },
+  {
+    "id": "8939",
+    "brand": "Amp",
+    "name": "Amp (AMP)",
+    "email": "press@amp.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-09T17:58:35.319Z"
+  },
+  {
+    "id": "8940",
+    "brand": "Pirate",
+    "name": "Pirate (ARRR)",
+    "email": "press@pirate.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-09T17:58:46.262Z"
+  },
+  {
+    "id": "8941",
+    "brand": "Bitkub",
+    "name": "Bitkub Coin (KUB)",
+    "email": "press@bitkub.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-09T17:58:57.261Z"
   }
 ]
