@@ -958,4 +958,26 @@
       <news:title>Dollar sees best day since June after stellar jobs report, set for weekly gain</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/a-bitcoin-block-just-neared-a-2015-transaction-record-but-paid-only-180-in</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-09</news:publication_date>
+      <news:title>A Bitcoin block just neared a 2015 transaction record, but paid only $180 in fees</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/us-treasuries-tread-water-after-jobs-shock-as-cpi-auction-gauntlet-looms</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-09</news:publication_date>
+      <news:title>U.S. treasuries tread water after jobs shock as CPI, auction gauntlet looms</news:title>
+    </news:news>
+  </url>
 </urlset>
