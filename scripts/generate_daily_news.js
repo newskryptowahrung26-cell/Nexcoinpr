@@ -15,6 +15,7 @@ const NEWS_HTML_FILE = path.join(ROOT_DIR, 'news.html');
 const CRYPTO_HTML_FILE = path.join(ROOT_DIR, 'news', 'crypto.html');
 const FOREX_HTML_FILE = path.join(ROOT_DIR, 'news', 'forex.html');
 const SITEMAP_NEWS_FILE = path.join(ROOT_DIR, 'sitemap-news.xml');
+const SITEMAP_ARTICLES_FILE = path.join(ROOT_DIR, 'sitemap-articles.xml');
 const SITEMAP_INDEX_FILE = path.join(ROOT_DIR, 'sitemap.xml');
 const NEWS_DIR = path.join(ROOT_DIR, 'news');
 const NEWS_IMAGES_DIR = path.join(ROOT_DIR, 'assets', 'images', 'news');
@@ -854,12 +855,24 @@ function updateCategoryHub(article) {
   }
 }
 
-// Updates sitemaps
+// Updates sitemaps (maintaining 48-hour Google News window + permanent articles sitemap)
 function updateSitemaps(article) {
+  const articleUrl = `https://www.nexcoinpr.agency/news/${article.slug}`;
+
+  // 1. Update Google News sitemap (strictly last 48 hours)
   if (fs.existsSync(SITEMAP_NEWS_FILE)) {
     let sitemap = fs.readFileSync(SITEMAP_NEWS_FILE, 'utf8');
+    const cutoff = new Date(Date.now() - 48 * 60 * 60 * 1000);
+    const existingBlocks = (sitemap.match(/<url>[\s\S]*?<\/url>/g) || []).filter(block => {
+      if (block.includes(`<loc>${articleUrl}</loc>`)) return false;
+      const dMatch = block.match(/<news:publication_date>(.*?)<\/news:publication_date>/);
+      if (!dMatch) return false;
+      const d = new Date(dMatch[1].slice(0, 10) + 'T23:59:59Z');
+      return !isNaN(d.getTime()) && d >= cutoff;
+    });
+
     const newEntry = `  <url>
-    <loc>https://www.nexcoinpr.agency/news/${article.slug}</loc>
+    <loc>${articleUrl}</loc>
     <news:news>
       <news:publication>
         <news:name>NexcoinPR</news:name>
@@ -869,14 +882,29 @@ function updateSitemaps(article) {
       <news:title>${article.title.replace(/&/g, '&amp;')}</news:title>
     </news:news>
   </url>`;
-    sitemap = sitemap.replace(/<\/urlset>/i, `${newEntry}\n</urlset>`);
-    fs.writeFileSync(SITEMAP_NEWS_FILE, sitemap, 'utf8');
-    console.log(`Updated sitemap-news.xml with ${article.slug}`);
+
+    existingBlocks.push(newEntry.trim());
+    const rebuiltNews = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n${existingBlocks.map(b => '  ' + b).join('\n')}\n</urlset>\n`;
+    fs.writeFileSync(SITEMAP_NEWS_FILE, rebuiltNews, 'utf8');
+    console.log(`Updated sitemap-news.xml (48h window) with ${article.slug}`);
   }
 
+  // 2. Append to permanent articles sitemap
+  if (fs.existsSync(SITEMAP_ARTICLES_FILE)) {
+    let artMap = fs.readFileSync(SITEMAP_ARTICLES_FILE, 'utf8');
+    if (!artMap.includes(`<loc>${articleUrl}</loc>`)) {
+      const permanentEntry = `  <url>\n    <loc>${articleUrl}</loc>\n    <lastmod>${article.ymdDate}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.75</priority>\n  </url>`;
+      artMap = artMap.replace(/<\/urlset>/i, `${permanentEntry}\n</urlset>`);
+      fs.writeFileSync(SITEMAP_ARTICLES_FILE, artMap, 'utf8');
+      console.log(`Updated sitemap-articles.xml with ${article.slug}`);
+    }
+  }
+
+  // 3. Update sitemap index timestamps
   if (fs.existsSync(SITEMAP_INDEX_FILE)) {
     let indexMap = fs.readFileSync(SITEMAP_INDEX_FILE, 'utf8');
     indexMap = indexMap.replace(/(<loc>https:\/\/www\.nexcoinpr\.agency\/sitemap-news\.xml<\/loc>\s*<lastmod>)[^<]+(<\/lastmod>)/, `$1${article.ymdDate}$2`);
+    indexMap = indexMap.replace(/(<loc>https:\/\/www\.nexcoinpr\.agency\/sitemap-articles\.xml<\/loc>\s*<lastmod>)[^<]+(<\/lastmod>)/, `$1${article.ymdDate}$2`);
     fs.writeFileSync(SITEMAP_INDEX_FILE, indexMap, 'utf8');
   }
 }
