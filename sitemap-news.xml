@@ -45,4 +45,26 @@
       <news:title>U.S. treasuries tread water after jobs shock as CPI, auction gauntlet looms</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/will-stablecoins-survive-once-the-banks-catch-up</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-10</news:publication_date>
+      <news:title>Will stablecoins survive once the banks catch up?</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/us-treasury-yields-spike-as-hot-cpi-binds-with-resilient-labor-market</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-10</news:publication_date>
+      <news:title>U.S. Treasury yields spike as hot CPI binds with resilient labor market</news:title>
+    </news:news>
+  </url>
 </urlset>
