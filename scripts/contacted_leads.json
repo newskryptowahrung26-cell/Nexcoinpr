@@ -3143,5 +3143,125 @@
     "email": "press@bitkub.org",
     "cat": "Crypto Token / Coin",
     "sentAt": "2026-11-09T17:58:57.261Z"
+  },
+  {
+    "id": "8942",
+    "brand": "Verge",
+    "name": "Verge (XVG)",
+    "email": "press@verge.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-10T15:55:08.064Z"
+  },
+  {
+    "id": "8943",
+    "brand": "Ontology",
+    "name": "Ontology (ONT)",
+    "email": "press@ontology.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-10T15:55:20.276Z"
+  },
+  {
+    "id": "8944",
+    "brand": "Popcat",
+    "name": "Popcat (POPCAT)",
+    "email": "press@popcat.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-10T15:55:32.321Z"
+  },
+  {
+    "id": "8945",
+    "brand": "Sushi",
+    "name": "Sushi (SUSHI)",
+    "email": "press@sushi.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-10T15:55:44.393Z"
+  },
+  {
+    "id": "8946",
+    "brand": "Finance",
+    "name": "Huma Finance (HUMA)",
+    "email": "press@finance.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-10T15:55:56.489Z"
+  },
+  {
+    "id": "8947",
+    "brand": "f(x) Protocol fxUSD (FXUSD)",
+    "name": "f(x) Protocol fxUSD (FXUSD)",
+    "email": "press@fx.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-10T15:56:10.918Z"
+  },
+  {
+    "id": "8948",
+    "brand": "Ignition",
+    "name": "Ignition FBTC (FBTC)",
+    "email": "press@ignition.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-10T15:56:22.988Z"
+  },
+  {
+    "id": "8949",
+    "brand": "Espresso",
+    "name": "Espresso (ESP)",
+    "email": "press@espresso.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-10T15:56:35.111Z"
+  },
+  {
+    "id": "8950",
+    "brand": "Dusk",
+    "name": "Dusk Network (DUSK)",
+    "email": "press@dusk.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-10T15:56:48.228Z"
+  },
+  {
+    "id": "8951",
+    "brand": "Unipoly",
+    "name": "Unipoly Coin (UNP)",
+    "email": "press@unipoly.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-10T15:57:00.207Z"
+  },
+  {
+    "id": "8952",
+    "brand": "Notcoin",
+    "name": "Notcoin (NOT)",
+    "email": "press@notcoin.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-10T15:57:12.290Z"
+  },
+  {
+    "id": "8953",
+    "brand": "Aztec",
+    "name": "AZTEC (AZTEC)",
+    "email": "press@aztec.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-10T15:57:23.394Z"
+  },
+  {
+    "id": "8954",
+    "brand": "Ronin",
+    "name": "Ronin Token (RON)",
+    "email": "press@ronin.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-10T15:57:34.479Z"
+  },
+  {
+    "id": "8955",
+    "brand": "Xyo",
+    "name": "XYO (XYO)",
+    "email": "press@xyo.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-10T15:57:47.244Z"
+  },
+  {
+    "id": "8957",
+    "brand": "Bitdca",
+    "name": "BitDCA (BDCA)",
+    "email": "press@bitdca.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-10T15:57:59.313Z"
   }
 ]
