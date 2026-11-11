@@ -2,28 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://www.nexcoinpr.agency/news/these-finland-homes-get-free-heat-from-bitcoin-miners-as-long-as-btc-stays</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-08</news:publication_date>
-      <news:title>These Finland homes get free heat from bitcoin miners (as long as BTC stays above $70,000)</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.nexcoinpr.agency/news/dollar-sees-best-day-since-june-after-stellar-jobs-report-set-for-weekly-ga</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-08</news:publication_date>
-      <news:title>Dollar sees best day since June after stellar jobs report, set for weekly gain</news:title>
-    </news:news>
-  </url>
-  <url>
     <loc>https://www.nexcoinpr.agency/news/a-bitcoin-block-just-neared-a-2015-transaction-record-but-paid-only-180-in</loc>
     <news:news>
       <news:publication>
@@ -65,6 +43,28 @@
       </news:publication>
       <news:publication_date>2026-11-10</news:publication_date>
       <news:title>U.S. Treasury yields spike as hot CPI binds with resilient labor market</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/okxice-to-debut-tokenized-stock-trading-with-strategy-coinbase-circle-this</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-11</news:publication_date>
+      <news:title>OKXICE to debut tokenized stock trading with Strategy, Coinbase, Circle this month</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/global-bonds-reel-as-hot-us-cpi-and-hawkish-fed-revive-50-bp-hike-fears</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-11</news:publication_date>
+      <news:title>Global bonds reel as hot U.S. CPI and hawkish Fed revive 50-bp hike fears</news:title>
     </news:news>
   </url>
 </urlset>
