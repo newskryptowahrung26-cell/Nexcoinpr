@@ -3263,5 +3263,125 @@
     "email": "press@bitdca.org",
     "cat": "Crypto Token / Coin",
     "sentAt": "2026-11-10T15:57:59.313Z"
+  },
+  {
+    "id": "8958",
+    "brand": "Polymesh",
+    "name": "Polymesh (POLYX)",
+    "email": "press@polymesh.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-11T15:41:17.340Z"
+  },
+  {
+    "id": "8960",
+    "brand": "Nexus",
+    "name": "Nexus (NEX)",
+    "email": "press@nexus.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-11T15:41:28.695Z"
+  },
+  {
+    "id": "8961",
+    "brand": "Aurora",
+    "name": "Aurora (AURORA)",
+    "email": "press@aurora.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-11T15:41:41.002Z"
+  },
+  {
+    "id": "8963",
+    "brand": "Troll2",
+    "name": "Troll (TROLL)",
+    "email": "press@troll2.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-11T15:41:52.195Z"
+  },
+  {
+    "id": "8964",
+    "brand": "Nano",
+    "name": "Nano (XNO)",
+    "email": "press@nano.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-11T15:42:04.503Z"
+  },
+  {
+    "id": "8965",
+    "brand": "Folks",
+    "name": "Folks Finance (FOLKS)",
+    "email": "press@folks.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-11T15:42:15.623Z"
+  },
+  {
+    "id": "8966",
+    "brand": "Megaeth",
+    "name": "MegaETH (MEGA)",
+    "email": "press@megaeth.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-11T15:42:27.201Z"
+  },
+  {
+    "id": "8967",
+    "brand": "Cat",
+    "name": "cat in a dogs world (MEW)",
+    "email": "press@cat.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-11T15:42:38.764Z"
+  },
+  {
+    "id": "8968",
+    "brand": "Constitutiondao",
+    "name": "Constitution DAO (PEOPLE)",
+    "email": "press@constitutiondao.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-11T15:42:49.827Z"
+  },
+  {
+    "id": "8969",
+    "brand": "Swell",
+    "name": "Swell Ethereum (SWETH)",
+    "email": "press@swell.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-11T15:43:00.837Z"
+  },
+  {
+    "id": "8970",
+    "brand": "Vvs",
+    "name": "VVS Finance (VVS)",
+    "email": "press@vvs.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-11T15:43:11.924Z"
+  },
+  {
+    "id": "8971",
+    "brand": "Pet",
+    "name": "Fren Pet (FREN PET)",
+    "email": "press@pet.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-11T15:43:23.000Z"
+  },
+  {
+    "id": "8972",
+    "brand": "Moo",
+    "name": "Moo Deng (moodengsol.com) (MOODENG)",
+    "email": "press@moo.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-11T15:43:35.267Z"
+  },
+  {
+    "id": "8973",
+    "brand": "Succinct",
+    "name": "Succinct (PROVE)",
+    "email": "press@succinct.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-11T15:43:46.744Z"
+  },
+  {
+    "id": "8974",
+    "brand": "Winklink",
+    "name": "WINkLink (WIN)",
+    "email": "press@winklink.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-11T15:43:58.380Z"
   }
 ]
