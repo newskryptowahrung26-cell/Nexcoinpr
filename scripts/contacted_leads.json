@@ -3383,5 +3383,125 @@
     "email": "press@winklink.org",
     "cat": "Crypto Token / Coin",
     "sentAt": "2026-11-11T15:43:58.380Z"
+  },
+  {
+    "id": "8975",
+    "brand": "Jett",
+    "name": "JETT CRYPTO (JETT)",
+    "email": "press@jett.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-12T16:26:03.206Z"
+  },
+  {
+    "id": "8976",
+    "brand": "Mask",
+    "name": "Mask Network (MASK)",
+    "email": "press@mask.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-12T16:26:14.453Z"
+  },
+  {
+    "id": "8977",
+    "brand": "Mog",
+    "name": "Mog Coin (MOG)",
+    "email": "press@mog.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-12T16:26:25.436Z"
+  },
+  {
+    "id": "8978",
+    "brand": "Casper",
+    "name": "Casper Network (CSPR)",
+    "email": "press@casper.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-12T16:26:36.844Z"
+  },
+  {
+    "id": "8979",
+    "brand": "Alchemist",
+    "name": "Alchemist AI (ALCH)",
+    "email": "press@alchemist.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-12T16:26:47.804Z"
+  },
+  {
+    "id": "8981",
+    "brand": "Snek",
+    "name": "SNEK (SNEK)",
+    "email": "press@snek.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-12T16:26:58.851Z"
+  },
+  {
+    "id": "8982",
+    "brand": "Moca",
+    "name": "Moca (MOCA)",
+    "email": "press@moca.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-12T16:27:09.823Z"
+  },
+  {
+    "id": "8983",
+    "brand": "Zksync",
+    "name": "zkSync (ZK)",
+    "email": "press@zksync.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-12T16:27:20.850Z"
+  },
+  {
+    "id": "8984",
+    "brand": "Ravedao",
+    "name": "RaveDAO (RAVE)",
+    "email": "press@ravedao.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-12T16:27:31.811Z"
+  },
+  {
+    "id": "8985",
+    "brand": "Not",
+    "name": "Not in Employment, Education, or Training (NEET)",
+    "email": "press@not.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-12T16:27:42.840Z"
+  },
+  {
+    "id": "8986",
+    "brand": "Nillion",
+    "name": "Nillion (NIL)",
+    "email": "press@nillion.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-12T16:27:53.733Z"
+  },
+  {
+    "id": "8987",
+    "brand": "Request",
+    "name": "Request (REQ)",
+    "email": "press@request.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-12T16:28:04.991Z"
+  },
+  {
+    "id": "8988",
+    "brand": "Loom",
+    "name": "Loom Network (LOOM)",
+    "email": "press@loom.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-12T16:28:15.949Z"
+  },
+  {
+    "id": "8989",
+    "brand": "Walrus",
+    "name": "Walrus (WAL)",
+    "email": "press@walrus.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-12T16:28:26.807Z"
+  },
+  {
+    "id": "8990",
+    "brand": "Dappos",
+    "name": "DappOS (DOS)",
+    "email": "press@dappos.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-12T16:28:38.394Z"
   }
 ]
