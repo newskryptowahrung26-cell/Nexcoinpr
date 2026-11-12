@@ -2,28 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://www.nexcoinpr.agency/news/a-bitcoin-block-just-neared-a-2015-transaction-record-but-paid-only-180-in</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-09</news:publication_date>
-      <news:title>A Bitcoin block just neared a 2015 transaction record, but paid only $180 in fees</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.nexcoinpr.agency/news/us-treasuries-tread-water-after-jobs-shock-as-cpi-auction-gauntlet-looms</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-09</news:publication_date>
-      <news:title>U.S. treasuries tread water after jobs shock as CPI, auction gauntlet looms</news:title>
-    </news:news>
-  </url>
-  <url>
     <loc>https://www.nexcoinpr.agency/news/will-stablecoins-survive-once-the-banks-catch-up</loc>
     <news:news>
       <news:publication>
@@ -65,6 +43,28 @@
       </news:publication>
       <news:publication_date>2026-11-11</news:publication_date>
       <news:title>Global bonds reel as hot U.S. CPI and hawkish Fed revive 50-bp hike fears</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/jupiter-adds-anchorage-backed-usdgo-to-its-1-billion-solana-lending-platfor</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-12</news:publication_date>
+      <news:title>Jupiter adds Anchorage-backed USDGO to its $1 billion Solana lending platform</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/is-dollar-finally-ready-to-break-out-bca-weighs-in</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-12</news:publication_date>
+      <news:title>Is dollar finally ready to break out? BCA weighs in</news:title>
     </news:news>
   </url>
 </urlset>
