@@ -2,28 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://www.nexcoinpr.agency/news/will-stablecoins-survive-once-the-banks-catch-up</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-10</news:publication_date>
-      <news:title>Will stablecoins survive once the banks catch up?</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.nexcoinpr.agency/news/us-treasury-yields-spike-as-hot-cpi-binds-with-resilient-labor-market</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-10</news:publication_date>
-      <news:title>U.S. Treasury yields spike as hot CPI binds with resilient labor market</news:title>
-    </news:news>
-  </url>
-  <url>
     <loc>https://www.nexcoinpr.agency/news/okxice-to-debut-tokenized-stock-trading-with-strategy-coinbase-circle-this</loc>
     <news:news>
       <news:publication>
@@ -65,6 +43,28 @@
       </news:publication>
       <news:publication_date>2026-11-12</news:publication_date>
       <news:title>Is dollar finally ready to break out? BCA weighs in</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/kraken-parent-payward-says-expansion-outside-crypto-trading-helps-cushion-r</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-13</news:publication_date>
+      <news:title>Kraken parent Payward says expansion outside crypto trading helps cushion revenue decline</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/canadian-dollar-holds-near-one-month-low-as-us-producer-inflation-keeps-fed</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-13</news:publication_date>
+      <news:title>Canadian dollar holds near one-month low as U.S. producer inflation keeps Fed bets</news:title>
     </news:news>
   </url>
 </urlset>

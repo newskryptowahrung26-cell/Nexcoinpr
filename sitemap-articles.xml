@@ -570,4 +570,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/kraken-parent-payward-says-expansion-outside-crypto-trading-helps-cushion-r</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/canadian-dollar-holds-near-one-month-low-as-us-producer-inflation-keeps-fed</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
 </urlset>
