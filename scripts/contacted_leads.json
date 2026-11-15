@@ -3743,5 +3743,125 @@
     "email": "press@apro.org",
     "cat": "Crypto Token / Coin",
     "sentAt": "2026-11-14T14:39:26.780Z"
+  },
+  {
+    "id": "9028",
+    "brand": "Power",
+    "name": "Power Ledger (POWR)",
+    "email": "press@power.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-15T15:05:22.035Z"
+  },
+  {
+    "id": "9029",
+    "brand": "Propy",
+    "name": "Propy (PRO)",
+    "email": "press@propy.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-15T15:05:33.511Z"
+  },
+  {
+    "id": "9030",
+    "brand": "Ftx",
+    "name": "FTX Token (FTT)",
+    "email": "press@ftx.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-15T15:05:45.442Z"
+  },
+  {
+    "id": "9031",
+    "brand": "ChangeNOW",
+    "name": "NOW Token (NOW)",
+    "email": "press@changenow.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-15T15:05:57.425Z"
+  },
+  {
+    "id": "9032",
+    "brand": "Hakimi",
+    "name": "哈基米 (Hajimi) (哈基米)",
+    "email": "press@hakimi.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-15T15:06:08.434Z"
+  },
+  {
+    "id": "9033",
+    "brand": "Waves",
+    "name": "Waves (WAVES)",
+    "email": "press@waves.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-15T15:06:19.864Z"
+  },
+  {
+    "id": "9034",
+    "brand": "Ampleforth",
+    "name": "Ampleforth (AMPL)",
+    "email": "press@ampleforth.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-15T15:06:30.907Z"
+  },
+  {
+    "id": "9035",
+    "brand": "Token",
+    "name": "Token Pocket (TPT)",
+    "email": "press@token.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-15T15:06:42.955Z"
+  },
+  {
+    "id": "9036",
+    "brand": "Somnia",
+    "name": "Somnia  (SOMI)",
+    "email": "press@somnia.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-15T15:06:54.832Z"
+  },
+  {
+    "id": "9037",
+    "brand": "Tether",
+    "name": "Tether Gold Tokens (XAUT0)",
+    "email": "press@tether.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-15T15:07:06.304Z"
+  },
+  {
+    "id": "9040",
+    "brand": "Xsgd",
+    "name": "XSGD (XSGD)",
+    "email": "press@xsgd.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-15T15:07:18.269Z"
+  },
+  {
+    "id": "9041",
+    "brand": "Iost",
+    "name": "IOST (IOST)",
+    "email": "press@iost.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-15T15:07:29.315Z"
+  },
+  {
+    "id": "9042",
+    "brand": "Babylon",
+    "name": "Babylon (BABY)",
+    "email": "press@babylon.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-15T15:07:40.325Z"
+  },
+  {
+    "id": "9043",
+    "brand": "Irys",
+    "name": "Irys (IRYS)",
+    "email": "press@irys.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-15T15:07:52.301Z"
+  },
+  {
+    "id": "9044",
+    "brand": "Bora",
+    "name": "BORA (BORA)",
+    "email": "press@bora.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-15T15:08:03.390Z"
   }
 ]
