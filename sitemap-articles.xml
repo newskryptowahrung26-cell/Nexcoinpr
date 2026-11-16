@@ -606,4 +606,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/brazils-central-bank-faces-backlash-over-stablecoin-money-laundering-remark</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/treasury-yields-pause-near-1-month-highs-as-traders-brace-for-fed-signals</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
 </urlset>
