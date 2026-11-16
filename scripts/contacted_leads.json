@@ -3863,5 +3863,125 @@
     "email": "press@bora.org",
     "cat": "Crypto Token / Coin",
     "sentAt": "2026-11-15T15:08:03.390Z"
+  },
+  {
+    "id": "9045",
+    "brand": "Terrausd",
+    "name": "Terra Classic USD (USTC)",
+    "email": "press@terrausd.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-16T17:38:40.998Z"
+  },
+  {
+    "id": "9046",
+    "brand": "Harmony",
+    "name": "Harmony (ONE)",
+    "email": "press@harmony.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-16T17:38:52.126Z"
+  },
+  {
+    "id": "9047",
+    "brand": "Zerebro",
+    "name": "Zerebro (ZEREBRO)",
+    "email": "press@zerebro.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-16T17:39:03.204Z"
+  },
+  {
+    "id": "9049",
+    "brand": "Arcblock",
+    "name": "Arcblock (ABT)",
+    "email": "press@arcblock.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-16T17:39:15.247Z"
+  },
+  {
+    "id": "9050",
+    "brand": "Pundi",
+    "name": "Pundi X (PUNDIX)",
+    "email": "press@pundi.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-16T17:39:27.137Z"
+  },
+  {
+    "id": "9051",
+    "brand": "Across",
+    "name": "Across Protocol (ACX)",
+    "email": "press@across.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-16T17:39:38.282Z"
+  },
+  {
+    "id": "9052",
+    "brand": "Stronghold",
+    "name": "Stronghold Token (SHX)",
+    "email": "press@stronghold.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-16T17:39:49.342Z"
+  },
+  {
+    "id": "9053",
+    "brand": "Bifrost",
+    "name": "Bifrost (BFC)",
+    "email": "press@bifrost.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-16T17:40:00.256Z"
+  },
+  {
+    "id": "9055",
+    "brand": "Mdex",
+    "name": "MDEX (HECO) (MDX)",
+    "email": "press@mdex.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-16T17:40:11.486Z"
+  },
+  {
+    "id": "9056",
+    "brand": "Alchemy",
+    "name": "Alchemy Pay (ACH)",
+    "email": "press@alchemy.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-16T17:40:23.022Z"
+  },
+  {
+    "id": "9057",
+    "brand": "Ardor",
+    "name": "Ardor (ARDR)",
+    "email": "press@ardor.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-16T17:40:34.028Z"
+  },
+  {
+    "id": "9058",
+    "brand": "Keeta",
+    "name": "Keeta (KTA)",
+    "email": "press@keeta.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-16T17:40:45.032Z"
+  },
+  {
+    "id": "9059",
+    "brand": "Blast",
+    "name": "Blast Token (BLAST)",
+    "email": "press@blast.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-16T17:40:56.477Z"
+  },
+  {
+    "id": "9060",
+    "brand": "Mass",
+    "name": "MVL (MVL)",
+    "email": "press@mass.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-16T17:41:07.551Z"
+  },
+  {
+    "id": "9063",
+    "brand": "Alaya",
+    "name": "Alaya Governance Token (AGT)",
+    "email": "press@alaya.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-16T17:41:18.541Z"
   }
 ]
