@@ -3983,5 +3983,125 @@
     "email": "press@alaya.org",
     "cat": "Crypto Token / Coin",
     "sentAt": "2026-11-16T17:41:18.541Z"
+  },
+  {
+    "id": "9064",
+    "brand": "Ergo",
+    "name": "Ergo (ERG)",
+    "email": "press@ergo.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-17T17:11:37.010Z"
+  },
+  {
+    "id": "9065",
+    "brand": "Eurite",
+    "name": "Eurite (EURI)",
+    "email": "press@eurite.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-17T17:11:47.806Z"
+  },
+  {
+    "id": "9066",
+    "brand": "Smooth",
+    "name": "Smooth Love Potion (SLP)",
+    "email": "press@smooth.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-17T17:11:58.552Z"
+  },
+  {
+    "id": "9068",
+    "brand": "Electronic",
+    "name": "Electronic USD (EUSD)",
+    "email": "press@electronic.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-17T17:12:09.460Z"
+  },
+  {
+    "id": "9069",
+    "brand": "Hunter Biden",
+    "name": "Hunter Biden's Laptop (LAPTOP)",
+    "email": "press@hunter.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-17T17:12:20.252Z"
+  },
+  {
+    "id": "9070",
+    "brand": "Metis",
+    "name": "Metis Token (METIS)",
+    "email": "press@metis.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-17T17:12:31.036Z"
+  },
+  {
+    "id": "9071",
+    "brand": "Uquid",
+    "name": "Uquid Coin (UQC)",
+    "email": "press@uquid.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-17T17:12:41.904Z"
+  },
+  {
+    "id": "9072",
+    "brand": "Swarm",
+    "name": "Swarm Network (TRUTH)",
+    "email": "press@swarm.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-17T17:12:52.688Z"
+  },
+  {
+    "id": "9073",
+    "brand": "Gensyn",
+    "name": "Gensyn  (AI)",
+    "email": "press@gensyn.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-17T17:13:03.641Z"
+  },
+  {
+    "id": "9074",
+    "brand": "Stepn",
+    "name": "GMT (GMT)",
+    "email": "press@stepn.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-17T17:13:14.438Z"
+  },
+  {
+    "id": "9075",
+    "brand": "Deapcoin",
+    "name": "DEAPcoin (DEP)",
+    "email": "press@deapcoin.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-17T17:13:25.247Z"
+  },
+  {
+    "id": "9076",
+    "brand": "1000sats",
+    "name": "1000SATS (Ordinals) (1000SATS)",
+    "email": "press@1000sats.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-17T17:13:36.038Z"
+  },
+  {
+    "id": "9077",
+    "brand": "Clearpool",
+    "name": "Clearpool (CPOOL)",
+    "email": "press@clearpool.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-17T17:13:46.797Z"
+  },
+  {
+    "id": "9078",
+    "brand": "Apex",
+    "name": "ApeX Token (APEX)",
+    "email": "press@apex.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-17T17:13:57.642Z"
+  },
+  {
+    "id": "9079",
+    "brand": "Sats",
+    "name": "SATS (Ordinals) (SATS)",
+    "email": "press@sats.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-17T17:14:08.499Z"
   }
 ]
