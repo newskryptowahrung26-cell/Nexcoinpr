@@ -618,4 +618,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/hong-kong-swift-test-tokenized-deposits-as-banks-chase-stablecoin-style-spe</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/us-treasury-yields-catch-their-breath-near-one-month-highs</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
 </urlset>
