@@ -4103,5 +4103,125 @@
     "email": "press@sats.org",
     "cat": "Crypto Token / Coin",
     "sentAt": "2026-11-17T17:14:08.499Z"
+  },
+  {
+    "id": "9080",
+    "brand": "Euler",
+    "name": "Euler (EUL)",
+    "email": "press@euler.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-18T16:48:14.433Z"
+  },
+  {
+    "id": "9081",
+    "brand": "Wootrade",
+    "name": "WOO (WOO)",
+    "email": "press@wootrade.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-18T16:48:25.415Z"
+  },
+  {
+    "id": "9082",
+    "brand": "Paxos",
+    "name": "Pax Dollar (USDP)",
+    "email": "press@paxos.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-18T16:48:36.417Z"
+  },
+  {
+    "id": "9083",
+    "brand": "Skale",
+    "name": "SKALE (SKL)",
+    "email": "press@skale.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-18T16:48:47.710Z"
+  },
+  {
+    "id": "9084",
+    "brand": "CZ",
+    "name": "CZ'S Dog (broccoli.gg) (BROCCOLI)",
+    "email": "press@cz39s.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-18T16:48:58.663Z"
+  },
+  {
+    "id": "9085",
+    "brand": "Home2",
+    "name": "Home (HOME)",
+    "email": "press@home2.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-18T16:49:09.537Z"
+  },
+  {
+    "id": "9086",
+    "brand": "Iexec",
+    "name": "iExec RLC (RLC)",
+    "email": "press@iexec.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-18T16:49:20.637Z"
+  },
+  {
+    "id": "9087",
+    "brand": "Constellation",
+    "name": "Constellation (DAG)",
+    "email": "press@constellation.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-18T16:49:31.957Z"
+  },
+  {
+    "id": "9088",
+    "brand": "Stratis",
+    "name": "Stratis (STRAX)",
+    "email": "press@stratis.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-18T16:49:44.154Z"
+  },
+  {
+    "id": "9089",
+    "brand": "Anoma",
+    "name": "Anoma (XAN)",
+    "email": "press@anoma.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-18T16:49:55.041Z"
+  },
+  {
+    "id": "9090",
+    "brand": "Cartesi",
+    "name": "Cartesi (CTSI)",
+    "email": "press@cartesi.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-18T16:50:05.952Z"
+  },
+  {
+    "id": "9091",
+    "brand": "Dogs",
+    "name": "Dogs (DOGS)",
+    "email": "press@dogs.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-18T16:50:17.214Z"
+  },
+  {
+    "id": "9092",
+    "brand": "Cysic",
+    "name": "Cysic (CYS)",
+    "email": "press@cysic.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-18T16:50:28.080Z"
+  },
+  {
+    "id": "9093",
+    "brand": "Anyone",
+    "name": "Anyone Protocol (ANYONE)",
+    "email": "press@anyone.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-18T16:50:38.911Z"
+  },
+  {
+    "id": "9094",
+    "brand": "Fractal",
+    "name": "Fractal Bitcoin (FB)",
+    "email": "press@fractal.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-18T16:50:49.804Z"
   }
 ]
