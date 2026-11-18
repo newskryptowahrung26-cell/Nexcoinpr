@@ -2,28 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://www.nexcoinpr.agency/news/crypto-insiders-arent-counting-on-silver-linings-in-congress-lame-duck-sess</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-15</news:publication_date>
-      <news:title>Crypto insiders aren't counting on silver linings in Congress' 'lame duck' session</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.nexcoinpr.agency/news/us-dollar-surges-to-biggest-weekly-gain-since-september-on-fed-hike-certain</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-15</news:publication_date>
-      <news:title>U.S. dollar surges to biggest weekly gain since September on Fed hike certainty</news:title>
-    </news:news>
-  </url>
-  <url>
     <loc>https://www.nexcoinpr.agency/news/brazils-central-bank-faces-backlash-over-stablecoin-money-laundering-remark</loc>
     <news:news>
       <news:publication>
@@ -65,6 +43,28 @@
       </news:publication>
       <news:publication_date>2026-11-17</news:publication_date>
       <news:title>U.S. Treasury yields catch their breath near one-month highs</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/german-judge-proposes-dropping-movie2k-case-if-operator-hands-over-256-bill</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-18</news:publication_date>
+      <news:title>German judge proposes dropping Movie2k case if operator hands over $2.56 billion in bitcoin</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/after-63-billion-crypto-heist-binance-plans-asia-expansion</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-18</news:publication_date>
+      <news:title>After $6.3 billion crypto heist, Binance plans Asia expansion</news:title>
     </news:news>
   </url>
 </urlset>
