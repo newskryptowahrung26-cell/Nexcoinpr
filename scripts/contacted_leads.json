@@ -4223,5 +4223,125 @@
     "email": "press@fractal.org",
     "cat": "Crypto Token / Coin",
     "sentAt": "2026-11-18T16:50:49.804Z"
+  },
+  {
+    "id": "9095",
+    "brand": "A Meme Coin (AMC)",
+    "name": "A Meme Coin (AMC)",
+    "email": "press@a.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-19T16:54:59.071Z"
+  },
+  {
+    "id": "9096",
+    "brand": "Bounce",
+    "name": "Bounce (AUCTION)",
+    "email": "press@bounce.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-19T16:55:10.054Z"
+  },
+  {
+    "id": "9097",
+    "brand": "Degen",
+    "name": "Degen (Base) (DEGEN)",
+    "email": "press@degen.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-19T16:55:20.815Z"
+  },
+  {
+    "id": "9098",
+    "brand": "Moonriver",
+    "name": "Moonriver (MOVR)",
+    "email": "press@moonriver.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-19T16:55:31.649Z"
+  },
+  {
+    "id": "9099",
+    "brand": "Milk",
+    "name": "MiL.k Alliance (MLK)",
+    "email": "press@milk.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-19T16:55:42.751Z"
+  },
+  {
+    "id": "9100",
+    "brand": "Civic",
+    "name": "Civic (CVC)",
+    "email": "press@civic.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-19T16:55:53.655Z"
+  },
+  {
+    "id": "9101",
+    "brand": "Tokenlon",
+    "name": "Tokenlon (LON)",
+    "email": "press@tokenlon.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-19T16:56:04.675Z"
+  },
+  {
+    "id": "9102",
+    "brand": "Aevo",
+    "name": "Aevo (AEVO)",
+    "email": "press@aevo.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-19T16:56:15.519Z"
+  },
+  {
+    "id": "9103",
+    "brand": "Hive",
+    "name": "HIVE (HIVE)",
+    "email": "press@hive.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-19T16:56:26.428Z"
+  },
+  {
+    "id": "9104",
+    "brand": "Straitsx",
+    "name": "StraitsX USD (XUSD)",
+    "email": "press@straitsx.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-19T16:56:37.389Z"
+  },
+  {
+    "id": "9105",
+    "brand": "Celer",
+    "name": "Celer Network (CELR)",
+    "email": "press@celer.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-19T16:56:48.181Z"
+  },
+  {
+    "id": "9106",
+    "brand": "Opengradient",
+    "name": "OpenGradient (OPG)",
+    "email": "press@opengradient.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-19T16:57:06.865Z"
+  },
+  {
+    "id": "9107",
+    "brand": "Law",
+    "name": "Law Blocks (LBT)",
+    "email": "press@law.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-19T16:57:17.781Z"
+  },
+  {
+    "id": "9108",
+    "brand": "Advertise",
+    "name": "Advertise Coin (ADCO)",
+    "email": "press@advertise.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-19T16:57:28.661Z"
+  },
+  {
+    "id": "9109",
+    "brand": "Coti",
+    "name": "COTI (COTI)",
+    "email": "press@coti.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-19T16:57:39.458Z"
   }
 ]
