@@ -654,4 +654,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/hong-kong-moves-to-extend-crypto-licensing-rules-to-brokers-advisers-and-cu</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/ubs-flags-further-euro-downside-as-dollar-strength-keeps-eurusd-under-press</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
 </urlset>

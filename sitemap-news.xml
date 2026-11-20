@@ -2,28 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://www.nexcoinpr.agency/news/hong-kong-swift-test-tokenized-deposits-as-banks-chase-stablecoin-style-spe</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-17</news:publication_date>
-      <news:title>Hong Kong, Swift test tokenized deposits as banks chase stablecoin-style speed</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.nexcoinpr.agency/news/us-treasury-yields-catch-their-breath-near-one-month-highs</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-17</news:publication_date>
-      <news:title>U.S. Treasury yields catch their breath near one-month highs</news:title>
-    </news:news>
-  </url>
-  <url>
     <loc>https://www.nexcoinpr.agency/news/german-judge-proposes-dropping-movie2k-case-if-operator-hands-over-256-bill</loc>
     <news:news>
       <news:publication>
@@ -65,6 +43,28 @@
       </news:publication>
       <news:publication_date>2026-11-19</news:publication_date>
       <news:title>Brazilian real near 52-week lows as fiscal concerns weigh on currency</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/hong-kong-moves-to-extend-crypto-licensing-rules-to-brokers-advisers-and-cu</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-20</news:publication_date>
+      <news:title>Hong Kong moves to extend crypto licensing rules to brokers, advisers and custodians</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/ubs-flags-further-euro-downside-as-dollar-strength-keeps-eurusd-under-press</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-20</news:publication_date>
+      <news:title>UBS flags further euro downside as dollar strength keeps EUR/USD under pressure</news:title>
     </news:news>
   </url>
 </urlset>
