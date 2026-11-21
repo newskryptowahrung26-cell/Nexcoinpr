@@ -2,28 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://www.nexcoinpr.agency/news/german-judge-proposes-dropping-movie2k-case-if-operator-hands-over-256-bill</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-18</news:publication_date>
-      <news:title>German judge proposes dropping Movie2k case if operator hands over $2.56 billion in bitcoin</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.nexcoinpr.agency/news/after-63-billion-crypto-heist-binance-plans-asia-expansion</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-18</news:publication_date>
-      <news:title>After $6.3 billion crypto heist, Binance plans Asia expansion</news:title>
-    </news:news>
-  </url>
-  <url>
     <loc>https://www.nexcoinpr.agency/news/binance-wins-65-billion-feezing-order-against-hackers-behind-cryptos-larges</loc>
     <news:news>
       <news:publication>
@@ -65,6 +43,28 @@
       </news:publication>
       <news:publication_date>2026-11-20</news:publication_date>
       <news:title>UBS flags further euro downside as dollar strength keeps EUR/USD under pressure</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/ether-treasury-firm-btcs-warns-sec-its-54-million-aave-loan-could-be-liquid</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-21</news:publication_date>
+      <news:title>Ether treasury firm BTCS warns SEC its $54 million Aave loan could be liquidated</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/bitcoin-falls-to-its-lowest-in-two-years</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-21</news:publication_date>
+      <news:title>Bitcoin falls to its lowest in two years</news:title>
     </news:news>
   </url>
 </urlset>
