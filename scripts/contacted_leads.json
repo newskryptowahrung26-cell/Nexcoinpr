@@ -4583,5 +4583,125 @@
     "email": "press@bonfida.org",
     "cat": "Crypto Token / Coin",
     "sentAt": "2026-11-21T15:46:52.217Z"
+  },
+  {
+    "id": "9142",
+    "brand": "Core",
+    "name": "Core DAO (CORE)",
+    "email": "press@core.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-22T15:45:56.176Z"
+  },
+  {
+    "id": "9143",
+    "brand": "Perle",
+    "name": "Perle (PRL)",
+    "email": "press@perle.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-22T15:46:07.286Z"
+  },
+  {
+    "id": "9144",
+    "brand": "Qanx",
+    "name": "QANX Token (QANX)",
+    "email": "press@qanx.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-22T15:46:18.839Z"
+  },
+  {
+    "id": "9145",
+    "brand": "Debtreliefbot",
+    "name": "DebtReliefBot (DRB)",
+    "email": "press@debtreliefbot.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-22T15:46:30.410Z"
+  },
+  {
+    "id": "9147",
+    "brand": "Quarkchain",
+    "name": "QuarkChain (QKC)",
+    "email": "press@quarkchain.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-22T15:46:41.895Z"
+  },
+  {
+    "id": "9148",
+    "brand": "Medibloc",
+    "name": "MediBloc (MED)",
+    "email": "press@medibloc.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-22T15:46:53.220Z"
+  },
+  {
+    "id": "9149",
+    "brand": "Freysa",
+    "name": "Freysa (FAI)",
+    "email": "press@freysa.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-22T15:47:04.697Z"
+  },
+  {
+    "id": "9150",
+    "brand": "Fabric",
+    "name": "Fabric Protocol (ROBO)",
+    "email": "press@fabric.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-22T15:47:15.591Z"
+  },
+  {
+    "id": "9151",
+    "brand": "Naoris",
+    "name": "Naoris Protocol  (NAORIS)",
+    "email": "press@naoris.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-22T15:47:27.054Z"
+  },
+  {
+    "id": "9152",
+    "brand": "Zora",
+    "name": "Zora (ZORA)",
+    "email": "press@zora.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-22T15:47:38.444Z"
+  },
+  {
+    "id": "9153",
+    "brand": "Xphere",
+    "name": "Xphere (XP)",
+    "email": "press@xphere.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-22T15:47:49.855Z"
+  },
+  {
+    "id": "9154",
+    "brand": "Gamebuild",
+    "name": "GameBuild (GAME)",
+    "email": "press@gamebuild.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-22T15:48:01.082Z"
+  },
+  {
+    "id": "9155",
+    "brand": "Aixbt",
+    "name": "aixbt by Virtuals (AIXBT)",
+    "email": "press@aixbt.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-22T15:48:12.541Z"
+  },
+  {
+    "id": "9156",
+    "brand": "Polkadot",
+    "name": "Polkadot Token (DOT)",
+    "email": "press@polkadot.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-22T15:48:24.111Z"
+  },
+  {
+    "id": "9157",
+    "brand": "Taiko",
+    "name": "Taiko (TAIKO)",
+    "email": "press@taiko.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-22T15:48:35.639Z"
   }
 ]
