@@ -2,28 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://www.nexcoinpr.agency/news/binance-wins-65-billion-feezing-order-against-hackers-behind-cryptos-larges</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-19</news:publication_date>
-      <news:title>Binance wins $6.5 billion feezing order against hackers behind crypto's largest theft</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.nexcoinpr.agency/news/brazilian-real-near-52-week-lows-as-fiscal-concerns-weigh-on-currency</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-19</news:publication_date>
-      <news:title>Brazilian real near 52-week lows as fiscal concerns weigh on currency</news:title>
-    </news:news>
-  </url>
-  <url>
     <loc>https://www.nexcoinpr.agency/news/hong-kong-moves-to-extend-crypto-licensing-rules-to-brokers-advisers-and-cu</loc>
     <news:news>
       <news:publication>
@@ -65,6 +43,28 @@
       </news:publication>
       <news:publication_date>2026-11-21</news:publication_date>
       <news:title>Bitcoin falls to its lowest in two years</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/bitcoins-quantum-security-challenge-extends-to-bridges-custodians-and-milli</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-22</news:publication_date>
+      <news:title>Bitcoin's quantum security challenge extends to bridges, custodians and millions of coins</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/bitcoin-rises-over-2-to-more-than-60000</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-22</news:publication_date>
+      <news:title>Bitcoin rises over 2% to more than $60,000</news:title>
     </news:news>
   </url>
 </urlset>

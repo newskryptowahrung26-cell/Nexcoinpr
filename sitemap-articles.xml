@@ -678,4 +678,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/bitcoins-quantum-security-challenge-extends-to-bridges-custodians-and-milli</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/bitcoin-rises-over-2-to-more-than-60000</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
 </urlset>
