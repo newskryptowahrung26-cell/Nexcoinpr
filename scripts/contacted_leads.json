@@ -4703,5 +4703,125 @@
     "email": "press@taiko.org",
     "cat": "Crypto Token / Coin",
     "sentAt": "2026-11-22T15:48:35.639Z"
+  },
+  {
+    "id": "9158",
+    "brand": "Fartboy",
+    "name": "Fartboy (FARTBOY)",
+    "email": "press@fartboy.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-23T19:37:36.412Z"
+  },
+  {
+    "id": "9159",
+    "brand": "Dia",
+    "name": "DIA (DIA)",
+    "email": "press@dia.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-23T19:37:47.267Z"
+  },
+  {
+    "id": "9160",
+    "brand": "Kledai",
+    "name": "KLEDAI (KLED)",
+    "email": "press@kledai.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-23T19:37:58.891Z"
+  },
+  {
+    "id": "9161",
+    "brand": "Catizen",
+    "name": "Catizen (CATI)",
+    "email": "press@catizen.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-23T19:38:09.907Z"
+  },
+  {
+    "id": "9162",
+    "brand": "Adventure",
+    "name": "Adventure Gold (AGLD)",
+    "email": "press@adventure.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-23T19:38:20.749Z"
+  },
+  {
+    "id": "9163",
+    "brand": "Janction",
+    "name": "Janction (JCT)",
+    "email": "press@janction.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-23T19:38:31.614Z"
+  },
+  {
+    "id": "9164",
+    "brand": "Polyswarm",
+    "name": "PolySwarm (NCT)",
+    "email": "press@polyswarm.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-23T19:38:42.425Z"
+  },
+  {
+    "id": "9165",
+    "brand": "Incentive",
+    "name": "Incentive (INC)",
+    "email": "press@incentive.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-23T19:38:53.314Z"
+  },
+  {
+    "id": "9166",
+    "brand": "Pippin",
+    "name": "Pippin (PIPPIN)",
+    "email": "press@pippin.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-23T19:39:04.181Z"
+  },
+  {
+    "id": "9167",
+    "brand": "Zerobase",
+    "name": "Zerobase (ZBT)",
+    "email": "press@zerobase.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-23T19:39:15.286Z"
+  },
+  {
+    "id": "9168",
+    "brand": "Ccip",
+    "name": "CCIP Bridged USDC (Ronin) (USDC)",
+    "email": "press@ccip.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-23T19:39:26.112Z"
+  },
+  {
+    "id": "9170",
+    "brand": "Sapien",
+    "name": "Sapien (SAPIEN)",
+    "email": "press@sapien.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-23T19:39:36.962Z"
+  },
+  {
+    "id": "9171",
+    "brand": "Goatseus",
+    "name": "Goatseus Maximus (GOAT)",
+    "email": "press@goatseus.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-23T19:39:47.817Z"
+  },
+  {
+    "id": "9172",
+    "brand": "Moonbirds",
+    "name": "Moonbirds (BIRB)",
+    "email": "press@moonbirds.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-23T19:39:58.653Z"
+  },
+  {
+    "id": "9173",
+    "brand": "Symbol",
+    "name": "Symbol (XYM)",
+    "email": "press@symbol.org",
+    "cat": "Crypto Token / Coin",
+    "sentAt": "2026-11-23T19:40:09.516Z"
   }
 ]
