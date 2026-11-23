@@ -2,28 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://www.nexcoinpr.agency/news/hong-kong-moves-to-extend-crypto-licensing-rules-to-brokers-advisers-and-cu</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-20</news:publication_date>
-      <news:title>Hong Kong moves to extend crypto licensing rules to brokers, advisers and custodians</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://www.nexcoinpr.agency/news/ubs-flags-further-euro-downside-as-dollar-strength-keeps-eurusd-under-press</loc>
-    <news:news>
-      <news:publication>
-        <news:name>NexcoinPR</news:name>
-        <news:language>en</news:language>
-      </news:publication>
-      <news:publication_date>2026-11-20</news:publication_date>
-      <news:title>UBS flags further euro downside as dollar strength keeps EUR/USD under pressure</news:title>
-    </news:news>
-  </url>
-  <url>
     <loc>https://www.nexcoinpr.agency/news/ether-treasury-firm-btcs-warns-sec-its-54-million-aave-loan-could-be-liquid</loc>
     <news:news>
       <news:publication>
@@ -65,6 +43,28 @@
       </news:publication>
       <news:publication_date>2026-11-22</news:publication_date>
       <news:title>Bitcoin rises over 2% to more than $60,000</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/new-york-judge-declines-to-block-kalshi-from-operating-in-the-state-for-now</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-23</news:publication_date>
+      <news:title>New York judge declines to block Kalshi from operating in the state for now</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://www.nexcoinpr.agency/news/barclays-usdsek-tactical-long-still-attractive-after-a-10-day-run</loc>
+    <news:news>
+      <news:publication>
+        <news:name>NexcoinPR</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-23</news:publication_date>
+      <news:title>Barclays’ USD/SEK tactical long: still attractive after a 10-day run?</news:title>
     </news:news>
   </url>
 </urlset>
